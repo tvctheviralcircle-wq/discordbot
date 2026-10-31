@@ -10,15 +10,15 @@ body{width:1080px;font-family:Lexend,system-ui,sans-serif}
 .top{width:100%;display:flex;justify-content:space-between;align-items:center;padding-top:40px}
 .top img{height:58px}
 .pill{font-size:18px;font-weight:700;letter-spacing:.12em;padding:10px 20px;border-radius:999px;border:2px solid currentColor}
-.av{margin-top:58px;width:250px;height:250px;border-radius:50%;padding:10px;position:relative}
-.av .in{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:96px;font-weight:800;color:#fff;overflow:hidden;background-size:cover;background-position:center}
+.av{margin-top:56px;width:340px;height:340px;border-radius:50%;padding:10px;position:relative}
+.av .in{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:130px;font-weight:800;color:#fff;overflow:hidden;background-size:cover;background-position:center}
 .av .tag{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:800;padding:8px 18px;border-radius:999px;white-space:nowrap}
-.handle{margin-top:34px;font-size:36px;font-weight:700}
+.handle{margin-top:40px;font-size:40px;font-weight:700}
 .big{margin-top:16px;display:flex;align-items:baseline;gap:18px;line-height:.9}
-.big b{font-size:190px;font-weight:800;letter-spacing:-.04em}
+.big b{font-size:170px;font-weight:800;letter-spacing:-.04em}
 .big span{font-size:64px;font-weight:800}
 .stage{margin-top:14px;font-size:30px;font-weight:600}
-.ladder{position:absolute;left:96px;right:96px;bottom:70px}
+.ladder{position:absolute;left:96px;right:96px;bottom:64px}
 .rail{position:absolute;left:0;right:0;top:27px;height:8px;border-radius:8px}
 .fill{position:absolute;left:0;top:27px;height:8px;border-radius:8px}
 .nodes{position:relative;display:flex;justify-content:space-between}
@@ -63,7 +63,7 @@ if(avatar){inn.style.backgroundImage=`url(${avatar})`}else{inn.textContent=handl
 const tag=document.getElementById('tag');tag.textContent=CFG.tag;tag.style.background=acc;tag.style.color=stage>=30?'#1c2548':'#fff';
 document.getElementById('handle').textContent='@'+handle;
 const num=document.getElementById('num');num.textContent=CFG.ord;num.style.color=acc;
-document.getElementById('unit').textContent=stage===1?'SALE':'SALES';
+document.getElementById('unit').textContent=/[a-z]$/.test(CFG.ord)?'SALE':'SALES';
 document.getElementById('stage').textContent=CFG.label;
 const idx=STAGES.indexOf(stage);
 const f=document.getElementById('fill');f.style.width=(idx/4*100)+'%';f.style.background=acc;
