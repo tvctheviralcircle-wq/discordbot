@@ -1,0 +1,81 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1c2548;--green:#089143;--red:#cf2736;--gold:#e9b949;--muted:#6b7190}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;font-family:Lexend,system-ui,sans-serif}
+.card{width:1080px;height:1080px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:0 64px}
+.flag{display:flex;height:12px;width:1080px;margin:0 -64px}.flag i{flex:1}
+.top{width:100%;display:flex;justify-content:space-between;align-items:center;padding-top:40px}
+.top img{height:58px}
+.pill{font-size:18px;font-weight:700;letter-spacing:.12em;padding:10px 20px;border-radius:999px;border:2px solid currentColor}
+.av{margin-top:56px;width:340px;height:340px;border-radius:50%;padding:10px;position:relative}
+.av .in{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:130px;font-weight:800;color:#fff;overflow:hidden;background-size:cover;background-position:center}
+.av .tag{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:800;padding:8px 18px;border-radius:999px;white-space:nowrap}
+.handle{margin-top:40px;font-size:40px;font-weight:700}
+.big{margin-top:16px;display:flex;align-items:baseline;gap:18px;line-height:.9}
+.big b{font-size:170px;font-weight:800;letter-spacing:-.04em}
+.big span{font-size:64px;font-weight:800}
+.stage{margin-top:14px;font-size:30px;font-weight:600}
+.ladder{position:absolute;left:96px;right:96px;bottom:64px}
+.rail{position:absolute;left:0;right:0;top:27px;height:8px;border-radius:8px}
+.fill{position:absolute;left:0;top:27px;height:8px;border-radius:8px}
+.nodes{position:relative;display:flex;justify-content:space-between}
+.n{display:flex;flex-direction:column;align-items:center;width:62px}
+.dot{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;border:4px solid}
+.n.cur .dot{transform:scale(1.3)}
+.n small{margin-top:16px;font-size:16px;font-weight:700;letter-spacing:.06em;white-space:nowrap}
+/* themes */
+.light{background:#f2f3f5;color:var(--navy)}
+.light .rail{background:#dfe2ea}
+.dark{background:radial-gradient(circle at 50% 35%,#2b3666 0%,#1c2548 55%,#121833 100%);color:#fff}
+.dark .rail{background:#3a4470}
+.gold-t{background:radial-gradient(circle at 50% 35%,#2b3666 0%,#1c2548 50%,#0d1226 100%);color:#fff}
+.gold-t .rail{background:#3a4470}
+</style></head>
+<body><div class="card" id="c">
+<div class="flag"><i style="background:var(--green)"></i><i style="background:#fff"></i><i style="background:var(--red)"></i></div>
+<div class="top"><img id="logo" src="logo.png"><div class="pill">CREATOR WIN</div></div>
+<div class="av" id="av"><div class="in" id="in"></div><div class="tag" id="tag"></div></div>
+<div class="handle" id="handle"></div>
+<div class="big"><b id="num"></b><span id="unit"></span></div>
+<div class="stage" id="stage"></div>
+<div class="ladder"><div class="rail"></div><div class="fill" id="fill"></div><div class="nodes" id="nodes"></div></div>
+</div>
+<script>
+const q=new URLSearchParams(location.search);
+const stage=+q.get('stage'), handle=q.get('handle')||'', avatar=q.get('avatar');
+const STAGES=[1,3,10,30,50];
+const CFG={
+ 1:{ord:'1st',label:'first sale unlocked',tag:'NEW SELLER',theme:'light',acc:'var(--green)'},
+ 3:{ord:'3rd',label:'officially on a roll',tag:'ON A ROLL',theme:'light',acc:'var(--green)'},
+ 10:{ord:'10',label:'double digits',tag:'RISING',theme:'light',acc:'var(--navy)'},
+ 30:{ord:'30',label:'a go-to creator',tag:'STAR SELLER',theme:'dark',acc:'#7fd6a3'},
+ 50:{ord:'50',label:'top seller territory',tag:'TOP SELLER',theme:'gold-t',acc:'var(--gold)'}
+}[stage];
+const c=document.getElementById('c');c.classList.add(CFG.theme);
+if(CFG.theme!=='light'){document.getElementById('logo').style.filter='brightness(0) invert(1)'}
+const acc=CFG.acc;
+document.getElementById('av').style.background=`conic-gradient(${acc},${CFG.theme==='light'?'#89c9a4':'#fff'},${acc})`;
+const inn=document.getElementById('in');
+if(avatar){inn.style.backgroundImage=`url(${avatar})`}else{inn.style.background=CFG.theme==='light'?'#d9dce6':'#3a4470';inn.innerHTML='<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="38" r="18" fill="'+(CFG.theme==='light'?'#f4f5f8':'#5a6596')+'"/><path d="M14 92c4-20 18-30 36-30s32 10 36 30z" fill="'+(CFG.theme==='light'?'#f4f5f8':'#5a6596')+'"/></svg>'}
+const tag=document.getElementById('tag');tag.textContent=CFG.tag;tag.style.background=acc;tag.style.color=stage>=30?'#1c2548':'#fff';
+document.getElementById('handle').textContent='@'+handle;
+const num=document.getElementById('num');num.textContent=CFG.ord;num.style.color=acc;
+document.getElementById('unit').textContent=/[a-z]$/.test(CFG.ord)?'SALE':'SALES';
+document.getElementById('stage').textContent=CFG.label;
+const idx=STAGES.indexOf(stage);
+const f=document.getElementById('fill');f.style.width=(idx/4*100)+'%';f.style.background=acc;
+const nodes=document.getElementById('nodes');
+STAGES.forEach((s,i)=>{const n=document.createElement('div');n.className='n'+(i===idx?' cur':'');
+ const d=document.createElement('div');d.className='dot';d.textContent=s;
+ const done=i<=idx;
+ d.style.borderColor=done?acc:(CFG.theme==='light'?'#cfd3de':'#4a5482');
+ d.style.background=done?acc:(CFG.theme==='light'?'#fff':'#1c2548');
+ d.style.color=done?(stage>=30?'#1c2548':'#fff'):(CFG.theme==='light'?'#9aa0b8':'#6c76a3');
+ if(i===idx)d.style.boxShadow=`0 0 0 10px ${CFG.theme==='light'?'rgba(8,145,67,.15)':'rgba(255,255,255,.12)'}`;
+ const sm=document.createElement('small');sm.textContent=s===1?'1ST SALE':s+' SALES';sm.style.opacity=done?1:.55;
+ n.append(d,sm);nodes.append(n)});
+</script>
+</body></html>
