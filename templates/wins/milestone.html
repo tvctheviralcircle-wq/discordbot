@@ -59,7 +59,7 @@ if(CFG.theme!=='light'){document.getElementById('logo').style.filter='brightness
 const acc=CFG.acc;
 document.getElementById('av').style.background=`conic-gradient(${acc},${CFG.theme==='light'?'#89c9a4':'#fff'},${acc})`;
 const inn=document.getElementById('in');
-if(avatar){inn.style.backgroundImage=`url(${avatar})`}else{inn.textContent=handle.replace(/[^a-z0-9]/gi,'').slice(0,1).toUpperCase();inn.style.background=CFG.theme==='light'?'var(--navy)':'#2f3a6b'}
+if(avatar){inn.style.backgroundImage=`url(${avatar})`}else{inn.style.background=CFG.theme==='light'?'#d9dce6':'#3a4470';inn.innerHTML='<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="38" r="18" fill="'+(CFG.theme==='light'?'#f4f5f8':'#5a6596')+'"/><path d="M14 92c4-20 18-30 36-30s32 10 36 30z" fill="'+(CFG.theme==='light'?'#f4f5f8':'#5a6596')+'"/></svg>'}
 const tag=document.getElementById('tag');tag.textContent=CFG.tag;tag.style.background=acc;tag.style.color=stage>=30?'#1c2548':'#fff';
 document.getElementById('handle').textContent='@'+handle;
 const num=document.getElementById('num');num.textContent=CFG.ord;num.style.color=acc;
