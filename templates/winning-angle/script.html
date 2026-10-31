@@ -10,51 +10,63 @@ body{background:var(--bg);font-family:Lexend,system-ui,sans-serif;color:var(--na
 .top{display:flex;justify-content:space-between;align-items:center;padding:28px 0 0}
 .top img{height:62px}
 .pill{border:2px solid var(--navy);padding:10px 20px;border-radius:999px;font-weight:700;font-size:18px}
-.badge{display:inline-block;background:var(--navy);color:#fff;font-weight:700;font-size:16px;letter-spacing:.08em;padding:9px 18px;border-radius:999px;margin-top:30px;align-self:flex-start}
-h1{font-size:48px;font-weight:800;margin-top:14px;line-height:1.1}
+.badge{align-self:flex-start;background:var(--navy);color:#fff;font-weight:700;font-size:16px;letter-spacing:.08em;padding:9px 18px;border-radius:999px;margin-top:28px}
+h1{font-size:46px;font-weight:800;margin-top:14px;line-height:1.1}
 h1 span{color:var(--green)}
-.chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:17px;font-weight:600}
-.chips i{font-style:normal;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:6px 14px}
-.chips b{color:var(--muted);font-weight:600}
-.sec{margin-top:42px}
-.lbl{font-size:18px;font-weight:800;letter-spacing:.1em;margin-bottom:14px}
-.panel{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:14px 28px}
-.beat{display:grid;grid-template-columns:52px 1fr 300px;gap:20px;align-items:center;padding:25px 0;border-bottom:2px solid var(--line)}
-.beat:last-child{border-bottom:0}
-.num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
-.beat .t{font-size:21px;font-weight:800}
-.beat q{display:block;font-size:17px;font-weight:500;color:var(--muted);margin-top:4px;font-style:italic;quotes:"“" "”"}
-.why{background:var(--greenbg);color:var(--green);border-radius:12px;padding:12px 16px;font-size:17px;font-weight:700;line-height:1.3}
-.fix{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.f{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:28px 26px}
-.f .v{font-size:46px;font-weight:800;color:var(--red);line-height:1}
-.f .k{font-size:15px;font-weight:600;color:var(--muted);margin-top:6px}
-.f .p{font-size:18px;font-weight:700;margin-top:14px;line-height:1.3}
-.f .p b{color:var(--red)}
-.take{margin-top:auto;margin-bottom:0;background:var(--navy);color:#fff;border-radius:18px;padding:22px 28px;font-size:24px;font-weight:700;text-align:center}.take span{color:#7fd6a3}
+.sub{font-size:19px;font-weight:500;color:var(--muted);margin-top:10px}
+.sec{margin-top:38px}
+.lbl{font-size:18px;font-weight:800;letter-spacing:.1em;margin-bottom:12px}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.w{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px 22px}
+.w .t{font-size:20px;font-weight:800;color:var(--green)}
+.w .d{font-size:16px;font-weight:500;margin-top:6px;line-height:1.35}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:8px 26px}
+.ln{display:grid;grid-template-columns:150px 1fr 104px;gap:16px;align-items:center;padding:17px 0;border-bottom:2px solid var(--line)}
+.ln:last-child{border-bottom:0}
+.tag{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--muted)}
+.ln q{font-size:19px;font-weight:600;font-style:italic;quotes:"“" "”"}
+.sc{justify-self:end;font-size:15px;font-weight:800;padding:6px 12px;border-radius:999px;background:var(--greenbg);color:var(--green);white-space:nowrap}
+.sc.low{background:var(--redbg);color:var(--red)}
+.sc.top9{background:var(--green);color:#fff}
+.hot q{color:var(--green)}
+.fix{display:grid;grid-template-columns:1fr 1.25fr;gap:14px}
+.bad{background:var(--redbg);border:3px solid var(--red);border-radius:18px;padding:26px 24px;color:var(--red)}
+.bad .v{font-size:50px;font-weight:800;line-height:1}
+.bad .d{font-size:17px;font-weight:700;margin-top:8px;line-height:1.35;color:var(--navy)}
+.good{background:var(--navy);color:#fff;border-radius:18px;padding:26px 28px}
+.good .k{font-size:14px;font-weight:700;letter-spacing:.08em;color:#7fd6a3}
+.good q{display:block;font-size:22px;font-weight:700;font-style:italic;margin-top:10px;line-height:1.35;quotes:"“" "”"}
+.good .d{font-size:15px;font-weight:500;margin-top:10px;opacity:.8}
 </style></head>
 <body><div class="card">
 <div class="flag"><i style="background:var(--green)"></i><i style="background:#fff"></i><i style="background:var(--red)"></i></div>
 <div class="top"><img src="logo.png"><div class="pill">Oct 18 – 24, 2026</div></div>
 
-<span class="badge">WHY IT WORKED</span>
-<h1>The script, <span>beat by beat</span></h1>
-<div class="chips"><i>Spanish</i><i>Talking-head testimonial</i><b>·</b><i>Problem</i><b>→</b><i>Fix</i><b>→</b><i>7-day result</i><b>→</b><i>Cart</i></div>
+<span class="badge">THE WINNING ANGLE</span>
+<h1>“Lo único que me curó, <span>en 7 días”</span></h1>
+<div class="sub">@anyer_soy_yo shows his own scalp, then the one shampoo that fixed it.</div>
 
-<div class="sec"><div class="lbl">WHAT KEPT VIEWERS WATCHING</div>
+<div class="sec"><div class="lbl">WHY THIS ANGLE SELLS A SCALP SHAMPOO</div>
+<div class="why">
+  <div class="w"><div class="t">You can see the problem</div><div class="d">Dandruff and redness are visible, so his real scalp is the proof.</div></div>
+  <div class="w"><div class="t">"Lo único"</div><div class="d">Speaks to people other shampoos already failed.</div></div>
+  <div class="w"><div class="t">Fast + medical</div><div class="d">"7 días" plus ketoconazol, made in Italy, makes the claim believable.</div></div>
+</div></div>
+
+<div class="sec"><div class="lbl">HIS SCRIPT, IN ORDER</div>
 <div class="panel">
-  <div class="beat"><div class="num">1</div><div><div class="t">Show the problem</div><q>Todo esto, se lo pueden ver por acá, era horrible.</q></div><div class="why">Real scalp on camera. Viewers think "that's me".</div></div>
-  <div class="beat"><div class="num">2</div><div><div class="t">The one thing that worked</div><q>Lo único que me lo ha verdaderamente curado…</q></div><div class="why">Ends the search. "Finally, something that works."</div></div>
-  <div class="beat"><div class="num">3</div><div><div class="t">Why to trust it</div><q>Ketoconazol, árbol de té… hecho en Italia.</q></div><div class="why">Proof in one line, no lecture.</div></div>
-  <div class="beat"><div class="num">4</div><div><div class="t">Name the symptoms</div><q>Tiene rojez, picazón, caspa.</q></div><div class="why">Viewers tick off their own problems.</div></div>
-  <div class="beat"><div class="num">5</div><div><div class="t">Result + where to buy</div><q>En siete días… en el carrito naranja.</q></div><div class="why">Clear promise, clear next step.</div></div>
+  <div class="ln"><span class="tag">PROBLEM</span><q>Todo esto, se lo pueden ver por acá, era horrible.</q><span class="sc">Hook 8/10</span></div>
+  <div class="ln hot"><span class="tag">THE FIX</span><q>Lo único que me lo ha verdaderamente curado… este champú.</q><span class="sc top9">Hook 9/10</span></div>
+  <div class="ln"><span class="tag">PROOF</span><q>Ketoconazol, árbol de té… hecho en Italia.</q><span></span></div>
+  <div class="ln"><span class="tag">SYMPTOMS</span><q>Fíjense conmigo, tiene rojez, picazón, caspa.</q><span></span></div>
+  <div class="ln"><span class="tag">CART</span><q>Te lo voy a estar dejando en el carrito naranja.</q><span></span></div>
+  <div class="ln hot"><span class="tag">RESULT</span><q>Anyer te lo ha recomendado… en siete días me lo ha eliminado.</q><span class="sc">Hook 8/10</span></div>
+  <div class="ln"><span class="tag">ASK</span><q>Chécalo y dime qué tal.</q><span class="sc low">3 comments</span></div>
 </div></div>
 
-<div class="sec"><div class="lbl">WHAT HELD IT BACK</div>
+<div class="sec"><div class="lbl">SAME LINES, BETTER ORDER</div>
 <div class="fix">
-  <div class="f"><div class="v">72%</div><div class="k">swiped in 2 seconds</div><div class="p">The opening <b>never names the problem.</b></div></div>
-  <div class="f"><div class="v">27%</div><div class="k">of them made it to 6 seconds</div><div class="p">The best proof, <b>"7 días"</b>, comes last.</div></div>
-  <div class="f"><div class="v">1.3%</div><div class="k">clicked</div><div class="p">The cart is only <b>mentioned once, at the end.</b></div></div>
+  <div class="bad"><div class="v">72% swiped</div><div class="d">in 2 seconds. His best line (9/10) came second and "7 días" came last.</div></div>
+  <div class="good"><div class="k">TRY THIS OPENING</div><q>Esto era horrible. Lo único que me lo curó en siete días: este champú.</q><div class="d">Scalp on screen from second 1. Then the proof and the cart.</div></div>
 </div></div>
-<div class="take">Name the problem + show the result <span>in the first 2 seconds.</span></div>
 </div></body></html>
