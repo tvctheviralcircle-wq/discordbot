@@ -32,6 +32,7 @@
       "channel_id": "1533831170108952596",
       "schedule": "daily 16:00 ET",
       "notify": "creator only (no @here)",
+      "counting": "lifetime all-time units sold with Pharmlitalia (Cruva CRM default mode, no date window); each milestone celebrated once ever, the first time it is reached",
       "state_file": "config/pharmlitalia-wins-state.json"
     },
     "weekly_leaderboard": {

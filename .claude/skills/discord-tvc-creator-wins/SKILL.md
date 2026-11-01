@@ -24,7 +24,8 @@ Public shoutouts in a brand's **wins channel** when a creator hits a **lifetime*
 
 ## Step 1: Find creators who crossed a milestone
 
-1. Call `mcp__Cruva__search_crm_affiliates`: `shop_id`, `min_units_sold=1`, `sort_by="units_sold"`, page through all rows. Use the lifetime **units sold** as the sale count (say so if the user wants orders instead).
+1. Call `mcp__Cruva__search_crm_affiliates` in its **default lifetime mode** (`timeseries=false`, no date window): `shop_id`, `min_units_sold=1`, `sort_by="units_sold"`, page through all rows. The count must be the creator's **all-time sales with this brand**, never last 30 days or any other window.
+   - Each milestone is celebrated **once ever per creator**: the first time their lifetime count reaches it. Their lifetime 1st sale, lifetime 3rd sale, and so on. A milestone in the state file is never celebrated again. Use the lifetime **units sold** as the sale count (say so if the user wants orders instead).
 2. **First run = baseline, no posts.** Save every creator's current count, and mark every milestone they've already reached as handled. Tell the user how many creators were baselined. Nothing is posted on the baseline run.
 3. **Every daily run after that:** compare each creator's count with the state file. If their count crossed one or more milestones since the last run, post the **highest newly crossed** milestone and mark all the crossed ones handled. New creators who weren't in the baseline start from 0, so their first sale is celebrated. Update the saved counts.
 4. Never backfill milestones from before deployment unless the user explicitly asks.
