@@ -1,0 +1,13 @@
+{
+  "brand": "Pharmlitalia",
+  "cruva_shop_id": "6a33383f8957ff1cdc980fe1",
+  "approval_channel_id": "1532483951007105240",
+  "approval_channel_note": "Moderator-only chat. Every automation posts its draft here first and waits for a moderator's approval before posting to its destination channel.",
+  "channels": {
+    "winning_angle_of_the_week": null,
+    "viral_hooks_and_angles": null,
+    "creator_wins": null,
+    "weekly_leaderboard": null
+  },
+  "timezone": null
+}
