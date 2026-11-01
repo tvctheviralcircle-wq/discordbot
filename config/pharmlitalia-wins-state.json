@@ -1,0 +1,988 @@
+{
+ "baseline_date": "2026-11-01",
+ "milestones": [
+  1,
+  3,
+  10,
+  30,
+  50
+ ],
+ "creators": {
+  "ligia.aguilera": {
+   "units_sold": 324,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "anyer_soy_yo": {
+   "units_sold": 298,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "leahandherskin": {
+   "units_sold": 176,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "salonby_yunisbel": {
+   "units_sold": 117,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "yale_everyday": {
+   "units_sold": 52,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "destersapproved": {
+   "units_sold": 60,
+   "handled": [
+    1,
+    3,
+    10,
+    30,
+    50
+   ]
+  },
+  "number1roostermom": {
+   "units_sold": 41,
+   "handled": [
+    1,
+    3,
+    10,
+    30
+   ]
+  },
+  "beautywithbellam": {
+   "units_sold": 27,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "yamihena": {
+   "units_sold": 29,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "rick_roxy": {
+   "units_sold": 23,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "itsmeash.leyy": {
+   "units_sold": 28,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "anikaleclere": {
+   "units_sold": 17,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "lazarita_98": {
+   "units_sold": 20,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "lianet053r": {
+   "units_sold": 14,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "bellezaconanamary": {
+   "units_sold": 13,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "marbelys9807": {
+   "units_sold": 14,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "misyanet16": {
+   "units_sold": 14,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "itsmekloon": {
+   "units_sold": 10,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "somyta99": {
+   "units_sold": 10,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "skincarewithasya": {
+   "units_sold": 11,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "dani_finds_shop": {
+   "units_sold": 8,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "wilma.villamil": {
+   "units_sold": 7,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "michelle_loto_": {
+   "units_sold": 11,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "sandymmugs": {
+   "units_sold": 10,
+   "handled": [
+    1,
+    3,
+    10
+   ]
+  },
+  "_danielarosas": {
+   "units_sold": 9,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "jen.gran": {
+   "units_sold": 8,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "lindsayperera860": {
+   "units_sold": 7,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "ileanat2016": {
+   "units_sold": 8,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "datgurltish": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "pr_williams": {
+   "units_sold": 8,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "anairysab": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "gigid1231": {
+   "units_sold": 8,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "alliana_rd": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "leishka_19": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "krissybailey": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "niliaysuarez": {
+   "units_sold": 5,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "jazluvspizza2": {
+   "units_sold": 5,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "zorangie__": {
+   "units_sold": 4,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "franngrely": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "itsbrittanyrenea89": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "marian_anett": {
+   "units_sold": 4,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "beemehmel": {
+   "units_sold": 6,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "laurandreadrianawendy": {
+   "units_sold": 5,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "sandrareyes0429": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "dalienaurbina": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "eucari94_official": {
+   "units_sold": 4,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "missxkenshin": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "stef.ramirezzz": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "goandglowfinds": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "marion.jones.art": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "lindamulatica": {
+   "units_sold": 4,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "skincaremiami.spa": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "sellingmama": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "elyspinkshoppinista": {
+   "units_sold": 4,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "alexabeauty92": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "lala__cubilla": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "brookashley1": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "cheriejohnson75": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "maameesy": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "thelifesyleedit": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "lissette_pra90": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "the_cuban_kitty": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "flamingointhejungle": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "so.lit.liz": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "dayris831": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "jenny_bev": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "syiyi801": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "mariaevg458": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "kenzieeboydd": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "dawndegrazugc": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "linda_yesica90": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "infinitecharmbeauty": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "highr_vibez": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "chinaisabel.2": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "brandys_deals": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "netamelojuras37": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "patys.plata": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "littlehouseofsoap": {
+   "units_sold": 3,
+   "handled": [
+    1,
+    3
+   ]
+  },
+  "monica.escobar302": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "danas_life_style": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "aminoureen": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "saltydee123": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "tiktokschool2026": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "keileegulley": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "talias.shopfinds": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "byyinyer": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "thriftingthroughchaos": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "charm83x": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "ajr9040": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "sonia_castillo22": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "yntk_ot7": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "michellekugc": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "moonstina": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "dianabaez6": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "she_ssuchadoll": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "dancingladycyndi": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "kane.the.mutt": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "arletisolis": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "xo_zizi": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "beautywithmagaly": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "jenniferlaneyfree": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "nenaromero45ymas": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "hopibynum": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "danipalomequ": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "letyhernandez1997": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "marisolopez01": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "lovely2c": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "sinceromania": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "yanisreviews": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "solexxita": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "elyaa047": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "tink0478": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "themichaelanthony_": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "becca.josh": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "coldheartd_777": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "ferman.romero0": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "chezwie": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
+  },
+  "milkamirandariver": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "danibermudzg": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "nvue87": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "sngbeautysoftglamplug": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "jacquelinemichellem": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "britandtheboys": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "colmenarezmariana": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "glowwithcassiem": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "mia_beauty_tips": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "maire8755": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "treatments.with.t": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "yoselinteixeira": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "megans_fave_finds": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "sosassystephy": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "laurynd_": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "spanglish.ruth": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "flaquitapalaguachi": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "amyelizabeth811": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "sisijvibes": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "isntitdarling13": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "yinetfundorarivera": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "llannelys": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "penarikai": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "toniern.beauty.wellness": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "glowflowexplorewithvera": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "hopesbeautyjunkiess": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "slowdownseason": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "brandiiiland": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "soydarlyyyy": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "midermisventura": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  },
+  "olivayunia": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
+  }
+ }
+}

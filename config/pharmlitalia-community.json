@@ -1,13 +1,41 @@
 {
   "brand": "Pharmlitalia",
   "cruva_shop_id": "6a33383f8957ff1cdc980fe1",
+  "timezone": "America/New_York",
   "approval_channel_id": "1532483951007105240",
   "approval_channel_note": "Moderator-only chat. Every automation posts its draft here first and waits for a moderator's approval before posting to its destination channel.",
-  "channels": {
-    "winning_angle_of_the_week": null,
-    "viral_hooks_and_angles": null,
-    "creator_wins": null,
-    "weekly_leaderboard": null
+  "automations": {
+    "winning_angle_of_the_week": {
+      "skill": "tvc-discord-community-weekly-angle-of-the-week",
+      "channel_id": "1533830710937256087",
+      "schedule": "Mon/Tue/Wed 12:00 ET (#1/#2/#3 of the previous Sun-Sat)",
+      "notify": "@here"
+    },
+    "viral_hooks_and_angles": {
+      "skill": "discord-tvc-viral-hooks-and-angles",
+      "channel_id": "1534655536602026164",
+      "schedule": "Mon/Tue/Wed 14:00 ET (#1/#2/#3 of the previous Sun-Sat)",
+      "notify": "@here",
+      "creator_brief": "https://abrupt-ease-c78.notion.site/Pharmlitalia-Ketoconazole-Shampoo-TikTok-Shop-Creator-Brief-38205ae77bed80b6872dc0e5a30b8e92",
+      "product": "Keto Bundle: ketoconazole anti-dandruff shampoo + scalp spray + conditioner",
+      "keywords": ["dandruff", "ketoconazole", "tea tree shampoo"]
+    },
+    "creator_wins": {
+      "skill": "discord-tvc-creator-wins",
+      "channel_id": "1533831170108952596",
+      "schedule": "daily 16:00 ET",
+      "notify": "creator only (no @here)",
+      "state_file": "config/pharmlitalia-wins-state.json"
+    },
+    "weekly_leaderboard": {
+      "skill": "discord-tvc-weekly-leaderboard",
+      "channel_id": "1550255413558116492",
+      "schedule": "Mon 17:00 ET (previous Sun-Sat)",
+      "notify": "@here"
+    }
   },
-  "timezone": null
+  "brand_assets": {
+    "logo": "templates/winning-angle/logo.png",
+    "colors": {"navy": "#1c2548", "green": "#089143", "red": "#cf2736"}
+  }
 }
