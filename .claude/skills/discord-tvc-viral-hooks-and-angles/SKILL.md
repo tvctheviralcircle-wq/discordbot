@@ -107,7 +107,7 @@ Map the viral video's angle onto the brand's product. If the product is a bundle
 
 - **With an approval channel:** post both messages there, with a short "DRAFT FOR REVIEW" line on top and `── END OF DRAFT ──` at the end.
   - Write `@here` in backticks in the draft so nobody is pinged before approval.
-  - Start a 1-minute `/loop` to watch for replies; only replies after the draft count.
+  - If no approval-channel loop is running yet, start one shared 10-minute `/loop` on the approval channel (it covers every automation's pending drafts and also replies to moderators' messages there); only replies after the draft count.
   - Apply any changes and re-post the draft.
   - On a clear approval, post the 2 final messages once to the destination (no draft lines, a real `@here`), confirm in the approval channel, and update or stop the loop so it can't post twice.
 - **Post directly:** only when the user says so in the terminal.

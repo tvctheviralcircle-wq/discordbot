@@ -119,7 +119,7 @@ Keep each message under 2,000 characters.
 
 - **With an approval channel:** post the full draft there with `── MESSAGE N ──` headers and an `── END OF DRAFT ──` line asking "approved, or what should i change?".
   - In the draft, wrap `@here` and the creator's mention in backticks (`` `@here` ``, `` `<@id>` ``) so nobody is pinged before approval.
-  - Start a 1-minute `/loop` that watches the approval channel. Only replies **after** the draft's last message ID count.
+  - If no approval-channel loop is running yet, start one shared 10-minute `/loop` on the approval channel (it covers every automation's pending drafts and also replies to moderators' messages there); only replies after the draft count.
   - If someone asks for changes, apply them, re-render and re-post the draft.
   - On a clear approval, post the 4 final messages once (no headers, a real `@here` and real mention), confirm in the approval channel, then update the loop so it can't post again.
 - **Post directly:** only when the user says so in the terminal.
@@ -132,3 +132,7 @@ Keep each message under 2,000 characters.
 
 - Creator-facing: friendly and direct, no jargon, no long paragraphs on the cards.
 - When chatting in the community channel as the bot, the team set this style: lowercase, ":))" rather than lots of emojis, polite ("thankyouu"), and end replies to creators with a content question.
+
+## Creator names (all automations)
+
+If the creator's TikTok account is linked to a Discord member in Cruva, mention them with `<@discord_user_id>`. If it isn't linked, or they aren't in the Discord server, don't mention anyone: write their TikTok username as plain text with an @ in front, e.g. `@yale_everyday`.

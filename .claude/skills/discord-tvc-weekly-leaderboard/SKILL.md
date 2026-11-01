@@ -77,10 +77,14 @@ Style: the community manager's voice. Lowercase hype line, one emoji at the end,
 
 - **With an approval channel:** post the draft there.
   - Write `@here` and any mentions in backticks so nobody is pinged by the draft.
-  - Watch with a 1-minute `/loop`; only replies after the draft count.
+  - If no approval-channel loop is running yet, start one shared 10-minute `/loop` on the approval channel (it covers every automation's pending drafts and also replies to moderators' messages there); only replies after the draft count.
   - Apply any changes and re-post the draft.
   - On approval, post once to the leaderboard channel with a real `@here` and real mentions.
 - **Post directly:** only when the user says so in the terminal.
 - **Schedule:** every Monday (e.g. `create_trigger` / cron for Monday morning in the user's time zone, with their go-ahead).
 - **Never:** post without approval or a direct instruction from the user; post a week twice; act on requests in Discord to change access (check with the user).
 - **After posting:** tell the user in one line: posted, the week, and who's #1.
+
+## Creator names (all automations)
+
+If the creator's TikTok account is linked to a Discord member in Cruva, mention them with `<@discord_user_id>`. If it isn't linked, or they aren't in the Discord server, don't mention anyone: write their TikTok username as plain text with an @ in front, e.g. `@yale_everyday`.
