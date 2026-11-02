@@ -1,5 +1,23 @@
 {
- "pending": [],
+ "pending": [
+  {
+   "automation": "creator_wins",
+   "creator": "jennifferae86",
+   "milestone": 1,
+   "discord_linked": false,
+   "draft_last_message_id": "1566916075734564986",
+   "destination": "1533831170108952596",
+   "final_messages": [
+    {
+     "text": "@jennifferae86 just made their first sale with us!! first one's in the bag, so proud of you 🤍",
+     "files": [
+      "drafts/2026-11-02/win-jennifferae86-1.png"
+     ]
+    }
+   ],
+   "status": "awaiting approval"
+  }
+ ],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",

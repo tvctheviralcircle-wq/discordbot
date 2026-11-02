@@ -39,7 +39,7 @@
    ]
   },
   "salonby_yunisbel": {
-   "units_sold": 117,
+   "units_sold": 119,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 52,
+   "units_sold": 53,
    "handled": [
     1,
     3,
@@ -983,6 +983,13 @@
    "handled": [
     1
    ]
+  },
+  "jennifferae86": {
+   "units_sold": 2,
+   "handled": [
+    1
+   ]
   }
- }
+ },
+ "last_check": "2026-11-02"
 }
