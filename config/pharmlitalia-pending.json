@@ -1,21 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "weekly_leaderboard",
-   "week": "2026-10-25..2026-10-31",
-   "draft_last_message_id": "1566931150163812382",
-   "destination": "1550255413558116492",
-   "final_messages": [
-    {
-     "text": "@here\n# 🏆 WEEKLY TOP CREATORS\n**Sun Oct 25 – Sat Oct 31**\n🥇 @anyer_soy_yo <@1541833943613972512> · **$517.40**\n🥈 @ligia.aguilera · **$301.33**\n🥉 @rick_roxy · **$289.35**\n4. @salonby_yunisbel · **$266.70**\n5. @yale_everyday · **$155.56**\n\nmassive congrats to this week's top 5 :)) drop some love for them below 🎉",
-     "files": [
-      "drafts/2026-11-02/leaderboard.png"
-     ]
-    }
-   ],
-   "status": "awaiting approval"
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -31,6 +15,12 @@
    "milestone": 1,
    "approved_by": "moazzam.golra",
    "destination_message_id": "1566916471043391661"
+  },
+  {
+   "automation": "weekly_leaderboard",
+   "week": "2026-10-25..2026-10-31",
+   "approved_by": "moazzam.golra",
+   "destination_message_id": "1566936742844571719"
   }
  ],
  "notes": [
