@@ -1,1 +1,32 @@
-{"pending": []}
+{
+ "pending": [
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-10-25..2026-10-31",
+   "rank": 1,
+   "draft_last_message_id": "1566872385263509667",
+   "destination": "1533830710937256087",
+   "final_messages": [
+    {
+     "text": "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Oct 25 – Sat Oct 31**\n**#1 video by GMV:** @anyer_soy_yo <@1541833943613972512>\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@anyer_soy_yo/video/7677156336769043742"
+    },
+    {
+     "text": "‎",
+     "files": [
+      "drafts/2026-10-25/winning-angle-1-card1.png"
+     ]
+    },
+    {
+     "text": "‎",
+     "files": [
+      "drafts/2026-10-25/winning-angle-1-card2.png"
+     ]
+    },
+    {
+     "text": "same as draft MESSAGE 4 (message id 1566872385263509667) without the draft header/END line"
+    }
+   ],
+   "status": "awaiting approval"
+  }
+ ]
+}
