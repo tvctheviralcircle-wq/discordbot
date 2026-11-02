@@ -9,5 +9,13 @@
    "approved_by": "moazzam.golra",
    "destination_first_message_id": "1566883547170742355"
   }
+ ],
+ "notes": [
+  {
+   "date": "2026-11-02",
+   "automation": "viral_hooks_and_angles",
+   "week": "2026-10-25..2026-10-31",
+   "note": "Monday #1 skipped: no Oct 25-31 candidates had Cruva AI analysis yet. Retry Tue (#1), Wed (#2), one-off Thu Nov 5 (#3)."
+  }
  ]
 }
