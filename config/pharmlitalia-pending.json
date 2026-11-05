@@ -1,5 +1,24 @@
 {
- "pending": [],
+ "pending": [
+  {
+   "automation": "viral_hooks_and_angles",
+   "week": "2026-10-25..2026-10-31",
+   "rank": 1,
+   "video": "7702104799289855263",
+   "creator": "lily_moradel",
+   "draft_last_message_id": "1567894233363386389",
+   "destination": "1534655536602026164",
+   "final_messages": [
+    {
+     "text": "@here\n# 🔥 VIRAL ANGLE OF THE WEEK (#1)\n**Anti-dandruff · Sun Oct 25 – Sat Oct 31**\n**50.3K views** · @lily_moradel · CeraVe Anti-Dandruff Shampoo + Conditioner\nhttps://www.tiktok.com/@lily_moradel/video/7702104799289855263"
+    },
+    {
+     "text": "same as draft MESSAGE 2 (message id 1567894233363386389) without the draft header/END line"
+    }
+   ],
+   "status": "awaiting approval"
+  }
+ ],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
