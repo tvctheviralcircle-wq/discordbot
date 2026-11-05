@@ -88,3 +88,7 @@ Style: the community manager's voice. Lowercase hype line, one emoji at the end,
 ## Creator names (all automations)
 
 If the creator's TikTok account is linked to a Discord member in Cruva, mention them with `<@discord_user_id>`. If it isn't linked, or they aren't in the Discord server, don't mention anyone: write their TikTok username as plain text with an @ in front, e.g. `@yale_everyday`.
+
+## Reactions
+
+After a post goes out to its destination channel, react to its main (first) message with 🔥 🤍 🚀 📈, in that order (unless the community's config sets other emojis).

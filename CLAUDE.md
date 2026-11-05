@@ -10,3 +10,5 @@ Discord community automations for TVC brand communities, built on Cruva data. Sk
 - Destinations: winning angle `1533830710937256087`, viral hooks `1534655536602026164`, creator wins `1533831170108952596`, leaderboard `1550255413558116492`.
 - Cruva shop: Pharmlitalia `6a33383f8957ff1cdc980fe1`. Time zone: America/New_York.
 - Creators not linked to Discord in Cruva: write their TikTok username as plain `@handle` text, no mention.
+- After posting to any destination channel, react to the main message of each post with 🔥 🤍 🚀 📈.
+- Viral hooks: pick the most-viewed relevant video for the week; Cruva AI analysis isn't required (no invented quotes without a transcript).

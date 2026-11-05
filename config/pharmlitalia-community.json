@@ -25,7 +25,8 @@
         "dandruff",
         "ketoconazole",
         "tea tree shampoo"
-      ]
+      ],
+      "selection_rule": "Pick the most-viewed relevant video (relevant product + keywords) for the week. Cruva AI analysis is NOT required; if there's no transcript, describe what the creator does from screenshots and don't invent quotes."
     },
     "creator_wins": {
       "skill": "discord-tvc-creator-wins",
@@ -49,5 +50,14 @@
       "green": "#089143",
       "red": "#cf2736"
     }
+  },
+  "post_reactions": {
+    "emojis": [
+      "🔥",
+      "🤍",
+      "🚀",
+      "📈"
+    ],
+    "rule": "After posting to any destination channel, react to the main (first) message of each post with these four emojis, in this order."
   }
 }
