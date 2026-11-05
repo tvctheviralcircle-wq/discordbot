@@ -12,3 +12,4 @@ Discord community automations for TVC brand communities, built on Cruva data. Sk
 - Creators not linked to Discord in Cruva: write their TikTok username as plain `@handle` text, no mention.
 - After posting to any destination channel, react to the main message of each post with 🔥 🤍 🚀 📈.
 - Viral hooks: pick the most-viewed relevant video for the week; Cruva AI analysis isn't required (no invented quotes without a transcript).
+- Creator OS dashboard: https://claude.ai/artifact/BS8LJGntohfJ4aQ95E41cb (source `creator-os/`). Page buttons fire `trig_01KELia3YQ5dRjxgUqtfMJoH`; process its `requests` per that task's prompt, Pharmlitalia server only.
