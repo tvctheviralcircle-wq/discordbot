@@ -1,5 +1,40 @@
 {
- "pending": [],
+ "pending": [
+  {
+   "automation": "creator_wins",
+   "creator": "yamihena",
+   "milestone": 30,
+   "discord_linked": false,
+   "draft_last_message_id": "1567891876667854990",
+   "destination": "1533831170108952596",
+   "final_messages": [
+    {
+     "text": "@yamihena just hit 30 sales!! consistent, reliable and the results are showing. so happy to have you in this community",
+     "files": [
+      "drafts/2026-11-05/win-yamihena-30.png"
+     ]
+    }
+   ],
+   "status": "awaiting approval"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "zeliev4",
+   "milestone": 1,
+   "discord_linked": false,
+   "draft_last_message_id": "1567891878928588860",
+   "destination": "1533831170108952596",
+   "final_messages": [
+    {
+     "text": "we have a first sale!! congrats @zeliev4, this is just the beginning 🎉",
+     "files": [
+      "drafts/2026-11-05/win-zeliev4-1.png"
+     ]
+    }
+   ],
+   "status": "awaiting approval"
+  }
+ ],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",

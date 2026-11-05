@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 324,
+   "units_sold": 326,
    "handled": [
     1,
     3,
@@ -19,7 +19,7 @@
    ]
   },
   "anyer_soy_yo": {
-   "units_sold": 298,
+   "units_sold": 299,
    "handled": [
     1,
     3,
@@ -39,7 +39,7 @@
    ]
   },
   "salonby_yunisbel": {
-   "units_sold": 119,
+   "units_sold": 120,
    "handled": [
     1,
     3,
@@ -86,15 +86,16 @@
    ]
   },
   "yamihena": {
-   "units_sold": 29,
+   "units_sold": 30,
    "handled": [
     1,
     3,
-    10
+    10,
+    30
    ]
   },
   "rick_roxy": {
-   "units_sold": 23,
+   "units_sold": 25,
    "handled": [
     1,
     3,
@@ -134,7 +135,7 @@
    ]
   },
   "bellezaconanamary": {
-   "units_sold": 13,
+   "units_sold": 14,
    "handled": [
     1,
     3,
@@ -989,7 +990,13 @@
    "handled": [
     1
    ]
+  },
+  "zeliev4": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
   }
  },
- "last_check": "2026-11-02"
+ "last_check": "2026-11-05"
 }
