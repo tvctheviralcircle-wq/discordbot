@@ -142,8 +142,15 @@ tr.clk { cursor: pointer; } tr.clk:hover td { background: var(--soft); }
 .chk:has(input:checked) { border-color: var(--accent); background: var(--blush); }
 .discord { background: #313338; color: #F2F3F5; border-radius: 12px; padding: 14px; display: flex; gap: 12px; }
 .discord .av { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); flex: 0 0 auto; }
-.discord .app { font-size: 10px; background: #5865F2; color: #fff; padding: 1px 4px; border-radius: 3px; }
+.discord .apptag { font-size: 10px; background: #5865F2; color: #fff; padding: 1px 4px; border-radius: 3px; }
 .discord .msg { white-space: pre-wrap; line-height: 1.5; margin-top: 6px; word-break: break-word; }
+.discord .msg + .msg { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #4E5058; }
+.discord .h1 { font: 800 20px/1.3 var(--display); display: block; margin: 4px 0 2px; }
+.discord .sub { font-size: 12px; color: #B5BAC1; display: block; }
+.discord .ment { background: rgba(88,101,242,.3); color: #C9CDFB; border-radius: 3px; padding: 0 2px; font-weight: 600; }
+.discord a { color: #00A8FC; }
+.discord img { display: block; max-width: min(100%, 420px); border-radius: 8px; margin-top: 8px; }
+.drafting { display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 12px; background: var(--soft); }
 .q { display: flex; gap: 8px; align-items: center; }
 .q input { flex: 1; min-width: 0; }
 .icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; flex: 0 0 auto; }
@@ -233,7 +240,7 @@ const AUTOS = [
   { key: "viral_hooks", n: "02", name: "Viral hooks & angles", skill: "discord-tvc-viral-hooks-and-angles", what: "The #1, #2 and #3 most-viewed relevant market videos from last Sun–Sat, one a day: why the hook worked and how to remake it for the Keto Bundle.", hint: ["viral-hooks", "viral"],
     defaults: { mode: "manual", days: ["Mon", "Tue", "Wed"], time: "14:00", lookback: 7, count: 1, everyone: true } },
   { key: "winning_content", n: "03", name: "Winning angle of the week", skill: "tvc-discord-community-weekly-angle-of-the-week", what: "Last week’s top 3 videos by GMV, one per day: numbers card, script card with translations, how to replicate it for max ad spend.", hint: ["winning-angles", "winning"],
-    defaults: { mode: "manual", days: ["Mon", "Tue", "Wed"], time: "12:00", count: 3, tagCreator: true, everyone: true, parts: ["Numbers card", "Ad performance", "Script breakdown", "Remake checklist"] } },
+    defaults: { mode: "manual", days: ["Mon", "Tue", "Wed"], time: "12:00", count: 3, tagCreator: true, everyone: true, parts: ["Video post", "Numbers card", "Script card", "How to replicate"] } },
   { key: "wins", n: "04", name: "Creator wins", skill: "discord-tvc-creator-wins", what: "A milestone card and hype message the first time a creator reaches their lifetime 1st, 3rd, 10th, 30th or 50th sale. Tags only the creator.", hint: ["share-wins", "wins"],
     defaults: { mode: "manual", thresholds: "1, 3, 10, 30, 50", checkEvery: 1440, time: "16:00", tagCreator: true, graphic: true, handleFallback: true } },
   { key: "leaderboard", n: "05", name: "Weekly leaderboard", skill: "discord-tvc-weekly-leaderboard", what: "Monday podium card: top 5 creators by GMV for last Sun–Sat, posted with @here.", hint: ["leaderboard"],
@@ -389,17 +396,20 @@ function defaultAutos() { const o = {}; AUTOS.forEach((a) => { o[a.key] = { enab
 function defaultOb() { return { questions: ["What’s your TikTok handle?", "What kind of content do you mostly make?", "Have you sold on TikTok Shop before? Roughly how much?", "What would help you most here: samples, content ideas or commission boosts?"], welcome: "Hey {name}, welcome to the {brand} creator community. Quick hello so we can help you sell more." }; }
 function defaultScoring() { return { cap: 50, cooldown: 30, excludedChannels: [], excludedRoles: [], w: { m: 1, rr: 1, pr: 1.5, ad: 2, rg: 0.5, v: 0.5 } }; }
 function mergeAutos(base, saved) { const o = {}; Object.keys(base).forEach((k) => (o[k] = { ...base[k], ...(saved[k] || {}) })); return o; }
-function updateBadges() { $("#nAuto").textContent = state.autos ? AUTOS.filter((a) => state.autos[a.key].enabled).length : 0; }
+function botStatus() { setStatus("#stBot", !!state.guild, state.guild ? "Discord: " + state.guild.guildName : "Discord: not set up"); }
+function updateBadges() { botStatus(); $("#nAuto").textContent = state.autos ? AUTOS.filter((a) => state.autos[a.key].enabled).length : 0; }
 function subscribeDrafts() {
   if (unsubs.__drafts) { unsubs.__drafts(); delete unsubs.__drafts; }
   if (!state.db || !gid()) return;
   try {
     unsubs.__drafts = state.db.collection("drafts").where("guild", "==", gid()).limit(200).onSnapshot((snap) => {
-      state.drafts = snap.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+      state.drafts = snap.docs.map((d) => ({ id: d.id, ...d.data() })).filter((d) => d.guild === HOME_GUILD).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
       $("#nDraft").textContent = state.drafts.filter((d) => d.status === "pending").length;
       if (state.tab === "approvals") renderApprovals($("#view"));
     }, () => {});
   } catch {}
+  if (unsubs.__reqs) { unsubs.__reqs(); delete unsubs.__reqs; }
+  try { unsubs.__reqs = state.db.collection("requests").where("type", "==", "draft").limit(100).onSnapshot((snap) => { state.building = snap.docs.map((d) => ({ id: d.id, ...d.data() })).filter((r) => r.guild === HOME_GUILD && (r.status === "sent" || r.status === "queued" || r.status === "working")); if (state.tab === "approvals") renderApprovals($("#view")); }, () => {}); } catch {}
   if (unsubs.__allow) { unsubs.__allow(); delete unsubs.__allow; }
   try { unsubs.__allow = state.db.doc("allowlist/" + gid()).onSnapshot((s) => { state.allow = s.exists ? s.data() : null; if (state.tab === "setup") renderSetup($("#view")); }, () => {}); } catch {}
 }
@@ -477,7 +487,7 @@ function renderWizard(v) {
 }
 function watchGuilds() {
   if (!state.db || unsubs.__guilds) return;
-  try { unsubs.__guilds = state.db.collection("discord").limit(50).onSnapshot((s) => { state.guilds = s.docs.map((d) => d.data()).filter((g) => g.guildId === HOME_GUILD); state.guild = state.guilds.find((g) => g.guildId === gid()) || state.guild; if (state.tab === "welcome" && state.wizStep === 1) renderWizard($("#view")); if (state.tab === "setup") renderSetup($("#view")); }, () => {}); } catch {}
+  try { unsubs.__guilds = state.db.collection("discord").limit(50).onSnapshot((s) => { state.guilds = s.docs.map((d) => d.data()).filter((g) => g.guildId === HOME_GUILD); state.guild = state.guilds.find((g) => g.guildId === gid()) || state.guild; botStatus(); if (state.tab === "welcome" && state.wizStep === 1) renderWizard($("#view")); if (state.tab === "setup") renderSetup($("#view")); }, () => {}); } catch {}
 }
 
 /* ---------- overview ---------- */
@@ -723,7 +733,7 @@ function renderAutomations(v) {
           <button class="switch" role="switch" aria-checked="${s.enabled}" aria-label="${esc(a.name)}" data-sw="${a.key}"><span></span></button></div>
         <p style="margin:0;color:var(--muted)">${esc(a.what)}</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill">${esc(scheduleText(a, s))}</span><span class="pill line">${MODE_LABEL[s.mode]}</span>${a.skill ? `<span class="pill line" title="Claude skill that runs it">${esc(a.skill)}</span>` : ""}${s.channel ? (!canPost(s.channel) ? '<span class="pill bad">Bot can’t see channel</span>' : allowed(s.channel) ? '<span class="pill good">Allowlisted</span>' : '<span class="pill">Allowlist pending</span>') : ""}</div>
-        <div class="foot"><span class="muted">${!s.enabled ? "Off" : !s.channel ? "Needs a channel" : "Ready for a test post"}</span><span style="display:flex;gap:6px"><button class="btn sm" data-test="${a.key}" ${s.channel && a.key !== "onboarding" ? "" : "disabled"}>Test Post</button><button class="btn sm ${state.editing === a.key ? "primary" : ""}" data-ed="${a.key}">Settings</button></span></div>
+        <div class="foot"><span class="muted">${!s.enabled ? "Off" : !s.channel ? "Needs a channel" : "Ready for a test post"}</span><span style="display:flex;gap:6px"><button class="btn sm" data-test="${a.key}" ${s.channel && BUILDABLE.includes(a.key) ? "" : "disabled"}>Test Post</button><button class="btn sm ${state.editing === a.key ? "primary" : ""}" data-ed="${a.key}">Settings</button></span></div>
       </article>`; }).join("")}</div><div id="editor"></div>`;
   const blocked = [...new Set(AUTOS.map((a) => state.autos[a.key].channel).filter((id) => id && !canPost(id)))];
   if (blocked.length) $(".hero", v).insertAdjacentHTML("afterend", `<div class="err"><b>The bot can’t see ${blocked.map((id) => "#" + esc(chName(id))).join(", ")}.</b> Posts to these channels will fail. ${esc(ACCESS_HELP)}</div>`);
@@ -741,13 +751,13 @@ function renderEditor(el, a) {
   const sched = `<div class="field span"><span>Post on</span>${dayChecks("e-days", s.days || [])}</div><label class="field"><span>At (ET)</span><input type="time" id="e-time" value="${esc(s.time || "09:00")}"></label>`;
   let extra = "";
   if (a.key === "general_chat") extra = `<label class="field"><span>Reply to</span><select id="e-replyTo">${[["all", "Every message"], ["questions", "Questions only"], ["mentions", "Only when @mentioned"]].map(([k, l]) => `<option value="${k}" ${s.replyTo === k ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily reply cap</span><input type="number" id="e-dailyCap" min="0" value="${s.dailyCap}"><small>Keeps Claude usage predictable.</small></label><label class="field"><span>Quiet hours start</span><input type="time" id="e-quietStart" value="${esc(s.quietStart)}"></label><label class="field"><span>Quiet hours end</span><input type="time" id="e-quietEnd" value="${esc(s.quietEnd)}"></label><label class="field span"><span>Send these to mods instead of replying</span><input type="text" id="e-escalate" value="${esc(s.escalate)}"><small>Comma-separated topics.</small></label>`;
-  if (a.key === "viral_hooks") extra = sched + `<label class="field"><span>Look back (days)</span><input type="number" id="e-lookback" min="1" max="30" value="${s.lookback}"></label><label class="field"><span>Videos per post</span><input type="number" id="e-count" min="1" max="10" value="${s.count}"></label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
-  if (a.key === "winning_content") extra = sched + `<label class="field"><span>Videos per week</span><input type="number" id="e-count" min="1" max="7" value="${s.count}"></label><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label><div class="field span"><span>Include</span><div class="checks">${["Numbers card", "Ad performance", "Paid vs organic split", "Ad funnel", "Creator earnings", "Script breakdown", "Remake checklist"].map((p) => `<label class="chk"><input type="checkbox" name="e-parts" value="${p}" ${s.parts.includes(p) ? "checked" : ""}>${p}</label>`).join("")}</div></div>`;
+  if (a.key === "viral_hooks") extra = sched + `<p class="muted span" style="margin:0">#1, #2, #3 most-viewed relevant market videos from the previous Sun–Sat (keywords: dandruff, ketoconazole, tea tree shampoo). Two messages: the video, then the hook, why it worked and “Make it work for our Keto Bundle” from the creator brief.</p><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
+  if (a.key === "winning_content") extra = sched + `<p class="muted span" style="margin:0">#1 on Monday, #2 on Tuesday, #3 on Wednesday, all from the previous Sun–Sat by GMV. Four messages: the video post, the numbers card, the script card with translations, and “How to replicate this angle for max ad spend”.</p><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label><div class="field span"><span>Include</span><div class="checks">${["Video post", "Numbers card", "Script card", "How to replicate"].map((p) => `<label class="chk"><input type="checkbox" name="e-parts" value="${p}" ${s.parts.includes(p) ? "checked" : ""}>${p}</label>`).join("")}</div></div>`;
   if (a.key === "wins") extra = `<label class="field"><span>Milestones (sales)</span><input type="text" id="e-thresholds" value="${esc(s.thresholds)}"><small>Comma-separated, e.g. 1, 5, 10, 25.</small></label><label class="field"><span>Check for new sales every</span><select id="e-checkEvery">${[[1440, "Once a day"], [240, "Every 4 hours"], [60, "Every hour"]].map(([m, l]) => `<option value="${m}" ${s.checkEvery === m ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily check at (ET)</span><input type="time" id="e-time" value="${esc(s.time || "16:00")}"></label><small class="span muted">Lifetime units sold with the brand. Each milestone is celebrated once ever, only when crossed after deployment.</small><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-graphic" ${s.graphic ? "checked" : ""}>Attach the milestone graphic</label><label class="chk"><input type="checkbox" id="e-handleFallback" ${s.handleFallback ? "checked" : ""}>Use TikTok @handle if not linked</label>`;
-  if (a.key === "leaderboard") extra = sched + `<label class="field"><span>Creators shown</span><input type="number" id="e-topN" min="3" max="10" value="${s.topN}"></label><label class="field"><span>Rank by</span><select id="e-metric">${["GMV", "Units sold", "Videos posted"].map((m) => `<option ${s.metric === m ? "selected" : ""}>${m}</option>`).join("")}</select></label><label class="chk"><input type="checkbox" id="e-tagCreators" ${s.tagCreators ? "checked" : ""}>Tag each creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
+  if (a.key === "leaderboard") extra = sched + `<p class="muted span" style="margin:0">Top 5 creators by GMV for the previous Sun–Sat, on the navy podium card, with the community lead’s hype line.</p><label class="chk"><input type="checkbox" id="e-tagCreators" ${s.tagCreators ? "checked" : ""}>Tag each creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
   if (a.key === "onboarding") extra = `<label class="field"><span>If DMs are closed</span><select id="e-fallback">${[["private-channel", "Open a private welcome channel"], ["channel", "Ask in the fallback channel"]].map(([k, l]) => `<option value="${k}" ${s.fallback === k ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Reminder after (hours of silence)</span><input type="number" id="e-reminderHoursOb" min="1" value="${s.reminderHours}"></label><label class="chk"><input type="checkbox" id="e-linkFirst" ${s.linkFirst ? "checked" : ""}>Ask for the TikTok handle first and link it</label><p class="muted span" style="margin:0">Questions are edited in <a href="#onboarding">Onboarding</a>.</p>`;
   el.innerHTML = `<section class="card" aria-label="${esc(a.name)} settings"><div class="head"><h2>${esc(a.name)} · settings</h2><button class="btn sm ghost" id="e-close">Close</button></div>
-    <form class="form" id="ef">${ch}${mode}${extra}${a.key === "onboarding" ? "" : appr}<div class="span" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary">Save Settings</button>${a.key === "onboarding" ? "" : `<button class="btn" type="button" data-test="${a.key}">Test Post</button>`}</div></form></section>`;
+    <form class="form" id="ef">${ch}${mode}${extra}${a.key === "onboarding" ? "" : appr}<div class="span" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary">Save Settings</button>${BUILDABLE.includes(a.key) ? `<button class="btn" type="button" data-test="${a.key}">Test Post</button>` : ""}</div></form></section>`;
   $("#e-close").addEventListener("click", () => { state.editing = null; renderAutomations($("#view")); });
   if ($("[data-test]", el)) $("[data-test]", el).addEventListener("click", (e) => makeTestDraft(a.key, e.currentTarget));
   $("#ef").addEventListener("submit", async (e) => {
@@ -765,41 +775,37 @@ function renderEditor(el, a) {
   });
 }
 
-/* ---------- test posts: Claude writes from live Cruva data, you approve, the bot posts ---------- */
-async function makeTestDraft(key, btn) {
-  if (!state.sample) { toast("Claude drafting isn’t available in this view"); return; }
-  const a = AUTOS.find((x) => x.key === key); const s = state.autos[key]; const old = btn.textContent; btn.disabled = true; btn.textContent = "Writing…";
-  const shop = state.shops.find((x) => x.id === (state.ws && state.ws.shopId)) || state.shop;
+/* ---------- test posts: Claude runs the automation's own skill, so the draft is exactly the finalized format ---------- */
+const BUILDABLE = ["viral_hooks", "winning_content", "wins", "leaderboard"];
+async function makeTestDraft(key, btn, replaces) {
+  if (!BUILDABLE.includes(key)) { toast("Test posts for this automation aren’t set up yet"); return; }
+  const old = btn.textContent; btn.disabled = true; btn.textContent = "Asking Claude…";
   try {
-    let ctx = "";
-    if (["viral_hooks", "winning_content", "leaderboard", "wins"].includes(key) && state.mcp && shop) {
-      const end = addDays(todayUTC(), -1); const from = ymd(addDays(end, -6));
-      const vids = parseVideos(await call("search_videos", { shop_id: shop.id, date_from: from, date_to: ymd(end), timeseries: true, sort_by: "gmv", sort_direction: "desc", page_size: 15 }));
-      ctx = JSON.stringify(vids.slice(0, 10).map((x) => ({ handle: x.handle, gmv: x.gmv, units: x.units_sold, views: x.views, ad_spend: x.ad_spend, roi: x.roi, ads_gmv: x.ads_gmv, organic_gmv: x.organic_gmv, ctr: x.ctr, cvr: x.conversion_rate, commission: x.commission, link: x.video_link, overview: (x.content_overview || "").slice(0, 300), top_hook: x.hooks && x.hooks[0] ? x.hooks[0].hook : "" })));
-    }
-    if (key === "general_chat") ctx = "Write a reply to this example creator message: \"hey when do samples usually ship? and can I post more than one video?\"";
-    const prompt = `You write Discord posts for ${state.cfg.botName}, the community bot for the TikTok Shop brand "${shop ? shop.name : "the brand"}". Voice: ${state.cfg.tone || "warm and direct"}
-Automation: ${a.name}. What it does: ${a.what}
-Settings: ${JSON.stringify({ ...s, channel: chName(s.channel) })}
-Data (last 7 complete days, ${shop && shop.region === "uk" ? "£" : "$"} currency): ${ctx || "none"}
-Write the exact Discord message this automation would post, using only the data given. Mention creators as @handle in plain text. Never use @everyone or @here. Use Discord markdown, under 1,800 characters. Reply with only the message.`;
-    const { text } = await state.sample(prompt, { cache: false });
-    if (!state.db) { toast("Draft written, but saving isn’t available here"); return; }
-    await state.db.collection("drafts").add({ guild: gid(), automation: key, name: a.name, channel: s.channel || "", channelName: chName(s.channel), text: text.slice(0, 1900), status: "pending", test: true, createdAt: new Date().toISOString(), history: [{ at: new Date().toISOString(), what: "Test draft written by Claude" }] });
-    toast("Test draft ready in Approvals");
-  } catch (e) {
-    toast(e && e.code === "not_granted" ? "Claude drafting was declined for this page" : e && e.code === "rate_limited" ? "Too many drafts right now. Try again in a minute." : "Couldn’t write the draft. Try again.");
+    const sent = await ask("draft", { automation: key, test: true, ...(replaces ? { replaces } : {}) });
+    if (sent) toast("Claude is building it with the real skill. It appears in Approvals when ready.");
   } finally { btn.disabled = false; btn.textContent = old; }
 }
 
+/* Discord markdown, as the post will look */
+function md(t) {
+  return String(t || "").split("\n").map((line) => {
+    let h = esc(line).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/&lt;@!?(\d+)&gt;/g, '<span class="ment">@member</span>').replace(/`(@here|@everyone)`/g, '<span class="ment">$1</span>').replace(/(^|\s)(@here|@everyone)(?=\s|$)/g, '$1<span class="ment">$2</span>').replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    if (/^# /.test(line)) return `<span class="h1">${h.slice(2)}</span>`;
+    if (/^-# /.test(line)) return `<span class="sub">${h.slice(3)}</span>`;
+    return h + "\n";
+  }).join("");
+}
+const draftMsgs = (d) => (Array.isArray(d.messages) && d.messages.length ? d.messages : [{ text: d.text || "" }]);
+
 /* ---------- approvals ---------- */
-const STATUS = { pending: ["Waiting", ""], posting: ["Posting…", ""], posted: ["Posted", "good"], approved: ["Approved", "good"], rejected: ["Rejected", "line"], replaced: ["Regenerated", "line"], failed: ["Failed", "bad"] };
+const STATUS = { pending: ["Waiting", ""], working: ["Being built", ""], posting: ["Posting…", ""], posted: ["Posted", "good"], approved: ["Approved", "good"], rejected: ["Rejected", "line"], replaced: ["Regenerated", "line"], failed: ["Failed", "bad"] };
 function renderApprovals(v) {
   const pend = state.drafts.filter((d) => d.status === "pending" || d.status === "posting"), done = state.drafts.filter((d) => !["pending", "posting"].includes(d.status));
-  v.innerHTML = heroHTML("Approvals", "Nothing goes out unapproved", "Approve & Post sends the message to its channel through your bot. Edit or regenerate first if it isn’t right.") + `
+  v.innerHTML = heroHTML("Approvals", "Nothing goes out unapproved", "Drafts are built by the same skills that post your real automations, in the finalized format. Approve & Post sends them through your bot, then reacts 🔥 🤍 🚀 📈.") + `
     <div class="grid">
       <section class="card"><div class="head"><h2>Waiting on you</h2><span class="pill">${pend.length}</span></div>
-        ${pend.length ? `<div style="display:flex;flex-direction:column;gap:18px">${pend.map(draftCard).join("")}</div>` : '<div class="empty"><b>Nothing waiting</b>Press Test Post on any automation to make one.</div>'}</section>
+        ${(state.building || []).map((r) => `<div class="drafting" style="margin-bottom:12px"><span class="ndisc" style="width:28px;height:28px;font-size:11px">…</span><span><b>${esc((AUTOS.find((a) => a.key === r.automation) || {}).name || "Draft")}</b><span class="muted" style="display:block">Claude is building it with the real skill · asked ${esc(fmtTime(r.at))}</span></span></div>`).join("")}
+        ${pend.length ? `<div style="display:flex;flex-direction:column;gap:18px">${pend.map(draftCard).join("")}</div>` : (state.building || []).length ? "" : '<div class="empty"><b>Nothing waiting</b>Press Test Post on any automation to make one.</div>'}</section>
       <section class="card"><div class="head"><h2>Activity log</h2><span class="muted">${done.length} decided</span></div>
         ${done.length ? `<div class="rows">${done.slice(0, 40).map((d) => `<div><span class="grow"><b class="trunc">${esc(d.name)}${d.channelName ? " → #" + esc(d.channelName) : ""}</b><span class="muted">${esc(fmtTime(d.decidedAt || d.createdAt))} · ${esc((d.history || []).slice(-1)[0]?.what || "")}</span>${d.messageUrl ? `<a class="posted" href="${esc(d.messageUrl)}" target="_blank" rel="noopener">Open in Discord ↗</a>` : ""}</span><span class="pill ${STATUS[d.status] ? STATUS[d.status][1] : ""}">${esc(STATUS[d.status] ? STATUS[d.status][0] : d.status)}</span><button class="btn sm ghost" data-del="${esc(d.id)}" aria-label="Delete">✕</button></div>`).join("")}</div>` : '<div class="empty">Posted, rejected and expired drafts show here.</div>'}</section>
     </div>`;
@@ -810,14 +816,20 @@ function draftCard(d) {
   const posting = d.status === "posting";
   if (!posting && d.channel && !canPost(d.channel)) d = { ...d, error: `The bot can’t see #${d.channelName || chName(d.channel)}. ${ACCESS_HELP}` };
   return `<article style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${esc(d.name)}${d.channelName ? " → #" + esc(d.channelName) : ""}</b><span class="muted">${d.test ? "Test · " : ""}${esc(fmtTime(d.createdAt))}</span></div>
-    <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="app">APP</span></div><div class="msg">${esc(d.text)}</div></div></div>
-    <label class="sr" for="ed-${esc(d.id)}">Edit draft</label><textarea id="ed-${esc(d.id)}" hidden>${esc(d.text)}</textarea>
+    <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="apptag">APP</span></div>${draftMsgs(d).map((m) => `<div class="msg">${md(m.text)}${(m.images || []).map((u) => `<img src="${esc(u)}" alt="Card attached to this message" loading="lazy">`).join("")}</div>`).join("")}</div></div>
+    ${d.test ? `<span class="muted">Test draft: Approve &amp; Post sends it to the moderator channel with @here and mentions muted, never to #${esc(d.channelName || chName(d.channel))}.</span>` : ""}
+    ${draftMsgs(d).map((m, i) => `<label class="sr" for="ed-${esc(d.id)}-${i}">Edit message ${i + 1}</label><textarea id="ed-${esc(d.id)}-${i}" data-edfor="${esc(d.id)}" hidden>${esc(m.text)}</textarea>`).join("")}
     ${posting ? '<span class="pill">Posting… Claude is sending it to Discord</span>' : `<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sm primary" data-act="post" data-id="${esc(d.id)}" ${d.channel ? "" : "disabled"}>Approve &amp; Post</button><button class="btn sm" data-act="edit" data-id="${esc(d.id)}">Edit</button><button class="btn sm" data-act="regen" data-id="${esc(d.id)}">Regenerate</button><button class="btn sm ghost" data-act="reject" data-id="${esc(d.id)}">Reject</button></div>`}${d.error ? `<span class="pill bad">${esc(d.error)}</span>` : ""}</article>`;
 }
 async function decide(id, act, btn) {
   const d = state.drafts.find((x) => x.id === id); if (!d || !state.db) return; const now = new Date().toISOString(); const ref = state.db.doc("drafts/" + id);
-  if (act === "edit") { const ta = $("#ed-" + CSS.escape(id)); if (ta.hidden) { ta.hidden = false; ta.focus(); btn.textContent = "Save Edit"; return; } await ref.update({ text: ta.value.slice(0, 1900), history: [...(d.history || []), { at: now, what: "Edited" }] }); toast("Edit saved"); return; }
-  if (act === "regen") { await ref.update({ status: "replaced", decidedAt: now, history: [...(d.history || []), { at: now, what: "Regenerated" }] }); makeTestDraft(d.automation, { textContent: "", disabled: false }); return; }
+  if (act === "edit") {
+    const tas = $$(`textarea[data-edfor="${CSS.escape(id)}"]`);
+    if (tas.length && tas[0].hidden) { tas.forEach((t) => (t.hidden = false)); tas[0].focus(); btn.textContent = "Save Edit"; return; }
+    const msgs = draftMsgs(d).map((m, i) => ({ ...m, text: (tas[i] ? tas[i].value : m.text).slice(0, 2000) }));
+    await ref.update({ messages: msgs, text: msgs.map((m) => m.text).join("\n\n").slice(0, 4000), history: [...(d.history || []), { at: now, what: "Edited" }] }); toast("Edit saved"); return;
+  }
+  if (act === "regen") { await ref.update({ status: "replaced", decidedAt: now, history: [...(d.history || []), { at: now, what: "Regenerated" }] }); makeTestDraft(d.automation, { textContent: "", disabled: false }, id); return; }
   if (act === "reject") { await ref.update({ status: "rejected", decidedAt: now, history: [...(d.history || []), { at: now, what: "Rejected" }] }); toast("Rejected"); return; }
   if (act === "post") {
     await ref.update({ status: "posting", decidedAt: now, history: [...(d.history || []), { at: now, what: "Approved, sending to Discord" }] });
@@ -837,7 +849,7 @@ function renderOnboarding(v) {
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn" id="qa" ${qs.length >= 6 ? "disabled" : ""}>Add Question</button>${state.sample ? '<button class="btn" id="qai">Suggest With AI</button>' : ""}<button class="btn primary" id="qs">Save</button></div>
         <div id="sugg"></div></section>
       <section class="card"><div class="head"><h2>Preview</h2><span class="muted">How the DM reads</span></div>
-        <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="app">APP</span></div>
+        <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="apptag">APP</span></div>
         <div class="msg">${esc(state.ob.welcome.replace("{name}", "there").replace("{brand}", (state.shop || {}).name || "brand"))}</div>${qs.map((q) => `<div class="msg">${esc(q)}</div>`).join("")}</div></div></section>
     </div>
     <section class="card"><div class="head"><h2>Creator responses</h2><span class="muted">One row per creator, one column per question</span></div>
@@ -908,7 +920,7 @@ setRange("7"); route();
   let saved = null; try { saved = localStorage.getItem("tvc.shop"); } catch {}
   state.shop = state.shops.find((s) => s.id === saved) || state.shops.find((s) => s.id === (state.ws && state.ws.shopId)) || state.shops[0] || null;
   $("#brand").innerHTML = state.shops.map((s) => `<option value="${esc(s.id)}" ${state.shop && s.id === state.shop.id ? "selected" : ""}>${esc(s.name)} · ${esc(s.region.toUpperCase())}</option>`).join("") || "<option>No brands</option>";
-  setStatus("#stBot", !!state.guild, state.guild ? "Discord: " + state.guild.guildName : "Discord: not set up");
+  botStatus();
   if (state.ws && !state.ws.done) state.wizStep = state.guild ? (state.ws.channelsDone ? 3 : 2) : 1;
   state.booted = true; route();
 })();
