@@ -1,68 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "creator_wins",
-   "creator": "yamihena",
-   "milestone": 30,
-   "discord_linked": false,
-   "draft_last_message_id": "1567891876667854990",
-   "destination": "1533831170108952596",
-   "final_messages": [
-    {
-     "text": "@yamihena just hit 30 sales!! consistent, reliable and the results are showing. so happy to have you in this community",
-     "files": [
-      "drafts/2026-11-05/win-yamihena-30.png"
-     ]
-    }
-   ],
-   "status": "awaiting approval"
-  },
-  {
-   "automation": "creator_wins",
-   "creator": "zeliev4",
-   "milestone": 1,
-   "discord_linked": false,
-   "draft_last_message_id": "1567891878928588860",
-   "destination": "1533831170108952596",
-   "final_messages": [
-    {
-     "text": "we have a first sale!! congrats @zeliev4, this is just the beginning 🎉",
-     "files": [
-      "drafts/2026-11-05/win-zeliev4-1.png"
-     ]
-    }
-   ],
-   "status": "awaiting approval"
-  },
-  {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-10-25..2026-10-31",
-   "rank": 3,
-   "draft_last_message_id": "1567892275001040991",
-   "destination": "1533830710937256087",
-   "final_messages": [
-    {
-     "text": "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Oct 25 – Sat Oct 31**\n**#3 video by GMV:** @salonby_yunisbel\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@salonby_yunisbel/video/7675869402457263374"
-    },
-    {
-     "text": "‎",
-     "files": [
-      "drafts/2026-11-05/winning-angle-3-card1.png"
-     ]
-    },
-    {
-     "text": "‎",
-     "files": [
-      "drafts/2026-11-05/winning-angle-3-card2.png"
-     ]
-    },
-    {
-     "text": "same as draft MESSAGE 4 (message id 1567892275001040991) without the draft header/END line"
-    }
-   ],
-   "status": "awaiting approval"
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -92,6 +29,24 @@
    "video": "7695214735435762958",
    "approved_by": "moazzam.golra",
    "destination_first_message_id": "1567225994295906304"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "yamihena",
+   "milestone": 30,
+   "approved_by": "user (in terminal)"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "zeliev4",
+   "milestone": 1,
+   "approved_by": "user (in terminal)"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-10-25..2026-10-31",
+   "rank": 3,
+   "approved_by": "user (in terminal)"
   }
  ],
  "notes": [
