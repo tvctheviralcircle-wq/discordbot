@@ -1,0 +1,3367 @@
+{
+  "site": {
+    "url": "https://cruva.com",
+    "host": "cruva.com",
+    "name": "Cruva",
+    "title": "Cruva | TikTok Shop Creator Growth, Workflows & Meta Ads",
+    "measured": "2026-11-07",
+    "pages": [
+      {
+        "url": "https://cruva.com/",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | TikTok Shop Creator Growth, Workflows & Meta Ads",
+        "elements": 773
+      },
+      {
+        "url": "https://cruva.com/case-studies",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | Case Studies - Cruva",
+        "elements": 218
+      },
+      {
+        "url": "https://cruva.com/blog",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | Blog - Cruva",
+        "elements": 252
+      },
+      {
+        "url": "https://cruva.com/pricing",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Pricing — Plans built around your affiliate growth stage - Cruva",
+        "elements": 253
+      },
+      {
+        "url": "https://cruva.com/demo",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Book a Demo - Cruva",
+        "elements": 119
+      },
+      {
+        "url": "https://cruva.com/workflows",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Creator Workflows for TikTok Shop - Cruva",
+        "elements": 279
+      },
+      {
+        "url": "https://cruva.com/meta-ads-programs",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Meta Ads Creator Programs - Cruva",
+        "elements": 193
+      },
+      {
+        "url": "https://cruva.com/full-pipeline-crm",
+        "label": "desktop",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Full-Pipeline CRM — Every creator, every stage, every outcome - Cruva",
+        "elements": 259
+      },
+      {
+        "url": "https://cruva.com/",
+        "label": "phone",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | TikTok Shop Creator Growth, Workflows & Meta Ads",
+        "elements": 746
+      },
+      {
+        "url": "https://cruva.com/case-studies",
+        "label": "phone",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | Case Studies - Cruva",
+        "elements": 211
+      },
+      {
+        "url": "https://cruva.com/blog",
+        "label": "phone",
+        "scheme": "light",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | Blog - Cruva",
+        "elements": 245
+      },
+      {
+        "url": "https://cruva.com/",
+        "label": "dark",
+        "scheme": "dark",
+        "ok": true,
+        "status": 200,
+        "title": "Cruva | TikTok Shop Creator Growth, Workflows & Meta Ads",
+        "elements": 773
+      }
+    ],
+    "frameworks": [
+      "Next.js",
+      "Tailwind classes"
+    ],
+    "themeColor": null
+  },
+  "colors": {
+    "roles": {
+      "background": "#f8fafc",
+      "text": "#1a1a2e",
+      "heading": "#0b0b18",
+      "text-muted": "#5b5b73",
+      "text-subtle": "#8a8aa3",
+      "border": "#e8e6f5",
+      "surface": "#fafaff",
+      "primary": "#4c3df5",
+      "primary-foreground": "#ffffff",
+      "link": "#4c3df5",
+      "focus": "#4d3df5"
+    },
+    "evidence": {
+      "background": "the page background on most pages",
+      "text": "body copy (paragraphs and lists)",
+      "heading": "headings (h1–h6)",
+      "text-muted": "21% of text: secondary copy",
+      "text-subtle": "6% of text: the quietest copy",
+      "border": "the most used border colour (by length)",
+      "surface": "panels and sections a step off the background",
+      "primary": "the main buttons on the page you gave",
+      "primary-foreground": "text on primary buttons",
+      "link": "links in running text",
+      "focus": "the :focus-visible ring"
+    },
+    "chart": [
+      {
+        "hex": "#4c3df5",
+        "evidence": "the primary"
+      },
+      {
+        "hex": "#348c6d",
+        "evidence": "teal, 0.2% of colour use"
+      },
+      {
+        "hex": "#7c70b0",
+        "evidence": "violet, 0.2% of colour use"
+      }
+    ],
+    "primaryCandidates": [
+      {
+        "hex": "#4c3df5",
+        "onStart": 1,
+        "acrossPages": 0.61,
+        "inLinks": 0.05,
+        "score": 0.741
+      },
+      {
+        "hex": "#6657df",
+        "onStart": 0,
+        "acrossPages": 0,
+        "inLinks": 0,
+        "score": 0.022
+      },
+      {
+        "hex": "#348c6d",
+        "onStart": 0,
+        "acrossPages": 0,
+        "inLinks": 0,
+        "score": 0.006
+      },
+      {
+        "hex": "#7c70b0",
+        "onStart": 0,
+        "acrossPages": 0,
+        "inLinks": 0,
+        "score": 0.005
+      }
+    ],
+    "dark": null,
+    "palette": [
+      {
+        "hex": "#fafaff",
+        "name": "neutral-50",
+        "oklch": "oklch(98.7% 0.007 286.3)",
+        "share": 0.4284,
+        "usage": {
+          "bg": 0.94,
+          "gradient": 0.04,
+          "text": 0.02,
+          "icon": 0.01,
+          "shadow": 0
+        },
+        "pages": 8,
+        "merged": [
+          "#ffffff",
+          "#fafbfe",
+          "#f8f7ff",
+          "#fafbff",
+          "#f8f9fd",
+          "#f7f6ff"
+        ]
+      },
+      {
+        "hex": "#1a1a2e",
+        "name": "slate-950",
+        "oklch": "oklch(22.8% 0.038 282.9)",
+        "share": 0.1068,
+        "usage": {
+          "text": 0.94,
+          "bg": 0.06,
+          "icon": 0,
+          "gradient": 0
+        },
+        "pages": 7,
+        "merged": [
+          "#151729",
+          "#171a30"
+        ]
+      },
+      {
+        "hex": "#5b5b73",
+        "name": "slate-700",
+        "oklch": "oklch(48.0% 0.038 284.9)",
+        "share": 0.0743,
+        "usage": {
+          "text": 0.97,
+          "icon": 0.03
+        },
+        "pages": 8,
+        "merged": [
+          "#5c5771",
+          "#5b6178"
+        ]
+      },
+      {
+        "hex": "#0b0b18",
+        "name": "slate-950-2",
+        "oklch": "oklch(15.7% 0.027 282.8)",
+        "share": 0.063,
+        "usage": {
+          "text": 0.98,
+          "icon": 0.02,
+          "border": 0,
+          "bg": 0
+        },
+        "pages": 8
+      },
+      {
+        "hex": "#e8e6f5",
+        "name": "neutral-100",
+        "oklch": "oklch(93.1% 0.020 292.1)",
+        "share": 0.0909,
+        "usage": {
+          "border": 0.88,
+          "gradient": 0.12,
+          "bg": 0
+        },
+        "pages": 8,
+        "merged": [
+          "#e1e5f2",
+          "#e4e3ee",
+          "#e7e6ef",
+          "#e4e4ef",
+          "#e5e8f1",
+          "#e4e8f3"
+        ]
+      },
+      {
+        "hex": "#4c3df5",
+        "name": "indigo-700",
+        "oklch": "oklch(51.2% 0.258 275.8)",
+        "share": 0.0393,
+        "usage": {
+          "icon": 0.6,
+          "text": 0.35,
+          "border": 0.02,
+          "bg": 0.02,
+          "gradient": 0.01
+        },
+        "pages": 8,
+        "merged": [
+          "#4d3df5"
+        ]
+      },
+      {
+        "hex": "#8a8aa3",
+        "name": "slate-500",
+        "oklch": "oklch(64.2% 0.037 285.3)",
+        "share": 0.0253,
+        "usage": {
+          "text": 1
+        },
+        "pages": 8,
+        "merged": [
+          "#858ba0",
+          "#85899e",
+          "#858da4",
+          "#8c849f"
+        ]
+      },
+      {
+        "hex": "#20243b",
+        "name": "slate-950-3",
+        "oklch": "oklch(26.8% 0.043 275.6)",
+        "share": 0.0216,
+        "usage": {
+          "text": 0.97,
+          "icon": 0.03
+        },
+        "pages": 3,
+        "merged": [
+          "#242139",
+          "#1e293b",
+          "#202235"
+        ]
+      },
+      {
+        "hex": "#6657df",
+        "name": "indigo-600",
+        "oklch": "oklch(54.9% 0.199 282.6)",
+        "share": 0.0086,
+        "usage": {
+          "icon": 0.93,
+          "text": 0.07
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#ffffffd9",
+        "name": "white-a85",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0071,
+        "usage": {
+          "text": 0.89,
+          "bg": 0.11
+        },
+        "pages": 2,
+        "merged": [
+          "#ffffffd1"
+        ]
+      },
+      {
+        "hex": "#d8d5ee",
+        "name": "mauve-200",
+        "oklch": "oklch(88.3% 0.034 291.2)",
+        "share": 0.0067,
+        "usage": {
+          "border": 0.9,
+          "gradient": 0.09,
+          "text": 0.01
+        },
+        "pages": 8,
+        "merged": [
+          "#dfdbf5",
+          "#d9dbea",
+          "#d9d4e3"
+        ]
+      },
+      {
+        "hex": "#969eb3",
+        "name": "slate-500-2",
+        "oklch": "oklch(70.0% 0.032 269.0)",
+        "share": 0.0129,
+        "usage": {
+          "text": 1,
+          "bg": 0
+        },
+        "pages": 3,
+        "merged": [
+          "#929bb0",
+          "#99a2b7",
+          "#9ca4b9",
+          "#9298ab",
+          "#a09ab2",
+          "#9498ac"
+        ]
+      },
+      {
+        "hex": "#00000008",
+        "name": "black-a3",
+        "oklch": "oklch(0.0% 0.000 0)",
+        "share": 0.0041,
+        "usage": {
+          "shadow": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#0000000d"
+        ]
+      },
+      {
+        "hex": "#666b83",
+        "name": "slate-700-2",
+        "oklch": "oklch(53.2% 0.038 275.8)",
+        "share": 0.0046,
+        "usage": {
+          "text": 0.52,
+          "icon": 0.48
+        },
+        "pages": 1,
+        "merged": [
+          "#666e88"
+        ]
+      },
+      {
+        "hex": "#f4f3ff",
+        "name": "neutral-100-2",
+        "oklch": "oklch(96.8% 0.016 289.9)",
+        "share": 0.0106,
+        "usage": {
+          "border": 0.56,
+          "gradient": 0.38,
+          "bg": 0.06
+        },
+        "pages": 8,
+        "merged": [
+          "#eeedf5",
+          "#edf0f6",
+          "#f0f2f8",
+          "#f1f2f8",
+          "#edeff6",
+          "#efedff"
+        ]
+      },
+      {
+        "hex": "#463cb412",
+        "name": "indigo-800-a7",
+        "oklch": "oklch(44.4% 0.182 279.7)",
+        "share": 0.0058,
+        "usage": {
+          "shadow": 1
+        },
+        "pages": 6,
+        "merged": [
+          "#463cb40d",
+          "#463cb414"
+        ]
+      },
+      {
+        "hex": "#4c3df527",
+        "name": "indigo-700-a15",
+        "oklch": "oklch(51.2% 0.258 275.8)",
+        "share": 0.0066,
+        "usage": {
+          "gradient": 0.66,
+          "shadow": 0.34
+        },
+        "pages": 8,
+        "merged": [
+          "#4d3df51f",
+          "#4c3df526",
+          "#4c3df52e",
+          "#4c3df531"
+        ]
+      },
+      {
+        "hex": "#4c3df518",
+        "name": "indigo-700-a9",
+        "oklch": "oklch(51.2% 0.258 275.8)",
+        "share": 0.004,
+        "usage": {
+          "gradient": 0.9,
+          "shadow": 0.1
+        },
+        "pages": 3,
+        "merged": [
+          "#4c3df50f",
+          "#4c3df50e"
+        ]
+      },
+      {
+        "hex": "#4c3df566",
+        "name": "indigo-700-a40",
+        "oklch": "oklch(51.2% 0.258 275.8)",
+        "share": 0.0027,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 3
+      },
+      {
+        "hex": "#777e96",
+        "name": "slate-600",
+        "oklch": "oklch(59.6% 0.038 272.4)",
+        "share": 0.0055,
+        "usage": {
+          "text": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#737d96",
+          "#74798e"
+        ]
+      },
+      {
+        "hex": "#8a95ad",
+        "name": "slate-500-3",
+        "oklch": "oklch(66.9% 0.038 265.9)",
+        "share": 0.0099,
+        "usage": {
+          "text": 0.74,
+          "icon": 0.26
+        },
+        "pages": 3,
+        "merged": [
+          "#8d97ae",
+          "#8793ad",
+          "#9297ab",
+          "#9297aa",
+          "#8a94ad"
+        ]
+      },
+      {
+        "hex": "#a3abc0",
+        "name": "slate-400",
+        "oklch": "oklch(74.2% 0.032 269.0)",
+        "share": 0.0069,
+        "usage": {
+          "text": 0.89,
+          "icon": 0.11
+        },
+        "pages": 2,
+        "merged": [
+          "#a5abc0",
+          "#a2a8b8",
+          "#a5a7b9",
+          "#a3a8b9",
+          "#a0a8bc"
+        ]
+      },
+      {
+        "hex": "#ffffffe6",
+        "name": "white-a90",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0021,
+        "usage": {
+          "border": 0.84,
+          "shadow": 0.16
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#d1d5db",
+        "name": "neutral-300",
+        "oklch": "oklch(87.2% 0.009 258.3)",
+        "share": 0.002,
+        "usage": {
+          "border": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#348c6d",
+        "name": "teal-600",
+        "oklch": "oklch(57.8% 0.097 166.5)",
+        "share": 0.0022,
+        "usage": {
+          "text": 0.53,
+          "icon": 0.47
+        },
+        "pages": 2,
+        "merged": [
+          "#3d9072"
+        ]
+      },
+      {
+        "hex": "#fafaff66",
+        "name": "white-a40",
+        "oklch": "oklch(98.7% 0.007 286.3)",
+        "share": 0.0017,
+        "usage": {
+          "bg": 1
+        },
+        "pages": 5
+      },
+      {
+        "hex": "#56536d",
+        "name": "slate-800",
+        "oklch": "oklch(45.5% 0.042 289.9)",
+        "share": 0.0032,
+        "usage": {
+          "text": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#50566d"
+        ]
+      },
+      {
+        "hex": "#807792",
+        "name": "mauve-600",
+        "oklch": "oklch(58.7% 0.042 300.3)",
+        "share": 0.0028,
+        "usage": {
+          "text": 0.74,
+          "icon": 0.26
+        },
+        "pages": 1,
+        "merged": [
+          "#7f799b"
+        ]
+      },
+      {
+        "hex": "#ffffff1f",
+        "name": "white-a12",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0016,
+        "usage": {
+          "shadow": 0.92,
+          "gradient": 0.05,
+          "bg": 0.03
+        },
+        "pages": 8,
+        "merged": [
+          "#ffffff21"
+        ]
+      },
+      {
+        "hex": "#ffffff47",
+        "name": "white-a28",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0017,
+        "usage": {
+          "shadow": 0.88,
+          "border": 0.12
+        },
+        "pages": 8,
+        "merged": [
+          "#ffffff4d"
+        ]
+      },
+      {
+        "hex": "#4d3df55c",
+        "name": "indigo-700-a36",
+        "oklch": "oklch(51.3% 0.258 276.1)",
+        "share": 0.0016,
+        "usage": {
+          "shadow": 1
+        },
+        "pages": 8,
+        "merged": [
+          "#4c3df559"
+        ]
+      },
+      {
+        "hex": "#9990b3",
+        "name": "mauve-500",
+        "oklch": "oklch(67.3% 0.052 296.8)",
+        "share": 0.0048,
+        "usage": {
+          "text": 0.85,
+          "icon": 0.15
+        },
+        "pages": 1,
+        "merged": [
+          "#9791ad",
+          "#9b93ae",
+          "#9890ae",
+          "#9b94b0"
+        ]
+      },
+      {
+        "hex": "#8c9abb",
+        "name": "slate-500-4",
+        "oklch": "oklch(68.7% 0.051 267.0)",
+        "share": 0.0014,
+        "usage": {
+          "icon": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#8b5cf659",
+        "name": "violet-600-a35",
+        "oklch": "oklch(60.6% 0.219 292.7)",
+        "share": 0.0014,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 3
+      },
+      {
+        "hex": "#dddfee",
+        "name": "neutral-200",
+        "oklch": "oklch(90.7% 0.020 279.9)",
+        "share": 0.0045,
+        "usage": {
+          "border": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#dedfed",
+          "#e3dff8",
+          "#e1dcf4",
+          "#e1deeb"
+        ]
+      },
+      {
+        "hex": "#2a2440",
+        "name": "mauve-950",
+        "oklch": "oklch(28.1% 0.051 292.7)",
+        "share": 0.0012,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#3a2fd0",
+        "name": "indigo-800",
+        "oklch": "oklch(44.5% 0.232 274.5)",
+        "share": 0.0012,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#2d2dd2"
+        ]
+      },
+      {
+        "hex": "#16a34a",
+        "name": "green-600",
+        "oklch": "oklch(62.7% 0.170 149.2)",
+        "share": 0.0011,
+        "usage": {
+          "text": 1
+        },
+        "pages": 3
+      },
+      {
+        "hex": "#7c70b0",
+        "name": "violet-600",
+        "oklch": "oklch(58.2% 0.097 291.7)",
+        "share": 0.002,
+        "usage": {
+          "text": 0.63,
+          "icon": 0.37
+        },
+        "pages": 1,
+        "merged": [
+          "#7c70b3",
+          "#7b70aa"
+        ]
+      },
+      {
+        "hex": "#475569",
+        "name": "slate-800-2",
+        "oklch": "oklch(44.6% 0.037 257.3)",
+        "share": 0.0009,
+        "usage": {
+          "text": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#867aab",
+        "name": "violet-600-2",
+        "oklch": "oklch(60.9% 0.074 295.3)",
+        "share": 0.0009,
+        "usage": {
+          "text": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#ffffff2e",
+        "name": "white-a18",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0009,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 2
+      },
+      {
+        "hex": "#8b5cf6d9",
+        "name": "violet-600-a85",
+        "oklch": "oklch(60.6% 0.219 292.7)",
+        "share": 0.0008,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#4c3df5b3",
+        "name": "indigo-700-a70",
+        "oklch": "oklch(51.2% 0.258 275.8)",
+        "share": 0.0008,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#ffffffb3",
+        "name": "white-a70",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "share": 0.0015,
+        "usage": {
+          "text": 0.52,
+          "bg": 0.48
+        },
+        "pages": 2,
+        "merged": [
+          "#ffffffb8"
+        ]
+      },
+      {
+        "hex": "#a59ad6",
+        "name": "violet-500",
+        "oklch": "oklch(71.8% 0.087 292.5)",
+        "share": 0.0007,
+        "usage": {
+          "icon": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#a78bfa66",
+        "name": "violet-500-a40",
+        "oklch": "oklch(70.9% 0.159 293.5)",
+        "share": 0.0007,
+        "usage": {
+          "gradient": 1
+        },
+        "pages": 1
+      },
+      {
+        "hex": "#736c8e",
+        "name": "mauve-600-2",
+        "oklch": "oklch(55.0% 0.053 294.0)",
+        "share": 0.0011,
+        "usage": {
+          "text": 1
+        },
+        "pages": 2,
+        "merged": [
+          "#77718f"
+        ]
+      }
+    ],
+    "gradients": [
+      {
+        "value": "linear-gradient(rgb(248, 247, 255), rgb(244, 243, 255) 60%, rgb(248, 247, 255))",
+        "area": 5641245
+      },
+      {
+        "value": "linear-gradient(rgb(232, 230, 245) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90deg, rgb(232, 230, 245) 1px, rgba(0, 0, 0, 0) 1px)",
+        "area": 4487603
+      },
+      {
+        "value": "linear-gradient(rgb(247, 246, 255) 0%, rgb(250, 251, 254) 100%)",
+        "area": 1736213
+      },
+      {
+        "value": "radial-gradient(circle, rgba(139, 92, 246, 0.35), rgba(76, 61, 245, 0.15) 35%, rgba(0, 0, 0, 0) 65%)",
+        "area": 1732800
+      },
+      {
+        "value": "radial-gradient(circle, rgba(76, 61, 245, 0.4), rgba(0, 0, 0, 0) 60%)",
+        "area": 1732800
+      },
+      {
+        "value": "radial-gradient(at 50% 0px, rgba(76, 61, 245, 0.094), rgba(0, 0, 0, 0) 65%), none",
+        "area": 1630620
+      }
+    ],
+    "pairs": [
+      {
+        "fg": "#1a1a2e",
+        "bg": "#fafaff",
+        "chars": 3071,
+        "contrast": 16.39
+      },
+      {
+        "fg": "#1a1a2e",
+        "bg": "#ffffff",
+        "chars": 2389,
+        "contrast": 17.06
+      },
+      {
+        "fg": "#5b5b73",
+        "bg": "#ffffff",
+        "chars": 2091,
+        "contrast": 6.59
+      },
+      {
+        "fg": "#0b0b18",
+        "bg": "#ffffff",
+        "chars": 1916,
+        "contrast": 19.53
+      },
+      {
+        "fg": "#5b5b73",
+        "bg": "#fafaff",
+        "chars": 1411,
+        "contrast": 6.33
+      },
+      {
+        "fg": "#0b0b18",
+        "bg": "#fafaff",
+        "chars": 1273,
+        "contrast": 18.77
+      },
+      {
+        "fg": "#8a8aa3",
+        "bg": "#fafaff",
+        "chars": 784,
+        "contrast": 3.23
+      },
+      {
+        "fg": "#4c3df5",
+        "bg": "#f4f3ff",
+        "chars": 401,
+        "contrast": 5.8
+      },
+      {
+        "fg": "#4c3df5",
+        "bg": "#ffffff",
+        "chars": 262,
+        "contrast": 6.38
+      },
+      {
+        "fg": "#ffffffd9",
+        "bg": "#fafaff",
+        "chars": 220,
+        "contrast": 1.03
+      },
+      {
+        "fg": "#20243b",
+        "bg": "#fafaff",
+        "chars": 211,
+        "contrast": 14.66
+      },
+      {
+        "fg": "#ffffff",
+        "bg": "#4d3df5",
+        "chars": 194,
+        "contrast": 6.36
+      }
+    ]
+  },
+  "typography": {
+    "families": [
+      {
+        "family": "Geist",
+        "use": "body and headings",
+        "share": 0.985,
+        "stack": "Geist, \"Geist Fallback\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "weights": [
+          "400",
+          "450",
+          "500",
+          "600",
+          "700",
+          "800"
+        ],
+        "files": [
+          {
+            "weight": "100 900",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/fef07dbb0973bf53-s.3p2_lha1f2xer.woff2"
+          },
+          {
+            "weight": "100 900",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/8a480f0b521d4e75-s.1qq4vpdcun5oj.woff2"
+          },
+          {
+            "weight": "100 900",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/53b9e256198e5412-s.390ncx5urfkfu.woff2"
+          },
+          {
+            "weight": "100 900",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/7178b3e590c64307-s.21jp631_3pja2.woff2"
+          }
+        ],
+        "source": "Self-hosted",
+        "free": null
+      },
+      {
+        "family": "JetBrains Mono",
+        "use": "code",
+        "share": 0.01,
+        "stack": "\"JetBrains Mono\", \"JetBrains Mono Fallback\", ui-monospace, monospace",
+        "weights": [
+          "400",
+          "600",
+          "700"
+        ],
+        "files": [
+          {
+            "weight": "100 800",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/13bf9871fe164e7f-s.2f7nqdagzwx2-.woff2"
+          },
+          {
+            "weight": "100 800",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/cc545e633e20c56d-s.176arc174-8zp.woff2"
+          },
+          {
+            "weight": "100 800",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/71b036adf157cdcf-s.0bp8oijd_gu96.woff2"
+          },
+          {
+            "weight": "100 800",
+            "style": "normal",
+            "file": "https://cruva.com/_next/static/media/89b21bb081cb7469-s.1fby2rem9ngyr.woff2"
+          }
+        ],
+        "source": "Self-hosted",
+        "free": null
+      }
+    ],
+    "roles": [
+      {
+        "role": "display",
+        "size": 72,
+        "lh": 1.05,
+        "ls": -0.035,
+        "weight": "600",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.007,
+        "tags": [
+          "h1"
+        ],
+        "sample": "Cruva News",
+        "phone": 40
+      },
+      {
+        "role": "h1",
+        "size": 56,
+        "lh": 1.1,
+        "ls": -0.04,
+        "weight": "500",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.019,
+        "tags": [
+          "p"
+        ],
+        "sample": "0",
+        "phone": 35.1
+      },
+      {
+        "role": "h2",
+        "size": 44,
+        "lh": 1.1,
+        "ls": -0.028,
+        "weight": "600",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.005,
+        "tags": [
+          "h2"
+        ],
+        "sample": "Keep the momentum after the invite."
+      },
+      {
+        "role": "h3",
+        "size": 34,
+        "lh": 1.12,
+        "ls": -0.025,
+        "weight": "600",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.007,
+        "tags": [
+          "h3"
+        ],
+        "sample": "All that TikTok content. Ready for your next ad.",
+        "phone": 25
+      },
+      {
+        "role": "h4",
+        "size": 26,
+        "lh": 1.25,
+        "ls": -0.028,
+        "weight": "600",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.023,
+        "tags": [
+          "h2",
+          "div"
+        ],
+        "sample": "How Cruva Helped P.Louise Turn TikTok Videos int",
+        "phone": 20
+      },
+      {
+        "role": "h5",
+        "size": 19,
+        "lh": 1.25,
+        "ls": -0.02,
+        "weight": "600",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.043,
+        "tags": [
+          "h3",
+          "p"
+        ],
+        "sample": "Influencer Seeding Against Paid Collabs: What Yo"
+      },
+      {
+        "role": "body-lg",
+        "size": 18,
+        "lh": 1.55,
+        "ls": 0,
+        "weight": "400",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.042,
+        "tags": [
+          "p",
+          "div",
+          "h3"
+        ],
+        "sample": "Actionable guides, platform updates, and real st"
+      },
+      {
+        "role": "body",
+        "size": 15.5,
+        "lh": 1.7,
+        "ls": 0,
+        "weight": "400",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.086,
+        "tags": [
+          "p"
+        ],
+        "sample": "By turning its best-performing TikTok creator vi"
+      },
+      {
+        "role": "body-sm",
+        "size": 15,
+        "lh": 1.65,
+        "ls": 0,
+        "weight": "400",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.049,
+        "tags": [
+          "p",
+          "a",
+          "span"
+        ],
+        "sample": "Connect creators to a program, push their approv"
+      },
+      {
+        "role": "caption",
+        "size": 14.5,
+        "lh": 1.6,
+        "ls": 0,
+        "weight": "400",
+        "family": "Geist",
+        "transform": null,
+        "share": 0.025,
+        "tags": [
+          "p"
+        ],
+        "sample": "Contacted, replied, sample-sent, posted, repeat,"
+      },
+      {
+        "role": "code",
+        "size": 11,
+        "lh": 1.55,
+        "ls": 0,
+        "weight": "400",
+        "family": "JetBrains Mono",
+        "transform": null,
+        "share": 0.003,
+        "tags": [
+          "a"
+        ],
+        "sample": "Nov 5"
+      },
+      {
+        "role": "overline",
+        "size": 9.5,
+        "lh": 1.55,
+        "ls": 0.04,
+        "weight": "400",
+        "family": "Geist",
+        "transform": "uppercase",
+        "share": 0.002,
+        "tags": [
+          "div",
+          "span"
+        ],
+        "sample": "Creator"
+      }
+    ],
+    "sizes": [
+      {
+        "size": 76,
+        "share": 0.005,
+        "tags": [
+          "h1"
+        ]
+      },
+      {
+        "size": 72,
+        "share": 0.007,
+        "tags": [
+          "h1"
+        ]
+      },
+      {
+        "size": 66,
+        "share": 0.002,
+        "tags": [
+          "h1"
+        ]
+      },
+      {
+        "size": 60,
+        "share": 0.003,
+        "tags": [
+          "h2"
+        ]
+      },
+      {
+        "size": 56,
+        "share": 0.019,
+        "tags": [
+          "p"
+        ]
+      },
+      {
+        "size": 52,
+        "share": 0.005,
+        "tags": [
+          "h2"
+        ]
+      },
+      {
+        "size": 48,
+        "share": 0.003,
+        "tags": [
+          "h1"
+        ]
+      },
+      {
+        "size": 44,
+        "share": 0.005,
+        "tags": [
+          "h2"
+        ]
+      },
+      {
+        "size": 36,
+        "share": 0.007,
+        "tags": [
+          "h2",
+          "span"
+        ]
+      },
+      {
+        "size": 34,
+        "share": 0.007,
+        "tags": [
+          "h3"
+        ]
+      },
+      {
+        "size": 27,
+        "share": 0.022,
+        "tags": [
+          "h2"
+        ]
+      },
+      {
+        "size": 26,
+        "share": 0.023,
+        "tags": [
+          "h2",
+          "div"
+        ]
+      },
+      {
+        "size": 23,
+        "share": 0.004,
+        "tags": [
+          "h3",
+          "strong"
+        ]
+      },
+      {
+        "size": 21,
+        "share": 0.003,
+        "tags": [
+          "h3"
+        ]
+      },
+      {
+        "size": 20,
+        "share": 0.009,
+        "tags": [
+          "h3",
+          "a",
+          "div"
+        ]
+      },
+      {
+        "size": 19,
+        "share": 0.043,
+        "tags": [
+          "h3",
+          "p"
+        ]
+      },
+      {
+        "size": 18,
+        "share": 0.042,
+        "tags": [
+          "p",
+          "div",
+          "h3"
+        ]
+      },
+      {
+        "size": 17,
+        "share": 0.004,
+        "tags": [
+          "p"
+        ]
+      },
+      {
+        "size": 16,
+        "share": 0.023,
+        "tags": [
+          "p",
+          "a",
+          "div"
+        ]
+      },
+      {
+        "size": 15.5,
+        "share": 0.086,
+        "tags": [
+          "p"
+        ]
+      },
+      {
+        "size": 15,
+        "share": 0.049,
+        "tags": [
+          "p",
+          "a",
+          "span"
+        ]
+      },
+      {
+        "size": 14.5,
+        "share": 0.025,
+        "tags": [
+          "p"
+        ]
+      },
+      {
+        "size": 14,
+        "share": 0.147,
+        "tags": [
+          "a",
+          "p",
+          "button"
+        ]
+      },
+      {
+        "size": 13.5,
+        "share": 0.037,
+        "tags": [
+          "li"
+        ]
+      }
+    ],
+    "weights": [
+      {
+        "weight": "400",
+        "share": 0.672
+      },
+      {
+        "weight": "500",
+        "share": 0.157
+      },
+      {
+        "weight": "600",
+        "share": 0.138
+      },
+      {
+        "weight": "450",
+        "share": 0.018
+      },
+      {
+        "weight": "700",
+        "share": 0.01
+      },
+      {
+        "weight": "800",
+        "share": 0.004
+      }
+    ],
+    "ratio": 1.286,
+    "smoothing": "auto",
+    "matches": null
+  },
+  "spacing": {
+    "base": 4,
+    "fit": 0.539,
+    "loose": true,
+    "candidates": [
+      {
+        "unit": 8,
+        "fit": 0.336
+      },
+      {
+        "unit": 4,
+        "fit": 0.539
+      },
+      {
+        "unit": 6,
+        "fit": 0.235
+      },
+      {
+        "unit": 5,
+        "fit": 0.277
+      },
+      {
+        "unit": 10,
+        "fit": 0.192
+      }
+    ],
+    "scale": [
+      {
+        "px": 2,
+        "share": 0.023,
+        "onGrid": false
+      },
+      {
+        "px": 3,
+        "share": 0.026,
+        "onGrid": false
+      },
+      {
+        "px": 4,
+        "share": 0.036,
+        "onGrid": true
+      },
+      {
+        "px": 5,
+        "share": 0.062,
+        "onGrid": false
+      },
+      {
+        "px": 6,
+        "share": 0.061,
+        "onGrid": false
+      },
+      {
+        "px": 7,
+        "share": 0.027,
+        "onGrid": false
+      },
+      {
+        "px": 8,
+        "share": 0.137,
+        "onGrid": true
+      },
+      {
+        "px": 9,
+        "share": 0.025,
+        "onGrid": false
+      },
+      {
+        "px": 10,
+        "share": 0.119,
+        "onGrid": false
+      },
+      {
+        "px": 12,
+        "share": 0.087,
+        "onGrid": true
+      },
+      {
+        "px": 14,
+        "share": 0.03,
+        "onGrid": false
+      },
+      {
+        "px": 16,
+        "share": 0.064,
+        "onGrid": true
+      },
+      {
+        "px": 18,
+        "share": 0.033,
+        "onGrid": false
+      },
+      {
+        "px": 20,
+        "share": 0.024,
+        "onGrid": true
+      },
+      {
+        "px": 22,
+        "share": 0.022,
+        "onGrid": false
+      },
+      {
+        "px": 24,
+        "share": 0.027,
+        "onGrid": true
+      },
+      {
+        "px": 28,
+        "share": 0.031,
+        "onGrid": true
+      },
+      {
+        "px": 32,
+        "share": 0.045,
+        "onGrid": true
+      }
+    ],
+    "section": [
+      {
+        "px": 80,
+        "count": 37
+      },
+      {
+        "px": 60,
+        "count": 10
+      },
+      {
+        "px": 100,
+        "count": 9
+      },
+      {
+        "px": 40,
+        "count": 8
+      },
+      {
+        "px": 88,
+        "count": 6
+      }
+    ],
+    "sectionPhone": [
+      {
+        "px": 40,
+        "count": 8
+      },
+      {
+        "px": 56,
+        "count": 8
+      },
+      {
+        "px": 80,
+        "count": 6
+      },
+      {
+        "px": 60,
+        "count": 5
+      }
+    ],
+    "phonePadding": [
+      {
+        "px": 8,
+        "count": 66
+      },
+      {
+        "px": 20,
+        "count": 52
+      },
+      {
+        "px": 22,
+        "count": 50
+      },
+      {
+        "px": 9,
+        "count": 47
+      },
+      {
+        "px": 10,
+        "count": 39
+      },
+      {
+        "px": 6,
+        "count": 33
+      },
+      {
+        "px": 16,
+        "count": 31
+      },
+      {
+        "px": 12,
+        "count": 30
+      }
+    ]
+  },
+  "radii": [
+    {
+      "name": "xs",
+      "value": 2,
+      "share": 0.082
+    },
+    {
+      "name": "sm",
+      "value": 4,
+      "share": 0.075
+    },
+    {
+      "name": "md",
+      "value": 6,
+      "share": 0.041
+    },
+    {
+      "name": "lg",
+      "value": 8,
+      "share": 0.237
+    },
+    {
+      "name": "xl",
+      "value": 10,
+      "share": 0.027
+    },
+    {
+      "name": "2xl",
+      "value": 12,
+      "share": 0.1
+    },
+    {
+      "name": "3xl",
+      "value": 14,
+      "share": 0.03
+    },
+    {
+      "name": "3xl",
+      "value": 16,
+      "share": 0.066
+    },
+    {
+      "name": "3xl",
+      "value": 18,
+      "share": 0.021
+    },
+    {
+      "name": "3xl",
+      "value": 20,
+      "share": 0.057
+    },
+    {
+      "name": "full",
+      "value": 9999,
+      "share": 0.258
+    }
+  ],
+  "shadows": {
+    "drop": [
+      {
+        "name": "xs",
+        "value": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        "share": 0.054,
+        "elevation": 3,
+        "kind": "drop",
+        "layers": 1
+      },
+      {
+        "name": "sm",
+        "value": "rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(70, 60, 180, 0.18) 0px 2px 6px 0px",
+        "share": 0.031,
+        "elevation": 8,
+        "kind": "drop",
+        "layers": 2
+      },
+      {
+        "name": "md",
+        "value": "rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(185, 128, 24, 0.094) 0px 2px 7px 0px",
+        "share": 0.015,
+        "elevation": 9,
+        "kind": "drop",
+        "layers": 2
+      },
+      {
+        "name": "lg",
+        "value": "rgba(36, 32, 74, 0.016) 0px 3px 8px 0px",
+        "share": 0.023,
+        "elevation": 11,
+        "kind": "drop",
+        "layers": 1
+      },
+      {
+        "name": "xl",
+        "value": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "share": 0.131,
+        "elevation": 17,
+        "kind": "drop",
+        "layers": 4
+      },
+      {
+        "name": "2xl",
+        "value": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px",
+        "share": 0.192,
+        "elevation": 26,
+        "kind": "drop",
+        "layers": 2
+      }
+    ],
+    "ring": [
+      {
+        "value": "rgba(0, 0, 0, 0.03) 0px 0px 0px 1px",
+        "share": 0.277,
+        "elevation": 0,
+        "kind": "ring",
+        "layers": 1
+      },
+      {
+        "value": "rgba(76, 61, 245, 0.18) 0px 0px 0px 4px",
+        "share": 0.054,
+        "elevation": 0,
+        "kind": "ring",
+        "layers": 1
+      },
+      {
+        "value": "rgba(76, 61, 245, 0.294) 0px 0px 0px 1.56096px",
+        "share": 0.015,
+        "elevation": 0,
+        "kind": "ring",
+        "layers": 1
+      }
+    ],
+    "inset": []
+  },
+  "borders": {
+    "widths": [
+      {
+        "px": 1,
+        "count": 832
+      },
+      {
+        "px": 2,
+        "count": 3
+      }
+    ],
+    "styles": [
+      "solid"
+    ]
+  },
+  "motion": {
+    "durations": [
+      {
+        "name": "fast",
+        "ms": 150,
+        "count": 211
+      },
+      {
+        "name": "base",
+        "ms": 200,
+        "count": 156
+      },
+      {
+        "name": "slow",
+        "ms": 800,
+        "count": 42
+      }
+    ],
+    "easings": [
+      {
+        "name": "standard",
+        "value": "ease",
+        "count": 394
+      },
+      {
+        "name": "alt-1",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "count": 32
+      },
+      {
+        "name": "alt-2",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "count": 6
+      }
+    ],
+    "properties": [
+      "color",
+      "transform",
+      "border-color",
+      "box-shadow",
+      "opacity",
+      "background",
+      "background-color",
+      "backdrop-filter"
+    ],
+    "keyframes": [
+      "pulse",
+      "bounce",
+      "ping",
+      "spin",
+      "enter",
+      "exit",
+      "scroll",
+      "slide-out-left",
+      "slide-out-right",
+      "slide-in-left"
+    ],
+    "animations": [
+      {
+        "value": "hero-product-grid-module__jDwxZa__nodeActivity|6s|ease-in-out",
+        "count": 7
+      },
+      {
+        "value": "growth-mocks-module__ieQoKW__forward|3s|ease-in-out",
+        "count": 4
+      },
+      {
+        "value": "hero-product-grid-module__jDwxZa__chartReveal|1.6s|cubic-bezier(0.22, 1, 0.36, 1)",
+        "count": 3
+      },
+      {
+        "value": "hero-product-grid-module__jDwxZa__resultReveal|0.65s|ease",
+        "count": 3
+      },
+      {
+        "value": "hero-product-grid-module__jDwxZa__resultReveal|0.6s|ease",
+        "count": 2
+      },
+      {
+        "value": "home-module__hEpvPG__logoGlide|55s|linear",
+        "count": 1
+      },
+      {
+        "value": "hero-product-grid-module__jDwxZa__gmvPulse|2s|ease-out",
+        "count": 1
+      },
+      {
+        "value": "hero-product-grid-module__jDwxZa__fillProgress|1.4s|cubic-bezier(0.22, 1, 0.36, 1)",
+        "count": 1
+      }
+    ],
+    "reducedMotion": true
+  },
+  "layout": {
+    "containers": [
+      {
+        "px": 1240,
+        "count": 51
+      },
+      {
+        "px": 1176,
+        "count": 42
+      },
+      {
+        "px": 760,
+        "count": 11
+      },
+      {
+        "px": 976,
+        "count": 13
+      }
+    ],
+    "maxWidths": [
+      {
+        "px": 1240,
+        "count": 52
+      },
+      {
+        "px": 980,
+        "count": 5
+      },
+      {
+        "px": 760,
+        "count": 4
+      },
+      {
+        "px": 1100,
+        "count": 1
+      },
+      {
+        "px": 640,
+        "count": 1
+      },
+      {
+        "px": 1040,
+        "count": 1
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "px": 521,
+        "count": 9
+      },
+      {
+        "name": "md",
+        "px": 641,
+        "count": 7
+      },
+      {
+        "name": "lg",
+        "px": 761,
+        "count": 26
+      },
+      {
+        "name": "xl",
+        "px": 881,
+        "count": 10
+      },
+      {
+        "name": "2xl",
+        "px": 1001,
+        "count": 11
+      }
+    ],
+    "approach": "desktop-first (max-width queries)",
+    "gridColumns": [
+      {
+        "cols": 2,
+        "count": 31
+      },
+      {
+        "cols": 3,
+        "count": 13
+      },
+      {
+        "cols": 5,
+        "count": 13
+      },
+      {
+        "cols": 4,
+        "count": 8
+      }
+    ],
+    "bands": [
+      {
+        "bg": "#fafaff",
+        "y": 0,
+        "h": 9143
+      },
+      {
+        "bg": "#151729",
+        "y": 1866,
+        "h": 597
+      },
+      {
+        "bg": "#fafaff",
+        "y": 2463,
+        "h": 6680
+      }
+    ],
+    "containerQueries": 16
+  },
+  "components": {
+    "buttons": [
+      {
+        "count": 7,
+        "label": "Get 14 Days Free",
+        "bg": "#4d3df5",
+        "fg": "#ffffff",
+        "gradient": "linear-gradient(rgba(255, 255, 255, 0.13), rgba(0, 0, 0, 0) 52%), linear-gradient(145deg, rgb(99, 85, 246), rgb(77, 61, 245) 72%)",
+        "border": null,
+        "radius": 12,
+        "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "h": 41.7,
+        "w": 138.9,
+        "padding": [
+          10,
+          16,
+          10,
+          16
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 14,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 13.16,
+        "variant": "primary",
+        "hover": {
+          "bg": "#4d3df5",
+          "fg": "#ffffff",
+          "shadow": "rgba(255, 255, 255, 0.38) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.16) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.14) 0px 3px 5px 0px, rgba(77, 61, 245, 0.4) 0px 7px 16px -6px",
+          "transform": null,
+          "border": "0px solid rgb(209, 213, 219)"
+        },
+        "focus": {
+          "outline": "2px solid rgb(77, 61, 245)",
+          "offset": "3px",
+          "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px"
+        }
+      },
+      {
+        "count": 4,
+        "label": "Get Started",
+        "bg": "#4d3df5",
+        "fg": "#ffffff",
+        "gradient": "linear-gradient(rgba(255, 255, 255, 0.13), rgba(0, 0, 0, 0) 52%), linear-gradient(145deg, rgb(99, 85, 246), rgb(77, 61, 245) 72%)",
+        "border": null,
+        "radius": 12,
+        "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "h": 47.3,
+        "w": 291.3,
+        "padding": [
+          12,
+          94.7,
+          12,
+          94.7
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 15,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 485.14,
+        "variant": "primary"
+      },
+      {
+        "count": 3,
+        "label": "Book a Demo",
+        "bg": "#4d3df5",
+        "fg": "#ffffff",
+        "gradient": "linear-gradient(rgba(255, 255, 255, 0.13), rgba(0, 0, 0, 0) 52%), linear-gradient(145deg, rgb(99, 85, 246), rgb(77, 61, 245) 72%)",
+        "border": null,
+        "radius": 14,
+        "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "h": 58.8,
+        "w": 172.1,
+        "padding": [
+          16,
+          26,
+          16,
+          26
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 426.97,
+        "variant": "primary",
+        "hover": {
+          "bg": "#4d3df5",
+          "fg": "#ffffff",
+          "shadow": "rgba(255, 255, 255, 0.38) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.16) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.14) 0px 3px 5px 0px, rgba(77, 61, 245, 0.4) 0px 7px 16px -6px",
+          "transform": null,
+          "border": "0px solid rgb(209, 213, 219)"
+        },
+        "focus": {
+          "outline": "2px solid rgb(77, 61, 245)",
+          "offset": "3px",
+          "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px"
+        }
+      },
+      {
+        "count": 3,
+        "label": "See how it works",
+        "bg": "#ffffff",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#d8d5ee",
+          "sides": 4
+        },
+        "radius": 14,
+        "shadow": null,
+        "h": 58.8,
+        "w": 179,
+        "padding": [
+          16,
+          27,
+          16,
+          27
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 426.97,
+        "variant": "secondary",
+        "hover": {
+          "bg": "#ffffff",
+          "fg": "#0b0b18",
+          "shadow": null,
+          "transform": null,
+          "border": "1px solid rgb(11, 11, 24)"
+        },
+        "focus": {
+          "outline": "1px auto rgb(16, 16, 16)",
+          "offset": "1px",
+          "shadow": null
+        }
+      },
+      {
+        "count": 2,
+        "label": "Contact Sales",
+        "bg": "#ffffff",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#d8d5ee",
+          "sides": 4
+        },
+        "radius": 12,
+        "shadow": null,
+        "h": 49.3,
+        "w": 291.3,
+        "padding": [
+          12,
+          97.3,
+          12,
+          97.3
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 15,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#ffffff",
+        "y": 1281.41,
+        "variant": "secondary",
+        "hover": {
+          "bg": "#ffffff",
+          "fg": "#0b0b18",
+          "shadow": null,
+          "transform": null,
+          "border": "1px solid rgb(11, 11, 24)"
+        },
+        "focus": {
+          "outline": "1px auto rgb(16, 16, 16)",
+          "offset": "1px",
+          "shadow": null
+        }
+      },
+      {
+        "count": 2,
+        "label": "Select your region",
+        "bg": "#f8fafc",
+        "fg": "#1e293b",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#d1d5db",
+          "sides": 4
+        },
+        "radius": 9,
+        "shadow": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        "h": 36,
+        "w": 420,
+        "padding": [
+          8,
+          13,
+          8,
+          13
+        ],
+        "gap": 0,
+        "font": {
+          "family": "Geist",
+          "size": 14,
+          "weight": "400",
+          "lh": 1.429,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#ffffff",
+        "y": 403.69,
+        "variant": "secondary",
+        "hover": {
+          "bg": "#f8fafc",
+          "fg": "#1e293b",
+          "shadow": null,
+          "transform": null,
+          "border": "1px solid rgb(209, 213, 219)"
+        },
+        "focus": {
+          "outline": "1px auto rgb(16, 16, 16)",
+          "offset": "0px",
+          "shadow": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+        }
+      },
+      {
+        "count": 1,
+        "label": "Book a Demo",
+        "bg": "#ffffff99",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#d9d4e3",
+          "sides": 4
+        },
+        "radius": 12,
+        "shadow": null,
+        "h": 51.7,
+        "w": 129.4,
+        "padding": [
+          14,
+          21,
+          14,
+          21
+        ],
+        "gap": 0,
+        "font": {
+          "family": "Geist",
+          "size": 14,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#fafaff",
+        "y": 482.92,
+        "variant": "subtle",
+        "hover": {
+          "bg": "#ffffff",
+          "fg": "#0b0b18",
+          "shadow": null,
+          "transform": null,
+          "border": "1px solid rgb(155, 138, 187)"
+        },
+        "focus": {
+          "outline": "2px solid rgb(76, 61, 245)",
+          "offset": "4px",
+          "shadow": null
+        }
+      },
+      {
+        "count": 1,
+        "label": "Book a Demo",
+        "bg": "#ffffff",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": null,
+        "radius": 14,
+        "shadow": null,
+        "h": 56.8,
+        "w": 172.1,
+        "padding": [
+          16,
+          26,
+          16,
+          26
+        ],
+        "gap": 8,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "500",
+          "lh": 1.55,
+          "ls": -0.01,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "transform, box-shadow, background, border-color 0.15s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 1833.78,
+        "variant": "secondary",
+        "hover": {
+          "bg": "#ffffff",
+          "fg": "#0b0b18",
+          "shadow": null,
+          "transform": null,
+          "border": "0px solid rgb(209, 213, 219)"
+        },
+        "focus": {
+          "outline": "1px auto rgb(16, 16, 16)",
+          "offset": "1px",
+          "shadow": null
+        }
+      }
+    ],
+    "inputs": [
+      {
+        "count": 5,
+        "label": "John",
+        "bg": "#f8fafc",
+        "fg": "#1e293b",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#d1d5db",
+          "sides": 4
+        },
+        "radius": 9,
+        "shadow": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        "h": 36,
+        "w": 420,
+        "padding": [
+          4,
+          12,
+          4,
+          12
+        ],
+        "gap": 0,
+        "font": {
+          "family": "Geist",
+          "size": 14,
+          "weight": "400",
+          "lh": 1.429,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "color, background-color, border-color, text-decoration-color, fill, stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+        "parentBg": "#ffffff",
+        "y": 235.69,
+        "placeholder": "#6b7280",
+        "focus": {
+          "outline": "2px solid rgba(0, 0, 0, 0)",
+          "border": "1px solid rgb(209, 213, 219)",
+          "shadow": "rgb(77, 61, 245) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+        }
+      }
+    ],
+    "cards": [
+      {
+        "count": 5,
+        "label": "BasicGet an affiliate program running wi",
+        "bg": "#ffffff",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#e8e6f5",
+          "sides": 4
+        },
+        "radius": 20,
+        "shadow": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px",
+        "h": 264.8,
+        "w": 378.7,
+        "padding": [
+          28,
+          28,
+          28,
+          28
+        ],
+        "gap": 0,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#fafaff",
+        "y": 656.59
+      },
+      {
+        "count": 4,
+        "label": "GMV driven on TikTok Shopby Cruva brands",
+        "bg": null,
+        "fg": "#20243b",
+        "gradient": "radial-gradient(at 100% 0px, rgb(220, 214, 255) 0px, rgba(0, 0, 0, 0) 55%), linear-gradient(120deg, rgb(255, 255, 255) 40%, rgb(243, 241, 255))",
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#e1e5f2",
+          "sides": 4
+        },
+        "radius": 16,
+        "shadow": null,
+        "h": 420,
+        "w": 779.3,
+        "padding": [
+          25,
+          25,
+          25,
+          25
+        ],
+        "gap": 24,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": "border-color, box-shadow 0.2s, 0.2s ease, ease",
+        "parentBg": "#fafaff",
+        "y": 750.11
+      },
+      {
+        "count": 4,
+        "label": "Affiliate GMV$124,680+24.6%",
+        "bg": "#ffffff",
+        "fg": "#202235",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#e5e8f1",
+          "sides": 4
+        },
+        "radius": 11,
+        "shadow": null,
+        "h": 164.4,
+        "w": 287.3,
+        "padding": [
+          12,
+          12,
+          11,
+          12
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#fafbff",
+        "y": 1108
+      },
+      {
+        "count": 4,
+        "label": "Attributed sales$48,260+28.4%",
+        "bg": "#ffffff",
+        "fg": "#242139",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#e3e7f2",
+          "sides": 4
+        },
+        "radius": 11,
+        "shadow": null,
+        "h": 219.7,
+        "w": 250,
+        "padding": [
+          15,
+          15,
+          0,
+          15
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#fafbff",
+        "y": 5309.23
+      },
+      {
+        "count": 4,
+        "label": "“Cruva has been instrumental in helping ",
+        "bg": "#ffffffb8",
+        "fg": "#0b0b18",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#ffffffe6",
+          "sides": 4
+        },
+        "radius": 14,
+        "shadow": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px",
+        "h": 94.3,
+        "w": 552,
+        "padding": [
+          14,
+          16,
+          14,
+          16
+        ],
+        "gap": 12,
+        "font": {
+          "family": "Geist",
+          "size": 16,
+          "weight": "400",
+          "lh": 1.5,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": "blur(10px)",
+        "transition": "transform, box-shadow, background 0.2s, 0.2s, 0.2s ease, ease, ease",
+        "parentBg": "#fafaff",
+        "y": 228.78
+      }
+    ],
+    "badges": [
+      {
+        "count": 4,
+        "label": "L3",
+        "bg": "#ede9fe",
+        "fg": "#7c3aed",
+        "gradient": null,
+        "border": null,
+        "radius": 4,
+        "shadow": null,
+        "h": 17.7,
+        "w": 22.1,
+        "padding": [
+          1.5,
+          5,
+          1.5,
+          5
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 9.5,
+          "weight": "600",
+          "lh": 1.55,
+          "ls": 0.02,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#ffffff",
+        "y": 546.38
+      },
+      {
+        "count": 3,
+        "label": "96% match",
+        "bg": "#f3f0ff",
+        "fg": "#7c70b0",
+        "gradient": null,
+        "border": null,
+        "radius": 3,
+        "shadow": null,
+        "h": 14.8,
+        "w": 41.8,
+        "padding": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 7,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#ffffff",
+        "y": 1142.91
+      },
+      {
+        "count": 2,
+        "label": "Replied",
+        "bg": "#eff8f3",
+        "fg": "#338569",
+        "gradient": null,
+        "border": null,
+        "radius": 4,
+        "shadow": null,
+        "h": 18.5,
+        "w": 32.9,
+        "padding": [
+          3,
+          4,
+          3,
+          4
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 7,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#ffffff",
+        "y": 1292.58
+      },
+      {
+        "count": 2,
+        "label": "Beauty & skincare",
+        "bg": "#faf9ff",
+        "fg": "#a09ab2",
+        "gradient": null,
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "hex": "#eeecf7",
+          "sides": 4
+        },
+        "radius": 4,
+        "shadow": null,
+        "h": 22.4,
+        "w": 79.9,
+        "padding": [
+          4,
+          6,
+          4,
+          6
+        ],
+        "gap": null,
+        "font": {
+          "family": "Geist",
+          "size": 8,
+          "weight": "400",
+          "lh": 1.55,
+          "ls": 0,
+          "transform": null
+        },
+        "backdrop": null,
+        "transition": null,
+        "parentBg": "#ffffff",
+        "y": 1091.47
+      }
+    ],
+    "links": [
+      {
+        "fg": "#1a1a2e",
+        "decoration": "none",
+        "thickness": "auto",
+        "offset": "auto",
+        "weight": "450",
+        "where": "standalone",
+        "n": 35,
+        "hover": {
+          "fg": "#1a1a2e",
+          "decoration": "none"
+        }
+      },
+      {
+        "fg": "#4c3df5",
+        "decoration": "none",
+        "thickness": "auto",
+        "offset": "auto",
+        "weight": "500",
+        "where": "standalone",
+        "n": 2,
+        "hover": {
+          "fg": "#4c3df5",
+          "decoration": "none"
+        }
+      }
+    ],
+    "nav": {
+      "tag": "header",
+      "label": "",
+      "w": 1440,
+      "h": 69,
+      "bg": null,
+      "fg": "#0b0b18",
+      "gradient": null,
+      "border": null,
+      "radius": 0,
+      "shadow": null,
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "gap": null,
+      "font": {
+        "family": "Geist",
+        "size": 16,
+        "weight": "400",
+        "lh": 1.55,
+        "ls": 0,
+        "transform": null
+      },
+      "backdrop": null,
+      "transition": "background-color, border-color, backdrop-filter 0.25s, 0.25s, 0.25s ease, ease, ease",
+      "parentBg": "#fafaff",
+      "y": 0,
+      "position": "sticky"
+    },
+    "footer": {
+      "bg": "#fafaff",
+      "fg": "#0b0b18",
+      "y": 9143,
+      "h": 452
+    }
+  },
+  "icons": {
+    "count": 114,
+    "logos": 8,
+    "bySize": [
+      {
+        "px": 11,
+        "count": 36,
+        "style": "line",
+        "lineAt24": 2.42
+      },
+      {
+        "px": 15,
+        "count": 20,
+        "style": "line",
+        "lineAt24": 1.75
+      },
+      {
+        "px": 12,
+        "count": 15,
+        "style": "line",
+        "lineAt24": 1.75
+      },
+      {
+        "px": 14,
+        "count": 13,
+        "style": "line",
+        "lineAt24": 2.75
+      }
+    ],
+    "style": "line",
+    "lineAt24": 1.75,
+    "drawnAsFills": 0.02,
+    "coverage": 0.194,
+    "kind": "outline",
+    "kinds": {
+      "outline": 110,
+      "mixed": 2,
+      "solid": 2
+    },
+    "strokeAt24": 2,
+    "cap": "round",
+    "join": "round",
+    "sizes": [
+      {
+        "px": 11,
+        "count": 36
+      },
+      {
+        "px": 15,
+        "count": 20
+      },
+      {
+        "px": 12,
+        "count": 15
+      },
+      {
+        "px": 14,
+        "count": 13
+      }
+    ],
+    "viewBoxes": [
+      {
+        "box": 24,
+        "count": 100
+      },
+      {
+        "box": 12,
+        "count": 7
+      },
+      {
+        "box": 14,
+        "count": 5
+      }
+    ],
+    "currentColor": 1
+  },
+  "effects": {
+    "gradients": [
+      {
+        "value": "linear-gradient(rgb(248, 247, 255), rgb(244, 243, 255) 60%, rgb(248, 247, 255))",
+        "area": 5641245
+      },
+      {
+        "value": "linear-gradient(rgb(232, 230, 245) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90deg, rgb(232, 230, 245) 1px, rgba(0, 0, 0, 0) 1px)",
+        "area": 4487603
+      },
+      {
+        "value": "linear-gradient(rgb(247, 246, 255) 0%, rgb(250, 251, 254) 100%)",
+        "area": 1736213
+      },
+      {
+        "value": "radial-gradient(circle, rgba(139, 92, 246, 0.35), rgba(76, 61, 245, 0.15) 35%, rgba(0, 0, 0, 0) 65%)",
+        "area": 1732800
+      },
+      {
+        "value": "radial-gradient(circle, rgba(76, 61, 245, 0.4), rgba(0, 0, 0, 0) 60%)",
+        "area": 1732800
+      },
+      {
+        "value": "radial-gradient(at 50% 0px, rgba(76, 61, 245, 0.094), rgba(0, 0, 0, 0) 65%), none",
+        "area": 1630620
+      }
+    ],
+    "filters": [
+      {
+        "value": "filter: grayscale(1)",
+        "count": 10
+      },
+      {
+        "value": "filter: grayscale(1) brightness(0.55) contrast(1.1)",
+        "count": 8
+      },
+      {
+        "value": "filter: invert(0.36) sepia(0.82) saturate(19.95) hue-rotate(228deg) brightness(0.98) contrast(0.95)",
+        "count": 7
+      },
+      {
+        "value": "filter: blur(60px)",
+        "count": 6
+      },
+      {
+        "value": "backdrop-filter: saturate(1.6) blur(12px)",
+        "count": 5
+      },
+      {
+        "value": "backdrop-filter: blur(10px)",
+        "count": 4
+      }
+    ]
+  },
+  "graphics": {
+    "canvases": [],
+    "videos": 0,
+    "images": 116,
+    "svgImages": 66,
+    "largeSvgs": 8
+  },
+  "css": {
+    "sheets": 13,
+    "system": "--gmv-",
+    "siteTokens": [
+      {
+        "name": "--gmv-source-card",
+        "hex": "#d97a06",
+        "value": "#d97a06",
+        "uses": 0
+      },
+      {
+        "name": "--gmv-source-live",
+        "hex": "#0f9d8a",
+        "value": "#0f9d8a",
+        "uses": 0
+      },
+      {
+        "name": "--gmv-source-other",
+        "hex": "#9a9a94",
+        "value": "#9a9a94",
+        "uses": 0
+      },
+      {
+        "name": "--gmv-source-video",
+        "hex": "#5b5bd6",
+        "value": "#5b5bd6",
+        "uses": 0
+      }
+    ],
+    "tokenHints": {},
+    "variables": [
+      {
+        "name": "--primary",
+        "uses": 178,
+        "value": "245 90% 60%",
+        "defs": 4
+      },
+      {
+        "name": "--muted",
+        "uses": 49,
+        "value": "220 14.2857% 95.8824%",
+        "defs": 5
+      },
+      {
+        "name": "--muted-foreground",
+        "uses": 49,
+        "value": "220 8.9362% 46.0784%",
+        "defs": 2
+      },
+      {
+        "name": "--radius",
+        "uses": 44,
+        "value": ".5625rem",
+        "defs": 3
+      },
+      {
+        "name": "--foreground",
+        "uses": 38,
+        "value": "217.241 32.5843% 17.451%",
+        "defs": 2
+      },
+      {
+        "name": "--accent",
+        "uses": 31,
+        "value": "220 14.3% 95.9%",
+        "defs": 3
+      },
+      {
+        "name": "--background",
+        "uses": 30,
+        "value": "210 40% 98.0392%",
+        "defs": 2
+      },
+      {
+        "name": "--destructive",
+        "uses": 25,
+        "value": "0 84.2365% 60.1961%",
+        "defs": 2
+      },
+      {
+        "name": "--line",
+        "uses": 24,
+        "value": "#ffffff1c",
+        "defs": 4
+      },
+      {
+        "name": "--fg-3",
+        "uses": 22,
+        "value": "#76748a",
+        "defs": 1
+      },
+      {
+        "name": "--surface",
+        "uses": 21,
+        "value": "#fff",
+        "defs": 5
+      },
+      {
+        "name": "--border",
+        "uses": 19,
+        "value": "216 12.1951% 83.9216%",
+        "defs": 2
+      },
+      {
+        "name": "--ink",
+        "uses": 17,
+        "value": "#f5f4ff",
+        "defs": 3
+      },
+      {
+        "name": "--card",
+        "uses": 16,
+        "value": "0 0% 100%",
+        "defs": 2
+      },
+      {
+        "name": "--ds-space",
+        "uses": 16,
+        "value": ".875rem",
+        "defs": 2
+      },
+      {
+        "name": "--fg-2",
+        "uses": 12,
+        "value": "#4a4860",
+        "defs": 1
+      },
+      {
+        "name": "--ds-card-pad",
+        "uses": 11,
+        "value": "1rem",
+        "defs": 2
+      },
+      {
+        "name": "--primary-foreground",
+        "uses": 10,
+        "value": "0 0% 100%",
+        "defs": 2
+      },
+      {
+        "name": "--sidebar-accent-foreground",
+        "uses": 9,
+        "value": "238.732 19.1176% 26.6667%",
+        "defs": 2
+      },
+      {
+        "name": "--surface-2",
+        "uses": 9,
+        "value": "#f3f2f9",
+        "defs": 1
+      },
+      {
+        "name": "--fg",
+        "uses": 9,
+        "value": "#16151f",
+        "defs": 1
+      },
+      {
+        "name": "--font",
+        "uses": 9,
+        "value": "var(--font-geist), -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "defs": 1
+      },
+      {
+        "name": "--ring",
+        "uses": 8,
+        "value": "245 90% 60%",
+        "defs": 2
+      },
+      {
+        "name": "--button-primary",
+        "uses": 8,
+        "value": "245 90% 60%",
+        "defs": 1
+      },
+      {
+        "name": "--line-strong",
+        "uses": 8,
+        "value": "#d3d0e3",
+        "defs": 1
+      },
+      {
+        "name": "--sidebar-foreground",
+        "uses": 7,
+        "value": "217.241 32.5843% 17.451%",
+        "defs": 2
+      },
+      {
+        "name": "--sidebar-border",
+        "uses": 7,
+        "value": "216 12.1951% 83.9216%",
+        "defs": 2
+      },
+      {
+        "name": "--status-to-review",
+        "uses": 7,
+        "value": "43 74% 50%",
+        "defs": 2
+      },
+      {
+        "name": "--cell-size",
+        "uses": 7,
+        "value": "2rem",
+        "defs": 1
+      },
+      {
+        "name": "--bg",
+        "uses": 7,
+        "value": "#fafbfe",
+        "defs": 4
+      },
+      {
+        "name": "--accent-foreground",
+        "uses": 6,
+        "value": "220.9 39.3% 11%",
+        "defs": 2
+      },
+      {
+        "name": "--sidebar-accent",
+        "uses": 6,
+        "value": "230 50% 95%",
+        "defs": 2
+      },
+      {
+        "name": "--ds-page-pad",
+        "uses": 6,
+        "value": "1.125rem",
+        "defs": 2
+      },
+      {
+        "name": "--ink-2",
+        "uses": 5,
+        "value": "#ddddeb",
+        "defs": 3
+      },
+      {
+        "name": "--line-2",
+        "uses": 5,
+        "value": "#d8d5ee",
+        "defs": 2
+      },
+      {
+        "name": "--secondary",
+        "uses": 4,
+        "value": "220 13.0435% 90.9804%",
+        "defs": 2
+      },
+      {
+        "name": "--shadow",
+        "uses": 4,
+        "value": "0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a",
+        "defs": 3
+      },
+      {
+        "name": "--muted-2",
+        "uses": 4,
+        "value": "#959bb7",
+        "defs": 3
+      },
+      {
+        "name": "--good",
+        "uses": 4,
+        "value": "#12805c",
+        "defs": 2
+      },
+      {
+        "name": "--destructive-foreground",
+        "uses": 3,
+        "value": "0 0% 100%",
+        "defs": 2
+      },
+      {
+        "name": "--input",
+        "uses": 3,
+        "value": "216 12.1951% 83.9216%",
+        "defs": 2
+      },
+      {
+        "name": "--sidebar-background",
+        "uses": 3,
+        "value": "220 14.2857% 95.8824%",
+        "defs": 2
+      },
+      {
+        "name": "--ds-bar-gap",
+        "uses": 3,
+        "value": ".5rem",
+        "defs": 2
+      },
+      {
+        "name": "--font-inter",
+        "uses": 3,
+        "value": "\"Inter\", \"Inter Fallback\"",
+        "defs": 1
+      },
+      {
+        "name": "--font-geist",
+        "uses": 3,
+        "value": "\"Geist\", \"Geist Fallback\"",
+        "defs": 1
+      },
+      {
+        "name": "--font-jetbrains-mono",
+        "uses": 3,
+        "value": "\"JetBrains Mono\", \"JetBrains Mono Fallback\"",
+        "defs": 1
+      },
+      {
+        "name": "--accent-soft",
+        "uses": 3,
+        "value": "#eeebfd",
+        "defs": 1
+      },
+      {
+        "name": "--bad",
+        "uses": 3,
+        "value": "#c2312b",
+        "defs": 2
+      },
+      {
+        "name": "--warn",
+        "uses": 3,
+        "value": "#9a5b00",
+        "defs": 2
+      },
+      {
+        "name": "--r",
+        "uses": 3,
+        "value": "16px",
+        "defs": 1
+      },
+      {
+        "name": "--sidebar-ring",
+        "uses": 2,
+        "value": "245 90% 60%",
+        "defs": 2
+      },
+      {
+        "name": "--ds-chart-h",
+        "uses": 2,
+        "value": "112px",
+        "defs": 2
+      },
+      {
+        "name": "--ds-chart-h-lg",
+        "uses": 2,
+        "value": "128px",
+        "defs": 2
+      },
+      {
+        "name": "--shadow-md",
+        "uses": 2,
+        "value": "0px 4px 8px -1px #0000001a, 0px 2px 4px -2px #0000001a",
+        "defs": 4
+      },
+      {
+        "name": "--shadow-lg",
+        "uses": 2,
+        "value": "0px 4px 8px -1px #0000001a, 0px 4px 6px -2px #0000001a",
+        "defs": 3
+      },
+      {
+        "name": "--font-ibm-plex",
+        "uses": 2,
+        "value": "\"IBM Plex Mono\", \"IBM Plex Mono Fallback\"",
+        "defs": 1
+      },
+      {
+        "name": "--warn-soft",
+        "uses": 2,
+        "value": "#fff3dc",
+        "defs": 1
+      },
+      {
+        "name": "--lavender",
+        "uses": 2,
+        "value": "#f4f3ff",
+        "defs": 2
+      },
+      {
+        "name": "--primary-600",
+        "uses": 2,
+        "value": "#3220f3",
+        "defs": 2
+      },
+      {
+        "name": "--dx",
+        "uses": 2,
+        "value": "-14px",
+        "defs": 4
+      }
+    ],
+    "prefixes": [
+      {
+        "prefix": "--tw-",
+        "count": 109
+      },
+      {
+        "prefix": "--shadow-",
+        "count": 13
+      },
+      {
+        "prefix": "--sidebar-",
+        "count": 8
+      },
+      {
+        "prefix": "--font-",
+        "count": 8
+      },
+      {
+        "prefix": "--ds-",
+        "count": 7
+      },
+      {
+        "prefix": "--status-",
+        "count": 7
+      }
+    ],
+    "properties": [
+      {
+        "name": "--gradient-angle",
+        "syntax": "\"<angle>\"",
+        "initial": "0deg"
+      }
+    ],
+    "darkMedia": 0,
+    "darkSelectors": {
+      ".dark": 248
+    },
+    "layers": []
+  },
+  "files": {
+    "screens": [
+      "/home/user/discordbot/design-system/source/screens/desktop-home-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-home-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-home-3.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-home-4.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-case-studies-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-case-studies-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-blog-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-blog-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-pricing-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-pricing-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-demo-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-demo-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-workflows-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-workflows-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-meta-ads-programs-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-meta-ads-programs-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-full-pipeline-crm-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/desktop-full-pipeline-crm-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-home-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-home-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-case-studies-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-case-studies-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-blog-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/phone-blog-2.jpg",
+      "/home/user/discordbot/design-system/source/screens/dark-home-1.jpg",
+      "/home/user/discordbot/design-system/source/screens/dark-home-2.jpg"
+    ],
+    "icons": "/home/user/discordbot/design-system/source/screens/icons.png",
+    "fonts": []
+  },
+  "notes": [
+    "The site looks the same with dark mode on, so there's no dark theme to extract (it may switch with a toggle instead; see css.darkSelectors).",
+    "The CSS has dark-mode selectors (.dark) but the page didn't switch with the system setting: dark mode is a toggle, or a class for dark sections only. Check the screenshots before adding a dark theme."
+  ]
+}

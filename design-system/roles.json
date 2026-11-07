@@ -1,0 +1,388 @@
+{
+  "$comment": "Measured from https://cruva.com on 2026-11-07. Edit names or values here, then run extract.mjs --rebuild to regenerate tokens.css, theme.css, tokens.json and preview.html.",
+  "name": "Cruva",
+  "source": "https://cruva.com",
+  "colors": {
+    "background": "#fafaff",
+    "text": "#1a1a2e",
+    "heading": "#0b0b18",
+    "text-muted": "#5b5b73",
+    "text-subtle": "#8a8aa3",
+    "border": "#e8e6f5",
+    "surface": "#ffffff",
+    "primary": "#4c3df5",
+    "primary-foreground": "#ffffff",
+    "link": "#4c3df5",
+    "focus": "#4d3df5",
+    "success": "#16a34a",
+    "surface-inverse": "#0b0b18",
+    "surface-inverse-foreground": "#ffffff"
+  },
+  "chart": [
+    "#4c3df5",
+    "#348c6d",
+    "#7c70b0"
+  ],
+  "dark": null,
+  "palette": {
+    "neutral-50": "#fafaff",
+    "slate-950": "#1a1a2e",
+    "slate-700": "#5b5b73",
+    "slate-950-2": "#0b0b18",
+    "neutral-100": "#e8e6f5",
+    "indigo-700": "#4c3df5",
+    "slate-500": "#8a8aa3",
+    "slate-950-3": "#20243b",
+    "indigo-600": "#6657df",
+    "white-a85": "#ffffffd9",
+    "mauve-200": "#d8d5ee",
+    "slate-500-2": "#969eb3",
+    "black-a3": "#00000008",
+    "slate-700-2": "#666b83",
+    "neutral-100-2": "#f4f3ff",
+    "indigo-800-a7": "#463cb412",
+    "indigo-700-a15": "#4c3df527",
+    "indigo-700-a9": "#4c3df518",
+    "indigo-700-a40": "#4c3df566",
+    "slate-600": "#777e96",
+    "slate-500-3": "#8a95ad",
+    "slate-400": "#a3abc0",
+    "white-a90": "#ffffffe6",
+    "neutral-300": "#d1d5db",
+    "teal-600": "#348c6d",
+    "white-a40": "#fafaff66",
+    "slate-800": "#56536d",
+    "mauve-600": "#807792",
+    "white-a12": "#ffffff1f",
+    "white-a28": "#ffffff47",
+    "indigo-700-a36": "#4d3df55c",
+    "mauve-500": "#9990b3",
+    "slate-500-4": "#8c9abb",
+    "violet-600-a35": "#8b5cf659",
+    "neutral-200": "#dddfee",
+    "mauve-950": "#2a2440",
+    "indigo-800": "#3a2fd0",
+    "green-600": "#16a34a",
+    "violet-600": "#7c70b0",
+    "slate-800-2": "#475569",
+    "violet-600-2": "#867aab",
+    "white-a18": "#ffffff2e",
+    "violet-600-a85": "#8b5cf6d9",
+    "indigo-700-a70": "#4c3df5b3",
+    "white-a70": "#ffffffb3",
+    "violet-500": "#a59ad6",
+    "violet-500-a40": "#a78bfa66",
+    "mauve-600-2": "#736c8e"
+  },
+  "fonts": {
+    "sans": {
+      "family": "Geist",
+      "measured": "Geist",
+      "free": true,
+      "stack": "\"Geist\", ui-sans-serif, system-ui, sans-serif",
+      "load": "Geist",
+      "source": "Self-hosted",
+      "note": "Geist is free (open licence)."
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "measured": "JetBrains Mono",
+      "free": true,
+      "stack": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, monospace",
+      "load": "JetBrains Mono",
+      "source": "Self-hosted",
+      "note": "JetBrains Mono is free (open licence)."
+    }
+  },
+  "text": {
+    "display": {
+      "size": 72,
+      "lh": 1.05,
+      "ls": -0.035,
+      "weight": "600",
+      "font": "sans",
+      "phone": 40
+    },
+    "h1": {
+      "size": 56,
+      "lh": 1.1,
+      "ls": -0.04,
+      "weight": "500",
+      "font": "sans",
+      "phone": 35.1
+    },
+    "h2": {
+      "size": 44,
+      "lh": 1.1,
+      "ls": -0.028,
+      "weight": "600",
+      "font": "sans"
+    },
+    "h3": {
+      "size": 34,
+      "lh": 1.12,
+      "ls": -0.025,
+      "weight": "600",
+      "font": "sans",
+      "phone": 25
+    },
+    "h4": {
+      "size": 26,
+      "lh": 1.25,
+      "ls": -0.028,
+      "weight": "600",
+      "font": "sans",
+      "phone": 20
+    },
+    "h5": {
+      "size": 19,
+      "lh": 1.25,
+      "ls": -0.02,
+      "weight": "600",
+      "font": "sans"
+    },
+    "body-lg": {
+      "size": 18,
+      "lh": 1.55,
+      "ls": 0,
+      "weight": "400",
+      "font": "sans"
+    },
+    "body": {
+      "size": 15.5,
+      "lh": 1.7,
+      "ls": 0,
+      "weight": "400",
+      "font": "sans"
+    },
+    "body-sm": {
+      "size": 15,
+      "lh": 1.65,
+      "ls": 0,
+      "weight": "400",
+      "font": "sans"
+    },
+    "caption": {
+      "size": 14.5,
+      "lh": 1.6,
+      "ls": 0,
+      "weight": "400",
+      "font": "sans"
+    },
+    "code": {
+      "size": 11,
+      "lh": 1.55,
+      "ls": 0,
+      "weight": "400",
+      "font": "mono"
+    },
+    "overline": {
+      "size": 9.5,
+      "lh": 1.55,
+      "ls": 0.04,
+      "weight": "400",
+      "font": "sans",
+      "transform": "uppercase"
+    }
+  },
+  "space": {
+    "base": 4,
+    "loose": true,
+    "scale": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      28,
+      32
+    ],
+    "section": [
+      80,
+      60
+    ],
+    "sectionPhone": 40
+  },
+  "radius": {
+    "xs": 2,
+    "sm": 4,
+    "md": 6,
+    "lg": 8,
+    "xl": 10,
+    "2xl": 12,
+    "3xl": 20,
+    "full": 9999
+  },
+  "shadow": {
+    "xs": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+    "sm": "rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(70, 60, 180, 0.18) 0px 2px 6px 0px",
+    "md": "rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(185, 128, 24, 0.094) 0px 2px 7px 0px",
+    "lg": "rgba(36, 32, 74, 0.016) 0px 3px 8px 0px",
+    "xl": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+    "2xl": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px",
+    "ring": "rgba(0, 0, 0, 0.03) 0px 0px 0px 1px"
+  },
+  "border": {
+    "width": 1
+  },
+  "container": {
+    "page": 1240,
+    "wide": 1176,
+    "narrow": 760
+  },
+  "breakpoint": {
+    "sm": 521,
+    "md": 641,
+    "lg": 761,
+    "xl": 881,
+    "2xl": 1001
+  },
+  "duration": {
+    "fast": 150,
+    "base": 200,
+    "slow": 800
+  },
+  "ease": {
+    "standard": "ease",
+    "alt-1": "cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "components": {
+    "$comment": "Measured recipes. A colour is a role name from colors (so it follows your edits) or a hex where no role matched. Radius in px or \"full\"; padding [vertical, horizontal].",
+    "buttons": [
+      {
+        "variant": "primary",
+        "label": "Get 14 Days Free",
+        "bg": "primary",
+        "fg": "primary-foreground",
+        "border": null,
+        "radius": 12,
+        "padding": [
+          10,
+          16
+        ],
+        "height": 42,
+        "font": {
+          "size": 14,
+          "weight": 500,
+          "ls": -0.01
+        },
+        "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "hover": {
+          "shadow": "rgba(255, 255, 255, 0.38) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.16) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.14) 0px 3px 5px 0px, rgba(77, 61, 245, 0.4) 0px 7px 16px -6px"
+        }
+      },
+      {
+        "variant": "secondary",
+        "label": "See how it works",
+        "bg": "#ffffff",
+        "fg": "heading",
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "color": "#d8d5ee"
+        },
+        "radius": 14,
+        "padding": [
+          16,
+          27
+        ],
+        "height": 59,
+        "font": {
+          "size": 16,
+          "weight": 500,
+          "ls": -0.01
+        }
+      },
+      {
+        "variant": "subtle",
+        "label": "Book a Demo",
+        "bg": "#ffffff99",
+        "fg": "heading",
+        "border": {
+          "width": 1,
+          "style": "solid",
+          "color": "#d9d4e3"
+        },
+        "radius": 12,
+        "padding": [
+          14,
+          21
+        ],
+        "height": 52,
+        "font": {
+          "size": 14,
+          "weight": 500
+        },
+        "hover": {
+          "bg": "#ffffff"
+        }
+      }
+    ],
+    "card": {
+      "bg": "#ffffff",
+      "on": "background",
+      "border": {
+        "width": 1,
+        "style": "solid",
+        "color": "border"
+      },
+      "radius": 20,
+      "padding": 28,
+      "shadow": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px"
+    },
+    "input": {
+      "bg": "background",
+      "fg": "#1e293b",
+      "placeholder": "#6b7280",
+      "border": {
+        "width": 1,
+        "style": "solid",
+        "color": "#d1d5db"
+      },
+      "radius": 9,
+      "padding": [
+        4,
+        12
+      ],
+      "height": 36,
+      "font": {
+        "size": 14,
+        "weight": 400
+      },
+      "focusShadow": "rgb(77, 61, 245) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+    },
+    "badge": {
+      "label": "L3",
+      "bg": "#ede9fe",
+      "fg": "#7c3aed",
+      "border": null,
+      "radius": 4,
+      "padding": [
+        2,
+        5
+      ],
+      "font": {
+        "size": 9.5,
+        "weight": 600,
+        "ls": 0.02
+      }
+    },
+    "nav": {
+      "bg": null,
+      "height": 69,
+      "position": "sticky",
+      "border": null
+    }
+  }
+}
