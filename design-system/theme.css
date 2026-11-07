@@ -1,4 +1,4 @@
-/* Cruva design tokens as a Tailwind CSS v4 theme (measured from https://cruva.com on 2026-11-07).
+/* TVC Creator OS design tokens as a Tailwind CSS v4 theme (measured from https://cruva.com on 2026-11-07).
    In your main CSS file, after Tailwind:
      @import "tailwindcss";
      @import "./design-system/theme.css";   (adjust the path)
@@ -8,25 +8,32 @@
 
 @theme static {
   /* Colour roles: use these in components */
-  --color-background: #fafaff;
-  --color-text: #1a1a2e;
-  --color-heading: #0b0b18;
-  --color-text-muted: #5b5b73;
-  --color-text-subtle: #8a8aa3;
-  --color-border: #e8e6f5;
+  --color-background: #ffffff;
   --color-surface: #ffffff;
-  --color-primary: #4c3df5;
+  --color-surface-subtle: #f8f6fa;
+  --color-text: #2e2836;
+  --color-heading: #1f1a24;
+  --color-text-muted: #6e6678;
+  --color-text-subtle: #8c8496;
+  --color-border: #ece7f0;
+  --color-primary: #b8336a;
   --color-primary-foreground: #ffffff;
-  --color-link: #4c3df5;
-  --color-focus: #4d3df5;
-  --color-success: #16a34a;
-  --color-surface-inverse: #0b0b18;
+  --color-primary-tint: #fbeff4;
+  --color-accent: #4c3481;
+  --color-accent-tint: #f4eefa;
+  --color-link: #b8336a;
+  --color-focus: #b8336a;
+  --color-success: #2f7a4f;
+  --color-success-tint: #e3f2e8;
+  --color-danger: #b3364f;
+  --color-danger-tint: #fbe4e8;
+  --color-surface-inverse: #1f1a24;
   --color-surface-inverse-foreground: #ffffff;
 
   /* Chart series, in order: the first is the highlight */
-  --color-chart-1: #4c3df5;
-  --color-chart-2: #348c6d;
-  --color-chart-3: #7c70b0;
+  --color-chart-1: #b8336a;
+  --color-chart-2: #4c3481;
+  --color-chart-3: #a99bb5;
 
   /* Palette: every colour measured on the site, by hue and lightness */
   --color-neutral-50: #fafaff;
@@ -79,27 +86,28 @@
   --color-mauve-600-2: #736c8e;
 
   /* Type */
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Montserrat", "Arial Black", ui-sans-serif, system-ui, sans-serif;
   --text-display: 72px;
   --text-display--line-height: 1.05;
-  --text-display--letter-spacing: -0.035em;
+  --text-display--letter-spacing: -0.02em;
   --text-display--font-weight: 600;
   --text-h1: 56px;
   --text-h1--line-height: 1.1;
-  --text-h1--letter-spacing: -0.04em;
-  --text-h1--font-weight: 500;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 600;
   --text-h2: 44px;
   --text-h2--line-height: 1.1;
-  --text-h2--letter-spacing: -0.028em;
+  --text-h2--letter-spacing: -0.02em;
   --text-h2--font-weight: 600;
   --text-h3: 34px;
   --text-h3--line-height: 1.12;
-  --text-h3--letter-spacing: -0.025em;
+  --text-h3--letter-spacing: -0.02em;
   --text-h3--font-weight: 600;
   --text-h4: 26px;
   --text-h4--line-height: 1.25;
-  --text-h4--letter-spacing: -0.028em;
+  --text-h4--letter-spacing: -0.02em;
   --text-h4--font-weight: 600;
   --text-h5: 19px;
   --text-h5--line-height: 1.25;
@@ -158,11 +166,11 @@
   --radius-3xl: 20px;
   --radius-full: 9999px;
   --shadow-xs: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  --shadow-sm: rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(70, 60, 180, 0.18) 0px 2px 6px 0px;
-  --shadow-md: rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(185, 128, 24, 0.094) 0px 2px 7px 0px;
+  --shadow-sm: rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(76, 52, 129, 0.18) 0px 2px 6px 0px;
+  --shadow-md: rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(76, 52, 129, 0.094) 0px 2px 7px 0px;
   --shadow-lg: rgba(36, 32, 74, 0.016) 0px 3px 8px 0px;
-  --shadow-xl: rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px;
-  --shadow-2xl: rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px;
+  --shadow-xl: rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(184, 51, 106, 0.12) 0px 2px 3px 0px, rgba(184, 51, 106, 0.36) 0px 5px 12px -5px;
+  --shadow-2xl: rgba(76, 52, 129, 0.07) 0px 6px 20px 0px, rgba(76, 52, 129, 0.05) 0px 2px 6px 0px;
   --shadow-ring: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
   --border-width: 1px;
 

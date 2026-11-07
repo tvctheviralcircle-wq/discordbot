@@ -1,27 +1,34 @@
 {
-  "$comment": "Measured from https://cruva.com on 2026-11-07. Edit names or values here, then run extract.mjs --rebuild to regenerate tokens.css, theme.css, tokens.json and preview.html.",
-  "name": "Cruva",
+  "$comment": "TVC Creator OS design system. Structure (type scale, spacing, radii scale, layout, dashboard patterns) measured from cruva.com and its logged-in dashboard (screenshot, 2026-11-07); identity (colours, fonts, buttons, flat white look) is TVC's own, from the Creator OS.",
+  "name": "TVC Creator OS",
   "source": "https://cruva.com",
   "colors": {
-    "background": "#fafaff",
-    "text": "#1a1a2e",
-    "heading": "#0b0b18",
-    "text-muted": "#5b5b73",
-    "text-subtle": "#8a8aa3",
-    "border": "#e8e6f5",
+    "background": "#ffffff",
     "surface": "#ffffff",
-    "primary": "#4c3df5",
+    "surface-subtle": "#f8f6fa",
+    "text": "#2e2836",
+    "heading": "#1f1a24",
+    "text-muted": "#6e6678",
+    "text-subtle": "#8c8496",
+    "border": "#ece7f0",
+    "primary": "#b8336a",
     "primary-foreground": "#ffffff",
-    "link": "#4c3df5",
-    "focus": "#4d3df5",
-    "success": "#16a34a",
-    "surface-inverse": "#0b0b18",
+    "primary-tint": "#fbeff4",
+    "accent": "#4c3481",
+    "accent-tint": "#f4eefa",
+    "link": "#b8336a",
+    "focus": "#b8336a",
+    "success": "#2f7a4f",
+    "success-tint": "#e3f2e8",
+    "danger": "#b3364f",
+    "danger-tint": "#fbe4e8",
+    "surface-inverse": "#1f1a24",
     "surface-inverse-foreground": "#ffffff"
   },
   "chart": [
-    "#4c3df5",
-    "#348c6d",
-    "#7c70b0"
+    "#b8336a",
+    "#4c3481",
+    "#a99bb5"
   ],
   "dark": null,
   "palette": {
@@ -76,13 +83,13 @@
   },
   "fonts": {
     "sans": {
-      "family": "Geist",
-      "measured": "Geist",
+      "family": "Poppins",
+      "measured": "Geist on cruva.com; replaced by TVC's Poppins",
       "free": true,
-      "stack": "\"Geist\", ui-sans-serif, system-ui, sans-serif",
-      "load": "Geist",
-      "source": "Self-hosted",
-      "note": "Geist is free (open licence)."
+      "stack": "\"Poppins\", ui-sans-serif, system-ui, sans-serif",
+      "load": "Poppins",
+      "source": "Google Fonts",
+      "note": "TVC brand font for body text (open licence)."
     },
     "mono": {
       "family": "JetBrains Mono",
@@ -92,46 +99,55 @@
       "load": "JetBrains Mono",
       "source": "Self-hosted",
       "note": "JetBrains Mono is free (open licence)."
+    },
+    "display": {
+      "family": "Montserrat",
+      "measured": "Montserrat (TVC brand, not measured)",
+      "free": true,
+      "stack": "\"Montserrat\", \"Arial Black\", ui-sans-serif, system-ui, sans-serif",
+      "load": "Montserrat",
+      "source": "Google Fonts",
+      "note": "TVC brand font for headings (open licence)."
     }
   },
   "text": {
     "display": {
       "size": 72,
       "lh": 1.05,
-      "ls": -0.035,
+      "ls": -0.02,
       "weight": "600",
-      "font": "sans",
+      "font": "display",
       "phone": 40
     },
     "h1": {
       "size": 56,
       "lh": 1.1,
-      "ls": -0.04,
-      "weight": "500",
-      "font": "sans",
+      "ls": -0.02,
+      "weight": "600",
+      "font": "display",
       "phone": 35.1
     },
     "h2": {
       "size": 44,
       "lh": 1.1,
-      "ls": -0.028,
+      "ls": -0.02,
       "weight": "600",
-      "font": "sans"
+      "font": "display"
     },
     "h3": {
       "size": 34,
       "lh": 1.12,
-      "ls": -0.025,
+      "ls": -0.02,
       "weight": "600",
-      "font": "sans",
+      "font": "display",
       "phone": 25
     },
     "h4": {
       "size": 26,
       "lh": 1.25,
-      "ls": -0.028,
+      "ls": -0.02,
       "weight": "600",
-      "font": "sans",
+      "font": "display",
       "phone": 20
     },
     "h5": {
@@ -139,7 +155,7 @@
       "lh": 1.25,
       "ls": -0.02,
       "weight": "600",
-      "font": "sans"
+      "font": "display"
     },
     "body-lg": {
       "size": 18,
@@ -226,11 +242,11 @@
   },
   "shadow": {
     "xs": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
-    "sm": "rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(70, 60, 180, 0.18) 0px 2px 6px 0px",
-    "md": "rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(185, 128, 24, 0.094) 0px 2px 7px 0px",
+    "sm": "rgba(255, 255, 255, 0.9) 0px 0px 0px 2px, rgba(76, 52, 129, 0.18) 0px 2px 6px 0px",
+    "md": "rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset, rgba(76, 52, 129, 0.094) 0px 2px 7px 0px",
     "lg": "rgba(36, 32, 74, 0.016) 0px 3px 8px 0px",
-    "xl": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
-    "2xl": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px",
+    "xl": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(184, 51, 106, 0.12) 0px 2px 3px 0px, rgba(184, 51, 106, 0.36) 0px 5px 12px -5px",
+    "2xl": "rgba(76, 52, 129, 0.07) 0px 6px 20px 0px, rgba(76, 52, 129, 0.05) 0px 2px 6px 0px",
     "ring": "rgba(0, 0, 0, 0.03) 0px 0px 0px 1px"
   },
   "border": {
@@ -262,120 +278,119 @@
     "buttons": [
       {
         "variant": "primary",
-        "label": "Get 14 Days Free",
+        "label": "Approve & Post",
         "bg": "primary",
         "fg": "primary-foreground",
         "border": null,
-        "radius": 12,
+        "radius": 10,
         "padding": [
           10,
-          16
+          18
         ],
-        "height": 42,
+        "height": 40,
         "font": {
           "size": 14,
-          "weight": 500,
-          "ls": -0.01
+          "weight": 600,
+          "ls": 0
         },
-        "shadow": "rgba(255, 255, 255, 0.28) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.12) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.12) 0px 2px 3px 0px, rgba(77, 61, 245, 0.36) 0px 5px 12px -5px",
+        "shadow": null,
         "hover": {
-          "shadow": "rgba(255, 255, 255, 0.38) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.16) 0px 0px 0px 1px inset, rgba(77, 61, 245, 0.14) 0px 3px 5px 0px, rgba(77, 61, 245, 0.4) 0px 7px 16px -6px"
+          "bg": "#a32c5d"
         }
       },
       {
         "variant": "secondary",
-        "label": "See how it works",
-        "bg": "#ffffff",
+        "label": "Generate Report",
+        "bg": "surface",
         "fg": "heading",
         "border": {
           "width": 1,
           "style": "solid",
-          "color": "#d8d5ee"
+          "color": "border"
         },
-        "radius": 14,
+        "radius": 10,
         "padding": [
-          16,
-          27
+          10,
+          16
         ],
-        "height": 59,
+        "height": 40,
         "font": {
-          "size": 16,
-          "weight": 500,
-          "ls": -0.01
+          "size": 14,
+          "weight": 600,
+          "ls": 0
+        },
+        "hover": {
+          "bg": "surface-subtle"
         }
       },
       {
         "variant": "subtle",
-        "label": "Book a Demo",
-        "bg": "#ffffff99",
-        "fg": "heading",
-        "border": {
-          "width": 1,
-          "style": "solid",
-          "color": "#d9d4e3"
-        },
-        "radius": 12,
+        "label": "Settings",
+        "bg": "accent-tint",
+        "fg": "accent",
+        "border": null,
+        "radius": 10,
         "padding": [
-          14,
-          21
+          8,
+          14
         ],
-        "height": 52,
+        "height": 36,
         "font": {
-          "size": 14,
-          "weight": 500
+          "size": 13,
+          "weight": 600
         },
         "hover": {
-          "bg": "#ffffff"
+          "bg": "#ebe2f6"
         }
       }
     ],
     "card": {
-      "bg": "#ffffff",
+      "bg": "surface",
       "on": "background",
       "border": {
         "width": 1,
         "style": "solid",
         "color": "border"
       },
-      "radius": 20,
-      "padding": 28,
-      "shadow": "rgba(70, 60, 180, 0.07) 0px 6px 20px 0px, rgba(70, 60, 180, 0.05) 0px 2px 6px 0px"
+      "radius": 14,
+      "padding": 20,
+      "shadow": null
     },
     "input": {
-      "bg": "background",
-      "fg": "#1e293b",
-      "placeholder": "#6b7280",
+      "bg": "surface",
+      "fg": "text",
+      "placeholder": "text-subtle",
       "border": {
         "width": 1,
         "style": "solid",
-        "color": "#d1d5db"
+        "color": "border"
       },
-      "radius": 9,
+      "radius": 10,
       "padding": [
         4,
         12
       ],
-      "height": 36,
+      "height": 40,
       "font": {
         "size": 14,
         "weight": 400
       },
-      "focusShadow": "rgb(77, 61, 245) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+      "focusShadow": "rgb(184, 51, 106) 0px 0px 0px 2px"
     },
     "badge": {
-      "label": "L3",
-      "bg": "#ede9fe",
-      "fg": "#7c3aed",
+      "label": "Allowlisted",
+      "bg": "accent-tint",
+      "fg": "accent",
       "border": null,
-      "radius": 4,
+      "radius": "full",
       "padding": [
-        2,
-        5
+        3,
+        10
       ],
       "font": {
-        "size": 9.5,
-        "weight": 600,
-        "ls": 0.02
+        "size": 12,
+        "weight": 500,
+        "ls": 0
       }
     },
     "nav": {
