@@ -870,7 +870,7 @@ const draftMsgs = (d) => (Array.isArray(d.messages) && d.messages.length ? d.mes
 const STATUS = { pending: ["Waiting", ""], working: ["Being built", ""], posting: ["Posting…", ""], posted: ["Posted", "good"], approved: ["Approved", "good"], rejected: ["Rejected", "line"], replaced: ["Regenerated", "line"], failed: ["Failed", "bad"] };
 function renderApprovals(v) {
   const pend = state.drafts.filter((d) => d.status === "pending" || d.status === "posting"), done = state.drafts.filter((d) => !["pending", "posting"].includes(d.status));
-  v.innerHTML = heroHTML("Approvals", "Nothing goes out unapproved", "Drafts are built by the same skills that post your real automations, in the finalized format. Approve & Post sends them through your bot, then reacts 🔥 🤍 🚀 📈.") + `
+  v.innerHTML = heroHTML("Approvals", "Nothing goes out unapproved", "Drafts are built by the same skills your scheduled automations use, in the finalized format. Approve & Post sends them through your bot, then reacts 🔥 🤍 🚀 📈.") + `
     <div class="grid">
       <section class="card"><div class="head"><h2>Waiting on you</h2><span class="pill">${pend.length}</span></div>
         ${(state.building || []).map((r) => `<div class="drafting" style="margin-bottom:12px"><span class="ndisc" style="width:28px;height:28px;font-size:11px">…</span><span><b>${esc((AUTOS.find((a) => a.key === r.automation) || {}).name || "Draft")}</b><span class="muted" style="display:block">Claude is building it with the real skill · asked ${esc(fmtTime(r.at))}</span></span></div>`).join("")}
