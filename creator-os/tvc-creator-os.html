@@ -1,6 +1,6 @@
 <title>TVC Creator OS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,600&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
 /* Layout: black sticker rail on the left (brand + nav), cream/night workspace on the right with one sticker headline per view. */
 :root {
@@ -247,6 +247,60 @@ h3 { font: 600 13px var(--display); }
 .callout .disc { background: var(--tint); color: var(--indigo); }
 th button[aria-sort] { color: var(--accent); }
 .toast { background: var(--ink); color: var(--bg); }
+/* ===== TVC Creator OS design system (DESIGN.md · design-system/tokens.css) =====
+   Structure measured from cruva.com; identity is TVC's own. Same token names as tokens.css. */
+:root, :root[data-theme="dark"] {
+  --color-background: #ffffff; --color-surface: #ffffff; --color-surface-subtle: #f8f6fa;
+  --color-text: #2e2836; --color-heading: #1f1a24; --color-text-muted: #6e6678; --color-text-subtle: #8c8496;
+  --color-border: #ece7f0; --color-primary: #b8336a; --color-primary-hover: #a32c5d; --color-primary-tint: #fbeff4;
+  --color-accent: #4c3481; --color-accent-tint: #f4eefa; --color-success: #2f7a4f; --color-success-tint: #e3f2e8;
+  --color-danger: #b3364f; --color-danger-tint: #fbe4e8; --color-surface-inverse: #1f1a24;
+  --font-display: "Montserrat", "Arial Black", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-control: 10px; --radius-card: 14px;
+  --shadow-float: 0 6px 20px rgba(76, 52, 129, .07), 0 2px 6px rgba(76, 52, 129, .05);
+  /* map onto the page's existing variables */
+  --bg: var(--color-background); --card: var(--color-surface); --soft: var(--color-surface-subtle);
+  --ink: var(--color-heading); --muted: var(--color-text-muted); --line: var(--color-border);
+  --accent: var(--color-primary); --indigo: var(--color-accent); --blush: var(--color-primary-tint); --tint: var(--color-accent-tint);
+  --up: var(--color-success); --up-bg: var(--color-success-tint); --down: var(--color-danger); --down-bg: var(--color-danger-tint);
+  --s1: var(--color-primary); --s2: var(--color-accent);
+  --display: var(--font-display); --body: var(--font-sans); --shadow: none;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #ffffff; --card: #ffffff; --soft: #f8f6fa; --ink: #1f1a24; --muted: #6e6678; --line: #ece7f0;
+  --accent: #b8336a; --indigo: #4c3481; --blush: #fbeff4; --tint: #f4eefa; --s1: #b8336a; --s2: #4c3481;
+  --up: #2f7a4f; --up-bg: #e3f2e8; --down: #b3364f; --down-bg: #fbe4e8; --shadow: none; color-scheme: light; } }
+body { color: var(--color-text); font-family: var(--font-sans); }
+h1, h2, h3, .sticker, .big { color: var(--color-heading); }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+/* Figures that are the point of a block: JetBrains Mono, tabular. */
+.kpi .v { font: 600 24px/1.15 var(--font-mono); letter-spacing: -.01em; font-variant-numeric: tabular-nums; color: var(--color-heading); }
+.num { font: 600 14px var(--font-mono); font-variant-numeric: tabular-nums; }
+.kpi .l { color: var(--color-text-muted); font-size: 12px; }
+/* Buttons: flat, 10px, one rose action per view. */
+.btn { border-radius: var(--radius-control); box-shadow: none; }
+.btn.primary { background: var(--color-primary); }
+.btn.primary:hover { background: var(--color-primary-hover); filter: none; }
+.btn:not(.primary):not(.ghost):hover { background: var(--color-surface-subtle); border-color: var(--color-border); }
+/* Cards: hairline, 14px, no shadow. Only floating things get a shadow. */
+.card, .kpis { border-radius: var(--radius-card); box-shadow: none; }
+.toast { background: var(--color-surface-inverse); box-shadow: var(--shadow-float); }
+.tip { box-shadow: var(--shadow-float); }
+/* Inputs: hairline, 10px, rose focus. */
+input[type=date], input[type=text], input[type=search], input[type=number], input[type=time], select, textarea { border-color: var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 0; }
+/* Rows hover with a colour change, never a lift. */
+tr.clk:hover td, .rows > a:hover { background: var(--color-surface-subtle); }
+/* Change chips and pills. */
+.chg { border-radius: 999px; }
+.pill { border-radius: 999px; font-weight: 500; }
+/* Charts: rose highlight, indigo second series, hairline grid. */
+svg line[stroke="var(--line)"] { stroke: var(--color-border); }
+/* KPI grid: hairline dividers on each card, so an unfilled last row stays white. */
+.kpis { gap: 0; background: var(--color-surface); border: 1px solid var(--color-border); overflow: hidden; }
+.kpi { background: transparent; box-shadow: 1px 0 0 var(--color-border), 0 1px 0 var(--color-border); }
 </style>
 
 <div class="app">
