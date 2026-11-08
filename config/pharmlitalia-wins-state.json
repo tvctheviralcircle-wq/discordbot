@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 326,
+   "units_sold": 328,
    "handled": [
     1,
     3,
@@ -19,7 +19,7 @@
    ]
   },
   "anyer_soy_yo": {
-   "units_sold": 299,
+   "units_sold": 300,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 53,
+   "units_sold": 54,
    "handled": [
     1,
     3,
@@ -95,7 +95,7 @@
    ]
   },
   "rick_roxy": {
-   "units_sold": 25,
+   "units_sold": 26,
    "handled": [
     1,
     3,
@@ -554,7 +554,7 @@
    ]
   },
   "patys.plata": {
-   "units_sold": 1,
+   "units_sold": 2,
    "handled": [
     1
    ]
@@ -633,7 +633,7 @@
    ]
   },
   "sonia_castillo22": {
-   "units_sold": 1,
+   "units_sold": 2,
    "handled": [
     1
    ]
@@ -1006,5 +1006,5 @@
    ]
   }
  },
- "last_check": "2026-11-07"
+ "last_check": "2026-11-08"
 }
