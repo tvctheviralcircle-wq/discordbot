@@ -1,16 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "weekly_leaderboard",
-   "week": "2026-11-01..2026-11-07",
-   "approval_message_id": "1569467837091811500",
-   "destination": "1550255413558116492",
-   "final_text": "@here\n# 🏆 WEEKLY TOP CREATORS\n**Sun Nov 1 – Sat Nov 7**\n🥇 @ligia.aguilera · **$251.34**\n🥈 @salonby_yunisbel · **$111.40**\n🥉 @rick_roxy · **$102.44**\n4. @anyer_soy_yo <@1541833943613972512> · **$74.19**\n5. @yamihena · **$63.98**\n\nmassive congrats to this week's top 5 :)) drop some love for them below 🎉",
-   "card": "/home/user/discordbot/drafts/2026-11-09/leaderboard.png",
-   "os_draft_id": "leaderboard-2026-11-01",
-   "drafted": "2026-11-09T21:50Z"
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -99,6 +88,12 @@
    "creator": "megantiktokaf",
    "approved_by": "moazzam.golra",
    "destination_first_message_id": "1569432362511769700"
+  },
+  {
+   "automation": "weekly_leaderboard",
+   "week": "2026-11-01..2026-11-07",
+   "approved_by": "moazzam.golra (mod chat) + Creator OS",
+   "destination_message_id": "1569477222924812459"
   }
  ],
  "notes": [
