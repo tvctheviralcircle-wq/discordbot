@@ -1,26 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "viral_hooks_and_angles",
-   "week": "2026-11-01..2026-11-07",
-   "rank": 1,
-   "video": "7702989009793993998",
-   "creator": "megantiktokaf",
-   "views": 13600,
-   "approval_message_ids": [
-    "1569423546856513566",
-    "1569423547875594304"
-   ],
-   "destination": "1534655536602026164",
-   "final_texts": [
-    "@here\n# 🔥 VIRAL ANGLE OF THE WEEK (#1)\n**Anti-dandruff · Sun Nov 1 – Sat Nov 7**\n**13.6K views** · @megantiktokaf · Nizoral 1% Ketoconazole Shampoo\nhttps://www.tiktok.com/@megantiktokaf/video/7702989009793993998",
-    "# 🎣 THE HOOK: \"Dr. Groot or medicub? What do you recommend best?\"\n-# a viewer's comment, on screen in second 1, that she replies to\nShe opens on camera answering a real question, with before/after scalp photos up in the first second. 13.6K views and 50 comments on an 11-minute video.\n**1- She answers a question people already have:**\nReplying to a comment means the video starts where the viewer's head already is.\n**2- Credibility before the product:**\nA lab set, her diploma, a microscope, and \"From a clinical lab scientist (This post is not sponsored)\" on screen.\n**3- The cause before the product:**\nShe shows a dish of fungus first, then brings out the ketoconazole shampoo. The why sells the what.\n**4- Long on purpose:**\n\"Hold here for 2X speed looooong video…\" Depth builds trust, and the comments prove it.\n# 🚀 MAKE IT WORK FOR OUR KETO BUNDLE\nOur buyer has tried every shampoo on the shelf and wants to know why nothing stuck.\n**1- Reply to a real comment, bundle in hand:**\n\"Most dandruff isn't dry skin. It's fungal. And that's exactly why nothing works.\"\n-# (ES: \"La mayoría de la caspa no es piel seca. Es por hongos. Por eso nada funciona.\")\n**2- Explain the cause, then show the routine:**\nOne line on the fungus, then shampoo on the scalp, leave 2–3 min. Conditioner. Scalp spray on the itchy spots.\n**3- Why it's different, in one line:**\n\"'Anti-dandruff' isn't the same as antifungal. That's a big difference.\"\n-# (ES: \"'Anticaspa' no es lo mismo que antifúngico. Esa es la gran diferencia.\")\n**4- 2–3 benefits, plain words:**\nreduces visible flakes · calms my scalp · gentle enough for regular use\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ On-brief:** product visible early, bottle open and used · \"calms\"/\"reduces flakes\", never \"cures\"/\"treats\" · no \"100% gone\" · no prices · no other brand names"
-   ],
-   "os_draft_id": "viral_hooks-2026-11-01-1",
-   "drafted": "2026-11-09T18:55Z",
-   "note": "No Cruva AI analysis or transcript; quotes are on-screen text only."
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -100,6 +79,15 @@
    "creator": "ligia.aguilera",
    "approved_by": "moazzam.golra (mod chat) + Creator OS",
    "destination_first_message_id": "1569406528018980984"
+  },
+  {
+   "automation": "viral_hooks_and_angles",
+   "week": "2026-11-01..2026-11-07",
+   "rank": 1,
+   "video": "7702989009793993998",
+   "creator": "megantiktokaf",
+   "approved_by": "moazzam.golra",
+   "destination_first_message_id": "1569432362511769700"
   }
  ],
  "notes": [
