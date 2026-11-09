@@ -1,33 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "viral_hooks_and_angles",
-   "week": "2026-10-25..2026-10-31",
-   "rank": 2,
-   "video": "7700743113140227341",
-   "creator": "nishammabo",
-   "views": 44600,
-   "approval_message_ids": [
-    "1567973908416696440",
-    "1567973909565800519"
-   ],
-   "drafted": "2026-11-05T18:50Z",
-   "note": "No Cruva AI analysis or transcript; hook described from screenshots, no quotes from the video.",
-   "os_draft_id": "viral_hooks-2026-10-25-2"
-  },
-  {
-   "automation": "creator_wins",
-   "creator": "lala__cubilla",
-   "milestone": 3,
-   "linked_discord": false,
-   "approval_message_id": "1568365529905766514",
-   "destination": "1533831170108952596",
-   "final_text": "@lala__cubilla just hit their 3rd sale!! the sales are starting to stack up and we're so here for it 🎉",
-   "card": "drafts/2026-11-06/win-lala__cubilla-3.png",
-   "os_draft_id": "wins-lala__cubilla-3",
-   "drafted": "2026-11-06T20:46Z"
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -91,6 +63,13 @@
    "milestone": 3,
    "approved_by": "moazzam.golra",
    "destination_message_id": "1568004470691074128"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "lala__cubilla",
+   "milestone": 3,
+   "approved_by": "moazzam.golra (mod chat) + Creator OS",
+   "destination_message_id": "1569404338806325248"
   }
  ],
  "notes": [
@@ -99,6 +78,13 @@
    "automation": "viral_hooks_and_angles",
    "week": "2026-10-25..2026-10-31",
    "note": "Monday #1 skipped: no Oct 25-31 candidates had Cruva AI analysis yet. Retry Tue (#1), Wed (#2), one-off Thu Nov 5 (#3)."
+  },
+  {
+   "date": "2026-11-09",
+   "automation": "viral_hooks_and_angles",
+   "week": "2026-10-25..2026-10-31",
+   "rank": 2,
+   "note": "Rejected in Creator OS on 2026-11-06; not posted."
   }
  ]
 }
