@@ -1,32 +1,5 @@
 {
- "pending": [
-  {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-11-01..2026-11-07",
-   "rank": 2,
-   "video": "7675869402457263374",
-   "creator": "salonby_yunisbel",
-   "linked_discord": false,
-   "approval_message_ids": [
-    "1569754603648450734",
-    "1569754609130537031",
-    "1569754611911368884",
-    "1569754614520090685"
-   ],
-   "destination": "1533830710937256087",
-   "final_texts": [
-    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 1 – Sat Nov 7**\n**#2 video by GMV:** @salonby_yunisbel\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@salonby_yunisbel/video/7675869402457263374",
-    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Cut the question to five words:**\n\"¿Picazón y caspa? Escucha esto.\"\n-# (Itching and dandruff? Listen to this.)\n**2- Answer in the same breath, product in hand:**\n\"Este es el champú que yo recomiendo.\"\n-# (This is the shampoo I recommend.)\n**3- Say why you're the one to trust:**\nStylist, barber, or someone who's dealt with it for years. One line.\n**4- Show what's in the box, fast:**\nShampoo, conditioner, scalp spray. Three seconds, not thirty.\n**5- One pro tip, then the cart:**\n\"Déjalo de 2 a 3 minutos. Te lo dejo en el carrito naranja.\"\n-# (Leave it 2 to 3 minutes. I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\n5-word question · Instant answer · Your credibility · Quick unbox · Tip + cart\n\n**77% swiped before the answer. Get to it in second 2 and the brand can scale your video.**"
-   ],
-   "cards": [
-    "/home/user/discordbot/drafts/2026-11-10/winning-angle-2-card1.png",
-    "/home/user/discordbot/drafts/2026-11-10/winning-angle-2-card2.png"
-   ],
-   "os_draft_id": "winning_content-2026-11-01-2",
-   "drafted": "2026-11-10T16:55Z",
-   "note": "Same video as Oct 25-31 #3; mods can say skip."
-  }
- ],
+ "pending": [],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
@@ -121,6 +94,15 @@
    "week": "2026-11-01..2026-11-07",
    "approved_by": "moazzam.golra (mod chat) + Creator OS",
    "destination_message_id": "1569477222924812459"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-11-01..2026-11-07",
+   "rank": 2,
+   "video": "7675869402457263374",
+   "creator": "salonby_yunisbel",
+   "approved_by": "Creator OS",
+   "destination_first_message_id": "1569757397746978907"
   }
  ],
  "notes": [
