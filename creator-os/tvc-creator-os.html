@@ -358,17 +358,17 @@ const dateList = (a, b) => { const out = []; for (let d = a; d <= b; d = ymd(add
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const AUTOS = [
-  { key: "general_chat", n: "01", name: "General chat manager", what: "Replies to messages in the channel in the community lead’s voice. Risky topics go to mods.", hint: ["general-chat", "general"],
+  { key: "general_chat", n: "01", name: "General chat manager", what: "Replies in the community lead’s voice. Flags risky topics.", hint: ["general-chat", "general"],
     defaults: { mode: "flag", replyTo: "all", dailyCap: 300, escalate: "refunds, missing commission, payment, complaints, legal, medical claims", quietStart: "", quietEnd: "" } },
-  { key: "viral_hooks", n: "02", name: "Viral hooks & angles", skill: "discord-tvc-viral-hooks-and-angles", what: "The #1, #2 and #3 most-viewed relevant market videos from last Sun–Sat, one a day: why the hook worked and how to remake it for the Keto Bundle.", hint: ["viral-hooks", "viral"],
+  { key: "viral_hooks", n: "02", name: "Viral hooks & angles", skill: "discord-tvc-viral-hooks-and-angles", what: "Top 3 market videos of the week and how to remake them.", hint: ["viral-hooks", "viral"],
     defaults: { mode: "manual", days: ["Mon", "Tue", "Wed"], time: "14:00", lookback: 7, count: 1, everyone: true } },
-  { key: "winning_content", n: "03", name: "Winning angle of the week", skill: "tvc-discord-community-weekly-angle-of-the-week", what: "Last week’s top 3 videos by GMV, one per day: numbers card, script card with translations, how to replicate it for max ad spend.", hint: ["winning-angles", "winning"],
+  { key: "winning_content", n: "03", name: "Winning angle of the week", skill: "tvc-discord-community-weekly-angle-of-the-week", what: "Last week’s top 3 videos by GMV, with remake guides.", hint: ["winning-angles", "winning"],
     defaults: { mode: "manual", days: ["Mon", "Tue", "Wed"], time: "12:00", count: 3, tagCreator: true, everyone: true, parts: ["Video post", "Numbers card", "Script card", "How to replicate"] } },
-  { key: "wins", n: "04", name: "Creator wins", skill: "discord-tvc-creator-wins", what: "A milestone card and hype message the first time a creator reaches their lifetime 1st, 3rd, 10th, 30th or 50th sale. Tags only the creator.", hint: ["share-wins", "wins"],
+  { key: "wins", n: "04", name: "Creator wins", skill: "discord-tvc-creator-wins", what: "Celebrates 1st, 3rd, 10th, 30th and 50th sales.", hint: ["share-wins", "wins"],
     defaults: { mode: "manual", thresholds: "1, 3, 10, 30, 50", checkEvery: 1440, time: "16:00", tagCreator: true, graphic: true, handleFallback: true } },
-  { key: "leaderboard", n: "05", name: "Weekly leaderboard", skill: "discord-tvc-weekly-leaderboard", what: "Monday podium card: top 5 creators by GMV for last Sun–Sat, posted with @here.", hint: ["leaderboard"],
+  { key: "leaderboard", n: "05", name: "Weekly leaderboard", skill: "discord-tvc-weekly-leaderboard", what: "Top 5 creators by GMV, every Monday.", hint: ["leaderboard"],
     defaults: { mode: "manual", days: ["Mon"], time: "17:00", topN: 5, metric: "GMV", tagCreators: true, everyone: true } },
-  { key: "onboarding", n: "06", name: "Creator onboarding", what: "DMs each new member your questions, links their TikTok handle and saves the answers.", hint: ["welcome", "introductions"],
+  { key: "onboarding", n: "06", name: "Creator onboarding", what: "DMs new members and links their TikTok.", hint: ["welcome", "introductions"],
     defaults: { mode: "flag", linkFirst: true, reminderHours: 24, maxReminders: 1, fallback: "private-channel" } }
 ];
 const MODE_LABEL = { auto: "Auto", flag: "Auto with flagging", manual: "Manual approval" };
@@ -554,7 +554,7 @@ function render() {
   const v = $("#view");
   if (!state.booted) { v.innerHTML = `<div class="card">${skel(6)}</div>`; return; }
   if (state.tab === "welcome" || !(state.ws && state.ws.done)) { if (state.tab !== "welcome" && !(state.ws && state.ws.done)) { state.tab = "welcome"; } return renderWizard(v); }
-  if (["overview", "content", "community"].includes(state.tab) && (!state.mcp || !state.shop)) { v.innerHTML = heroHTML("Live data", "Connect Cruva to see this", "") + `<div class="err">Cruva isn’t reachable. Add Cruva in claude.ai Settings → Connectors, allow it for this page, then press Refresh.</div>`; return; }
+  if (["overview", "content", "community"].includes(state.tab) && (!state.mcp || !state.shop)) { v.innerHTML = heroHTML("Live data", "Connect Cruva", "") + `<div class="err">Cruva isn’t connected. Add it in Settings → Connectors, then refresh.</div>`; return; }
   if (!gid() && ["automations", "approvals", "onboarding", "setup"].includes(state.tab)) { location.hash = "#welcome"; return; }
   ({ overview: renderOverview, content: renderContent, community: renderCommunity, automations: renderAutomations, approvals: renderApprovals, onboarding: renderOnboarding, setup: renderSetup })[state.tab](v);
 }
@@ -565,13 +565,13 @@ function renderWizard(v) {
   const step = state.wizStep; const g = state.guild; const ws = state.ws || {};
   const s1 = !!g, s2 = !!(state.allow && state.allow.channels && state.allow.channels.length && ws.channelsDone), s3 = !!ws.shopId;
   const st = (n, done, label, sub) => `<div class="step ${step === n ? "now" : done ? "done" : "todo"}"><span class="ndisc">${done && step !== n ? "✓" : "0" + n}</span><div><b>${label}</b><div class="muted">${sub}</div></div></div>`;
-  v.innerHTML = heroHTML("Setup · 3 steps", "Let’s get your bot live", "Add the bot to your server, give each automation a channel, then connect Cruva for the numbers.") +
+  v.innerHTML = heroHTML("Setup", "Get started", "") +
     `<div class="wiz"><div class="steps">${st(1, s1, "Add the Discord bot", s1 ? esc(g.guildName) : "Install it in your server")}${st(2, s2, "Assign channels", s2 ? `${state.allow.channels.length} channels allowed` : "One channel per automation")}${st(3, s3, "Connect Cruva", s3 ? esc((state.shops.find((s) => s.id === ws.shopId) || {}).name || "Connected") : "Pick the brand to pull data from")}</div>
     <section class="card" id="wizBody" style="grid-column: span 2; min-width: 0"></section></div>`;
   const body = $("#wizBody");
   if (step === 1) {
-    body.innerHTML = `<p class="big">Add the community bot to your Discord server</p>
-      <p class="muted" style="font-size:14px">Discord opens in a new tab. Pick your server and approve the permissions: view channels, send messages, embed links, attach files, read history, add reactions, mention @everyone and manage channels.</p>
+    body.innerHTML = `<p class="big">Add the bot to Discord</p>
+      
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0"><a class="btn primary" href="${INSTALL_URL}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;text-decoration:none">Add To Discord ↗</a><button class="btn" id="w-check">I’ve Added It, Find My Server</button></div>
       <h3 style="margin-top:18px">Servers the bot is in</h3>
       ${state.guilds.length ? `<div class="rows">${state.guilds.map((x) => `<div><span class="disc" style="width:34px;height:34px;font-size:11px" aria-hidden="true">${esc(x.guildName.slice(0, 2).toUpperCase())}</span><span class="grow"><b>${esc(x.guildName)}</b><span class="muted">${x.channels.length} text channels · checked ${esc(fmtTime(x.syncedAt))}</span></span><button class="btn sm ${gid() === x.guildId ? "primary" : ""}" data-g="${esc(x.guildId)}">${gid() === x.guildId ? "Selected" : "Use This Server"}</button></div>`).join("")}</div>` : '<div class="empty"><b>No servers found yet</b>Add the bot, then press “Find my server”.</div>'}
@@ -580,10 +580,10 @@ function renderWizard(v) {
     $$("[data-g]", body).forEach((b) => b.addEventListener("click", async () => { state.ws = { ...state.ws, guildId: b.dataset.g }; if (await putDoc("workspace/main", state.ws)) { await loadWorkspace(); renderWizard(v); } }));
     $("#w-next").addEventListener("click", () => { state.wizStep = 2; renderWizard(v); });
   } else if (step === 2) {
-    body.innerHTML = `<p class="big">Which channel does each automation post in?</p>
-      <p class="muted" style="font-size:14px">These come straight from ${esc(g ? g.guildName : "your server")}. Every channel you pick is added to the bot’s allowlist with its ID.</p>
+    body.innerHTML = `<p class="big">Choose channels</p>
+      
       <div>${AUTOS.map((a) => `<div class="maprow"><div><b>${esc(a.name)}</b><div class="muted">${esc(a.what)}</div></div>${chanSelect("w-" + a.key, state.autos[a.key].channel, true)}</div>`).join("")}
-      <div class="maprow"><div><b>Mod channel</b><div class="muted">Drafts waiting for approval and flagged chats go here.</div></div>${chanSelect("w-mod", state.cfg.modChannel)}</div></div>
+      <div class="maprow"><div><b>Mod channel</b></div>${chanSelect("w-mod", state.cfg.modChannel)}</div></div>
       <div class="foot" style="margin-top:14px"><button class="btn ghost" id="w-back">← Back</button><button class="btn primary" id="w-save">Save And Allowlist →</button></div>`;
     $("#w-back").addEventListener("click", () => { state.wizStep = 1; renderWizard(v); });
     $("#w-save").addEventListener("click", async (e) => {
@@ -597,7 +597,7 @@ function renderWizard(v) {
   } else {
     const ok = state.mcp && state.shops.length;
     body.innerHTML = `<p class="big">Connect Cruva</p>
-      <p class="muted" style="font-size:14px">Cruva supplies GMV, videos, creators and members. It connects through your claude.ai connectors, so your login never touches this page.</p>
+      
       ${ok ? `<div class="callout"><div class="disc" aria-hidden="true">✓</div><div><b>Cruva is connected.</b> ${state.shops.length} brands found. Pick the one this server is for.</div></div>
         <div class="rows" style="margin-top:10px">${state.shops.map((s) => `<div><span class="grow"><b>${esc(s.name)}</b><span class="muted">${esc(s.region.toUpperCase())} · ${esc(s.plan)} plan</span></span><button class="btn sm ${ws.shopId === s.id ? "primary" : ""}" data-shop="${esc(s.id)}">${ws.shopId === s.id ? "Selected" : "Use This Brand"}</button></div>`).join("")}</div>`
       : `<div class="err">Cruva isn’t connected yet. Open claude.ai Settings → Connectors, add Cruva, then come back and press Check Again.</div><button class="btn" id="w-retry" style="margin-top:12px">Check Again</button>`}
@@ -620,7 +620,7 @@ const KPI = [
   ["sample_requests", "Sample requests", "int", "Requests submitted in the range."], ["samples_approved", "Samples approved", "int", "Approved in the range, whatever their status today."], ["samples_delivered", "Samples delivered", "int", "Delivered to creators in the range."], ["dms_sent", "Outreach DMs", "int", "All outreach DMs sent."]
 ];
 function renderOverview(v) {
-  v.innerHTML = heroHTML(rangeLabel(), state.shop.name, "Creator sales reach Cruva 1.5–2 days late, so the newest day can read low.") + `
+  v.innerHTML = heroHTML(rangeLabel(), state.shop.name, "Last 2 days may be incomplete.") + `
     <section class="kpis" id="kpis" aria-label="Key numbers">${KPI.map(([, l]) => `<div class="kpi"><span class="l">${l}</span>${skel(2)}</div>`).join("")}</section>
     <div class="grid">
       <section class="card span"><div class="head"><h2>GMV by day</h2><div class="legend"><span><i style="background:var(--s1)"></i>Total GMV</span><span><i style="background:var(--s2)"></i>Affiliate GMV</span></div></div><div id="chart" class="chartbox">${skel(6)}</div></section>
@@ -677,7 +677,7 @@ function lineChart(box, series, axisFmt, tipFmt) {
 
 /* ---------- content ---------- */
 function renderContent(v) {
-  v.innerHTML = heroHTML(rangeLabel(), "What’s selling, and why", "Every video with performance in the range. Click a row for its hooks and summary.") + `
+  v.innerHTML = heroHTML(rangeLabel(), "Content", "") + `
     <section class="card"><form class="toolbar" id="vf"><label for="vh" class="sr">Creator handle</label><input type="search" id="vh" placeholder="Filter by creator handle" value="${esc(state.vHandle)}"><button class="btn sm">Search</button>${state.vHandle ? '<button class="btn sm ghost" type="button" id="vclear">Clear</button>' : ""}</form>
     <div class="tablebox" id="vt">${skel(8)}</div>
     <div class="pager"><button class="btn sm" id="vp" ${state.vPage <= 1 ? "disabled" : ""}>← Prev</button><span class="muted">Page ${state.vPage}</span><button class="btn sm" id="vn">Next →</button></div></section>`;
@@ -688,7 +688,7 @@ function renderContent(v) {
   if (state.vHandle) input.handle = state.vHandle;
   watch("videos", "search_videos", input, (t) => {
     const vids = parseVideos(t); $("#vn").disabled = vids.length < 25;
-    if (!vids.length) { $("#vt").innerHTML = '<div class="empty"><b>No videos here</b>Try a wider date range or clear the filter.</div>'; return; }
+    if (!vids.length) { $("#vt").innerHTML = '<div class="empty"><b>No videos</b>Try a wider range.</div>'; return; }
     const sb = (k, l) => `<button data-sort="${k}" ${state.vSort === k ? 'aria-sort="descending"' : ""}>${l}${state.vSort === k ? " ↓" : ""}</button>`;
     $("#vt").innerHTML = `<table><thead><tr><th>Creator</th><th>Video</th><th class="r">${sb("gmv", "GMV")}</th><th class="r">${sb("units_sold", "Units")}</th><th class="r">${sb("views", "Views")}</th><th class="r">${sb("ads_gmv", "Ads GMV")}</th><th class="r">Ad ROI</th></tr></thead><tbody>
       ${vids.map((x) => `<tr class="clk" data-id="${esc(x.video_id)}" tabindex="0"><td style="font-weight:600;white-space:nowrap">@${esc(x.handle)}</td><td style="max-width:380px"><span class="trunc">${esc(x.title || x.content_overview || "Untitled")}</span><span class="muted">Posted ${esc(x.post_time || "")}</span></td><td class="r num">${money(x.gmv)}</td><td class="r">${int(x.units_sold)}</td><td class="r">${int(x.views)}</td><td class="r">${x.ads_gmv == null ? "unknown" : money(x.ads_gmv)}</td><td class="r"><span class="pill ${x.roi == null ? "line" : x.roi >= 1 ? "good" : "bad"}">${x.roi == null ? "—" : x.roi.toFixed(2) + "x"}</span></td></tr>
@@ -744,7 +744,7 @@ function commMetrics(D) {
 }
 const fmtSecs = (s) => s == null ? "—" : s < 3600 ? Math.round(s / 60) + "m" : s < 86400 ? (s / 3600).toFixed(s < 36000 ? 1 : 0) + "h" : (s / 86400).toFixed(1) + "d";
 function renderCommunity(v) {
-  v.innerHTML = heroHTML(rangeLabel(), "Who drives your Discord", "How healthy the community is, who shows up, and whether the people who show up sell more.") +
+  v.innerHTML = heroHTML(rangeLabel(), "Community", "") +
     `<div class="subnav" role="tablist">${COMM_TABS.map(([k, l]) => `<button role="tab" data-ct="${k}" aria-selected="${state.comm === k}">${l}</button>`).join("")}</div><div id="cbody">${state.comm === "scoring" ? "" : `<div class="card">${skel(8)}</div>`}</div>`;
   $$("[data-ct]").forEach((b) => b.addEventListener("click", () => { state.comm = b.dataset.ct; renderCommunity(v); }));
   if (state.comm === "scoring") return renderScoring($("#cbody"));
@@ -753,7 +753,7 @@ function renderCommunity(v) {
   if (state.commData && state.commData.key === key) return go(state.commData.D);
   loadCommunity().then((D) => { state.commData = { key, D }; go(D); });
 }
-function noActivity(D) { return D.activity.length ? "" : `<div class="callout"><div class="disc" aria-hidden="true">i</div><div><b>Message activity hasn’t been synced yet.</b> Member, join and link numbers are live from Cruva. Messages, replies, reactions and scores fill in after an activity sync from <a href="#setup">Bot &amp; channels</a>.</div></div>`; }
+function noActivity(D) { return D.activity.length ? "" : `<div class="callout"><div class="disc" aria-hidden="true">i</div><div><b>Activity not synced yet.</b> Member data is live; message stats appear after a sync.</div></div>`; }
 function commBody(el, D, M) {
   const H = D.header; const tab = state.comm;
   if (D.err && !D.members.length) { el.innerHTML = `<div class="err">${errMsg(D.err)}</div>`; return; }
@@ -776,13 +776,13 @@ function commBody(el, D, M) {
       <section class="card span"><div class="head"><h2>New members in range</h2><span class="muted">From Cruva · ${M.joiners.length} joined</span></div>${memberTable(M.joiners.slice(0, 25), M)}</section>
     </div>`;
     if (M.daily.some((d) => d.active || d.msgs)) lineChart($("#dact"), [{ name: "Active members", color: "var(--s1)", pts: M.daily.map((d) => ({ date: d.date, v: d.active })), area: true }, { name: "Messages", color: "var(--s2)", pts: M.daily.map((d) => ({ date: d.date, v: d.msgs })) }], (x) => int(x), (x) => int(x));
-    else $("#dact").innerHTML = '<div class="empty"><b>No activity in this range yet</b>The chart fills in after the first activity sync.</div>';
+    else $("#dact").innerHTML = '<div class="empty"><b>No activity yet</b></div>';
   } else if (tab === "leaderboard") {
     const cols = [["score", "Overall"], ["m", "Messages"], ["rr", "Reactions received"], ["pr", "Replies received"], ["ad", "Active days"], ["rg", "Reactions given"], ["v", "Voice minutes"]];
     const rows = M.board.slice().sort((a, b) => (b[state.lbSort] || 0) - (a[state.lbSort] || 0));
-    el.innerHTML = noActivity(D) + `<section class="card"><div class="head"><h2>Every stat in one place</h2><span class="muted">Click a column to sort. Hover a score for its breakdown.</span></div>
+    el.innerHTML = noActivity(D) + `<section class="card"><div class="head"><h2>Every stat in one place</h2></div>
       ${rows.length ? `<div class="tablebox"><table><thead><tr><th>#</th><th>Member</th>${cols.map(([k, l]) => `<th class="r"><button data-lb="${k}" ${state.lbSort === k ? 'aria-sort="descending"' : ""}>${l}${state.lbSort === k ? " ↓" : ""}</button></th>`).join("")}</tr></thead><tbody>
-      ${rows.map((u, i) => { const m = M.memberById[u.id]; return `<tr><td>${i + 1}</td><td><b>${esc(u.name)}</b> ${m && m.linked ? `<span class="pill good">@${esc(m.tiktok)}</span>` : '<span class="pill line">Not linked</span>'}</td><td class="r num" title="${esc(["m", "rr", "pr", "ad", "rg", "v"].map((s) => `${s}: +${u.parts[s].toFixed(1)}`).join("  "))}">${u.score.toFixed(1)}</td><td class="r">${int(u.m)}</td><td class="r">${int(u.rr)}</td><td class="r">${int(u.pr)}</td><td class="r">${int(u.ad)}</td><td class="r">${int(u.rg)}</td><td class="r">${int(u.v)}</td></tr>`; }).join("")}</tbody></table></div>` : '<div class="empty"><b>No scores yet</b>Scores need synced message activity.</div>'}</section>`;
+      ${rows.map((u, i) => { const m = M.memberById[u.id]; return `<tr><td>${i + 1}</td><td><b>${esc(u.name)}</b> ${m && m.linked ? `<span class="pill good">@${esc(m.tiktok)}</span>` : '<span class="pill line">Not linked</span>'}</td><td class="r num" title="${esc(["m", "rr", "pr", "ad", "rg", "v"].map((s) => `${s}: +${u.parts[s].toFixed(1)}`).join("  "))}">${u.score.toFixed(1)}</td><td class="r">${int(u.m)}</td><td class="r">${int(u.rr)}</td><td class="r">${int(u.pr)}</td><td class="r">${int(u.ad)}</td><td class="r">${int(u.rg)}</td><td class="r">${int(u.v)}</td></tr>`; }).join("")}</tbody></table></div>` : '<div class="empty"><b>No scores yet</b></div>'}</section>`;
     $$("[data-lb]", el).forEach((b) => b.addEventListener("click", () => { state.lbSort = b.dataset.lb; commBody(el, D, M); }));
   } else if (tab === "channels") {
     const all = new Map(); chans().forEach((c) => all.set(c.name, { name: c.name, m: 0, r: 0, p: 0, members: new Set(), last: "", top: {} }));
@@ -810,12 +810,12 @@ function commBody(el, D, M) {
     const weeks = {}; D.members.forEach((m) => { if (!m.joined) return; const d = new Date(m.joined + "T00:00:00Z"); const wk = ymd(addDays(d, -((d.getUTCDay() + 6) % 7))); (weeks[wk] = weeks[wk] || []).push(m); });
     const today = ymd(todayUTC());
     const cohorts = Object.keys(weeks).sort().reverse().slice(0, 12).map((wk) => { const ms = weeks[wk]; const cell = (n) => { const s = ymd(addDays(wk, 7 * n)), e = ymd(addDays(wk, 7 * n + 6)); if (s > today) return null; const act = M.activeIn(s, e); return ms.filter((m) => act.has(m.id)).length / ms.length * 100; }; return { wk, n: ms.length, c: [1, 2, 4, 8].map(cell) }; });
-    el.innerHTML = noActivity(D) + `<section class="card"><div class="head"><h2>Retention by join week</h2><span class="muted">Share still active 1, 2, 4 and 8 weeks later. Blank = hasn’t happened yet.</span></div>
+    el.innerHTML = noActivity(D) + `<section class="card"><div class="head"><h2>Retention by join week</h2><span class="muted">% active after 1, 2, 4, 8 weeks</span></div>
       ${cohorts.length ? `<div class="tablebox"><table class="coh"><thead><tr><th style="text-align:left">Joined week of</th><th>Members</th><th>Week 1</th><th>Week 2</th><th>Week 4</th><th>Week 8</th></tr></thead><tbody>${cohorts.map((c) => `<tr><td style="text-align:left"><b>${fmtDate(c.wk)}</b></td><td>${c.n}</td>${c.c.map((p) => p == null ? "<td></td>" : `<td class="h" style="--p:${Math.round(p * 0.6)}">${Math.round(p)}%</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : '<div class="empty"><b>No join dates yet</b></div>'}</section>`;
   }
 }
 function kpiBox(l, v, s, tip, chg) { return `<div class="kpi"><span class="l">${esc(l)} ${info(tip)}</span><span class="v">${v}</span>${chg || ""}<span class="s">${esc(s || "")}</span></div>`; }
-function topList(list, valFn) { return list.length ? list.slice(0, 10).map((u, i) => `<div><span class="rank${i ? "" : " first"}">${i + 1}</span><span class="grow trunc" style="font-weight:600">${esc(u.name)}</span><span class="num">${valFn(u)}</span></div>`).join("") : '<div class="empty">Nothing yet. Fills in after the first activity sync.</div>'; }
+function topList(list, valFn) { return list.length ? list.slice(0, 10).map((u, i) => `<div><span class="rank${i ? "" : " first"}">${i + 1}</span><span class="grow trunc" style="font-weight:600">${esc(u.name)}</span><span class="num">${valFn(u)}</span></div>`).join("") : '<div class="empty">Nothing yet.</div>'; }
 function memberTable(list, M) {
   if (!list.length) return '<div class="empty">No one joined in this range.</div>';
   return `<div class="tablebox"><table><thead><tr><th>Discord member</th><th>TikTok</th><th>Joined</th><th>First 7 days</th></tr></thead><tbody>${list.map((m) => { const old = daysBetween(m.joined, ymd(todayUTC())) >= 7; const act = M.activeIn(m.joined, ymd(addDays(m.joined, 6))).has(m.id); return `<tr><td><b>@${esc(m.user)}</b><span class="muted trunc">${esc(m.display)}</span></td><td>${m.linked ? `<span class="pill good">@${esc(m.tiktok)}</span>` : '<span class="pill line">Not linked</span>'}</td><td>${fmtDate(m.joined)}</td><td>${!old ? '<span class="pill line">Still in window</span>' : act ? '<span class="pill good">Activated</span>' : '<span class="pill">Silent</span>'}</td></tr>`; }).join("")}</tbody></table></div>`;
@@ -823,12 +823,12 @@ function memberTable(list, M) {
 function renderScoring(el) {
   const sc = state.scoring; const roles = (state.guild && state.guild.roles) || [];
   const W = [["m", "Messages", "Messages that count: bursts within the cooldown count once, each day is capped."], ["rr", "Reactions received", "Reactions others left on their messages."], ["pr", "Replies received", "Replies from others to their messages."], ["ad", "Active days", "Days they posted at least one message."], ["rg", "Reactions given", "Reactions they added."], ["v", "Voice minutes", "Time in voice channels."]];
-  el.innerHTML = `<section class="card"><div class="head"><h2>How the leaderboard counts</h2><span class="muted">Changes apply to every range, past ones too.</span></div>
+  el.innerHTML = `<section class="card"><div class="head"><h2>How the leaderboard counts</h2></div>
     <form class="form" id="scf">
-      <label class="field"><span>Daily message cap</span><input type="number" id="sc-cap" min="1" value="${sc.cap}"><small>Most messages one member can score per day.</small></label>
-      <label class="field"><span>Cooldown (seconds)</span><input type="number" id="sc-cd" min="0" value="${sc.cooldown}"><small>Messages closer together count once.</small></label>
-      <label class="field span"><span>Excluded channels</span><select id="sc-ch" multiple size="6" style="min-height:140px">${chans().map((c) => `<option value="${esc(c.name)}" ${sc.excludedChannels.includes(c.name) ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</select><small>Not tracked at all. Hold Ctrl or Cmd to pick several.</small></label>
-      <div class="field span"><span>Excluded roles</span><div class="checks">${roles.length ? roles.map((r) => `<label class="chk"><input type="checkbox" name="exrole" value="${esc(r)}" ${sc.excludedRoles.includes(r) ? "checked" : ""}>${esc(r)}</label>`).join("") : '<span class="muted">No roles found in the server.</span>'}</div><small>Members with these roles never rank.</small></div>
+      <label class="field"><span>Daily message cap</span><input type="number" id="sc-cap" min="1" value="${sc.cap}"></label>
+      <label class="field"><span>Cooldown (seconds)</span><input type="number" id="sc-cd" min="0" value="${sc.cooldown}"></label>
+      <label class="field span"><span>Excluded channels</span><select id="sc-ch" multiple size="6" style="min-height:140px">${chans().map((c) => `<option value="${esc(c.name)}" ${sc.excludedChannels.includes(c.name) ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</select><small>Ctrl/Cmd to select several</small></label>
+      <div class="field span"><span>Excluded roles</span><div class="checks">${roles.length ? roles.map((r) => `<label class="chk"><input type="checkbox" name="exrole" value="${esc(r)}" ${sc.excludedRoles.includes(r) ? "checked" : ""}>${esc(r)}</label>`).join("") : '<span class="muted">No roles found in the server.</span>'}</div></div>
       ${W.map(([k, l, d]) => `<label class="field"><span>${l} weight</span><input type="number" step="0.5" min="0" max="10" data-w="${k}" value="${sc.w[k]}"><small>${d}</small></label>`).join("")}
       <div class="span" style="display:flex;gap:8px"><button class="btn primary">Save Scoring</button><button class="btn ghost" type="button" id="scr">Reset</button></div>
     </form></section>`;
@@ -849,14 +849,14 @@ function dayChecks(name, sel) { return `<div class="checks">${DAYS.map((d) => `<
 function scheduleText(a, s) { if (a.key === "general_chat") return "Every message"; if (a.key === "wins") return "Daily " + (s.time || "16:00") + " ET · " + s.thresholds; if (a.key === "onboarding") return "When a member joins"; return (s.days || []).join(" · ") + " " + (s.time || "") + " ET" + (s.everyone ? " · @here" : ""); }
 function allowed(id) { return !!(state.allow && state.allow.syncedAt && (state.allow.channels || []).some((c) => c.id === id)); }
 function renderAutomations(v) {
-  v.innerHTML = heroHTML(state.guild ? state.guild.guildName : "Discord", "Six automations, one server", "Claude’s scheduled tasks run these at the times below (Eastern). Every draft goes to the moderator channel first and posts only after approval. After posting, the bot reacts 🔥 🤍 🚀 📈.", `<button class="btn primary" id="allOn">Turn All On</button>`) +
+  v.innerHTML = heroHTML(state.guild ? state.guild.guildName : "Discord", "Automations", "Times in ET. Drafts need approval before posting.", `<button class="btn primary" id="allOn">Turn All On</button>`) +
     `<div class="autos">${AUTOS.map((a) => { const s = state.autos[a.key]; const cn = chName(s.channel); return `
       <article class="card auto ${state.editing === a.key ? "sel" : ""}">
         <div class="auto-top"><div style="display:flex;gap:12px;align-items:center;min-width:0"><span class="ndisc">${a.n}</span><div style="min-width:0"><h2>${esc(a.name)}</h2><span class="muted" style="color:var(--accent);font-weight:600">${cn ? "#" + esc(cn) : "No channel chosen"}</span></div></div>
           <button class="switch" role="switch" aria-checked="${s.enabled}" aria-label="${esc(a.name)}" data-sw="${a.key}"><span></span></button></div>
         <p style="margin:0;color:var(--muted)">${esc(a.what)}</p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill">${esc(scheduleText(a, s))}</span><span class="pill line">${MODE_LABEL[s.mode]}</span>${a.skill ? `<span class="pill line" title="Claude skill that runs it">${esc(a.skill)}</span>` : ""}${s.channel ? (!canPost(s.channel) ? '<span class="pill bad">Bot can’t see channel</span>' : allowed(s.channel) ? '<span class="pill good">Allowlisted</span>' : '<span class="pill">Allowlist pending</span>') : ""}</div>
-        <div class="foot"><span class="muted">${!s.enabled ? "Off" : !s.channel ? "Needs a channel" : "Ready for a test post"}</span><span style="display:flex;gap:6px"><button class="btn sm" data-test="${a.key}" ${s.channel && BUILDABLE.includes(a.key) ? "" : "disabled"}>Test Post</button><button class="btn sm ${state.editing === a.key ? "primary" : ""}" data-ed="${a.key}">Settings</button></span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill">${esc(scheduleText(a, s))}</span><span class="pill line">${MODE_LABEL[s.mode]}</span>${s.channel ? (!canPost(s.channel) ? '<span class="pill bad">Bot can’t see channel</span>' : allowed(s.channel) ? '<span class="pill good">Allowlisted</span>' : '<span class="pill">Allowlist pending</span>') : ""}</div>
+        <div class="foot"><span class="muted">${!s.enabled ? "Off" : !s.channel ? "Needs a channel" : "Ready"}</span><span style="display:flex;gap:6px"><button class="btn sm" data-test="${a.key}" ${s.channel && BUILDABLE.includes(a.key) ? "" : "disabled"}>Test Post</button><button class="btn sm ${state.editing === a.key ? "primary" : ""}" data-ed="${a.key}">Settings</button></span></div>
       </article>`; }).join("")}</div><div id="editor"></div>`;
   const blocked = [...new Set(AUTOS.map((a) => state.autos[a.key].channel).filter((id) => id && !canPost(id)))];
   if (blocked.length) $(".hero", v).insertAdjacentHTML("afterend", `<div class="err"><b>The bot can’t see ${blocked.map((id) => "#" + esc(chName(id))).join(", ")}.</b> Posts to these channels will fail. ${esc(ACCESS_HELP)}</div>`);
@@ -868,16 +868,16 @@ function renderAutomations(v) {
 }
 function renderEditor(el, a) {
   const s = state.autos[a.key];
-  const mode = `<label class="field"><span>Approval mode</span><select id="e-mode">${Object.entries(MODE_LABEL).map(([k, l]) => `<option value="${k}" ${s.mode === k ? "selected" : ""}>${l}</option>`).join("")}</select><small>Manual sends drafts to your mod channel first.</small></label>`;
-  const appr = `<label class="field"><span>Reminder after (hours)</span><input type="number" id="e-rem" min="1" value="${s.reminderHours}"><small>Pings mods if a draft waits this long.</small></label><label class="field"><span>Expire after (hours)</span><input type="number" id="e-exp" min="1" value="${s.expireHours}"><small>Unapproved drafts close after this.</small></label>`;
-  const ch = `<label class="field"><span>${a.key === "onboarding" ? "Fallback channel" : "Post in"}</span>${chanSelect("e-ch", s.channel, true)}<small>Saving adds the channel and its ID to the bot’s allowlist.</small></label>`;
+  const mode = `<label class="field"><span>Approval mode</span><select id="e-mode">${Object.entries(MODE_LABEL).map(([k, l]) => `<option value="${k}" ${s.mode === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>`;
+  const appr = `<label class="field"><span>Reminder after (hours)</span><input type="number" id="e-rem" min="1" value="${s.reminderHours}"></label><label class="field"><span>Expire after (hours)</span><input type="number" id="e-exp" min="1" value="${s.expireHours}"></label>`;
+  const ch = `<label class="field"><span>${a.key === "onboarding" ? "Fallback channel" : "Post in"}</span>${chanSelect("e-ch", s.channel, true)}</label>`;
   const sched = `<div class="field span"><span>Post on</span>${dayChecks("e-days", s.days || [])}</div><label class="field"><span>At (ET)</span><input type="time" id="e-time" value="${esc(s.time || "09:00")}"></label>`;
   let extra = "";
-  if (a.key === "general_chat") extra = `<label class="field"><span>Reply to</span><select id="e-replyTo">${[["all", "Every message"], ["questions", "Questions only"], ["mentions", "Only when @mentioned"]].map(([k, l]) => `<option value="${k}" ${s.replyTo === k ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily reply cap</span><input type="number" id="e-dailyCap" min="0" value="${s.dailyCap}"><small>Keeps Claude usage predictable.</small></label><label class="field"><span>Quiet hours start</span><input type="time" id="e-quietStart" value="${esc(s.quietStart)}"></label><label class="field"><span>Quiet hours end</span><input type="time" id="e-quietEnd" value="${esc(s.quietEnd)}"></label><label class="field span"><span>Send these to mods instead of replying</span><input type="text" id="e-escalate" value="${esc(s.escalate)}"><small>Comma-separated topics.</small></label>`;
-  if (a.key === "viral_hooks") extra = sched + `<p class="muted span" style="margin:0">#1, #2, #3 most-viewed relevant market videos from the previous Sun–Sat (keywords: dandruff, ketoconazole, tea tree shampoo). Two messages: the video, then the hook, why it worked and “Make it work for our Keto Bundle” from the creator brief.</p><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
-  if (a.key === "winning_content") extra = sched + `<p class="muted span" style="margin:0">#1 on Monday, #2 on Tuesday, #3 on Wednesday, all from the previous Sun–Sat by GMV. Four messages: the video post, the numbers card, the script card with translations, and “How to replicate this angle for max ad spend”.</p><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label><div class="field span"><span>Include</span><div class="checks">${["Video post", "Numbers card", "Script card", "How to replicate"].map((p) => `<label class="chk"><input type="checkbox" name="e-parts" value="${p}" ${s.parts.includes(p) ? "checked" : ""}>${p}</label>`).join("")}</div></div>`;
-  if (a.key === "wins") extra = `<label class="field"><span>Milestones (sales)</span><input type="text" id="e-thresholds" value="${esc(s.thresholds)}"><small>Comma-separated, e.g. 1, 5, 10, 25.</small></label><label class="field"><span>Check for new sales every</span><select id="e-checkEvery">${[[1440, "Once a day"], [240, "Every 4 hours"], [60, "Every hour"]].map(([m, l]) => `<option value="${m}" ${s.checkEvery === m ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily check at (ET)</span><input type="time" id="e-time" value="${esc(s.time || "16:00")}"></label><small class="span muted">Lifetime units sold with the brand. Each milestone is celebrated once ever, only when crossed after deployment.</small><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-graphic" ${s.graphic ? "checked" : ""}>Attach the milestone graphic</label><label class="chk"><input type="checkbox" id="e-handleFallback" ${s.handleFallback ? "checked" : ""}>Use TikTok @handle if not linked</label>`;
-  if (a.key === "leaderboard") extra = sched + `<p class="muted span" style="margin:0">Top 5 creators by GMV for the previous Sun–Sat, on the navy podium card, with the community lead’s hype line.</p><label class="chk"><input type="checkbox" id="e-tagCreators" ${s.tagCreators ? "checked" : ""}>Tag each creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
+  if (a.key === "general_chat") extra = `<label class="field"><span>Reply to</span><select id="e-replyTo">${[["all", "Every message"], ["questions", "Questions only"], ["mentions", "Only when @mentioned"]].map(([k, l]) => `<option value="${k}" ${s.replyTo === k ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily reply cap</span><input type="number" id="e-dailyCap" min="0" value="${s.dailyCap}"></label><label class="field"><span>Quiet hours start</span><input type="time" id="e-quietStart" value="${esc(s.quietStart)}"></label><label class="field"><span>Quiet hours end</span><input type="time" id="e-quietEnd" value="${esc(s.quietEnd)}"></label><label class="field span"><span>Send these to mods instead of replying</span><input type="text" id="e-escalate" value="${esc(s.escalate)}"></label>`;
+  if (a.key === "viral_hooks") extra = sched + `<label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
+  if (a.key === "winning_content") extra = sched + `<label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label><div class="field span"><span>Include</span><div class="checks">${["Video post", "Numbers card", "Script card", "How to replicate"].map((p) => `<label class="chk"><input type="checkbox" name="e-parts" value="${p}" ${s.parts.includes(p) ? "checked" : ""}>${p}</label>`).join("")}</div></div>`;
+  if (a.key === "wins") extra = `<label class="field"><span>Milestones (sales)</span><input type="text" id="e-thresholds" value="${esc(s.thresholds)}"><small>e.g. 1, 3, 10, 30, 50</small></label><label class="field"><span>Check for new sales every</span><select id="e-checkEvery">${[[1440, "Once a day"], [240, "Every 4 hours"], [60, "Every hour"]].map(([m, l]) => `<option value="${m}" ${s.checkEvery === m ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Daily check at (ET)</span><input type="time" id="e-time" value="${esc(s.time || "16:00")}"></label><label class="chk"><input type="checkbox" id="e-tagCreator" ${s.tagCreator ? "checked" : ""}>Tag the creator</label><label class="chk"><input type="checkbox" id="e-graphic" ${s.graphic ? "checked" : ""}>Attach the milestone graphic</label><label class="chk"><input type="checkbox" id="e-handleFallback" ${s.handleFallback ? "checked" : ""}>Use TikTok @handle if not linked</label>`;
+  if (a.key === "leaderboard") extra = sched + `<label class="chk"><input type="checkbox" id="e-tagCreators" ${s.tagCreators ? "checked" : ""}>Tag each creator</label><label class="chk"><input type="checkbox" id="e-everyone" ${s.everyone ? "checked" : ""}>Notify with @here</label>`;
   if (a.key === "onboarding") extra = `<label class="field"><span>If DMs are closed</span><select id="e-fallback">${[["private-channel", "Open a private welcome channel"], ["channel", "Ask in the fallback channel"]].map(([k, l]) => `<option value="${k}" ${s.fallback === k ? "selected" : ""}>${l}</option>`).join("")}</select></label><label class="field"><span>Reminder after (hours of silence)</span><input type="number" id="e-reminderHoursOb" min="1" value="${s.reminderHours}"></label><label class="chk"><input type="checkbox" id="e-linkFirst" ${s.linkFirst ? "checked" : ""}>Ask for the TikTok handle first and link it</label><p class="muted span" style="margin:0">Questions are edited in <a href="#onboarding">Onboarding</a>.</p>`;
   el.innerHTML = `<section class="card" aria-label="${esc(a.name)} settings"><div class="head"><h2>${esc(a.name)} · settings</h2><button class="btn sm ghost" id="e-close">Close</button></div>
     <form class="form" id="ef">${ch}${mode}${extra}${a.key === "onboarding" ? "" : appr}<div class="span" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary">Save Settings</button>${BUILDABLE.includes(a.key) ? `<button class="btn" type="button" data-test="${a.key}">Test Post</button>` : ""}</div></form></section>`;
@@ -924,11 +924,11 @@ const draftMsgs = (d) => (Array.isArray(d.messages) && d.messages.length ? d.mes
 const STATUS = { pending: ["Waiting", ""], working: ["Being built", ""], posting: ["Posting…", ""], posted: ["Posted", "good"], approved: ["Approved", "good"], rejected: ["Rejected", "line"], replaced: ["Regenerated", "line"], failed: ["Failed", "bad"] };
 function renderApprovals(v) {
   const pend = state.drafts.filter((d) => d.status === "pending" || d.status === "posting"), done = state.drafts.filter((d) => !["pending", "posting"].includes(d.status));
-  v.innerHTML = heroHTML("Approvals", "Nothing goes out unapproved", "Drafts are built by the same skills your scheduled automations use, in the finalized format. Approve & Post sends them through your bot, then reacts 🔥 🤍 🚀 📈.") + `
+  v.innerHTML = heroHTML(state.guild ? state.guild.guildName : "Discord", "Approvals", "") + `
     <div class="grid">
       <section class="card"><div class="head"><h2>Waiting on you</h2><span class="pill">${pend.length}</span></div>
-        ${(state.building || []).map((r) => `<div class="drafting" style="margin-bottom:12px"><span class="ndisc" style="width:28px;height:28px;font-size:11px">…</span><span><b>${esc((AUTOS.find((a) => a.key === r.automation) || {}).name || "Draft")}</b><span class="muted" style="display:block">Claude is building it with the real skill · asked ${esc(fmtTime(r.at))}</span></span></div>`).join("")}
-        ${pend.length ? `<div style="display:flex;flex-direction:column;gap:18px">${pend.map(draftCard).join("")}</div>` : (state.building || []).length ? "" : '<div class="empty"><b>Nothing waiting</b>Press Test Post on any automation to make one.</div>'}</section>
+        ${(state.building || []).map((r) => `<div class="drafting" style="margin-bottom:12px"><span class="ndisc" style="width:28px;height:28px;font-size:11px">…</span><span><b>${esc((AUTOS.find((a) => a.key === r.automation) || {}).name || "Draft")}</b><span class="muted" style="display:block">Building… · ${esc(fmtTime(r.at))}</span></span></div>`).join("")}
+        ${pend.length ? `<div style="display:flex;flex-direction:column;gap:18px">${pend.map(draftCard).join("")}</div>` : (state.building || []).length ? "" : '<div class="empty"><b>All caught up</b></div>'}</section>
       <section class="card"><div class="head"><h2>Activity log</h2><span class="muted">${done.length} decided</span></div>
         ${done.length ? `<div class="rows">${done.slice(0, 40).map((d) => `<div><span class="grow"><b class="trunc">${esc(d.name)}${d.channelName ? " → #" + esc(d.channelName) : ""}</b><span class="muted">${esc(fmtTime(d.decidedAt || d.createdAt))} · ${esc((d.history || []).slice(-1)[0]?.what || "")}</span>${d.messageUrl ? `<a class="posted" href="${esc(d.messageUrl)}" target="_blank" rel="noopener">Open in Discord ↗</a>` : ""}</span><span class="pill ${STATUS[d.status] ? STATUS[d.status][1] : ""}">${esc(STATUS[d.status] ? STATUS[d.status][0] : d.status)}</span><button class="btn sm ghost" data-del="${esc(d.id)}" aria-label="Delete">✕</button></div>`).join("")}</div>` : '<div class="empty">Posted, rejected and expired drafts show here.</div>'}</section>
     </div>`;
@@ -940,7 +940,7 @@ function draftCard(d) {
   if (!posting && d.channel && !canPost(d.channel)) d = { ...d, error: `The bot can’t see #${d.channelName || chName(d.channel)}. ${ACCESS_HELP}` };
   return `<article style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${esc(d.name)}${d.channelName ? " → #" + esc(d.channelName) : ""}</b><span class="muted">${d.test ? "Test · " : ""}${esc(fmtTime(d.createdAt))}</span></div>
     <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="apptag">APP</span></div>${draftMsgs(d).map((m) => `<div class="msg">${md(m.text)}${(m.images || []).map((u) => `<img src="${esc(u)}" alt="Card attached to this message" loading="lazy">`).join("")}</div>`).join("")}</div></div>
-    ${d.test ? `<span class="muted">Test draft: Approve &amp; Post sends it to the moderator channel with @here and mentions muted, never to #${esc(d.channelName || chName(d.channel))}.</span>` : d.source === "schedule" ? `<span class="pill line" style="align-self:flex-start">From the schedule · also waiting in #moderator-only</span><span class="muted">Approve here or in the mod chat, whichever comes first. Approving here posts it to #${esc(d.channelName || chName(d.channel))} once, with the 🔥 🤍 🚀 📈 reactions.</span>` : ""}
+    ${d.test ? `<span class="muted">Test · posts to #moderator-only</span>` : d.source === "schedule" ? `<span class="muted">Also in #moderator-only</span>` : ""}
     ${draftMsgs(d).map((m, i) => `<label class="sr" for="ed-${esc(d.id)}-${i}">Edit message ${i + 1}</label><textarea id="ed-${esc(d.id)}-${i}" data-edfor="${esc(d.id)}" hidden>${esc(m.text)}</textarea>`).join("")}
     ${posting ? '<span class="pill">Posting… Claude is sending it to Discord</span>' : `<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sm primary" data-act="post" data-id="${esc(d.id)}" ${d.channel ? "" : "disabled"}>Approve &amp; Post</button><button class="btn sm" data-act="edit" data-id="${esc(d.id)}">Edit</button>${d.source === "schedule" ? "" : `<button class="btn sm" data-act="regen" data-id="${esc(d.id)}">Regenerate</button>`}<button class="btn sm ghost" data-act="reject" data-id="${esc(d.id)}">Reject</button></div>`}${d.error ? `<span class="pill bad">${esc(d.error)}</span>` : ""}</article>`;
 }
@@ -964,7 +964,7 @@ async function decide(id, act, btn) {
 /* ---------- onboarding ---------- */
 function renderOnboarding(v) {
   const qs = state.ob.questions;
-  v.innerHTML = heroHTML("Creator onboarding", "Meet every creator in their DMs", "The bot asks these in order, one at a time, then saves the answers as a row in your responses sheet.") + `
+  v.innerHTML = heroHTML(state.guild ? state.guild.guildName : "Discord", "Onboarding", "Questions the bot asks new members by DM.") + `
     <div class="grid">
       <section class="card"><div class="head"><h2>Welcome and questions</h2><span class="muted">${qs.length} of 6</span></div>
         <label class="field" style="margin-bottom:12px"><span>Welcome line</span><input type="text" id="ob-w" value="${esc(state.ob.welcome)}"><small>{name} and {brand} are filled in.</small></label>
@@ -975,8 +975,8 @@ function renderOnboarding(v) {
         <div class="discord"><div class="av"></div><div style="min-width:0;flex:1"><div><b>${esc(state.cfg.botName)}</b> <span class="apptag">APP</span></div>
         <div class="msg">${esc(state.ob.welcome.replace("{name}", "there").replace("{brand}", (state.shop || {}).name || "brand"))}</div>${qs.map((q) => `<div class="msg">${esc(q)}</div>`).join("")}</div></div></section>
     </div>
-    <section class="card"><div class="head"><h2>Creator responses</h2><span class="muted">One row per creator, one column per question</span></div>
-      <div class="tablebox"><table><thead><tr><th>Discord</th><th>Joined</th><th>Linked</th>${qs.map((q) => `<th>${esc(q.length > 26 ? q.slice(0, 26) + "…" : q)}</th>`).join("")}<th>Status</th></tr></thead><tbody id="obrows"><tr><td colspan="${qs.length + 4}"><div class="empty"><b>No responses yet</b>Rows appear as creators answer the bot.</div></td></tr></tbody></table></div></section>`;
+    <section class="card"><div class="head"><h2>Creator responses</h2></div>
+      <div class="tablebox"><table><thead><tr><th>Discord</th><th>Joined</th><th>Linked</th>${qs.map((q) => `<th>${esc(q.length > 26 ? q.slice(0, 26) + "…" : q)}</th>`).join("")}<th>Status</th></tr></thead><tbody id="obrows"><tr><td colspan="${qs.length + 4}"><div class="empty"><b>No responses yet</b></div></td></tr></tbody></table></div></section>`;
   const sync = () => { $$("[data-q]", v).forEach((i) => (qs[+i.dataset.q] = i.value)); state.ob.welcome = $("#ob-w").value; };
   $$("[data-del]", v).forEach((b) => b.addEventListener("click", () => { sync(); qs.splice(+b.dataset.del, 1); renderOnboarding(v); }));
   $$("[data-up]", v).forEach((b) => b.addEventListener("click", () => { sync(); const i = +b.dataset.up; [qs[i - 1], qs[i]] = [qs[i], qs[i - 1]]; renderOnboarding(v); }));
@@ -1000,20 +1000,20 @@ function renderOnboarding(v) {
 /* ---------- bot & channels ---------- */
 function renderSetup(v) {
   const g = state.guild; const used = (state.allow && state.allow.channels) || [];
-  v.innerHTML = heroHTML("Bot & channels", g ? g.guildName : "Your server", "Your bot, the server it’s in, and exactly which channels it may use.") + `
+  v.innerHTML = heroHTML(g ? g.guildName : "Discord", "Bot & channels", "") + `
     <div class="grid">
       <section class="card"><div class="head"><h2>Server</h2><button class="btn sm" id="resync">Re-sync From Discord</button></div>
         ${g ? `<div class="rows"><div><span class="grow">Server</span><b>${esc(g.guildName)}</b></div><div><span class="grow">Bot</span><b>${esc(g.botName)}</b></div><div><span class="grow">Text channels</span><b>${g.channels.length}</b></div><div><span class="grow">Roles</span><b>${g.roles.length}</b></div><div><span class="grow">Last checked</span><b>${esc(fmtTime(g.syncedAt))}</b></div></div>` : '<div class="empty">No server connected. Run the <a href="#welcome">setup guide</a>.</div>'}
       </section>
       <section class="card"><div class="head"><h2>Allowlist</h2><span class="pill ${state.allow && state.allow.syncedAt ? "good" : ""}">${state.allow && state.allow.syncedAt ? "Applied " + esc(fmtTime(state.allow.syncedAt)) : "Waiting for Claude"}</span></div>
-        <p class="muted" style="margin-top:0">Built from the channels your automations and mod channel use. The bot may read and post only here.</p>
+        
         ${used.length ? `<div class="rows">${used.map((c) => `<div><span class="grow"><b>#${esc(c.name)}</b></span><code>${esc(c.id)}</code></div>`).join("")}</div>` : '<div class="empty">No channels chosen yet.</div>'}
         ${used.length && !(state.allow && state.allow.syncedAt) ? '<button class="btn sm" id="applyAllow" style="margin-top:10px">Apply Allowlist Now</button>' : ""}
       </section>
       <section class="card span"><div class="head"><h2>Bot voice</h2></div><form class="form" id="bf">
-        <label class="field"><span>Mod channel</span>${chanSelect("b-mod", state.cfg.modChannel)}<small>Drafts and flags go here.</small></label>
+        <label class="field"><span>Mod channel</span>${chanSelect("b-mod", state.cfg.modChannel)}</label>
         <label class="field"><span>Approver role</span><select id="b-role"><option value="">Anyone in the mod channel</option>${((g && g.roles) || []).map((r) => `<option ${r === state.cfg.approverRole ? "selected" : ""}>${esc(r)}</option>`).join("")}</select></label>
-        <label class="field span"><span>Tone of voice</span><textarea id="b-tone">${esc(state.cfg.tone)}</textarea><small>Claude follows this in every post and reply.</small></label>
+        <label class="field span"><span>Tone of voice</span><textarea id="b-tone">${esc(state.cfg.tone)}</textarea></label>
         <div class="span"><button class="btn primary">Save</button></div></form></section>
       <section class="card span"><div class="head"><h2>Channels in ${esc(g ? g.guildName : "the server")}</h2><span class="muted">${chans().length} text channels with their IDs</span></div>
         ${chans().length ? `<div class="tablebox"><table><thead><tr><th>Channel</th><th>Category</th><th>Bot access</th><th>Used by</th><th>Channel ID</th></tr></thead><tbody>${chans().map((c) => { const by = AUTOS.filter((a) => state.autos[a.key].channel === c.id).map((a) => a.name); if (state.cfg.modChannel === c.id) by.push("Mod channel"); return `<tr><td><b>#${esc(c.name)}</b></td><td class="muted">${esc(c.category)}</td><td>${c.canPost === false ? '<span class="pill bad">Can’t see</span>' : c.canPost ? '<span class="pill good">Can post</span>' : '<span class="muted">Unknown</span>'}</td><td>${by.map((x) => `<span class="pill">${esc(x)}</span>`).join(" ") || '<span class="muted">—</span>'}</td><td><code>${esc(c.id)}</code></td></tr>`; }).join("")}</tbody></table></div>` : '<div class="empty">No channels yet.</div>'}
@@ -1038,7 +1038,7 @@ setRange("7"); route();
     } catch (e) { setStatus("#stCruva", false, "Cruva: not connected"); }
     try { const l = await mcp.listTools(BRIDGE); state.bridge = !!(l.servers && l.servers.length); } catch { state.bridge = false; }
   } else setStatus("#stCruva", false, "Cruva: not available here");
-  setStatus("#stLink", state.bridge, state.bridge ? "Live link to Claude: on" : "Live link to Claude: off");
+  setStatus("#stLink", state.bridge, state.bridge ? "Live link: on" : "Live link: off");
   await loadWorkspace(); watchGuilds();
   let saved = null; try { saved = localStorage.getItem("tvc.shop"); } catch {}
   state.shop = state.shops.find((s) => s.id === saved) || state.shops.find((s) => s.id === (state.ws && state.ws.shopId)) || state.shops[0] || null;
