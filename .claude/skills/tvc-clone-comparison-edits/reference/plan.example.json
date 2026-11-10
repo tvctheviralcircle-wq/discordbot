@@ -1,0 +1,70 @@
+{
+  "output": {"path": "out/final.mp4", "width": 1080, "height": 1920, "fps": 30},
+  "sources": {"OLD": "raw/1800s.mp4", "NEW": "raw/2027.mp4", "CUR": "raw/2025.mp4", "END": "raw/ending.mp4"},
+  "columns": {
+    "old": {"title": "1800s", "emoji": "🥩"},
+    "new": {"title": "2027", "emoji": "🍬"},
+    "cur": {"title": "2025", "emoji": "🍚"}
+  },
+  "style": {"seam_feather_px": 0},
+  "timers": {"segments": [0, 2], "start": 1.6, "stop": {"new": 30.06, "cur": 30.06}},
+  "audio": {"lufs": -14},
+  "segments": [
+    {"note": "hook: all three show their item, question asked",
+     "layout": ["old", "new", "cur"],
+     "panels": {
+       "old": {"src": "OLD", "in": 1.20, "out": 5.20, "audio": 1, "x": 0.167},
+       "new": {"src": "NEW", "in": 0.90, "x": 0.5, "audio": 1},
+       "cur": {"src": "CUR", "in": 1.05, "x": 0.833, "audio": 1}
+     }},
+    {"note": "race, sped up 4.7x, ticking added automatically",
+     "layout": ["old", "new", "cur"],
+     "panels": {
+       "old": {"src": "OLD", "in": 5.20, "out": 31.50, "speed": 4.7, "x": 0.167},
+       "new": {"src": "NEW", "in": 4.90, "speed": 4.7, "x": 0.5},
+       "cur": {"src": "CUR", "in": 5.05, "speed": 4.7, "x": 0.833}
+     }},
+    {"note": "new + cur done, old still cooking",
+     "layout": ["old", "new", "cur"],
+     "panels": {
+       "old": {"src": "OLD", "in": 31.50, "x": 0.167},
+       "new": {"src": "NEW", "in": 31.20, "out": 35.40, "audio": 1, "x": 0.5},
+       "cur": {"src": "CUR", "in": 31.40, "x": 0.833, "audio": 1}
+     }},
+    {"note": "cur: mine has 5g",
+     "layout": ["new", "cur"],
+     "labels": {"cur": "5g Creatine"},
+     "panels": {
+       "new": {"src": "NEW", "in": 38.00, "x": 0.25},
+       "cur": {"src": "CUR", "in": 40.10, "out": 43.10, "audio": 1, "x": 0.75}
+     }},
+    {"note": "new: so does mine, plus three more",
+     "layout": ["new", "cur"],
+     "labels": {"new": "5g Creatine"},
+     "label_events": [
+       {"col": "new", "at": 2.0, "text": "Vitamin D"},
+       {"col": "new", "at": 2.7, "text": "Magnesium"},
+       {"col": "new", "at": 3.3, "text": "Electrolytes"}
+     ],
+     "panels": {
+       "new": {"src": "NEW", "in": 44.00, "out": 49.90, "audio": 1, "x": 0.25},
+       "cur": {"src": "CUR", "in": 43.60, "x": 0.75}
+     }},
+    {"note": "cur spills powder",
+     "layout": ["new", "cur"],
+     "labels": {"new": "", "cur": "Super Messy"},
+     "panels": {
+       "new": {"src": "NEW", "in": 51.00, "x": 0.25},
+       "cur": {"src": "CUR", "in": 52.20, "out": 57.10, "audio": 1, "x": 0.75}
+     }},
+    {"note": "solo close, board of four flavours", "src": "END", "in": 2.00, "out": 6.50},
+    {"note": "punch in, proof pop-ups", "src": "END", "in": 12.40, "out": 16.00, "zoom": 1.15,
+     "popups": [
+       {"image": "assets/coa.png", "at": 0.3, "dur": 1.6, "cx": 0.31, "cy": 0.20, "w": 0.32},
+       {"image": "assets/review1.png", "at": 1.9, "dur": 0.6, "cx": 0.66, "cy": 0.24, "w": 0.46, "border": 0.012},
+       {"image": "assets/review2.png", "at": 2.5, "dur": 0.6, "cx": 0.32, "cy": 0.24, "w": 0.46, "border": 0.012},
+       {"image": "assets/review3.png", "at": 3.1, "dur": 0.5, "cx": 0.66, "cy": 0.24, "w": 0.46, "border": 0.012}
+     ]},
+    {"note": "back to the board, call to action", "src": "END", "in": 18.00, "out": 25.30}
+  ]
+}
