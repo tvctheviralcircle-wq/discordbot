@@ -9,22 +9,30 @@ One person plays every character. Each character is filmed as its own take; this
 
 You (Claude) are the editor: you look at the raws, decide the cuts, and write a plan JSON. `scripts/render.py` turns the plan into the video.
 
+## Adapt to the concept first
+
+The reference is one example, not a template. Every raw set has its own script, so before planning any cut, watch the raws and work out the concept yourself:
+
+- Who are the characters and what does each stand for (eras, old way vs new way, brand vs rival, sceptic vs fan, before vs after)?
+- What is the argument, and where does it turn (each claim, comeback, reveal, price, call to action)?
+- Which moments need something on screen to land, and what kind: a name over a character, a short label for a claim, a number, a countdown or stopwatch, a proof image, or nothing at all?
+
+Then design the elements to fit that video. Write the titles, pick the emoji or icons, and word the labels yourself from what is actually said and shown. Use only the elements the concept needs: a video with no race gets no stopwatches, a video whose characters are obvious may need no titles, a two-person take needs no split at all. Two, three or more columns, any order, any mix of split and full-frame segments are all fine.
+
+If the concept needs an element the renderer does not have yet (word captions, arrows, a price strike-through, a progress bar, a different text style), add it to `scripts/render.py` in the same style as the existing overlays and note it here, instead of forcing the video into the existing set.
+
+Keep the reference's craft whatever the concept: tight beat-by-beat cuts, hard-cut text, short labels, nothing covering a face, proof shown at the moment it is claimed.
+
 ## What to ask the user for
 
-Give them this prompt if they haven't supplied everything:
+The raws are enough to start. Only these cannot be worked out from footage, so ask if they are missing and matter:
 
 ```
-Edit these in the clone-comparison style.
-Clips: [file/link] = [character], [file/link] = [character], [file/link] = solo ending
-Title + emoji per character: e.g. 2027 🍬 / 2025 🍚
-Labels per character, in the order they come up: ...
-Stopwatch race at the start: yes/no (who wins, final times)
-Pop-up images for the ending (certificate, reviews): [files]
-Music: [file] or none
-Target length: ~60s
+Send the raw clips (say which is which if it isn't obvious).
+Optional: the script or concept in a line, proof images (certificate, reviews, screenshots), a music file, target length, anything that must or must not appear on screen.
 ```
 
-Missing labels are not a blocker: propose them from what each character says and confirm before the final render. Never invent claims, prices, reviews or certificates; pop-ups and numbers come from the user.
+Never invent claims, prices, reviews or certificates: on-screen facts come from what is said in the raws or from the user. Show the user your read of the concept and the element list (titles, labels, pop-ups) with the first preview, so they can correct wording before the final render.
 
 Filming notes to pass on if they ask (these decide how clean the result is): phone on a tripod that does not move between takes, vertical, same light; stand in your own half (or third) of the frame for each character and stay inside it; leave a pause where the other character speaks and react during it; plain wall behind.
 
@@ -34,12 +42,12 @@ Work in a job folder outside the skill, e.g. `video-jobs/<name>/` with `raw/`, `
 
 1. **Look at the raws.** `python3 scripts/probe.py raw/*.mp4` prints size/duration and writes contact sheets (one frame per second, timestamps, quarter grid). Read every sheet. Note for each clip: which character, where the person stands (the `x` of their body centre, read off the grid), and whether the camera moved.
 2. **Get the lines and their times.** `python3 scripts/transcribe.py raw/*.mp4`. See "Speech-to-text" below if it reports a fallback.
-3. **Write the beat sheet.** A beat is one line by one character. Order the beats the way the conversation should run (follow the user's script if given). For each beat note: speaker, the speaker's in/out in their clip, and where the listener is reacting in their own clip (normally the pause before their next line, or after their previous one).
+3. **Write down the concept and element list** (see "Adapt to the concept first"), then **the beat sheet.** A beat is one line by one character. Order the beats the way the conversation should run (follow the user's script if given). For each beat note: speaker, the speaker's in/out in their clip, and where the listener is reacting in their own clip (normally the pause before their next line, or after their previous one).
 4. **Write `plan.json`** (schema below, example in `reference/plan.example.json`). Run `render.py plan.json --timeline` to see each segment's start time.
 5. **Preview.** `render.py plan.json --preview`, then `probe.py out/final_preview.mp4 --fps 3 --no-grid` and read the sheets. Check every item in the QA list.
 6. **Final.** `render.py plan.json`, QA again on the full-size file, then send it to the user with a short list of what you chose (labels, cuts) and anything you could not match.
 
-## Editing rules (from the reference)
+## Editing rules (defaults from the reference; bend them to the concept)
 
 - **Tight cuts.** Start each beat about 0.05s before the first word and end about 0.1s after the last. No dead air. Every beat boundary is a hard cut across all clones at once.
 - **Speaker is the master.** The speaker's panel sets the beat length and carries the audio (`"audio": 1`). Listeners are muted and only need `in`; the renderer trims them to the beat. If a listener's reaction is shorter than the beat, give its `out` and the renderer slows it up to 1.35x, then holds the last frame.
