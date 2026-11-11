@@ -20,32 +20,6 @@
    "drafted": "2026-11-11T00:35Z",
    "note": "Cictiv @hawibofdu6o (3,012 views) skipped: hair-loss video, not dandruff. No transcript; quotes are on-screen text.",
    "status": "on_hold (moderator: wait)"
-  },
-  {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-11-01..2026-11-07",
-   "rank": 3,
-   "video": "7695214735435762958",
-   "creator": "rick_roxy",
-   "linked_discord": false,
-   "approval_message_ids": [
-    "1570117428132847670",
-    "1570117430062223441",
-    "1570117432603975866",
-    "1570117439750938746"
-   ],
-   "destination": "1533830710937256087",
-   "final_texts": [
-    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 1 – Sat Nov 7**\n**#3 video by GMV:** @rick_roxy\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@rick_roxy/video/7695214735435762958",
-    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Talk to one guy, not everyone:**\n\"Caballero, ¿caspa? Escúchame.\"\n-# (Gentleman, dandruff? Listen to me.)\n**2- Film where it actually happens:**\nShower or bathroom mirror, bottle in hand from second 1.\n**3- Sound like a friend, not an ad:**\n\"Yo también la tenía. Esto fue lo que me la quitó de los hombros.\"\n-# (I had it too. This is what got it off my shoulders.)\n**4- Show it in use:**\nLather on camera, leave it 2–3 minutes, rinse. Viewers trust what they see.\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nTalk to one person · Real setting · Friend tone · Product in use · Cart close\n\n**72% swiped before second 2. Open on the problem and the brand can scale your video.**"
-   ],
-   "cards": [
-    "/home/user/discordbot/drafts/2026-11-11/winning-angle-3-card1.png",
-    "/home/user/discordbot/drafts/2026-11-11/winning-angle-3-card2.png"
-   ],
-   "os_draft_id": "winning_content-2026-11-01-3",
-   "drafted": "2026-11-11T16:50Z",
-   "note": "Same video as Oct 25-31 #2; mods can say skip. GMV Max: 2 rows summed ($56.00 spend, $31.49 revenue)."
   }
  ],
  "posted": [
@@ -165,6 +139,41 @@
    "milestone": 1,
    "approved_by": "moazzam.golra",
    "destination_message_id": "1569873515056734268"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-11-01..2026-11-07",
+   "rank": 3,
+   "video": "7695214735435762958",
+   "creator": "rick_roxy",
+   "linked_discord": false,
+   "approval_message_ids": [
+    "1570117428132847670",
+    "1570117430062223441",
+    "1570117432603975866",
+    "1570117439750938746"
+   ],
+   "destination": "1533830710937256087",
+   "final_texts": [
+    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 1 – Sat Nov 7**\n**#3 video by GMV:** @rick_roxy\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@rick_roxy/video/7695214735435762958",
+    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Talk to one guy, not everyone:**\n\"Caballero, ¿caspa? Escúchame.\"\n-# (Gentleman, dandruff? Listen to me.)\n**2- Film where it actually happens:**\nShower or bathroom mirror, bottle in hand from second 1.\n**3- Sound like a friend, not an ad:**\n\"Yo también la tenía. Esto fue lo que me la quitó de los hombros.\"\n-# (I had it too. This is what got it off my shoulders.)\n**4- Show it in use:**\nLather on camera, leave it 2–3 minutes, rinse. Viewers trust what they see.\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nTalk to one person · Real setting · Friend tone · Product in use · Cart close\n\n**72% swiped before second 2. Open on the problem and the brand can scale your video.**"
+   ],
+   "cards": [
+    "/home/user/discordbot/drafts/2026-11-11/winning-angle-3-card1.png",
+    "/home/user/discordbot/drafts/2026-11-11/winning-angle-3-card2.png"
+   ],
+   "os_draft_id": "winning_content-2026-11-01-3",
+   "drafted": "2026-11-11T16:50Z",
+   "note": "Same video as Oct 25-31 #2; mods can say skip. GMV Max: 2 rows summed ($56.00 spend, $31.49 revenue).",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat)",
+   "posted": "2026-11-11T17:00Z",
+   "posted_message_ids": [
+    "1570121075415851068",
+    "1570121078460653691",
+    "1570121097398063128",
+    "1570121112338038825"
+   ]
   }
  ],
  "notes": [
