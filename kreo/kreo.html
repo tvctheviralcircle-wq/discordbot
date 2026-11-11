@@ -361,6 +361,9 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .kp .l { font-size: var(--text-micro); color: var(--color-text-muted); display: flex; justify-content: space-between; gap: 6px; align-items: center; }
 .kp .v { font-family: var(--font-mono); font-size: 22px; color: var(--color-heading); margin-top: 4px; font-variant-numeric: tabular-nums; }
 
+.kp .s { font-size: var(--text-micro); color: var(--color-text-muted); margin-top: 2px; }
+.info { display: inline-grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--color-border-strong); font-size: 9px; color: var(--color-text-subtle); cursor: help; font-style: normal; vertical-align: 1px; }
+.tbl td.heat { background: color-mix(in srgb, var(--color-primary) var(--p), var(--color-surface)); color: var(--color-heading); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* Tables */
 .tblwrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-card); }
 .tbl { width: 100%; border-collapse: collapse; font-size: var(--text-small); min-width: 860px; }
@@ -1357,7 +1360,7 @@ $("#meBtn").addEventListener("click", (e) => {
   $("#helpBtn").addEventListener("click", () => { closePops(); toast("Help center opens here in the live product"); });
   $("#signOut").addEventListener("click", () => { S.user = null; save(); closePops(); location.hash = "#home"; toast("Signed out"); });
 });
-$("#gSearch").addEventListener("keydown", (e) => { if (e.key === "Enter") { sub.q = e.target.value; sub.an = "community"; go("analytics"); } });
+$("#gSearch").addEventListener("keydown", (e) => { if (e.key === "Enter") { sub.q = e.target.value; sub.an = "community"; sub.ct = "creators"; go("analytics"); } });
 document.addEventListener("keydown", (e) => { if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName) && S.launched) { e.preventDefault(); $("#gSearch").focus(); } if (e.key === "Escape") { closePops(); closeDrawer(); } });
 
 /* ---------- Setup overlay ---------- */
@@ -1690,33 +1693,164 @@ function pAnalytics(el) {
   $("#exp").addEventListener("click", () => toast("Export started. We'll email you the CSV."));
   (tab === "community" ? anCommunity : anOverall)($("#anBody"));
 }
+/* Community analytics: same sections and metrics as the TVC Creator OS (Overview, Leaderboard, Channels, Creators × revenue, Retention, Scoring settings), plus the Creators contact table. */
+const EXTRA_MEMBERS = [
+  ["glowlab.marcus", "Marcus Bell", "Moderator", 0.9, 70], ["priya.team", "Priya Nair", "Admin", 0.8, 40],
+  ["beautybyjo", "Jo Adams", "Creator", 0.5, 30], ["hairtok.liv", "Liv Grant", "Creator", 0.35, 18],
+  ["newbie_ken", "Ken Ito", "Creator", 0.1, 4], ["skincare.sophie", "Sophie Marsh", "Creator", 0.6, 26],
+];
+const ROLES = ["Admin", "Moderator", "Creator", "VIP Creator", "Bot"];
+const defaultScoring = () => ({ cap: 50, cooldown: 30, excludedChannels: [], excludedRoles: ["Admin", "Moderator", "Bot"], w: { m: 3, rr: 2, pr: 2, ad: 3, rg: 1, v: 1 } });
+const MEMBERS = [
+  ...CREATORS.map((c) => ({ id: c.id, user: c.d, name: c.name, tiktok: c.linked ? c.h : null, linked: c.linked, role: c.weekly > 400 ? "VIP Creator" : "Creator", rate: c.status === "silent" ? 0.03 : c.status === "not-posted" ? 0.16 : Math.min(0.92, 0.12 + c.msgs / 60), joined: c.joined, creator: c })),
+  ...EXTRA_MEMBERS.map(([u, n, role, rate, joined], i) => ({ id: "x" + i, user: u, name: n, tiktok: null, linked: false, role, rate, joined: joined + i })),
+];
+const K = 642 / MEMBERS.length; // sample members stand in for the whole server
+const FADED = new Set(["sam.unboxes", "deshawn.daily", "newbie_ken", "brooke.finds", "haleyhaul"]); // were active, then went quiet
+const isActiveOn = (m, d) => { if (+d < +addD(today0(), -m.joined)) return false; const r = FADED.has(m.creator ? m.creator.h : m.user) ? (+d < +addD(today0(), -9) ? 0.5 : 0) : m.rate; return hash(m.id + ymd(d)) < r; };
+const activeIn = (m, s, e) => { for (let d = s; d <= e; d = addD(d, 1)) if (isActiveOn(m, d)) return true; return false; };
+function commModel() {
+  const sc = S.scoring || (S.scoring = defaultScoring());
+  const len = rDays(), pS = addD(R.s, -len), pE = addD(R.s, -1);
+  const ok = MEMBERS.filter((m) => !sc.excludedRoles.includes(m.role));
+  const days = []; for (let d = R.s; d <= R.e; d = addD(d, 1)) days.push(d);
+  const board = ok.map((m) => {
+    const u = { m: 0, rr: 0, pr: 0, ad: 0, rg: 0, v: 0 };
+    days.forEach((d) => { if (!isActiveOn(m, d)) return; const k = m.id + ymd(d); const raw = Math.round(2 + 14 * hash(k + "m") * (0.4 + m.rate)); u.m += Math.min(raw, sc.cap); u.ad += 1; u.rr += Math.round(raw * (0.3 + hash(k + "r"))); u.pr += Math.round(raw * 0.35 * hash(k + "p")); u.rg += Math.round(3 * hash(k + "g") * (1 + m.rate * 4)); u.v += hash(k + "v") > 0.85 ? Math.round(10 + 50 * hash(k + "vv")) : 0; });
+    return { ...m, ...u };
+  });
+  const W = sc.w, stats = ["m", "rr", "pr", "ad", "rg", "v"], wsum = stats.reduce((s, k) => s + (+W[k] || 0), 0) || 1;
+  const lead = Object.fromEntries(stats.map((s) => [s, Math.max(0, ...board.map((u) => u[s]))]));
+  board.forEach((u) => { u.parts = {}; u.score = 0; stats.forEach((s) => { const p = lead[s] > 0 ? 100 * (+W[s] || 0) * u[s] / lead[s] / wsum : 0; u.parts[s] = p; u.score += p; }); });
+  const cur = ok.filter((m) => activeIn(m, R.s, R.e)), prev = ok.filter((m) => activeIn(m, pS, pE));
+  const curIds = new Set(cur.map((m) => m.id)), prevIds = new Set(prev.map((m) => m.id));
+  const activeCount = (d) => ok.filter((m) => isActiveOn(m, d)).length;
+  const dau = activeCount(R.e), wau = ok.filter((m) => activeIn(m, addD(R.e, -6), R.e)).length, mau = ok.filter((m) => activeIn(m, addD(R.e, -29), R.e)).length;
+  const avgDau = days.reduce((s, d) => s + activeCount(d), 0) / days.length;
+  const joiners = MEMBERS.filter((m) => { const j = addD(today0(), -m.joined); return j >= R.s && j <= R.e; });
+  const eligible = joiners.filter((m) => m.joined >= 7);
+  const activated = eligible.filter((m) => { const j = addD(today0(), -m.joined); return activeIn(m, j, addD(j, 6)); });
+  const daily = days.map((d) => ({ d, active: activeCount(d) * K, msgs: board.reduce((s, u) => s + (isActiveOn(u, d) ? Math.min(Math.round(2 + 14 * hash(u.id + ymd(d) + "m") * (0.4 + u.rate)), sc.cap) : 0), 0) * K }));
+  const rk = ymd(R.s) + ymd(R.e);
+  return { sc, board, cur, prev, dau, wau, mau, avgDau, stick: mau ? avgDau / mau * 100 : null, joiners, eligible, activated, daily,
+    newActive: cur.filter((m) => !prevIds.has(m.id)), stayed: cur.filter((m) => prevIds.has(m.id)), quiet: prev.filter((m) => !curIds.has(m.id)),
+    med: 600 + 900 * hash(rk + "med"), p90: 5400 + 6000 * hash(rk + "p90"), nReplies: Math.round(rDays() * (40 + 20 * hash(rk + "n"))) };
+}
+const fmtSecs = (s) => s == null ? "—" : s < 3600 ? Math.round(s / 60) + "m" : s < 86400 ? (s / 3600).toFixed(1) + "h" : (s / 86400).toFixed(1) + "d";
+const pctS = (x) => x == null ? "—" : Math.round(x) + "%";
+const cmpChip = (a, b) => b ? chg((a - b) / b * 100) : "";
+const kBox = (l, v, s, tip, c = "") => `<div class="kp"><div class="l"><span>${esc(l)} <span class="info" tabindex="0" title="${esc(tip)}" aria-label="${esc(tip)}">i</span></span>${c}</div><div class="v">${v}</div><div class="s">${esc(s || "")}</div></div>`;
+const COMM_TABS = [["overview", "Overview"], ["creators", "Creators"], ["leaderboard", "Leaderboard"], ["channels", "Channels"], ["revenue", "Creators × revenue"], ["retention", "Retention"], ["scoring", "Scoring settings"]];
 function anCommunity(el) {
-  const d = series(), inDiscord = CREATORS.filter((c) => c.status !== "x");
-  const linked = CREATORS.filter((c) => c.linked).length, withWa = CREATORS.filter((c) => waOf(c)).length;
+  const ct = sub.ct || "overview";
+  el.innerHTML = `<div class="seg" role="tablist" style="margin-bottom:16px">${COMM_TABS.map(([k, l]) => `<button type="button" role="tab" aria-selected="${ct === k}" class="${ct === k ? "on" : ""}" data-ct="${k}">${l}</button>`).join("")}</div><div id="ctBody"></div>`;
+  $$("[data-ct]", el).forEach((b) => b.addEventListener("click", () => { sub.ct = b.dataset.ct; anCommunity(el); }));
+  const body = $("#ctBody", el);
+  if (ct === "scoring") return commScoring(body, el);
+  if (ct === "creators") return commCreators(body);
+  const M = commModel();
+  if (ct === "overview") commOverview(body, M);
+  if (ct === "leaderboard") commLeaderboard(body, M);
+  if (ct === "channels") commChannels(body, M);
+  if (ct === "revenue") commRevenue(body, M);
+  if (ct === "retention") commRetention(body, M);
+}
+const memberRow = (u, i, val) => `<div class="lrow"><span style="display:flex;gap:8px;align-items:center"><span class="rk">${i + 1}</span><span class="cav ${i === 0 ? "r" : ""}">${initials(u.name)}</span></span><div style="min-width:0"><b>${esc(u.user)}</b><span class="sub">${u.linked ? "@" + esc(u.tiktok) : "Not linked"}</span></div><span class="num">${val}</span></div>`;
+function commOverview(el, M) {
+  const linked = MEMBERS.filter((m) => m.linked).length;
+  el.innerHTML = `<div class="kpis6">
+    ${kBox("Active members", int(M.cur.length * K), `642 members · ${int(linked * K)} linked`, "Members who posted, reacted or joined voice at least once in the range. Excluded roles don't count.", cmpChip(M.cur.length, M.prev.length))}
+    ${kBox("DAU / WAU / MAU", `${int(M.dau * K)} / ${int(M.wau * K)} / ${int(M.mau * K)}`, "Avg DAU " + int(M.avgDau * K), "Daily, weekly and monthly active members, measured at the end of the range.")}
+    ${kBox("Stickiness", pctS(M.stick), M.stick >= 20 ? "Healthy (above 20%)" : "Below the 20% benchmark", "Average daily actives divided by monthly actives. Above 20% is a community people come back to.")}
+    ${(() => { const el = Math.round(M.joiners.length * K * 0.7), ac = Math.round(el * (0.48 + 0.22 * hash(ymd(R.s) + "act"))); return kBox("Activation", el ? pctS(ac / el * 100) : "—", `${ac} of ${el} new members`, "New members active within 7 days of joining. Only joiners who have had the full 7 days count."); })()}
+    ${kBox("New members", int(M.joiners.length * K), "Joined the server in range", "Discord members whose join date falls in the range.")}
+    ${kBox("New active", int(M.newActive.length * K), `${int(M.stayed.length * K)} stayed active from last period`, "Active this period but not in the previous period of the same length.")}
+    ${kBox("Went quiet", int(M.quiet.length * K), `of ${int(M.prev.length * K)} active last period`, "Active in the previous period of the same length, silent in this one.")}
+    ${kBox("Median reply time", fmtSecs(M.med), `p90 ${fmtSecs(M.p90)} · ${int(M.nReplies)} replies`, "Time from a message to the first reply by someone else.")}
+    ${kBox("Linked creators", `${int(linked * K)} / 642`, "Linked to " + crmName(), "Members whose Discord is linked to a TikTok handle in " + crmName() + ".")}
+  </div>
+  <div class="bento">
+    <section class="tile s6"><div class="th"><h2>Top 10 by overall score</h2><div class="r"><button class="btn sm ghost" type="button" data-jump-ct="leaderboard">Leaderboard ${ico("arrow")}</button></div></div>${M.board.slice().sort((a, b) => b.score - a.score).slice(0, 10).map((u, i) => memberRow(u, i, u.score.toFixed(1))).join("") || '<div class="empty">No activity yet.</div>'}</section>
+    <section class="tile s6"><div class="th"><h2>Top 10 by messages</h2><span class="muted" style="font-size:var(--text-micro)">Daily cap applied</span></div>${M.board.filter((u) => u.m > 0).sort((a, b) => b.m - a.m).slice(0, 10).map((u, i) => memberRow(u, i, int(u.m))).join("") || '<div class="empty">No messages yet.</div>'}</section>
+    <section class="tile s12"><div class="th"><h2>Daily activity</h2><div class="r legend"><span><i style="background:var(--color-primary)"></i>Active members</span><span><i style="background:var(--color-accent)"></i>Messages</span></div></div>${lineChart(M.daily, [{ k: "active", c: "var(--color-primary)" }, { k: "msgs", c: "var(--color-accent)" }], { h: 200, money: false })}</section>
+    <section class="tile s12"><div class="th"><h2>New members in range</h2><span class="muted" style="font-size:var(--text-micro)">${int(M.joiners.length * K)} joined · sample shown</span></div>
+      ${M.joiners.length ? `<div class="tblwrap"><table class="tbl" style="min-width:560px"><thead><tr><th>Discord member</th><th>TikTok</th><th>Joined</th><th>First 7 days</th></tr></thead><tbody>${M.joiners.map((m) => { const j = addD(today0(), -m.joined); const act = activeIn(m, j, addD(j, 6)); return `<tr ${m.creator ? `data-creator="${m.creator.id}"` : 'style="cursor:default"'}><td><div class="who"><span class="cav">${initials(m.name)}</span><div><b>@${esc(m.user)}</b><span>${esc(m.name)}</span></div></div></td><td>${m.linked ? `<span class="pill good">@${esc(m.tiktok)}</span>` : '<span class="pill line">Not linked</span>'}</td><td class="muted">${fmtD(j)}</td><td>${m.joined < 7 ? '<span class="pill line">Still in window</span>' : act ? '<span class="pill good">Activated</span>' : '<span class="pill rose">Silent</span>'}</td></tr>`; }).join("")}</tbody></table></div>` : '<div class="empty"><b>No one joined in this range</b>Pick a longer range to see new members.</div>'}</section>
+  </div>`;
+  $$("[data-jump-ct]", el).forEach((b) => b.addEventListener("click", () => { sub.ct = b.dataset.jumpCt; renderPage(); }));
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
+}
+function commLeaderboard(el, M) {
+  const cols = [["score", "Overall"], ["m", "Messages"], ["rr", "Reactions received"], ["pr", "Replies received"], ["ad", "Active days"], ["rg", "Reactions given"], ["v", "Voice minutes"]];
+  const sort = sub.lb || "score"; const rows = M.board.slice().sort((a, b) => (b[sort] || 0) - (a[sort] || 0));
+  el.innerHTML = `<div class="th"><h2>Every stat in one place</h2><span class="muted" style="font-size:var(--text-micro)">Click a column to sort. Hover a score for its breakdown. ${M.sc.excludedRoles.length ? "Excluded roles: " + esc(M.sc.excludedRoles.join(", ")) + "." : ""}</span></div>
+    <div class="tblwrap"><table class="tbl"><thead><tr><th>#</th><th>Member</th>${cols.map(([k, l]) => `<th class="r"><button type="button" data-lb="${k}" ${sort === k ? 'aria-sort="descending"' : ""}>${l}${sort === k ? " ↓" : ""}</button></th>`).join("")}</tr></thead><tbody>
+    ${rows.map((u, i) => `<tr ${u.creator ? `data-creator="${u.creator.id}"` : 'style="cursor:default"'}><td class="muted mono">${i + 1}</td><td><div class="who"><span class="cav">${initials(u.name)}</span><div><b>${esc(u.user)}</b><span>${u.linked ? "@" + esc(u.tiktok) : "Not linked"} · ${esc(u.role)}</span></div></div></td><td class="r num" title="${esc(["m", "rr", "pr", "ad", "rg", "v"].map((s) => `${s}: +${u.parts[s].toFixed(1)}`).join("  "))}">${u.score.toFixed(1)}</td>${["m", "rr", "pr", "ad", "rg", "v"].map((k) => `<td class="r num">${int(u[k])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  $$("[data-lb]", el).forEach((b) => b.addEventListener("click", () => { sub.lb = b.dataset.lb; commLeaderboard(el, M); }));
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
+}
+function commChannels(el, M) {
+  const ex = new Set(M.sc.excludedChannels);
+  const list = S.channels.filter((c) => !ex.has(c.name)).map((c) => {
+    const b = base(c.name), k = c.name + ymd(R.s) + ymd(R.e);
+    const busy = /general|chat|introductions|share-wins|feedback|ticket/.test(b) ? 1 : /moderator|leaderboard|winning|viral|announce|welcome/.test(b) ? 0.25 : /memes|meta|rules|links|brief/.test(b) ? 0.04 : 0.15;
+    const m = hash(k) < 0.15 && busy < 0.1 ? 0 : Math.round(rDays() * 40 * busy * (0.5 + hash(k + "m")));
+    const top = M.board.filter((u) => u.m > 0).sort((a, x) => hash(x.id + b) - hash(a.id + b)).slice(0, 3).map((u) => [u.user, Math.max(1, Math.round(m * (0.1 + 0.2 * hash(u.id + b))))]);
+    return { name: c.name, m, members: m ? Math.round(Math.min(642, m * (0.25 + 0.3 * hash(k + "u")))) : 0, r: Math.round(m * (busy < 0.3 ? 3.2 : 0.8) * (0.5 + hash(k + "r"))), p: Math.round(m * 0.3 * hash(k + "p")), top: m ? top : [], last: m ? addD(R.e, -Math.floor(hash(k + "l") * Math.min(4, rDays()))) : null };
+  }).sort((a, b) => b.m - a.m || a.name.localeCompare(b.name));
+  el.innerHTML = `<div class="th"><h2>Activity per channel</h2><span class="muted" style="font-size:var(--text-micro)">${list.length} channels · Quiet = no messages in the range${ex.size ? " · " + ex.size + " excluded in Scoring settings" : ""}</span></div>
+    <div class="tblwrap"><table class="tbl" style="min-width:900px"><thead><tr><th>Channel</th><th class="r">Messages</th><th class="r">Members</th><th class="r">Reactions</th><th class="r">Replies</th><th>Top members</th><th>Last message</th></tr></thead><tbody>
+    ${list.map((c) => `<tr style="cursor:default"><td><b style="color:var(--color-heading);font-weight:500">#${esc(c.name)}</b> ${c.m ? "" : '<span class="pill rose">Quiet</span>'}</td><td class="r num">${int(c.m)}</td><td class="r num">${int(c.members)}</td><td class="r num">${int(c.r)}</td><td class="r num">${int(c.p)}</td><td>${c.top.map(([u, n]) => `<span class="pill line">${esc(u)} · ${n}</span>`).join(" ") || '<span class="muted">—</span>'}</td><td class="muted">${c.last ? fmtD(c.last) : "—"}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function commRevenue(el, M) {
+  const rows = M.board.filter((u) => u.linked && u.creator).map((u) => { const g = crGmv(u.creator); return { u, days: u.ad, engaged: u.ad >= 3, gmv: g, posts: g ? Math.max(1, Math.round(u.creator.videos * scale())) : 0, views: Math.round(g * 70) }; }).sort((a, b) => b.gmv - a.gmv);
+  const eng = rows.filter((r) => r.engaged), not = rows.filter((r) => !r.engaged);
+  const avg = (a, k) => a.length ? a.reduce((s, r) => s + r[k], 0) / a.length : null;
+  const lift = (k) => { const a = avg(eng, k), b = avg(not, k); return a != null && b ? (a / b).toFixed(1) + "x" : "—"; };
+  el.innerHTML = `<div class="kpis6">
+    ${kBox("Sales lift", lift("gmv"), "Engaged vs not engaged, avg video GMV", "How much more engaged creators (active 3+ days) sell than linked creators who aren't engaged.")}
+    ${kBox("Engaged creators", int(eng.length * K), "Linked, active 3+ days", "Linked creators active on 3 or more days in the range.")}
+    ${kBox("Not engaged", int(not.length * K), "Linked, under 3 active days", "Linked creators active on fewer than 3 days.")}
+    ${kBox("Posts lift", lift("posts"), "Selling videos, engaged vs not", "How many more selling videos engaged creators have.")}
+  </div>
+  <div class="th"><h2>Linked creators</h2><span class="muted" style="font-size:var(--text-micro)">GMV from their videos in range</span></div>
+  <div class="tblwrap"><table class="tbl" style="min-width:760px"><thead><tr><th>Creator</th><th>Engagement</th><th class="r">Active days</th><th class="r">Video GMV</th><th class="r">Selling videos</th><th class="r">Views</th></tr></thead><tbody>
+  ${rows.map((r) => `<tr data-creator="${r.u.creator.id}"><td><div class="who"><span class="cav">${initials(r.u.name)}</span><div><b>@${esc(r.u.tiktok)}</b><span>${esc(r.u.user)} on Discord</span></div></div></td><td><span class="pill ${r.engaged ? "good" : "line"}">${r.engaged ? "Engaged" : "Not engaged"}</span></td><td class="r num">${r.days}</td><td class="r num">${money(r.gmv)}</td><td class="r num">${r.posts}</td><td class="r num">${int(r.views)}</td></tr>`).join("")}</tbody></table></div>`;
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
+}
+function commRetention(el) {
+  const t = today0(), mon = addD(t, -((t.getDay() + 6) % 7));
+  const cohorts = Array.from({ length: 12 }, (_, i) => { const wk = addD(mon, -7 * i), k = ymd(wk); const n = Math.round(30 + 45 * hash(k + "n"));
+    const base0 = 58 + 18 * hash(k + "b"); return { wk, n, c: [1, 2, 4, 8].map((w, j) => addD(wk, 7 * w) > t ? null : Math.max(4, base0 * [1, 0.78, 0.6, 0.45][j] + 8 * (hash(k + w) - 0.5))) }; });
+  el.innerHTML = `<div class="th"><h2>Retention by join week</h2><span class="muted" style="font-size:var(--text-micro)">Share still active 1, 2, 4 and 8 weeks later. Blank = hasn't happened yet.</span></div>
+    <div class="tblwrap"><table class="tbl coh" style="min-width:560px"><thead><tr><th>Joined week of</th><th class="r">Members</th><th class="r">Week 1</th><th class="r">Week 2</th><th class="r">Week 4</th><th class="r">Week 8</th></tr></thead><tbody>
+    ${cohorts.map((c) => `<tr style="cursor:default"><td><b style="color:var(--color-heading);font-weight:500">${fmtD(c.wk, true)}</b></td><td class="r num">${c.n}</td>${c.c.map((p) => p == null ? "<td></td>" : `<td class="r heat" style="--p:${Math.round(p * 0.7)}%">${Math.round(p)}%</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+function commScoring(el, root) {
+  const sc = S.scoring || (S.scoring = defaultScoring());
+  const W = [["m", "Messages", "Messages that count: bursts within the cooldown count once, each day is capped."], ["rr", "Reactions received", "Reactions others left on their messages."], ["pr", "Replies received", "Replies from others to their messages."], ["ad", "Active days", "Days they posted at least one message."], ["rg", "Reactions given", "Reactions they added."], ["v", "Voice minutes", "Time in voice channels."]];
+  el.innerHTML = `<section class="card2"><div class="h"><h3>How the leaderboard counts</h3><p>Changes apply to every range, past ones too.</p></div>
+    <div class="frow"><label class="field">Daily message cap<input class="input" type="number" id="sc-cap" min="1" value="${sc.cap}"><small>Most messages one member can score per day.</small></label>
+    <label class="field">Cooldown (seconds)<input class="input" type="number" id="sc-cd" min="0" value="${sc.cooldown}"><small>Messages closer together count once.</small></label></div>
+    <div class="field">Excluded channels<div class="filters" style="margin:0">${S.channels.map((c) => `<button type="button" class="chip ${sc.excludedChannels.includes(c.name) ? "on" : ""}" data-exch="${esc(c.name)}">#${esc(c.name)}</button>`).join("")}</div><small>Not tracked at all.</small></div>
+    <div class="field">Excluded roles<div class="filters" style="margin:0">${ROLES.map((r) => `<button type="button" class="chip ${sc.excludedRoles.includes(r) ? "on" : ""}" data-exrole="${r}">${r}</button>`).join("")}</div><small>Members with these roles never rank.</small></div>
+    <div class="frow">${W.map(([k, l, d]) => `<label class="field">${l} weight<input class="input" type="number" step="0.5" min="0" max="10" data-w="${k}" value="${sc.w[k]}"><small>${d}</small></label>`).join("")}</div>
+    <div style="display:flex;gap:8px"><button class="btn primary" type="button" id="sc-save">Save scoring</button><button class="btn ghost" type="button" id="sc-reset">Reset</button></div></section>`;
+  const tog = (arr, v) => arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v];
+  $$("[data-exch]", el).forEach((b) => b.addEventListener("click", () => { sc.excludedChannels = tog(sc.excludedChannels, b.dataset.exch); b.classList.toggle("on"); }));
+  $$("[data-exrole]", el).forEach((b) => b.addEventListener("click", () => { sc.excludedRoles = tog(sc.excludedRoles, b.dataset.exrole); b.classList.toggle("on"); }));
+  $("#sc-save", el).addEventListener("click", () => { sc.cap = parseInt($("#sc-cap").value, 10) || 50; sc.cooldown = parseInt($("#sc-cd").value, 10) || 0; $$("[data-w]", el).forEach((i) => (sc.w[i.dataset.w] = Math.max(0, Math.min(10, parseFloat(i.value) || 0)))); save(); toast("Scoring saved. Leaderboard and channels updated."); });
+  $("#sc-reset", el).addEventListener("click", () => { S.scoring = defaultScoring(); save(); commScoring(el, root); toast("Scoring reset"); });
+}
+function commCreators(el) {
   const seg = sub.seg || "all", q = (sub.q || "").toLowerCase(), sort = sub.sort || "gmv";
   const segs = { all: () => true, selling: (c) => crGmv(c) > 0, "not-posted": (c) => c.status === "not-posted", silent: (c) => c.status === "silent" || !c.engaged, wa: (c) => !!waOf(c), unlinked: (c) => !c.linked };
   const segLabel = { all: "All", selling: "Selling", "not-posted": "Not posted yet", silent: "Quiet in Discord", wa: "Has WhatsApp", unlinked: "Not linked" };
-  let rows = inDiscord.filter(segs[seg]).filter((c) => !q || (c.h + " " + c.d + " " + c.name + " " + c.email).toLowerCase().includes(q));
+  let rows = CREATORS.filter(segs[seg]).filter((c) => !q || (c.h + " " + c.d + " " + c.name + " " + c.email).toLowerCase().includes(q));
   const key = { gmv: (c) => -crGmv(c), msgs: (c) => -c.msgs, joined: (c) => c.joined, name: (c) => c.h };
   rows.sort((a, b) => { const ka = key[sort](a), kb = key[sort](b); return ka < kb ? -1 : ka > kb ? 1 : 0; });
-  el.innerHTML = `<div class="kpis6">
-    <div class="kp"><div class="l">Members</div><div class="v">642</div></div>
-    <div class="kp"><div class="l">Linked to ${esc(crmName())}</div><div class="v">${Math.round(linked / CREATORS.length * 100)}%</div></div>
-    <div class="kp"><div class="l">Active creators ${chg(prevChange((x) => x.active))}</div><div class="v">${int(sum(d, (x) => x.active) / d.length)}</div></div>
-    <div class="kp"><div class="l">Community GMV ${chg(prevChange((x) => x.comm))}</div><div class="v">${money(sum(d, (x) => x.comm))}</div></div>
-    <div class="kp"><div class="l">Messages</div><div class="v">${int(sum(d, (x) => x.msgs))}</div></div>
-    <div class="kp"><div class="l">With WhatsApp</div><div class="v">${withWa}</div></div>
-  </div>
-  <div class="bento" style="margin-bottom:14px">
-    <section class="tile s8"><div class="th"><h2>Community creators: GMV and activity</h2></div><div class="legend" style="margin-bottom:6px"><span><i style="background:var(--color-accent)"></i>GMV from community creators</span></div>${lineChart(d, [{ k: "comm", c: "var(--color-accent)" }], { h: 180 })}</section>
-    <section class="tile s4"><div class="th"><h2>Creator funnel</h2></div><div class="bars">
-      ${[["Joined Discord", 642, 1], ["Finished onboarding", 498, 0.776], ["Linked to CRM", 456, 0.71], ["Posted a video", 301, 0.469], ["Made a sale", 188, 0.293]].map(([l, n, p]) => `<div class="bar-r"><div class="t"><span>${l}</span><span>${int(n)}</span></div><div class="track2"><i style="width:${p * 100}%"></i></div></div>`).join("")}
-    </div></section>
-  </div>
-  <section class="tile" style="padding:0;border:0">
-    <div class="filters">
+  el.innerHTML = `<div class="filters">
       <input class="input" id="cq" placeholder="Search name, @handle or email" value="${esc(sub.q || "")}" aria-label="Search creators">
-      ${Object.keys(segs).map((k) => `<button class="chip ${seg === k ? "on" : ""}" type="button" data-seg="${k}">${segLabel[k]} <small>${inDiscord.filter(segs[k]).length}</small></button>`).join("")}
+      ${Object.keys(segs).map((k) => `<button class="chip ${seg === k ? "on" : ""}" type="button" data-seg="${k}">${segLabel[k]} <small>${CREATORS.filter(segs[k]).length}</small></button>`).join("")}
       <span class="muted" style="margin-left:auto;font-size:var(--text-micro)">Email and phone from ${esc(crmName())}. WhatsApp from ${esc(crmName())} or found in DMs.</span>
     </div>
     <div class="tblwrap"><table class="tbl"><thead><tr>
@@ -1728,11 +1862,10 @@ function anCommunity(el) {
         <td><div class="contact"><div>${ico("mail")}${esc(c.email)} <span class="src">CRM</span></div>${c.phone ? `<div>${ico("phone")}${esc(c.phone)} <span class="src">CRM</span></div>` : ""}${wa ? `<div>${ico("wa")}${esc(wa)} <span class="src ${c.waSrc === "dm" ? "dm" : ""}">${c.waSrc === "dm" ? "From DM" : "CRM"}</span></div>` : ""}</div></td>
         <td>${c.linked ? `<span class="pill good">@${esc(c.d)}</span>` : '<span class="pill line">Not linked</span>'}<div class="muted" style="font-size:var(--text-micro);margin-top:3px">${c.status === "silent" || !c.engaged ? "Quiet" : "Engaged"}</div></td>
         <td class="r num">${g ? money(g) : "—"}</td><td class="r num">${g ? int(g / 32) : 0}</td><td class="r num">${c.videos}</td><td class="r num">${int(c.msgs * scale())}</td>
-        <td class="muted">${fmtD(addD(today0(), -c.joined))}</td></tr>`; }).join("") || `<tr><td colspan="8"><div class="empty"><b>No creators match</b>Try another filter or search.</div></td></tr>`}</tbody></table></div>
-  </section>`;
-  const cq = $("#cq", el); cq.addEventListener("input", () => { sub.q = cq.value; clearTimeout(cq._t); cq._t = setTimeout(() => { anCommunity(el); const n = $("#cq", el); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 250); });
-  $$("[data-seg]", el).forEach((b) => b.addEventListener("click", () => { sub.seg = b.dataset.seg; anCommunity(el); }));
-  $$("[data-sort]", el).forEach((b) => b.addEventListener("click", () => { sub.sort = b.dataset.sort; anCommunity(el); }));
+        <td class="muted">${fmtD(addD(today0(), -c.joined))}</td></tr>`; }).join("") || `<tr><td colspan="8"><div class="empty"><b>No creators match</b>Try another filter or search.</div></td></tr>`}</tbody></table></div>`;
+  const cq = $("#cq", el); cq.addEventListener("input", () => { sub.q = cq.value; clearTimeout(cq._t); cq._t = setTimeout(() => { commCreators(el); const n = $("#cq", el); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 250); });
+  $$("[data-seg]", el).forEach((b) => b.addEventListener("click", () => { sub.seg = b.dataset.seg; commCreators(el); }));
+  $$("[data-sort]", el).forEach((b) => b.addEventListener("click", () => { sub.sort = b.dataset.sort; commCreators(el); }));
   $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
 }
 function anOverall(el) {
