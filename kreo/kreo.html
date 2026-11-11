@@ -1,0 +1,1118 @@
+<title>Kreo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: marketing site (sticky nav, hero with product window, banded sections) → sign up (split) → app (sidebar + content, locked behind a blurred setup overlay).
+   Tokens: TVC Creator OS design system (design-system/tokens.css). Kreo commits to the light look, like the Creator OS. */
+:root {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8f6fa;
+  --color-text: #2e2836;
+  --color-heading: #1f1a24;
+  --color-text-muted: #6e6678;
+  --color-text-subtle: #8c8496;
+  --color-border: #ece7f0;
+  --color-border-strong: #ddd5e4;
+  --color-primary: #b8336a;
+  --color-primary-hover: #a32c5d;
+  --color-primary-foreground: #ffffff;
+  --color-primary-tint: #fbeff4;
+  --color-accent: #4c3481;
+  --color-accent-tint: #f4eefa;
+  --color-accent-tint-hover: #ebe2f6;
+  --color-success: #2f7a4f;
+  --color-success-tint: #e3f2e8;
+  --color-danger: #b3364f;
+  --color-danger-tint: #fbe4e8;
+  --color-surface-inverse: #1f1a24;
+  --color-surface-inverse-foreground: #ffffff;
+  --color-surface-inverse-muted: #b9b0c4;
+  --color-overlay: rgba(31, 26, 36, 0.32);
+  /* Discord previews keep Discord's dark look so they match what will post (DESIGN.md) */
+  --color-discord-bg: #313338;
+  --color-discord-side: #2b2d31;
+  --color-discord-rail: #1e1f22;
+  --color-discord-hover: #3a3c42;
+  --color-discord-text: #dbdee1;
+  --color-discord-muted: #949ba4;
+  --color-discord-head: #f2f3f5;
+  --color-discord-mention: #c9cdfb;
+  --color-discord-mention-bg: rgba(88, 101, 242, 0.3);
+  --color-discord-tag: #5865f2;
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Montserrat", "Arial Black", ui-sans-serif, system-ui, sans-serif;
+  --text-display: 64px; --text-h2: 40px; --text-h3: 30px; --text-h4: 24px; --text-h5: 19px;
+  --text-body-lg: 18px; --text-body: 15.5px; --text-body-sm: 15px; --text-caption: 14px; --text-small: 13px; --text-micro: 12px; --text-overline: 11px;
+
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 10px; --radius-2xl: 12px; --radius-card: 14px; --radius-3xl: 20px; --radius-full: 9999px;
+  --shadow-2xl: rgba(76, 52, 129, 0.07) 0px 6px 20px 0px, rgba(76, 52, 129, 0.05) 0px 2px 6px 0px;
+  --shadow-dialog: rgba(76, 52, 129, 0.14) 0px 18px 50px -8px, rgba(76, 52, 129, 0.06) 0px 2px 8px 0px;
+  --blur-locked: 7px;
+  --container-page: 1180px;
+  --duration-fast: 150ms; --duration-base: 200ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+* { box-sizing: border-box; }
+html, body { background: var(--color-background); }
+body { color: var(--color-text); font-family: var(--font-sans); font-size: var(--text-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--color-heading); font-weight: 600; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.wrap { max-width: var(--container-page); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--color-text-muted); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: var(--text-overline); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); font-weight: 600; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: var(--radius-xl); border: 1px solid var(--color-border-strong); background: var(--color-surface); color: var(--color-heading); font-size: var(--text-caption); font-weight: 500; cursor: pointer; white-space: nowrap; transition: background var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease), opacity var(--duration-fast); text-decoration: none; }
+.btn:hover { background: var(--color-surface-subtle); text-decoration: none; }
+.btn.primary { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-primary-foreground); }
+.btn.primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+.btn.subtle { background: var(--color-accent-tint); border-color: transparent; color: var(--color-accent); }
+.btn.subtle:hover { background: var(--color-accent-tint-hover); }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--color-text-muted); }
+.btn.ghost:hover { background: var(--color-surface-subtle); color: var(--color-heading); }
+.btn.lg { height: 50px; padding: 0 24px; font-size: var(--text-body-sm); border-radius: var(--radius-2xl); }
+.btn.sm { height: 32px; padding: 0 12px; font-size: var(--text-small); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 2px 10px; border-radius: var(--radius-full); background: var(--color-accent-tint); color: var(--color-accent); font-size: var(--text-micro); font-weight: 500; white-space: nowrap; }
+.pill.good { background: var(--color-success-tint); color: var(--color-success); }
+.pill.rose { background: var(--color-primary-tint); color: var(--color-primary); }
+.pill.line { background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-text-muted); }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* Logo */
+.logo { display: inline-flex; align-items: center; gap: 9px; color: var(--color-heading); text-decoration: none; }
+.logo:hover { text-decoration: none; }
+.logo svg { width: 30px; height: 30px; flex: none; }
+.logo b { font-family: var(--font-display); font-weight: 700; font-size: 23px; letter-spacing: -0.035em; line-height: 1; }
+
+/* ---------- Marketing ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--color-background); }
+.nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.nav nav { display: flex; gap: 26px; font-size: var(--text-caption); }
+.nav nav a { color: var(--color-text-muted); font-weight: 500; }
+.nav nav a:hover { color: var(--color-heading); text-decoration: none; }
+.nav .right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+.hero { padding-block: 72px 40px; text-align: center; }
+.hero .badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 6px; border-radius: var(--radius-full); border: 1px solid var(--color-border); font-size: var(--text-small); color: var(--color-text-muted); margin-bottom: 26px; }
+.hero .badge span { background: var(--color-primary-tint); color: var(--color-primary); border-radius: var(--radius-full); padding: 1px 9px; font-weight: 600; font-size: var(--text-micro); }
+.hero h1 { font-size: var(--text-display); line-height: 1.04; max-width: 15ch; margin: 0 auto; }
+.hero h1 em { font-style: normal; color: var(--color-primary); }
+.hero .lede { font-size: var(--text-body-lg); color: var(--color-text-muted); max-width: 60ch; margin: 22px auto 0; line-height: 1.6; }
+.hero .ctas { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+.hero .fine { margin-top: 14px; font-size: var(--text-small); color: var(--color-text-subtle); }
+
+.window { margin: 56px auto 0; max-width: 1040px; border: 1px solid var(--color-border); border-radius: var(--radius-3xl); background: var(--color-surface-subtle); padding: 12px; box-shadow: var(--shadow-2xl); text-align: left; }
+.window .bar { display: flex; gap: 6px; padding: 4px 6px 12px; align-items: center; }
+.window .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--color-border-strong); }
+.window .bar span { margin-left: 10px; font-size: var(--text-micro); color: var(--color-text-subtle); }
+.window .inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 12px; }
+.panel { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; min-width: 0; }
+
+/* Discord message preview */
+.dc { background: var(--color-discord-bg); color: var(--color-discord-text); border-radius: var(--radius-card); padding: 16px; font-size: var(--text-caption); line-height: 1.5; min-width: 0; }
+.dc .chan { color: var(--color-discord-muted); font-size: var(--text-small); font-weight: 600; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+.dc .msg { display: grid; grid-template-columns: 40px 1fr; gap: 12px; }
+.dc .av { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); display: grid; place-items: center; color: var(--color-primary-foreground); font-family: var(--font-display); font-weight: 700; overflow: hidden; }
+.dc .av img { width: 100%; height: 100%; object-fit: cover; }
+.dc .who { color: var(--color-discord-head); font-weight: 600; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.dc .who small { background: var(--color-discord-tag); color: var(--color-primary-foreground); font-size: 10px; padding: 0 5px; border-radius: 3px; font-weight: 600; }
+.dc .who time { color: var(--color-discord-muted); font-size: var(--text-micro); font-weight: 400; }
+.dc .mention { background: var(--color-discord-mention-bg); color: var(--color-discord-mention); border-radius: 3px; padding: 0 2px; }
+.dc .card { margin-top: 10px; background: var(--color-discord-side); border-radius: var(--radius-lg); padding: 14px; }
+.dc .card h6 { margin: 0 0 10px; font-family: var(--font-display); font-size: var(--text-caption); color: var(--color-discord-head); letter-spacing: -0.01em; }
+.dc .rank { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; padding: 5px 0; font-size: var(--text-small); align-items: center; }
+.dc .rank b { color: var(--color-discord-head); font-weight: 500; }
+.dc .rank .n { color: var(--color-discord-muted); font-family: var(--font-mono); }
+.dc .rank .g { font-family: var(--font-mono); color: var(--color-discord-head); }
+.dc .reacts { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.dc .reacts span { background: var(--color-discord-side); border-radius: var(--radius-lg); padding: 1px 8px; font-size: var(--text-micro); color: var(--color-discord-muted); }
+
+.approve h4 { font-size: var(--text-h5); }
+.approve .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.approve .row:first-of-type { border-top: 0; }
+.approve .row b { color: var(--color-heading); font-weight: 500; display: block; }
+.approve .actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+
+.works { padding-block: 44px; border-block: 1px solid var(--color-border); margin-top: 72px; }
+.works .wrap { display: flex; gap: 20px 44px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.works p { font-size: var(--text-small); color: var(--color-text-muted); }
+.works .marks { display: flex; gap: 14px 38px; flex-wrap: wrap; justify-content: center; }
+.works .marks span { font-family: var(--font-display); font-weight: 600; font-size: var(--text-h5); color: var(--color-text-subtle); letter-spacing: -0.02em; }
+
+.section { padding-block: 88px; }
+section[id] { scroll-margin-top: 80px; }
+.section.alt { background: var(--color-surface-subtle); }
+.sec-head { max-width: 640px; margin-bottom: 44px; }
+.sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.sec-head h2 { font-size: var(--text-h2); line-height: 1.1; margin-top: 10px; }
+.sec-head p { margin-top: 14px; color: var(--color-text-muted); font-size: var(--text-body-lg); line-height: 1.6; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.feature { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.feature .fi { width: 38px; height: 38px; border-radius: var(--radius-xl); background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; }
+.feature h3 { font-size: var(--text-h5); margin-top: 6px; }
+.feature p { color: var(--color-text-muted); font-size: var(--text-body-sm); }
+.feature .when { margin-top: auto; padding-top: 8px; font-size: var(--text-micro); color: var(--color-text-subtle); font-family: var(--font-mono); }
+
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+.step3 { border-top: 2px solid var(--color-border); padding-top: 20px; }
+.step3:first-child { border-top-color: var(--color-primary); }
+.step3 .num { font-family: var(--font-mono); color: var(--color-primary); font-size: var(--text-small); }
+.step3 h3 { font-size: var(--text-h4); margin: 8px 0 10px; }
+.step3 p { color: var(--color-text-muted); font-size: var(--text-body-sm); }
+
+.band { background: var(--color-surface-inverse); color: var(--color-surface-inverse-foreground); padding-block: 80px; }
+.band .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.band h2 { color: var(--color-surface-inverse-foreground); font-size: var(--text-h2); line-height: 1.1; }
+.band p { color: var(--color-surface-inverse-muted); margin-top: 16px; font-size: var(--text-body-lg); line-height: 1.6; }
+.flow { display: grid; gap: 10px; }
+.flow .f { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; padding: 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-card); }
+.flow .f i { font-style: normal; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.08); font-family: var(--font-mono); font-size: var(--text-small); }
+.flow .f b { display: block; font-weight: 500; }
+.flow .f span { color: var(--color-surface-inverse-muted); font-size: var(--text-small); }
+
+.cta { text-align: center; }
+.cta h2 { font-size: var(--text-h2); }
+.cta p { color: var(--color-text-muted); margin: 14px auto 28px; max-width: 52ch; font-size: var(--text-body-lg); }
+.foot { border-top: 1px solid var(--color-border); padding-block: 36px; }
+.foot .wrap { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: var(--text-small); color: var(--color-text-muted); }
+.foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot nav a { color: var(--color-text-muted); }
+
+/* ---------- Sign up ---------- */
+.auth { min-height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.auth .formside { padding-block: 32px 48px; display: flex; flex-direction: column; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: 24px; }
+.auth .formbox { width: 100%; max-width: 400px; margin: auto; padding-top: 40px; }
+.auth h1 { font-size: var(--text-h3); }
+.auth .sub { color: var(--color-text-muted); margin-top: 8px; }
+.form { display: grid; gap: 14px; margin-top: 26px; }
+.field { display: grid; gap: 6px; font-size: var(--text-small); font-weight: 500; color: var(--color-heading); }
+.field small { font-weight: 400; color: var(--color-text-muted); }
+.input { height: 42px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-xl); padding: 0 12px; background: var(--color-surface); font-size: var(--text-caption); width: 100%; min-width: 0; font-weight: 400; color: var(--color-text); }
+.input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-tint); }
+.input::placeholder { color: var(--color-text-subtle); }
+select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--color-text-muted) 50%), linear-gradient(135deg, var(--color-text-muted) 50%, transparent 50%); background-position: calc(100% - 17px) 18px, calc(100% - 12px) 18px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.or { display: flex; align-items: center; gap: 12px; color: var(--color-text-subtle); font-size: var(--text-micro); margin: 4px 0; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--color-border); }
+.auth .legal { font-size: var(--text-micro); color: var(--color-text-subtle); margin-top: 14px; }
+.auth .switch { font-size: var(--text-small); color: var(--color-text-muted); margin-top: 22px; }
+.auth .art { background: var(--color-surface-subtle); border-left: 1px solid var(--color-border); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; gap: 26px; min-width: 0; }
+.auth .art h2 { font-size: var(--text-h3); max-width: 18ch; }
+.auth .art ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.auth .art li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: var(--text-body-sm); }
+.auth .art li .ico { color: var(--color-success); margin-top: 3px; }
+
+/* ---------- App ---------- */
+.app { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh; transition: filter 400ms var(--ease); }
+.app.locked { filter: blur(var(--blur-locked)); pointer-events: none; user-select: none; }
+.side { border-right: 1px solid var(--color-border); padding: 18px 14px; display: flex; flex-direction: column; gap: 18px; position: sticky; top: 0; height: 100vh; }
+.side .ws { display: flex; gap: 10px; align-items: center; padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); }
+.side .ws .bav { width: 34px; height: 34px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-foreground); display: grid; place-items: center; font-weight: 700; font-family: var(--font-display); overflow: hidden; flex: none; }
+.side .ws .bav img { width: 100%; height: 100%; object-fit: cover; }
+.side .ws b { display: block; font-size: var(--text-small); color: var(--color-heading); font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side .ws span { font-size: var(--text-micro); color: var(--color-text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side nav { display: grid; gap: 2px; }
+.side nav a { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; border-radius: var(--radius-xl); color: var(--color-text-muted); font-size: var(--text-caption); font-weight: 500; }
+.side nav a:hover { background: var(--color-surface-subtle); text-decoration: none; }
+.side nav a.on { background: var(--color-primary-tint); color: var(--color-primary); }
+.side nav a small { margin-left: auto; background: var(--color-surface-subtle); color: var(--color-text-muted); border-radius: var(--radius-full); padding: 0 8px; font-size: var(--text-micro); }
+.side .me { margin-top: auto; display: flex; gap: 10px; align-items: center; font-size: var(--text-small); padding: 8px; }
+.side .me i { width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; font-style: normal; font-weight: 600; flex: none; }
+.main { padding: 26px 32px 60px; min-width: 0; }
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.top h1 { font-size: var(--text-h4); }
+.top .right { margin-left: auto; display: flex; gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.kpi { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; }
+.kpi .l { font-size: var(--text-small); color: var(--color-text-muted); display: flex; justify-content: space-between; gap: 8px; }
+.kpi .v { font-family: var(--font-mono); font-size: 26px; color: var(--color-heading); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.kpi svg { width: 100%; height: 36px; margin-top: 8px; display: block; }
+.cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 14px; }
+.box { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; min-width: 0; }
+.box .h { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.box h2 { font-size: var(--text-h5); }
+.arow { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.arow:first-of-type { border-top: 0; }
+.arow .d { width: 28px; height: 28px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; font-family: var(--font-mono); font-size: var(--text-micro); }
+.arow b { display: block; font-weight: 500; color: var(--color-heading); }
+.arow span { color: var(--color-text-muted); font-size: var(--text-micro); }
+
+/* Setup overlay */
+.overlay { position: fixed; inset: 0; z-index: 40; background: var(--color-overlay); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.setup { width: 100%; max-width: 880px; background: var(--color-surface); border-radius: var(--radius-3xl); box-shadow: var(--shadow-dialog); margin: auto 0; display: grid; grid-template-columns: 250px minmax(0, 1fr); overflow: hidden; }
+.setup .rail { background: var(--color-surface-subtle); border-right: 1px solid var(--color-border); padding: 26px 22px; display: flex; flex-direction: column; gap: 22px; }
+.setup .rail h2 { font-size: var(--text-h5); }
+.setup .rail p { font-size: var(--text-small); color: var(--color-text-muted); margin-top: 6px; }
+.prog { height: 6px; border-radius: var(--radius-full); background: var(--color-border); overflow: hidden; }
+.prog i { display: block; height: 100%; background: var(--color-primary); border-radius: inherit; transition: width 400ms var(--ease); }
+.stepper { display: grid; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.stepper button { width: 100%; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; text-align: left; padding: 10px; border: 1px solid transparent; border-radius: var(--radius-2xl); background: none; cursor: pointer; }
+.stepper button[disabled] { cursor: default; opacity: 0.55; }
+.stepper button.cur { background: var(--color-surface); border-color: var(--color-border); }
+.stepper .sn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--color-border-strong); display: grid; place-items: center; font-family: var(--font-mono); font-size: var(--text-small); color: var(--color-text-muted); background: var(--color-surface); }
+.stepper .cur .sn { border-color: var(--color-primary); color: var(--color-primary); }
+.stepper .done .sn { background: var(--color-success); border-color: var(--color-success); color: var(--color-primary-foreground); }
+.stepper b { display: block; font-size: var(--text-small); color: var(--color-heading); font-weight: 600; line-height: 1.3; }
+.stepper span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.setup .rail .help { margin-top: auto; font-size: var(--text-micro); color: var(--color-text-muted); }
+.setup .body { padding: 30px 32px 26px; min-width: 0; display: flex; flex-direction: column; }
+.setup .body h3 { font-size: var(--text-h4); }
+.setup .body .intro { color: var(--color-text-muted); margin-top: 6px; font-size: var(--text-body-sm); }
+.setup .foot2 { display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--color-border); flex-wrap: wrap; }
+.setup .foot2 .r { display: flex; gap: 8px; margin-left: auto; }
+.lockmsg { display: flex; align-items: center; gap: 8px; font-size: var(--text-micro); color: var(--color-text-muted); }
+
+/* Step 1 */
+.botgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-top: 22px; }
+.upload { display: flex; gap: 14px; align-items: center; }
+.upload .pic { width: 64px; height: 64px; border-radius: 50%; border: 1px dashed var(--color-border-strong); display: grid; place-items: center; background: var(--color-surface-subtle); color: var(--color-text-subtle); overflow: hidden; flex: none; font-family: var(--font-display); font-weight: 700; font-size: 24px; }
+.upload .pic.has { border-style: solid; border-color: var(--color-border); }
+.upload .pic img { width: 100%; height: 100%; object-fit: cover; }
+.upload input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.upload .btns { display: grid; gap: 4px; }
+.upload .btns small { font-size: var(--text-micro); color: var(--color-text-muted); font-weight: 400; }
+.connected { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: var(--radius-2xl); background: var(--color-success-tint); color: var(--color-success); font-size: var(--text-small); margin-top: 16px; }
+.connected b { color: var(--color-heading); font-weight: 600; }
+.perms-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+/* Step 2 */
+.ai-cta { display: grid; grid-template-columns: 40px 1fr auto; gap: 14px; align-items: center; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); margin-top: 20px; background: var(--color-surface-subtle); }
+.ai-cta .ai { width: 40px; height: 40px; border-radius: var(--radius-xl); background: var(--color-primary-tint); color: var(--color-primary); display: grid; place-items: center; }
+.ai-cta b { display: block; color: var(--color-heading); font-weight: 600; font-size: var(--text-caption); }
+.ai-cta span { font-size: var(--text-small); color: var(--color-text-muted); }
+.maptable { margin-top: 18px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); overflow: hidden; }
+.maprow { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 14px; align-items: center; padding: 12px 14px; border-top: 1px solid var(--color-border); }
+.maprow:first-child { border-top: 0; }
+.maprow b { color: var(--color-heading); font-weight: 500; font-size: var(--text-caption); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.maprow span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.maprow select { height: 36px; }
+.maphead { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.maphead b { font-size: var(--text-caption); color: var(--color-heading); font-weight: 600; }
+
+/* Step 3 */
+.crms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+.crm { text-align: left; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: 16px; background: var(--color-surface); cursor: pointer; display: flex; flex-direction: column; gap: 8px; transition: border-color var(--duration-fast); }
+.crm:hover { border-color: var(--color-border-strong); }
+.crm.on { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-tint); }
+.crm .mk { width: 36px; height: 36px; border-radius: var(--radius-xl); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; color: var(--color-accent); background: var(--color-accent-tint); }
+.crm b { color: var(--color-heading); font-weight: 600; font-size: var(--text-caption); }
+.crm span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.keyrow { display: flex; gap: 8px; }
+.keyrow .input { flex: 1; font-family: var(--font-mono); font-size: var(--text-small); }
+.checks { display: grid; gap: 8px; margin-top: 14px; }
+.checks div { display: flex; gap: 10px; align-items: center; font-size: var(--text-small); }
+.checks .s { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--color-border-strong); flex: none; }
+.checks .s.ok { background: var(--color-success); border-color: var(--color-success); color: var(--color-primary-foreground); }
+.checks .s.spin { border-color: var(--color-primary); border-top-color: transparent; animation: spin 700ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.found { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+.found div { border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 12px; }
+.found b { display: block; font-family: var(--font-mono); font-size: var(--text-h5); color: var(--color-heading); font-weight: 500; }
+.found span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.summary { display: grid; gap: 0; margin-top: 18px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); }
+.summary > div { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: center; padding: 14px; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.summary > div:first-child { border-top: 0; }
+.summary .ico { color: var(--color-success); }
+.summary b { color: var(--color-heading); font-weight: 500; display: block; }
+
+/* Dialogs (Discord authorize, AI builder) */
+.dlg { position: fixed; inset: 0; z-index: 60; background: var(--color-overlay); display: flex; align-items: center; justify-content: center; padding: max(20px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); overflow-y: auto; }
+.authz { width: 100%; max-width: 440px; background: var(--color-surface); border-radius: var(--radius-3xl); box-shadow: var(--shadow-dialog); padding: 26px; margin: auto; }
+.authz .sim { font-size: var(--text-micro); color: var(--color-text-muted); background: var(--color-surface-subtle); border-radius: var(--radius-lg); padding: 6px 10px; margin-bottom: 18px; display: flex; gap: 8px; align-items: center; }
+.authz .who { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.authz .who .bav { width: 64px; height: 64px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-foreground); display: grid; place-items: center; font-weight: 700; font-family: var(--font-display); font-size: 26px; overflow: hidden; }
+.authz .who .bav img { width: 100%; height: 100%; object-fit: cover; }
+.authz .who h4 { font-size: var(--text-h5); }
+.authz ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 2px; max-height: 240px; overflow-y: auto; }
+.authz li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; padding: 7px 0; font-size: var(--text-small); align-items: start; }
+.authz li .ico { color: var(--color-success); width: 16px; height: 16px; margin-top: 3px; }
+.authz li span { display: block; font-size: var(--text-micro); color: var(--color-text-muted); }
+.authz .acts { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+.builder { width: 100%; max-width: 1060px; background: var(--color-surface); border-radius: var(--radius-3xl); box-shadow: var(--shadow-dialog); margin: auto; display: flex; flex-direction: column; max-height: calc(100vh - 40px); overflow: hidden; }
+.builder header { display: flex; align-items: center; gap: 14px; padding: 18px 22px; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; }
+.builder header h3 { font-size: var(--text-h5); }
+.builder header .x { margin-left: auto; }
+.builder .prompt { display: flex; gap: 8px; padding: 14px 22px; border-bottom: 1px solid var(--color-border); background: var(--color-surface-subtle); flex-wrap: wrap; }
+.builder .prompt .input { flex: 1 1 260px; }
+.builder .bbody { display: grid; grid-template-columns: 260px minmax(0, 1fr); flex: 1; min-height: 0; overflow: hidden; }
+.dside { background: var(--color-discord-side); color: var(--color-discord-muted); padding: 14px 8px; overflow-y: auto; font-size: var(--text-small); }
+.dside .srv { color: var(--color-discord-head); font-weight: 600; padding: 4px 8px 12px; border-bottom: 1px solid rgba(0,0,0,0.25); margin-bottom: 10px; font-size: var(--text-caption); }
+.dside .cat { text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em; font-weight: 600; padding: 14px 8px 4px; cursor: pointer; display: flex; justify-content: space-between; }
+.dside .cat.cur { color: var(--color-discord-head); }
+.dside .ch { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: var(--radius-md); color: var(--color-discord-muted); }
+.dside .ch.new { color: var(--color-discord-text); }
+.dside .ch.new::after { content: "new"; margin-left: auto; font-size: 10px; background: var(--color-discord-tag); color: var(--color-primary-foreground); padding: 0 5px; border-radius: 3px; }
+.dside .ch.cur { background: var(--color-discord-hover); color: var(--color-discord-head); }
+.dside .ch svg { width: 15px; height: 15px; flex: none; }
+.dside .ch.off { display: none; }
+.bright { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.bnav { display: flex; align-items: center; gap: 10px; padding: 14px 22px 0; }
+.bnav .dots { display: flex; gap: 6px; flex-wrap: wrap; }
+.bnav .dots button { height: 28px; padding: 0 10px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: var(--color-surface); font-size: var(--text-micro); cursor: pointer; color: var(--color-text-muted); }
+.bnav .dots button.on { background: var(--color-surface-inverse); color: var(--color-surface-inverse-foreground); border-color: var(--color-surface-inverse); }
+.bnav .arrows { margin-left: auto; display: flex; gap: 6px; }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; flex: 1; min-height: 0; scrollbar-width: none; }
+.track::-webkit-scrollbar { display: none; }
+.slide { scroll-snap-align: start; padding: 16px 22px 18px; overflow-y: auto; min-width: 0; }
+.slide .sh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.slide .sh h4 { font-size: var(--text-h4); }
+.slide .sh p { color: var(--color-text-muted); font-size: var(--text-small); flex-basis: 100%; }
+.chrow { display: grid; grid-template-columns: 22px minmax(0, 1fr) 190px; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--color-border); }
+.chrow:first-of-type { margin-top: 14px; }
+.chrow input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--color-primary); }
+.chrow .nm { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.chrow .nm .hash { color: var(--color-text-subtle); font-family: var(--font-mono); }
+.chrow .nm input { border: 1px solid transparent; border-radius: var(--radius-md); padding: 4px 6px; font-weight: 500; color: var(--color-heading); background: transparent; min-width: 0; flex: 1; font-size: var(--text-caption); }
+.chrow .nm input:hover { border-color: var(--color-border); }
+.chrow .nm input:focus { outline: none; border-color: var(--color-primary); background: var(--color-surface); }
+.chrow .desc { font-size: var(--text-micro); color: var(--color-text-muted); padding-left: 18px; }
+.chrow select { height: 34px; font-size: var(--text-small); }
+.chrow.off .nm input, .chrow.off .desc { opacity: 0.45; text-decoration: line-through; }
+.builder footer { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-top: 1px solid var(--color-border); flex-wrap: wrap; }
+.builder footer .r { margin-left: auto; display: flex; gap: 8px; }
+.creating { padding: 40px 28px; display: grid; gap: 10px; max-width: 520px; margin: 0 auto; width: 100%; overflow-y: auto; }
+.creating h4 { font-size: var(--text-h4); text-align: center; }
+.creating .p { text-align: center; color: var(--color-text-muted); font-size: var(--text-small); margin-bottom: 8px; }
+.creating .line { display: flex; gap: 10px; align-items: center; font-size: var(--text-small); }
+
+.toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 80; background: var(--color-surface-inverse); color: var(--color-surface-inverse-foreground); padding: 12px 18px; border-radius: var(--radius-2xl); font-size: var(--text-small); box-shadow: var(--shadow-dialog); display: flex; gap: 10px; align-items: center; max-width: calc(100vw - 32px); }
+.toast .ico { color: var(--color-success-tint); }
+
+@media (max-width: 1000px) {
+  .window .inner, .band .wrap { grid-template-columns: 1fr; }
+  .grid3, .steps3 { grid-template-columns: 1fr 1fr; }
+  .nav nav { display: none; }
+  .setup { grid-template-columns: 1fr; }
+  .setup .rail { border-right: 0; border-bottom: 1px solid var(--color-border); }
+  .stepper { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stepper button { grid-template-columns: 1fr; justify-items: start; }
+  .setup .rail .help { display: none; }
+  .builder .bbody { grid-template-columns: 1fr; }
+  .dside { display: none; }
+}
+@media (max-width: 760px) {
+  :root { --text-display: 40px; --text-h2: 30px; --text-h3: 25px; --text-h4: 21px; }
+  .hero { padding-block: 44px 24px; }
+  .section { padding-block: 56px; }
+  .grid3, .steps3, .crms, .found { grid-template-columns: 1fr; }
+  .auth { grid-template-columns: 1fr; }
+  .auth .art { display: none; }
+  .app { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--color-border); }
+  .side nav, .side .me { display: none; }
+  .main { padding: 20px 16px 40px; }
+  .cols, .botgrid { grid-template-columns: 1fr; }
+  .maprow { grid-template-columns: 1fr; gap: 8px; }
+  .chrow { grid-template-columns: 22px minmax(0, 1fr); }
+  .chrow select { grid-column: 2; }
+  .ai-cta { grid-template-columns: 40px 1fr; }
+  .ai-cta .btn { grid-column: 1 / -1; }
+  .setup .body { padding: 22px 18px; }
+  .nav .right .btn.ghost { display: none; }
+  .stepper span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kreo-mark" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="9" fill="#b8336a"/>
+    <path d="M11 8.5v15" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M21.5 8.5 14.6 16l6.9 7.5" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="23.6" cy="16" r="2.1" fill="#f4eefa"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-5 1-8.5z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></symbol>
+  <symbol id="i-party" viewBox="0 0 24 24"><path d="M4 20l5-14 9 9z"/><path d="M14 4v2M19 9h2M17 6l1.5-1.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V6a1.5 1.5 0 0 1 3 0v6c0 4-2.5 8-6.5 8S5 17 4 14l-1-3a1.5 1.5 0 0 1 2.7-1.2L7 12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2 .7 3 2.8 3 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></symbol>
+</svg>
+
+<!-- ============ LANDING ============ -->
+<div id="v-home">
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="#home" aria-label="Kreo home"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
+      <nav aria-label="Main">
+        <a href="#features">Automations</a>
+        <a href="#how">How it works</a>
+        <a href="#approvals">Approvals</a>
+        <a href="#integrations">Integrations</a>
+      </nav>
+      <div class="right">
+        <a class="btn ghost" href="#signin" data-signin>Sign in</a>
+        <a class="btn primary" href="#signup">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero wrap">
+    <div class="badge"><span>New</span>AI Community Builder sets up your Discord in one click</div>
+    <h1>Your creator Discord, <em>running itself</em></h1>
+    <p class="lede">Kreo connects your Discord server to your creator CRM. It drafts the weekly leaderboard, celebrates every creator's first sale and breaks down last week's best-selling videos. You approve, Kreo posts.</p>
+    <div class="ctas">
+      <a class="btn primary lg" href="#signup">Start free for 14 days <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn lg" href="#how">See how it works</a>
+    </div>
+    <p class="fine">Set up in about five minutes. No card needed.</p>
+
+    <div class="window" aria-label="Kreo product preview">
+      <div class="bar"><i></i><i></i><i></i><span>app.kreo.so / approvals</span></div>
+      <div class="inner">
+        <div class="dc">
+          <div class="chan"><svg class="ico" style="width:16px;height:16px"><use href="#i-hash"/></svg>leaderboard</div>
+          <div class="msg">
+            <div class="av">G</div>
+            <div style="min-width:0">
+              <div class="who">Glow Bot <small>APP</small> <time>Today at 10:00 AM</time></div>
+              <div><span class="mention">@here</span> Weekly Top Creators, Nov 2–8. Huge week, team.</div>
+              <div class="card">
+                <h6>Top 5 by GMV</h6>
+                <div class="rank"><span class="n">1</span><b>@mariah.makes</b><span class="g">$4,812</span></div>
+                <div class="rank"><span class="n">2</span><b>@thejesscloset</b><span class="g">$3,960</span></div>
+                <div class="rank"><span class="n">3</span><b>@dailywithdani</b><span class="g">$2,705</span></div>
+                <div class="rank"><span class="n">4</span><b>@kofi.reviews</b><span class="g">$1,988</span></div>
+                <div class="rank"><span class="n">5</span><b>@lena.tries</b><span class="g">$1,412</span></div>
+              </div>
+              <div class="reacts"><span>🔥 24</span><span>🤍 18</span><span>🚀 15</span><span>📈 11</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel approve">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px"><h4>Waiting on you</h4><span class="pill rose">3 drafts</span></div>
+          <div class="row"><div><b>Weekly leaderboard</b>#leaderboard · Mon 10:00</div><span class="pill">Ready</span></div>
+          <div class="row"><div><b>@kofi.reviews hit 10 sales</b>#creator-wins · milestone card</div><span class="pill">Ready</span></div>
+          <div class="row"><div><b>Winning angle #1</b>#winning-angles · $2.1k GMV video</div><span class="pill line">Editing</span></div>
+          <div class="actions"><button class="btn primary sm" type="button" tabindex="-1">Approve &amp; post</button><button class="btn sm" type="button" tabindex="-1">Edit</button></div>
+          <p class="muted" style="font-size:var(--text-micro);margin-top:12px">Your moderators can also approve right inside Discord.</p>
+        </div>
+      </div>
+    </div>
+    <p class="fine">Example data</p>
+  </section>
+
+  <section class="works" id="integrations">
+    <div class="wrap">
+      <p>Plugs into the tools your team already uses</p>
+      <div class="marks"><span>Discord</span><span>TikTok Shop</span><span>Cruva</span><span>Euka</span><span>Reacher</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Automations</div>
+        <h2>Six automations that keep creators posting</h2>
+        <p>Each one pulls live numbers from your CRM and drafts a post in your brand's voice. Nothing goes live until someone on your team approves it.</p>
+      </div>
+      <div class="grid3">
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-trophy"/></svg></div><h3>Weekly leaderboard</h3><p>Top 5 creators by GMV for the week, on a podium card your creators will want to screenshot.</p><div class="when">Mondays · @here</div></div>
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-party"/></svg></div><h3>Creator wins</h3><p>A milestone card the moment a creator hits their 1st, 3rd, 10th, 30th or 50th sale. Tags only the creator.</p><div class="when">Daily check</div></div>
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-bolt"/></svg></div><h3>Winning angle of the week</h3><p>Last week's top 3 videos by GMV, with the script, the numbers and how to remake each one.</p><div class="when">Mon–Wed · one a day</div></div>
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-flame"/></svg></div><h3>Viral hooks</h3><p>The most-viewed videos in your niche, any brand, with why the hook worked and how to use it for your product.</p><div class="when">Mon–Wed · one a day</div></div>
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-chat"/></svg></div><h3>General chat manager</h3><p>Answers creator questions in your voice. Anything about payouts, refunds or problems goes to your mods.</p><div class="when">Always on</div></div>
+        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-wave"/></svg></div><h3>Creator onboarding</h3><p>DMs every new member your questions, links their TikTok handle to your CRM and saves the answers.</p><div class="when">On join</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">How it works</div>
+        <h2>Live in three steps</h2>
+        <p>Sign up, then the setup guide walks you through each one. Your dashboard unlocks when you're done.</p>
+      </div>
+      <div class="steps3">
+        <div class="step3"><div class="num">Step 1</div><h3>Add your bot</h3><p>Give your bot your brand's name and picture, then add it to your Discord server in two clicks.</p></div>
+        <div class="step3"><div class="num">Step 2</div><h3>Pick your channels</h3><p>Choose where each automation posts. New server? The AI Community Builder creates every channel with the right permissions.</p></div>
+        <div class="step3"><div class="num">Step 3</div><h3>Connect your CRM</h3><p>Paste an API key from Cruva, Euka or Reacher. Kreo reads your creators, videos and sales from there.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="approvals">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow" style="color:var(--color-surface-inverse-muted)">Two-way approvals</div>
+        <h2 style="margin-top:10px">Approve in Discord or in Kreo. It posts once.</h2>
+        <p>Every draft lands in your private mod channel and in your Kreo inbox at the same time. Whoever approves first sends it live. The other copy updates itself, so nothing posts twice.</p>
+      </div>
+      <div class="flow">
+        <div class="f"><i>1</i><div><b>Kreo drafts the post</b><span>Numbers from your CRM, cards rendered, copy in your voice</span></div></div>
+        <div class="f"><i>2</i><div><b>Your team reviews it</b><span>In #mod-approvals or in the Kreo inbox, with edits in either place</span></div></div>
+        <div class="f"><i>3</i><div><b>One approval sends it live</b><span>Posted to the right channel, reactions added, logged in Kreo</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="wrap">
+      <h2>Give your creators a reason to open Discord</h2>
+      <p>Start free, add your bot and see your first draft today.</p>
+      <a class="btn primary lg" href="#signup">Start free <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="#home"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
+      <nav><a href="#features">Automations</a><a href="#how">How it works</a><a href="#integrations">Integrations</a><a href="#signup">Sign up</a></nav>
+      <span>© 2026 Kreo. Mock-up.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ SIGN UP ============ -->
+<div id="v-signup" hidden>
+  <div class="auth">
+    <div class="formside">
+      <a class="logo" href="#home"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
+      <div class="formbox">
+        <h1 id="authTitle">Create your Kreo account</h1>
+        <p class="sub" id="authSub">14 days free. Set up your community in about five minutes.</p>
+        <form class="form" id="signupForm" novalidate>
+          <button class="btn lg" type="button" data-google style="width:100%">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.2 13.6a6 6 0 0 1 0-3.9V7H2.7a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.9.5 4 1.5l3-3A10 10 0 0 0 2.7 7l3.5 2.7C7 7.8 9.3 6 12 6z"/></svg>
+            Continue with Google
+          </button>
+          <div class="or">or with email</div>
+          <label class="field" id="f-name">Full name<input class="input" id="su-name" placeholder="Jordan Lee" autocomplete="name"></label>
+          <label class="field" id="f-brand">Brand name<input class="input" id="su-brand" placeholder="Glow Lab" autocomplete="organization"></label>
+          <label class="field">Work email<input class="input" id="su-email" type="email" placeholder="jordan@glowlab.co" autocomplete="email"></label>
+          <label class="field">Password<input class="input" id="su-pass" type="password" placeholder="At least 8 characters" autocomplete="new-password"></label>
+          <button class="btn primary lg" type="submit" style="width:100%;margin-top:4px" id="authBtn">Create account</button>
+        </form>
+        <p class="legal">Mock-up: any details work, and you're signed in straight away.</p>
+        <p class="switch" id="authSwitch">Already have an account? <a href="#signin" data-signin>Sign in</a></p>
+      </div>
+    </div>
+    <aside class="art">
+      <h2>Your community, set up before your coffee cools</h2>
+      <ul>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Your own bot name and picture in your server</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Channels created for you, with the right permissions</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Live creator and sales data from your CRM</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Nothing posts until your team approves it</span></li>
+      </ul>
+      <div class="dc" style="max-width:420px">
+        <div class="msg"><div class="av">G</div><div style="min-width:0"><div class="who">Glow Bot <small>APP</small> <time>Today at 3:12 PM</time></div><div><span class="mention">@mariah.makes</span> just hit her <b style="color:var(--color-discord-head)">10th sale</b>. Double digits! Keep going 🚀</div></div></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="v-app" hidden>
+  <div class="app locked" id="app" aria-hidden="true">
+    <aside class="side">
+      <a class="logo" href="#home"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
+      <div class="ws"><div class="bav" id="sideAv">K</div><div style="min-width:0"><b id="sideBot">Your bot</b><span id="sideSrv">No server yet</span></div></div>
+      <nav>
+        <a class="on" href="#app"><svg class="ico"><use href="#i-home"/></svg>Overview</a>
+        <a href="#app"><svg class="ico"><use href="#i-bolt"/></svg>Automations<small>6</small></a>
+        <a href="#app"><svg class="ico"><use href="#i-check"/></svg>Approvals<small id="nAppr">0</small></a>
+        <a href="#app"><svg class="ico"><use href="#i-users"/></svg>Community</a>
+        <a href="#app"><svg class="ico"><use href="#i-play"/></svg>Content</a>
+        <a href="#app"><svg class="ico"><use href="#i-wave"/></svg>Onboarding</a>
+        <a href="#app"><svg class="ico"><use href="#i-server"/></svg>Server &amp; bot</a>
+      </nav>
+      <div class="me"><i id="meInit">J</i><div style="min-width:0"><b style="display:block;color:var(--color-heading);font-weight:500" id="meName">Jordan Lee</b><span class="muted" style="font-size:var(--text-micro)" id="meBrand">Glow Lab</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="top">
+        <div><div class="eyebrow" id="hello">Overview</div><h1 id="appTitle">Good morning</h1></div>
+        <div class="right"><span class="pill line" id="sampleTag">Sample data</span><button class="btn sm ghost" type="button" id="restart"><svg class="ico"><use href="#i-redo"/></svg>Restart demo</button></div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="l">GMV, last 7 days <span class="pill good">▲ 18%</span></div><div class="v">$24,310</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 30 L25 26 L50 28 L75 20 L100 22 L125 14 L150 16 L175 8 L200 6 L200 36 L0 36Z" fill="var(--color-primary-tint)"/><path d="M0 30 L25 26 L50 28 L75 20 L100 22 L125 14 L150 16 L175 8 L200 6" fill="none" stroke="var(--color-primary)" stroke-width="2"/></svg></div>
+        <div class="kpi"><div class="l">Creators in Discord <span class="pill good">▲ 31</span></div><div class="v">642</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 28 L40 25 L80 22 L120 18 L160 13 L200 9" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
+        <div class="kpi"><div class="l">Linked to your CRM</div><div class="v">71%</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 22 L40 21 L80 19 L120 18 L160 16 L200 14" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
+        <div class="kpi"><div class="l">Posts this week</div><div class="v">9</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 30 L40 24 L80 26 L120 16 L160 18 L200 10" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
+      </div>
+      <div class="cols">
+        <section class="box"><div class="h"><h2>Coming up</h2><span class="muted" style="font-size:var(--text-micro)">This week</span></div>
+          <div class="arow"><span class="d">Mon</span><div><b>Weekly leaderboard</b><span id="up-lb">#leaderboard</span></div><span class="pill">Drafts Sun 6pm</span></div>
+          <div class="arow"><span class="d">Mon</span><div><b>Winning angle #1</b><span id="up-wa">#winning-angles</span></div><span class="pill">Drafts Sun 6pm</span></div>
+          <div class="arow"><span class="d">Tue</span><div><b>Viral hook #1</b><span id="up-vh">#viral-hooks</span></div><span class="pill">Drafts Mon 6pm</span></div>
+          <div class="arow"><span class="d">Daily</span><div><b>Creator wins check</b><span id="up-cw">#creator-wins</span></div><span class="pill">9:00 AM</span></div>
+        </section>
+        <section class="box"><div class="h"><h2>Automations</h2><span class="pill good" id="autoState">6 on</span></div>
+          <div class="arow"><span class="d">01</span><div><b>General chat manager</b><span>Replies in your voice</span></div><span class="pill good">On</span></div>
+          <div class="arow"><span class="d">02</span><div><b>Viral hooks</b><span>Mon–Wed</span></div><span class="pill good">On</span></div>
+          <div class="arow"><span class="d">03</span><div><b>Winning angle</b><span>Mon–Wed</span></div><span class="pill good">On</span></div>
+          <div class="arow"><span class="d">04</span><div><b>Creator wins</b><span>Daily</span></div><span class="pill good">On</span></div>
+          <div class="arow"><span class="d">05</span><div><b>Weekly leaderboard</b><span>Mondays</span></div><span class="pill good">On</span></div>
+          <div class="arow"><span class="d">06</span><div><b>Creator onboarding</b><span>On join</span></div><span class="pill good">On</span></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <div class="setup">
+      <div class="rail">
+        <div>
+          <h2 id="setupTitle">Set up Kreo</h2>
+          <p>Finish these 3 steps to unlock your dashboard.</p>
+        </div>
+        <div><div class="prog"><i id="progBar" style="width:0%"></i></div><p class="muted" style="font-size:var(--text-micro);margin-top:8px" id="progText">0 of 3 done</p></div>
+        <ol class="stepper" id="stepper"></ol>
+        <p class="help">Stuck? Every step can be changed later in Server &amp; bot.</p>
+      </div>
+      <div class="body" id="setupBody"></div>
+    </div>
+  </div>
+</div>
+
+<div id="dlgRoot"></div>
+<div class="toast" id="toast" hidden role="status"><svg class="ico"><use href="#i-check"/></svg><span id="toastText"></span></div>
+
+<script>
+(() => {
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ico = (id, cls = "ico") => `<svg class="${cls}"><use href="#i-${id}"/></svg>`;
+const KEY = "kreo-demo-v1";
+
+/* ---------- Demo data ---------- */
+const SERVERS = [
+  { id: "glow", name: "Glow Lab Creators", note: "New server, 3 channels", channels: [
+    { name: "general", cat: "Text channels" }, { name: "announcements", cat: "Text channels" }, { name: "memes", cat: "Text channels" } ] },
+  { id: "north", name: "Northside Skin Creator Club", note: "Set up, 11 channels", channels: [
+    { name: "welcome", cat: "Start here" }, { name: "rules", cat: "Start here" }, { name: "introductions", cat: "Start here" },
+    { name: "general-chat", cat: "Community" }, { name: "questions", cat: "Community" },
+    { name: "winning-angles", cat: "Learn" }, { name: "viral-hooks", cat: "Learn" },
+    { name: "share-wins", cat: "Wins" }, { name: "leaderboard", cat: "Wins" },
+    { name: "mod-approvals", cat: "Team" }, { name: "team-chat", cat: "Team" } ] },
+];
+const AUTOS = [
+  { key: "mod", name: "Approvals", what: "Private. Every draft lands here for your mods first.", req: true, hint: ["mod-approvals", "approvals", "moderators", "mods"] },
+  { key: "general_chat", name: "General chat manager", what: "Replies to creators in your voice.", hint: ["general-chat", "general"] },
+  { key: "viral_hooks", name: "Viral hooks", what: "Mon–Wed, the niche's most-viewed videos.", hint: ["viral-hooks", "viral"] },
+  { key: "winning_content", name: "Winning angle of the week", what: "Mon–Wed, last week's top videos by GMV.", hint: ["winning-angles", "winning"] },
+  { key: "wins", name: "Creator wins", what: "Milestone cards: 1st, 3rd, 10th, 30th, 50th sale.", hint: ["creator-wins", "share-wins", "wins"] },
+  { key: "leaderboard", name: "Weekly leaderboard", what: "Mondays, top 5 creators by GMV.", hint: ["leaderboard"] },
+  { key: "onboarding", name: "Creator onboarding", what: "Welcomes new members and asks your questions.", hint: ["welcome", "introductions"] },
+];
+const PERMS = { everyone: "Everyone can chat", read: "Read-only (bot posts)", mods: "Mods only" };
+/* Draft template. The final community template replaces this list. */
+const TEMPLATE = [
+  { cat: "Start here", about: "First stop for every new creator.", ch: [
+    { name: "welcome", perm: "read", desc: "Bot welcome + how the community works", auto: "onboarding" },
+    { name: "rules", perm: "read", desc: "Community guidelines and posting rules" },
+    { name: "announcements", perm: "read", desc: "Launches, promos and commission changes" },
+    { name: "introductions", perm: "everyone", desc: "New creators say hi and drop their TikTok" } ] },
+  { cat: "Creator hub", about: "Where creators talk to each other and to your team.", ch: [
+    { name: "general-chat", perm: "everyone", desc: "Day-to-day chat, answered by your bot", auto: "general_chat" },
+    { name: "questions", perm: "everyone", desc: "Samples, briefs and product questions" },
+    { name: "brief-and-samples", perm: "read", desc: "Your creator brief, product links and sample request steps" } ] },
+  { cat: "Learn", about: "The content that teaches creators what sells.", ch: [
+    { name: "winning-angles", perm: "read", desc: "Top videos by GMV, broken down", auto: "winning_content" },
+    { name: "viral-hooks", perm: "read", desc: "The niche's most-viewed hooks", auto: "viral_hooks" },
+    { name: "content-feedback", perm: "everyone", desc: "Creators share drafts for feedback" } ] },
+  { cat: "Wins", about: "Celebrate progress so everyone sees it's possible.", ch: [
+    { name: "creator-wins", perm: "read", desc: "Milestone cards for sales milestones", auto: "wins" },
+    { name: "leaderboard", perm: "read", desc: "Monday top 5 creators by GMV", auto: "leaderboard" } ] },
+  { cat: "Team", about: "Hidden from creators. Only your mods and the bot see these.", priv: true, ch: [
+    { name: "mod-approvals", perm: "mods", desc: "Every draft waits here for approval", auto: "mod" },
+    { name: "bot-log", perm: "mods", desc: "What the bot did and when" } ] },
+];
+const CRMS = [
+  { id: "cruva", name: "Cruva", mono: "C", reads: "Creators, videos, orders, samples, Discord links", how: "Create an API key in your Cruva account settings and paste it here." },
+  { id: "euka", name: "Euka", mono: "E", reads: "Creators, videos, programs, samples", how: "Create an API key in your Euka workspace settings and paste it here." },
+  { id: "reacher", name: "Reacher", mono: "R", reads: "Creators, outreach, samples, orders", how: "Create an API key in your Reacher account settings and paste it here." },
+];
+
+/* ---------- State ---------- */
+const fresh = () => ({ user: null, step: 1, bot: { name: "", avatar: "" }, server: null, channels: [], newChannels: [], map: {}, crm: { id: null, key: "", ok: false }, launched: false });
+let S;
+try { S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "null") || {}); } catch (e) { S = fresh(); }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { try { const c = { ...S, bot: { ...S.bot, avatar: "" } }; localStorage.setItem(KEY, JSON.stringify(c)); } catch (e2) {} } };
+const done = { 1: () => !!S.server, 2: () => !!S.map.mod, 3: () => S.crm.ok };
+const nDone = () => [1, 2, 3].filter((n) => done[n]()).length;
+const botName = () => S.bot.name.trim() || "Kreo Bot";
+const botInitial = () => (botName()[0] || "K").toUpperCase();
+const avHTML = () => S.bot.avatar ? `<img src="${S.bot.avatar}" alt="">` : esc(botInitial());
+
+function toast(msg) { const t = $("#toast"); $("#toastText").textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), 3200); }
+
+/* ---------- Routing ---------- */
+function route() {
+  let h = (location.hash || "#home").slice(1);
+  if (h === "signin") { signIn(true); return; }
+  const marketingAnchors = ["features", "how", "approvals", "integrations"];
+  if (marketingAnchors.includes(h)) { show("home"); const el = document.getElementById(h); if (el) el.scrollIntoView({ block: "start" }); return; }
+  if (h === "app" && !S.user) h = "signup";
+  if (!["home", "signup", "app"].includes(h)) h = "home";
+  show(h);
+}
+function show(v) {
+  $("#v-home").hidden = v !== "home"; $("#v-signup").hidden = v !== "signup"; $("#v-app").hidden = v !== "app";
+  if (v === "app") renderApp();
+  if (v !== "home") window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+
+function signIn(existing) {
+  if (!S.user) {
+    const name = $("#su-name").value.trim() || "Jordan Lee";
+    const brand = $("#su-brand").value.trim() || "Glow Lab";
+    S.user = { name, brand };
+    if (!S.bot.name) S.bot.name = brand + " Bot";
+  }
+  save();
+  if (location.hash !== "#app") location.hash = "#app"; else route();
+  if (existing) toast("Signed in");
+}
+$("#signupForm").addEventListener("submit", (e) => { e.preventDefault(); signIn(false); });
+document.addEventListener("click", (e) => {
+  const g = e.target.closest("[data-google]"); if (g) { e.preventDefault(); signIn(false); }
+});
+
+/* ---------- App shell ---------- */
+function renderApp() {
+  const u = S.user || { name: "Jordan Lee", brand: "Glow Lab" };
+  $("#meName").textContent = u.name; $("#meBrand").textContent = u.brand; $("#meInit").textContent = (u.name[0] || "J").toUpperCase();
+  const hr = new Date().getHours();
+  $("#appTitle").textContent = (hr < 12 ? "Good morning, " : hr < 18 ? "Good afternoon, " : "Good evening, ") + u.name.split(" ")[0];
+  $("#hello").textContent = u.brand + " · Overview";
+  $("#sideBot").textContent = botName();
+  $("#sideAv").innerHTML = avHTML();
+  $("#sideSrv").textContent = S.server ? serverObj().name : "No server yet";
+  const chName = (k) => S.map[k] ? "#" + S.map[k] : "No channel";
+  $("#up-lb").textContent = chName("leaderboard"); $("#up-wa").textContent = chName("winning_content"); $("#up-vh").textContent = chName("viral_hooks"); $("#up-cw").textContent = chName("wins");
+  const on = AUTOS.filter((a) => a.key !== "mod" && S.map[a.key]).length;
+  $("#autoState").textContent = S.launched ? on + " on" : "Not live";
+  $("#app").classList.toggle("locked", !S.launched);
+  $("#app").setAttribute("aria-hidden", S.launched ? "false" : "true");
+  $("#overlay").hidden = S.launched;
+  if (!S.launched) renderSetup();
+}
+$("#restart").addEventListener("click", () => { S = fresh(); save(); location.hash = "#home"; toast("Demo reset"); });
+
+/* ---------- Setup overlay ---------- */
+const STEPS = [
+  { n: 1, t: "Add your bot", s: "Name, picture, server" },
+  { n: 2, t: "Pick channels", s: "One per automation" },
+  { n: 3, t: "Connect your CRM", s: "Cruva, Euka or Reacher" },
+];
+function canOpen(n) { return n === 1 || [...Array(n - 1)].every((_, i) => done[i + 1]()); }
+function renderSetup() {
+  const k = nDone();
+  $("#progBar").style.width = (k / 3 * 100) + "%";
+  $("#progText").textContent = k + " of 3 done";
+  $("#stepper").innerHTML = STEPS.map((st) => {
+    const d = done[st.n](), cur = S.step === st.n, open = canOpen(st.n);
+    return `<li><button type="button" data-step="${st.n}" class="${cur ? "cur" : ""} ${d ? "done" : ""}" ${open ? "" : "disabled"} aria-current="${cur ? "step" : "false"}"><span class="sn">${d ? ico("check", "ico") : st.n}</span><div><b>${st.t}</b><span>${st.s}</span></div></button></li>`;
+  }).join("");
+  $$("#stepper [data-step]").forEach((b) => b.addEventListener("click", () => { S.step = +b.dataset.step; save(); renderSetup(); }));
+  ({ 1: step1, 2: step2, 3: step3 }[S.step] || step1)();
+}
+function footer(back, nextLabel, nextOk, nextId = "next") {
+  return `<div class="foot2">
+    <span class="lockmsg">${ico("lock")} Dashboard unlocks after step 3</span>
+    <div class="r">${back ? `<button class="btn" type="button" id="back">${ico("back")}Back</button>` : ""}
+    <button class="btn primary" type="button" id="${nextId}" ${nextOk ? "" : "disabled"}>${nextLabel} ${ico("arrow")}</button></div></div>`;
+}
+
+/* Step 1: bot identity + add to Discord */
+function step1() {
+  const srv = serverObj();
+  $("#setupBody").innerHTML = `
+    <div class="eyebrow">Step 1 of 3</div>
+    <h3 style="margin-top:6px">Add your bot to Discord</h3>
+    <p class="intro">This is how the bot shows up to your creators. Use your brand's name so posts feel like they come from you.</p>
+    <div class="botgrid">
+      <div style="display:grid;gap:16px;align-content:start">
+        <label class="field">Bot name<input class="input" id="b-name" maxlength="32" value="${esc(S.bot.name)}" placeholder="Glow Lab Bot"><small>Shown on every post. You can change it any time.</small></label>
+        <div class="field">Profile picture
+          <div class="upload">
+            <div class="pic ${S.bot.avatar ? "has" : ""}" id="b-pic">${S.bot.avatar ? `<img src="${S.bot.avatar}" alt="Bot picture">` : ico("upload")}</div>
+            <div class="btns">
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><label class="btn sm" for="b-file">${S.bot.avatar ? "Change picture" : "Upload picture"}</label>${S.bot.avatar ? `<button class="btn sm ghost" type="button" id="b-rm">Remove</button>` : ""}</div>
+              <small>Square PNG or JPG. No picture yet? Skip it and add one later.</small>
+            </div>
+            <input type="file" id="b-file" accept="image/png,image/jpeg,image/webp">
+          </div>
+        </div>
+      </div>
+      <div style="min-width:0">
+        <div class="field" style="margin-bottom:6px">Preview</div>
+        <div class="dc"><div class="chan">${ico("hash")}creator-wins</div>
+          <div class="msg"><div class="av" id="pv-av">${avHTML()}</div><div style="min-width:0"><div class="who"><span id="pv-name">${esc(botName())}</span> <small>APP</small> <time>Today at 9:00 AM</time></div><div><span class="mention">@lena.tries</span> just made her <b style="color:var(--color-discord-head)">first sale</b>. Welcome to the club 🎉</div><div class="reacts"><span>🔥 6</span><span>🤍 4</span><span>🚀 3</span><span>📈 2</span></div></div></div>
+        </div>
+      </div>
+    </div>
+    ${srv ? `<div class="connected">${ico("check")}<div style="min-width:0"><b>${esc(botName())}</b> is in <b>${esc(srv.name)}</b>. Kreo can see ${S.channels.length} channels.<div class="perms-mini"><span class="pill good">Send messages</span><span class="pill good">Manage channels</span><span class="pill good">Add reactions</span><span class="pill good">Mention @here</span></div></div><button class="btn sm" type="button" id="b-add" style="margin-left:auto">Change server</button></div>`
+      : `<div class="ai-cta" style="margin-top:22px"><div class="ai">${ico("server")}</div><div><b>Add it to your server</b><span>You'll pick a server and approve the permissions Kreo needs.</span></div><button class="btn subtle" type="button" id="b-add">Add to Discord ${ico("arrow")}</button></div>`}
+    ${footer(false, "Continue", !!srv)}`;
+  $("#b-name").addEventListener("input", (e) => { S.bot.name = e.target.value; save(); $("#pv-name").textContent = botName(); $("#pv-av").innerHTML = avHTML(); $("#sideBot").textContent = botName(); });
+  $("#b-file").addEventListener("change", (e) => readAvatar(e.target.files[0]));
+  const rm = $("#b-rm"); if (rm) rm.addEventListener("click", () => { S.bot.avatar = ""; save(); step1(); renderApp(); });
+  $("#b-add").addEventListener("click", openAuthorize);
+  $("#next").addEventListener("click", () => { S.step = 2; save(); renderSetup(); });
+}
+function readAvatar(file) {
+  if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement("canvas"); c.width = c.height = 160;
+      const s = Math.min(img.width, img.height), ctx = c.getContext("2d");
+      ctx.drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, 160, 160);
+      S.bot.avatar = c.toDataURL("image/jpeg", 0.85); save(); renderApp(); toast("Picture added");
+    };
+    img.onerror = () => toast("That file isn't an image we can read. Try a PNG or JPG.");
+    img.src = r.result;
+  };
+  r.readAsDataURL(file);
+}
+function serverObj() { return SERVERS.find((s) => s.id === S.server) || null; }
+
+function openAuthorize() {
+  const list = [
+    ["View channels", "See your channels so you can pick where posts go"],
+    ["Send messages and embed links", "Post drafts, cards and links"],
+    ["Attach files", "Upload leaderboard and milestone cards"],
+    ["Add reactions", "React 🔥 🤍 🚀 📈 to every post"],
+    ["Mention @everyone, @here and all roles", "Only on posts you approve"],
+    ["Manage channels", "Create channels with the AI Community Builder"],
+    ["Manage roles", "Keep the Team category private to mods"],
+    ["Read message history", "Answer questions in context"],
+    ["Change nickname", "Show your bot name in this server"],
+  ];
+  $("#dlgRoot").innerHTML = `<div class="dlg" id="authDlg" role="dialog" aria-modal="true" aria-labelledby="authH">
+    <div class="authz">
+      <div class="sim">${ico("eye")}Mock of Discord's authorize screen. In the live product, Discord shows this.</div>
+      <div class="who"><div class="bav">${avHTML()}</div><div><h4 id="authH">${esc(botName())}</h4><p class="muted" style="font-size:var(--text-small)">wants to join a server you manage</p></div></div>
+      <label class="field" style="margin-top:20px">Add to server
+        <select class="input" id="az-srv"><option value="">Select a server</option>${SERVERS.map((s) => `<option value="${s.id}" ${S.server === s.id ? "selected" : ""}>${esc(s.name)} · ${esc(s.note)}</option>`).join("")}</select>
+      </label>
+      <p class="muted" style="font-size:var(--text-micro);margin-top:6px">You need Manage Server permission on the server.</p>
+      <p style="font-size:var(--text-small);font-weight:600;color:var(--color-heading);margin-top:18px">This will allow ${esc(botName())} to:</p>
+      <ul>${list.map(([a, b]) => `<li>${ico("check")}<div>${esc(a)}<span>${esc(b)}</span></div></li>`).join("")}</ul>
+      <div class="acts"><button class="btn" type="button" id="az-cancel">Cancel</button><button class="btn primary" type="button" id="az-ok" ${S.server ? "" : "disabled"}>Authorize</button></div>
+    </div></div>`;
+  const close = () => ($("#dlgRoot").innerHTML = "");
+  $("#az-srv").addEventListener("change", (e) => ($("#az-ok").disabled = !e.target.value));
+  $("#az-cancel").addEventListener("click", close);
+  $("#authDlg").addEventListener("click", (e) => { if (e.target.id === "authDlg") close(); });
+  $("#az-ok").addEventListener("click", () => {
+    const id = $("#az-srv").value; if (!id) return;
+    if (S.server !== id) { S.server = id; S.channels = SERVERS.find((s) => s.id === id).channels.map((c) => ({ ...c })); S.newChannels = []; S.map = {}; }
+    autoMatch(); save(); close(); renderApp(); toast(botName() + " joined " + serverObj().name);
+  });
+  $("#az-srv").focus();
+}
+
+/* Step 2: channels */
+function autoMatch(force) {
+  const names = S.channels.map((c) => c.name);
+  AUTOS.forEach((a) => { if (S.map[a.key] && !force) return; const hit = a.hint.find((h) => names.includes(h)); if (hit) S.map[a.key] = hit; });
+}
+function step2() {
+  const srv = serverObj();
+  const suggested = (a) => S.map[a.key] && a.hint.includes(S.map[a.key]);
+  const opts = (sel) => `<option value="">Off for now</option>` + groupBy(S.channels).map(([cat, chs]) => `<optgroup label="${esc(cat)}">${chs.map((c) => `<option value="${esc(c.name)}" ${sel === c.name ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</optgroup>`).join("");
+  const sparse = S.channels.length < 6;
+  $("#setupBody").innerHTML = `
+    <div class="eyebrow">Step 2 of 3</div>
+    <h3 style="margin-top:6px">Choose where each automation posts</h3>
+    <p class="intro">Kreo found ${S.channels.length} channels in ${esc(srv ? srv.name : "your server")}. ${sparse ? "That's not enough for every automation yet." : "We matched the ones that fit."}</p>
+    <div class="ai-cta"><div class="ai">${ico("spark")}</div><div><b>AI Community Builder</b><span>${sparse ? "Your server is new. Preview a full creator community and create every channel, with permissions, in one click." : "Want a cleaner layout? Preview the full creator community template and add what's missing."}</span></div><button class="btn ${sparse ? "primary" : "subtle"}" type="button" id="ai-open">${ico("spark")}Build my community</button></div>
+    <div class="maphead"><b>Channels per automation</b><button class="btn sm ghost" type="button" id="rematch">${ico("redo")}Auto-match again</button></div>
+    <div class="maptable">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}${suggested(a) ? ' <span class="pill good">Matched</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-auto="${a.key}" aria-label="Channel for ${esc(a.name)}">${opts(S.map[a.key])}</select></div>`).join("")}</div>
+    ${footer(true, "Continue", !!S.map.mod)}`;
+  $$("[data-auto]").forEach((s) => s.addEventListener("change", () => { if (s.value) S.map[s.dataset.auto] = s.value; else delete S.map[s.dataset.auto]; save(); step2(); renderStepperOnly(); }));
+  $("#rematch").addEventListener("click", () => { S.map = {}; autoMatch(true); save(); step2(); renderStepperOnly(); toast("Channels matched"); });
+  $("#ai-open").addEventListener("click", openBuilder);
+  $("#back").addEventListener("click", () => { S.step = 1; save(); renderSetup(); });
+  $("#next").addEventListener("click", () => { S.step = 3; save(); renderSetup(); });
+}
+function renderStepperOnly() { const keep = S.step; renderSetup(); S.step = keep; }
+function groupBy(chs) { const m = new Map(); chs.forEach((c) => { if (!m.has(c.cat)) m.set(c.cat, []); m.get(c.cat).push(c); }); return [...m]; }
+
+/* AI Community Builder */
+let B = null;
+function openBuilder() {
+  const existing = new Set(S.channels.map((c) => c.name));
+  B = { slide: 0, prompt: `Creator community for ${(S.user && S.user.brand) || "our brand"}, a TikTok Shop brand. Creators post videos and earn commission.`,
+    cats: TEMPLATE.map((c) => ({ ...c, ch: c.ch.map((x) => ({ ...x, on: true, exists: existing.has(x.name) })) })) };
+  renderBuilder();
+}
+function builderCount() { return B.cats.reduce((n, c) => n + c.ch.filter((x) => x.on && !x.exists).length, 0); }
+function renderBuilder() {
+  const srv = serverObj();
+  const keep = new Set(B.cats.flatMap((c) => c.ch.map((x) => x.name)));
+  const extra = S.channels.filter((c) => !keep.has(c.name));
+  $("#dlgRoot").innerHTML = `<div class="dlg" id="bDlg" role="dialog" aria-modal="true" aria-labelledby="bH">
+  <div class="builder">
+    <header><div class="ai-cta" style="all:unset;display:flex;gap:12px;align-items:center"><span style="width:36px;height:36px;border-radius:var(--radius-xl);background:var(--color-primary-tint);color:var(--color-primary);display:grid;place-items:center">${ico("spark")}</span><div><h3 id="bH">AI Community Builder</h3><span class="muted" style="font-size:var(--text-micro)">Preview for ${esc(srv.name)} · swipe through each category, rename or switch off anything</span></div></div><button class="btn sm ghost x" type="button" id="b-x" aria-label="Close">${ico("x")}</button></header>
+    <div class="prompt"><input class="input" id="b-prompt" value="${esc(B.prompt)}" aria-label="Describe your community"><button class="btn subtle" type="button" id="b-regen">${ico("redo")}Regenerate</button></div>
+    <div class="bbody" id="bBody">
+      <div class="dside" aria-label="Server preview">
+        <div class="srv">${esc(srv.name)}</div>
+        ${B.cats.map((c, i) => `<div class="cat ${B.slide === i ? "cur" : ""}" data-goto="${i}"><span>${c.priv ? "🔒 " : ""}${esc(c.cat)}</span><span>${c.ch.filter((x) => x.on).length}</span></div>${c.ch.map((x, j) => `<div class="ch ${x.on ? "" : "off"} ${x.exists ? "" : "new"}" id="pv-${i}-${j}">${ico("hash")}<span>${esc(x.name)}</span></div>`).join("")}`).join("")}
+        ${extra.length ? `<div class="cat"><span>Kept as is</span><span>${extra.length}</span></div>${extra.map((c) => `<div class="ch">${ico("hash")}<span>${esc(c.name)}</span></div>`).join("")}` : ""}
+      </div>
+      <div class="bright">
+        <div class="bnav"><div class="dots">${B.cats.map((c, i) => `<button type="button" data-goto="${i}" class="${B.slide === i ? "on" : ""}">${esc(c.cat)}</button>`).join("")}</div>
+          <div class="arrows"><button class="btn sm" type="button" id="b-prev" aria-label="Previous category">${ico("back")}</button><button class="btn sm" type="button" id="b-next" aria-label="Next category">${ico("arrow")}</button></div></div>
+        <div class="track" id="track">${B.cats.map((c, i) => `<section class="slide" aria-label="${esc(c.cat)}">
+          <div class="sh"><h4>${esc(c.cat)}</h4>${c.priv ? '<span class="pill rose">Private to mods</span>' : ""}<p>${esc(c.about)}</p></div>
+          ${c.ch.map((x, j) => `<div class="chrow ${x.on ? "" : "off"}" data-row="${i}-${j}">
+            <input type="checkbox" ${x.on ? "checked" : ""} data-tog="${i}-${j}" aria-label="Include #${esc(x.name)}" ${x.exists ? "disabled" : ""}>
+            <div style="min-width:0"><div class="nm"><span class="hash">#</span><input value="${esc(x.name)}" data-ren="${i}-${j}" aria-label="Channel name" ${x.exists ? "disabled" : ""}>${x.exists ? '<span class="pill line">Already exists</span>' : ""}${x.auto ? `<span class="pill">${esc(AUTOS.find((a) => a.key === x.auto).name)}</span>` : ""}</div><div class="desc">${esc(x.desc)}</div></div>
+            <select class="input" data-perm="${i}-${j}" aria-label="Who can post in #${esc(x.name)}" ${x.exists ? "disabled" : ""}>${Object.entries(PERMS).map(([k, l]) => `<option value="${k}" ${x.perm === k ? "selected" : ""}>${l}</option>`).join("")}</select>
+          </div>`).join("")}
+        </section>`).join("")}</div>
+      </div>
+    </div>
+    <footer><span class="muted" style="font-size:var(--text-micro)">Draft template. Your final community template will replace it.</span><div class="r"><button class="btn" type="button" id="b-cancel">Cancel</button><button class="btn primary" type="button" id="b-create" ${builderCount() ? "" : "disabled"}>${ico("spark")}<span id="b-count">Create ${builderCount()} channels</span></button></div></footer>
+  </div></div>`;
+  const track = $("#track");
+  const go = (i) => { B.slide = Math.max(0, Math.min(B.cats.length - 1, i)); track.scrollTo({ left: track.clientWidth * B.slide }); markSlide(); };
+  const markSlide = () => {
+    $$(".bnav .dots button").forEach((b, i) => b.classList.toggle("on", i === B.slide));
+    $$(".dside .cat[data-goto]").forEach((b, i) => b.classList.toggle("cur", i === B.slide));
+  };
+  requestAnimationFrame(() => { track.style.scrollBehavior = "auto"; track.scrollLeft = track.clientWidth * B.slide; track.style.scrollBehavior = ""; });
+  let t; track.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => { B.slide = Math.round(track.scrollLeft / track.clientWidth); markSlide(); }, 80); });
+  $$("[data-goto]").forEach((b) => b.addEventListener("click", () => go(+b.dataset.goto)));
+  $("#b-prev").addEventListener("click", () => go(B.slide - 1));
+  $("#b-next").addEventListener("click", () => go(B.slide + 1));
+  const at = (s) => { const [i, j] = s.split("-").map(Number); return [B.cats[i].ch[j], i, j]; };
+  const refreshCount = () => { const n = builderCount(); $("#b-count").textContent = n ? `Create ${n} channel${n === 1 ? "" : "s"}` : "Nothing new to create"; $("#b-create").disabled = !n; };
+  $$("[data-tog]").forEach((c) => c.addEventListener("change", () => { const [x, i, j] = at(c.dataset.tog); x.on = c.checked; c.closest(".chrow").classList.toggle("off", !x.on); $("#pv-" + i + "-" + j).classList.toggle("off", !x.on); refreshCount(); }));
+  $$("[data-ren]").forEach((inp) => inp.addEventListener("input", () => { const [x, i, j] = at(inp.dataset.ren); x.name = inp.value.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-_]/g, "").slice(0, 40) || "channel"; $("#pv-" + i + "-" + j + " span").textContent = x.name; }));
+  $$("[data-ren]").forEach((inp) => inp.addEventListener("blur", () => { const [x] = at(inp.dataset.ren); inp.value = x.name; }));
+  $$("[data-perm]").forEach((s) => s.addEventListener("change", () => { const [x] = at(s.dataset.perm); x.perm = s.value; }));
+  $("#b-prompt").addEventListener("input", (e) => (B.prompt = e.target.value));
+  $("#b-regen").addEventListener("click", () => {
+    const btn = $("#b-regen"); btn.disabled = true; btn.innerHTML = `<span class="checks" style="margin:0"><span class="s spin" style="width:14px;height:14px"></span></span>Thinking`;
+    setTimeout(() => { B.slide = 0; renderBuilder(); toast("Layout refreshed for your description"); }, 1100);
+  });
+  const close = () => { $("#dlgRoot").innerHTML = ""; };
+  $("#b-x").addEventListener("click", close); $("#b-cancel").addEventListener("click", close);
+  $("#b-create").addEventListener("click", runCreate);
+}
+function runCreate() {
+  const srv = serverObj();
+  const todo = B.cats.flatMap((c) => c.ch.filter((x) => x.on && !x.exists).map((x) => ({ ...x, cat: c.cat, priv: c.priv })));
+  const body = $("#bBody"); $(".builder .prompt").hidden = true; $(".builder footer").hidden = true;
+  body.style.display = "block"; body.style.overflowY = "auto";
+  body.innerHTML = `<div class="creating"><h4>Building ${esc(srv.name)}</h4><p class="p">Creating ${todo.length} channels and setting permissions</p>${todo.map((x, i) => `<div class="line" id="cl-${i}"><span class="checks" style="margin:0"><span class="s"></span></span><span>#${esc(x.name)}</span><span class="muted" style="margin-left:auto;font-size:var(--text-micro)">${esc(x.cat)} · ${esc(PERMS[x.perm])}</span></div>`).join("")}</div>`;
+  let i = 0;
+  const tick = () => {
+    if (i > 0) { const p = $(`#cl-${i - 1} .s`); if (p) { p.className = "s ok"; p.innerHTML = ico("check"); p.querySelector("svg").style.cssText = "width:12px;height:12px"; } }
+    if (i < todo.length) { const c = $(`#cl-${i} .s`); if (c) c.className = "s spin"; i++; setTimeout(tick, 170); return; }
+    // Merge into server
+    todo.forEach((x) => { if (!S.channels.find((c) => c.name === x.name)) S.channels.push({ name: x.name, cat: x.cat }); });
+    S.newChannels = todo.map((x) => x.name);
+    // Map automations to the builder's channels
+    B.cats.forEach((c) => c.ch.forEach((x) => { if (x.on && x.auto) S.map[x.auto] = x.name; }));
+    save();
+    setTimeout(() => { $("#dlgRoot").innerHTML = ""; renderApp(); toast(`${todo.length} channels created in ${srv.name}`); }, 450);
+  };
+  tick();
+}
+
+/* Step 3: CRM */
+function step3() {
+  const c = CRMS.find((x) => x.id === S.crm.id);
+  const srv = serverObj();
+  let inner = "";
+  if (c && !S.crm.ok) {
+    inner = `<div style="margin-top:20px;display:grid;gap:8px">
+      <label class="field" for="k-in">${esc(c.name)} API key<small>${esc(c.how)}</small></label>
+      <div class="keyrow"><input class="input" id="k-in" type="password" value="${esc(S.crm.key)}" placeholder="${c.id}_live_••••••••••••••••" autocomplete="off" spellcheck="false"><button class="btn" type="button" id="k-show" aria-label="Show key">${ico("eye")}</button><button class="btn primary" type="button" id="k-go">${ico("plug")}Connect</button></div>
+      <p class="muted" style="font-size:var(--text-micro)">Kreo only reads data. It never changes anything in ${esc(c.name)}. Mock-up: any text works.</p>
+      <div class="checks" id="k-checks" hidden></div>
+    </div>`;
+  }
+  if (c && S.crm.ok) {
+    inner = `<div class="connected">${ico("check")}<div><b>${esc(c.name)} connected.</b> Kreo found your TikTok Shop and can read your creators and sales.</div><button class="btn sm" type="button" id="k-change" style="margin-left:auto">Change</button></div>
+      <div class="found"><div><b>1,284</b><span>Creators in your CRM</span></div><div><b>458</b><span>Linked to Discord</span></div><div><b>$96.4k</b><span>GMV, last 30 days</span></div></div>
+      <p class="muted" style="font-size:var(--text-micro);margin-top:8px">Example data. Creators linked to Discord get tagged in posts. Everyone else shows as their @handle.</p>
+      <div class="summary">
+        <div>${ico("check")}<div><b>Bot</b><span class="muted">${esc(botName())}${S.bot.avatar ? "" : " · no picture yet"}</span></div><button class="btn sm ghost" type="button" data-jump="1">Edit</button></div>
+        <div>${ico("check")}<div><b>Server</b><span class="muted">${esc(srv ? srv.name : "")} · ${S.channels.length} channels${S.newChannels.length ? `, ${S.newChannels.length} created by Kreo` : ""}</span></div><button class="btn sm ghost" type="button" data-jump="1">Edit</button></div>
+        <div>${ico("check")}<div><b>Automations</b><span class="muted">${AUTOS.filter((a) => a.key !== "mod" && S.map[a.key]).length} of 6 have a channel · approvals in #${esc(S.map.mod || "")}</span></div><button class="btn sm ghost" type="button" data-jump="2">Edit</button></div>
+        <div>${ico("check")}<div><b>CRM</b><span class="muted">${esc(c.name)} · read-only</span></div><button class="btn sm ghost" type="button" id="k-change2">Edit</button></div>
+      </div>`;
+  }
+  $("#setupBody").innerHTML = `
+    <div class="eyebrow">Step 3 of 3</div>
+    <h3 style="margin-top:6px">Connect your CRM</h3>
+    <p class="intro">Kreo reads your creators, videos and sales from the CRM you already use. Pick yours and paste an API key.</p>
+    ${S.crm.ok ? "" : `<div class="crms">${CRMS.map((x) => `<button type="button" class="crm ${S.crm.id === x.id ? "on" : ""}" data-crm="${x.id}" aria-pressed="${S.crm.id === x.id}"><span class="mk">${x.mono}</span><b>${esc(x.name)}</b><span>${esc(x.reads)}</span></button>`).join("")}</div>`}
+    ${inner}
+    <div class="foot2"><span class="lockmsg">${ico("lock")} ${S.crm.ok ? "All set. Launch to unlock your dashboard." : "Dashboard unlocks after this step"}</span>
+      <div class="r"><button class="btn" type="button" id="back">${ico("back")}Back</button><button class="btn primary" type="button" id="launch" ${S.crm.ok ? "" : "disabled"}>${ico("bolt")}Launch Kreo</button></div></div>`;
+  $$("[data-crm]").forEach((b) => b.addEventListener("click", () => { S.crm = { id: b.dataset.crm, key: "", ok: false }; save(); step3(); const k = $("#k-in"); if (k) k.focus(); }));
+  const kin = $("#k-in");
+  if (kin) {
+    kin.addEventListener("input", () => { S.crm.key = kin.value; save(); });
+    kin.addEventListener("keydown", (e) => { if (e.key === "Enter") $("#k-go").click(); });
+    $("#k-show").addEventListener("click", () => { kin.type = kin.type === "password" ? "text" : "password"; });
+    $("#k-go").addEventListener("click", () => {
+      if (!kin.value.trim()) { kin.focus(); kin.placeholder = "Paste your API key first"; return; }
+      const box = $("#k-checks"); box.hidden = false; $("#k-go").disabled = true;
+      const steps = ["Checking your key", "Finding your TikTok Shop", "Reading creators and Discord links", "Reading videos and sales"];
+      box.innerHTML = steps.map((s, i) => `<div id="kc-${i}"><span class="s"></span>${s}</div>`).join("");
+      let i = 0;
+      const tick = () => {
+        if (i > 0) { const p = $(`#kc-${i - 1} .s`); p.className = "s ok"; p.innerHTML = ico("check"); p.querySelector("svg").style.cssText = "width:12px;height:12px"; }
+        if (i < steps.length) { $(`#kc-${i} .s`).className = "s spin"; i++; setTimeout(tick, 550); return; }
+        S.crm.ok = true; save(); setTimeout(() => { renderSetup(); toast(CRMS.find((x) => x.id === S.crm.id).name + " connected"); }, 300);
+      };
+      tick();
+    });
+  }
+  const ch = () => { S.crm.ok = false; save(); step3(); renderStepperOnly(); };
+  if ($("#k-change")) $("#k-change").addEventListener("click", ch);
+  if ($("#k-change2")) $("#k-change2").addEventListener("click", ch);
+  $$("[data-jump]").forEach((b) => b.addEventListener("click", () => { S.step = +b.dataset.jump; save(); renderSetup(); }));
+  $("#back").addEventListener("click", () => { S.step = 2; save(); renderSetup(); });
+  $("#launch").addEventListener("click", () => { S.launched = true; save(); renderApp(); toast(`Kreo is live in ${serverObj().name}. First drafts land in #${S.map.mod}.`); });
+}
+
+route();
+})();
+</script>
