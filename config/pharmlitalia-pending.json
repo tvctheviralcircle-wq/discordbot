@@ -1,30 +1,6 @@
 {
  "pending": [
   {
-   "automation": "creator_wins",
-   "creator": "lizzydaily3",
-   "milestone": 1,
-   "linked_discord": false,
-   "approval_message_id": "1569870084292223128",
-   "destination": "1533831170108952596",
-   "final_text": "first sale lessgoooo 🎉 massive congrats to @lizzydaily3, so happy for you. the first one is always the hardest, but it's only going upwards from here!!",
-   "card": "/home/user/discordbot/drafts/2026-11-11/win-lizzydaily3-1.png",
-   "os_draft_id": "wins-lizzydaily3-1",
-   "drafted": "2026-11-11T00:25Z"
-  },
-  {
-   "automation": "creator_wins",
-   "creator": "nenaramos_07",
-   "milestone": 1,
-   "linked_discord": false,
-   "approval_message_id": "1569870087538741370",
-   "destination": "1533831170108952596",
-   "final_text": "@nenaramos_07 just made their first sale with us!! first one's in the bag, so proud of you 🤍",
-   "card": "/home/user/discordbot/drafts/2026-11-11/win-nenaramos_07-1.png",
-   "os_draft_id": "wins-nenaramos_07-1",
-   "drafted": "2026-11-11T00:25Z"
-  },
-  {
    "automation": "viral_hooks_and_angles",
    "week": "2026-11-01..2026-11-07",
    "rank": 2,
@@ -42,7 +18,8 @@
    ],
    "os_draft_id": "viral_hooks-2026-11-01-2",
    "drafted": "2026-11-11T00:35Z",
-   "note": "Cictiv @hawibofdu6o (3,012 views) skipped: hair-loss video, not dandruff. No transcript; quotes are on-screen text."
+   "note": "Cictiv @hawibofdu6o (3,012 views) skipped: hair-loss video, not dandruff. No transcript; quotes are on-screen text.",
+   "status": "on_hold (moderator: wait)"
   }
  ],
  "posted": [
@@ -148,6 +125,20 @@
    "creator": "salonby_yunisbel",
    "approved_by": "Creator OS",
    "destination_first_message_id": "1569757397746978907"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "lizzydaily3",
+   "milestone": 1,
+   "approved_by": "moazzam.golra",
+   "destination_message_id": "1569873513483866122"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "nenaramos_07",
+   "milestone": 1,
+   "approved_by": "moazzam.golra",
+   "destination_message_id": "1569873515056734268"
   }
  ],
  "notes": [
