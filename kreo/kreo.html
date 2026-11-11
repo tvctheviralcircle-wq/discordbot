@@ -59,6 +59,7 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { background: var(--color-background); }
 body { color: var(--color-text); font-family: var(--font-sans); font-size: var(--text-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--color-heading); font-weight: 600; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
@@ -216,39 +217,348 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .auth .art li .ico { color: var(--color-success); margin-top: 3px; }
 
 /* ---------- App ---------- */
-.app { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh; transition: filter 400ms var(--ease); }
+.app { display: grid; grid-template-columns: 256px minmax(0, 1fr); min-height: 100vh; transition: filter 400ms var(--ease); }
 .app.locked { filter: blur(var(--blur-locked)); pointer-events: none; user-select: none; }
-.side { border-right: 1px solid var(--color-border); padding: 18px 14px; display: flex; flex-direction: column; gap: 18px; position: sticky; top: 0; height: 100vh; }
-.side .ws { display: flex; gap: 10px; align-items: center; padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); }
-.side .ws .bav { width: 34px; height: 34px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-foreground); display: grid; place-items: center; font-weight: 700; font-family: var(--font-display); overflow: hidden; flex: none; }
-.side .ws .bav img { width: 100%; height: 100%; object-fit: cover; }
+.side { border-right: 1px solid var(--color-border); padding: 16px 12px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 0; height: 100vh; background: var(--color-surface); overflow-y: auto; }
+.side .ws { display: flex; gap: 10px; align-items: center; padding: 9px; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); background: none; width: 100%; text-align: left; cursor: pointer; }
+.side .ws:hover { background: var(--color-surface-subtle); }
+.bav { width: 34px; height: 34px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-foreground); display: grid; place-items: center; font-weight: 700; font-family: var(--font-display); overflow: hidden; flex: none; }
+.bav img { width: 100%; height: 100%; object-fit: cover; }
 .side .ws b { display: block; font-size: var(--text-small); color: var(--color-heading); font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.side .ws span { font-size: var(--text-micro); color: var(--color-text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side .ws span { font-size: var(--text-micro); color: var(--color-text-muted); display: flex; align-items: center; gap: 5px; overflow: hidden; white-space: nowrap; }
+.dot-ok { width: 7px; height: 7px; border-radius: 50%; background: var(--color-success); flex: none; }
 .side nav { display: grid; gap: 2px; }
-.side nav a { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; border-radius: var(--radius-xl); color: var(--color-text-muted); font-size: var(--text-caption); font-weight: 500; }
-.side nav a:hover { background: var(--color-surface-subtle); text-decoration: none; }
+.side .navlabel { font-size: var(--text-overline); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-subtle); padding: 10px 12px 4px; }
+.side nav a { display: flex; align-items: center; gap: 10px; height: 38px; white-space: nowrap; padding: 0 12px; border-radius: var(--radius-xl); color: var(--color-text-muted); font-size: var(--text-caption); font-weight: 500; }
+.side nav a:hover { background: var(--color-surface-subtle); text-decoration: none; color: var(--color-heading); }
 .side nav a.on { background: var(--color-primary-tint); color: var(--color-primary); }
-.side nav a small { margin-left: auto; background: var(--color-surface-subtle); color: var(--color-text-muted); border-radius: var(--radius-full); padding: 0 8px; font-size: var(--text-micro); }
-.side .me { margin-top: auto; display: flex; gap: 10px; align-items: center; font-size: var(--text-small); padding: 8px; }
-.side .me i { width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; font-style: normal; font-weight: 600; flex: none; }
-.main { padding: 26px 32px 60px; min-width: 0; }
-.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-.top h1 { font-size: var(--text-h4); }
-.top .right { margin-left: auto; display: flex; gap: 8px; }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-.kpi { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; }
-.kpi .l { font-size: var(--text-small); color: var(--color-text-muted); display: flex; justify-content: space-between; gap: 8px; }
-.kpi .v { font-family: var(--font-mono); font-size: 26px; color: var(--color-heading); margin-top: 8px; font-variant-numeric: tabular-nums; }
-.kpi svg { width: 100%; height: 36px; margin-top: 8px; display: block; }
-.cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 14px; }
-.box { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; min-width: 0; }
-.box .h { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
-.box h2 { font-size: var(--text-h5); }
-.arow { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
-.arow:first-of-type { border-top: 0; }
-.arow .d { width: 28px; height: 28px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; font-family: var(--font-mono); font-size: var(--text-micro); }
-.arow b { display: block; font-weight: 500; color: var(--color-heading); }
-.arow span { color: var(--color-text-muted); font-size: var(--text-micro); }
+.side nav a small { margin-left: auto; background: var(--color-surface-subtle); color: var(--color-text-muted); border-radius: var(--radius-full); padding: 0 8px; font-size: var(--text-micro); min-width: 22px; text-align: center; }
+.side nav a.on small { background: var(--color-surface); color: var(--color-primary); }
+.side nav a small.hot { background: var(--color-primary); color: var(--color-primary-foreground); }
+.side .trial { margin-top: auto; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: 12px; font-size: var(--text-micro); color: var(--color-text-muted); display: grid; gap: 8px; }
+.side .trial b { color: var(--color-heading); font-size: var(--text-small); font-weight: 600; }
+.side .trial .prog { height: 5px; }
+.main { min-width: 0; display: flex; flex-direction: column; }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 15; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 10px; padding: 10px 28px; min-height: 60px; }
+.topbar .search { flex: 1 1 280px; max-width: 380px; position: relative; }
+.topbar .search .ico { position: absolute; left: 11px; top: 11px; width: 16px; height: 16px; color: var(--color-text-subtle); }
+.topbar .search .input { padding-left: 34px; height: 38px; background: var(--color-surface-subtle); border-color: transparent; }
+.topbar .search kbd { position: absolute; right: 10px; top: 9px; font-family: var(--font-mono); font-size: 10px; color: var(--color-text-subtle); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: 1px 5px; background: var(--color-surface); }
+.topbar .r { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.iconbtn { width: 38px; height: 38px; border-radius: var(--radius-xl); border: 1px solid transparent; background: none; display: grid; place-items: center; cursor: pointer; color: var(--color-text-muted); position: relative; }
+.iconbtn:hover { background: var(--color-surface-subtle); color: var(--color-heading); }
+.iconbtn .badge-dot { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); border: 2px solid var(--color-surface); }
+.avatar-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); border: 0; font-weight: 600; cursor: pointer; }
+.menu-toggle { display: none; }
+.page { padding: 24px 28px 64px; min-width: 0; }
+.ph { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.ph h1 { font-size: var(--text-h4); }
+.ph p { color: var(--color-text-muted); font-size: var(--text-small); margin-top: 4px; }
+.ph .r { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+/* Bento dashboard */
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+.tile { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; min-width: 0; background: var(--color-surface); display: flex; flex-direction: column; }
+.tile.link { cursor: pointer; transition: border-color var(--duration-fast); }
+.tile.link:hover { border-color: var(--color-border-strong); }
+.s3 { grid-column: span 3; } .s4 { grid-column: span 4; } .s5 { grid-column: span 5; } .s6 { grid-column: span 6; } .s7 { grid-column: span 7; } .s8 { grid-column: span 8; } .s12 { grid-column: span 12; }
+.th { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.th h2 { font-size: var(--text-h5); }
+.th .r { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.th a.more { font-size: var(--text-small); font-weight: 500; display: inline-flex; gap: 4px; align-items: center; }
+.th a.more .ico { width: 14px; height: 14px; }
+.minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 8px; }
+.mini .l { font-size: var(--text-micro); color: var(--color-text-muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.mini .v { font-family: var(--font-mono); font-size: 24px; color: var(--color-heading); font-variant-numeric: tabular-nums; line-height: 1.3; }
+.chg { font-size: 11px; padding: 0 7px; border-radius: var(--radius-full); font-weight: 500; }
+.chg.up { background: var(--color-success-tint); color: var(--color-success); }
+.chg.dn { background: var(--color-danger-tint); color: var(--color-danger); }
+.chart { width: 100%; display: block; overflow: visible; }
+.chart text { font-family: var(--font-sans); font-size: 10px; fill: var(--color-text-subtle); }
+.legend { display: flex; gap: 14px; font-size: var(--text-micro); color: var(--color-text-muted); flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.lrow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.lrow:first-of-type { border-top: 0; }
+.lrow b { display: block; font-weight: 500; color: var(--color-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lrow .sub { color: var(--color-text-muted); font-size: var(--text-micro); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.lrow .num { font-family: var(--font-mono); color: var(--color-heading); font-variant-numeric: tabular-nums; text-align: right; }
+.cav { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: var(--text-micro); font-weight: 600; flex: none; background: var(--color-accent-tint); color: var(--color-accent); }
+.cav.r { background: var(--color-primary-tint); color: var(--color-primary); }
+.disc { width: 28px; height: 28px; border-radius: 50%; background: var(--color-accent-tint); color: var(--color-accent); display: grid; place-items: center; font-family: var(--font-mono); font-size: 10px; flex: none; }
+.rk { font-family: var(--font-mono); color: var(--color-text-subtle); width: 18px; font-size: var(--text-micro); }
+.todo-i { width: 30px; height: 30px; border-radius: var(--radius-lg); display: grid; place-items: center; background: var(--color-primary-tint); color: var(--color-primary); flex: none; }
+.todo-i.b { background: var(--color-accent-tint); color: var(--color-accent); }
+.todo-i .ico { width: 16px; height: 16px; }
+.empty { text-align: center; padding: 28px 12px; color: var(--color-text-muted); font-size: var(--text-small); }
+.empty b { display: block; color: var(--color-heading); font-weight: 600; margin-bottom: 4px; }
+.bars { display: grid; gap: 10px; }
+.bar-r { display: grid; gap: 4px; font-size: var(--text-small); }
+.bar-r .t { display: flex; justify-content: space-between; gap: 8px; }
+.bar-r .t span:last-child { font-family: var(--font-mono); color: var(--color-heading); }
+.track2 { height: 8px; border-radius: var(--radius-full); background: var(--color-surface-subtle); overflow: hidden; display: flex; }
+.track2 i { display: block; height: 100%; background: var(--color-primary); }
+.track2 i.b { background: var(--color-accent); }
+.track2 i.c { background: var(--color-chart-3, #a99bb5); }
+
+/* Toggle */
+.sw { position: relative; width: 36px; height: 20px; flex: none; display: inline-block; }
+.sw input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+.sw span { position: absolute; inset: 0; border-radius: var(--radius-full); background: var(--color-border-strong); transition: background var(--duration-fast); }
+.sw span::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--color-surface); box-shadow: 0 1px 2px rgba(31,26,36,0.2); transition: transform var(--duration-fast) var(--ease); }
+.sw input:checked + span { background: var(--color-primary); }
+.sw input:checked + span::after { transform: translateX(16px); }
+.sw input:focus-visible + span { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* Date range picker */
+.dr { position: relative; }
+.dr-btn { gap: 8px; }
+.dr-btn .ico { width: 16px; height: 16px; color: var(--color-text-muted); }
+.dr-pop { position: absolute; right: 0; top: calc(100% + 6px); z-index: 50; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); box-shadow: var(--shadow-dialog); display: grid; grid-template-columns: 160px auto; width: max-content; max-width: calc(100vw - 32px); }
+.dr-pre { border-right: 1px solid var(--color-border); padding: 8px; display: grid; gap: 2px; align-content: start; }
+.dr-pre button { text-align: left; border: 0; background: none; border-radius: var(--radius-lg); padding: 7px 10px; font-size: var(--text-small); cursor: pointer; color: var(--color-text); }
+.dr-pre button:hover { background: var(--color-surface-subtle); }
+.dr-pre button.on { background: var(--color-primary-tint); color: var(--color-primary); font-weight: 500; }
+.dr-cal { padding: 14px; display: grid; gap: 12px; }
+.dr-head { display: flex; gap: 8px; align-items: center; }
+.dr-head .input { height: 34px; width: 128px; font-size: var(--text-small); font-family: var(--font-mono); }
+.dr-months { display: grid; grid-template-columns: repeat(2, 224px); gap: 18px; }
+.mon h5 { font-family: var(--font-sans); font-size: var(--text-small); text-align: center; margin-bottom: 8px; letter-spacing: 0; display: flex; align-items: center; justify-content: space-between; font-weight: 600; }
+.mon h5 button { border: 0; background: none; cursor: pointer; color: var(--color-text-muted); width: 26px; height: 26px; border-radius: var(--radius-md); display: grid; place-items: center; }
+.mon h5 button:hover { background: var(--color-surface-subtle); }
+.mon h5 .ph-sp { width: 26px; }
+.days { display: grid; grid-template-columns: repeat(7, 32px); gap: 0; }
+.days .dw { font-size: 10px; color: var(--color-text-subtle); text-align: center; padding-bottom: 4px; }
+.days button { width: 32px; height: 32px; border: 0; background: none; font-size: var(--text-micro); cursor: pointer; border-radius: var(--radius-lg); color: var(--color-text); font-variant-numeric: tabular-nums; }
+.days button:hover { background: var(--color-surface-subtle); }
+.days button.in { background: var(--color-primary-tint); border-radius: 0; color: var(--color-primary); }
+.days button.edge { background: var(--color-primary); color: var(--color-primary-foreground); }
+.days button.today { box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+.days button[disabled] { color: var(--color-border-strong); cursor: default; background: none; }
+.dr-foot { display: flex; gap: 8px; justify-content: flex-end; align-items: center; border-top: 1px solid var(--color-border); padding-top: 12px; }
+.dr-foot span { margin-right: auto; font-size: var(--text-micro); color: var(--color-text-muted); }
+
+/* Popover menus */
+.pop { position: absolute; right: 0; top: calc(100% + 6px); z-index: 50; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); box-shadow: var(--shadow-dialog); min-width: 240px; padding: 6px; }
+.pop .pi { display: flex; gap: 10px; align-items: center; width: 100%; padding: 9px 10px; border: 0; background: none; text-align: left; border-radius: var(--radius-lg); font-size: var(--text-small); cursor: pointer; color: var(--color-text); }
+.pop .pi:hover { background: var(--color-surface-subtle); }
+.pop .ph2 { padding: 10px; border-bottom: 1px solid var(--color-border); margin-bottom: 4px; font-size: var(--text-small); }
+.pop .ph2 b { display: block; color: var(--color-heading); font-weight: 600; }
+.pop .note { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 10px; border-radius: var(--radius-lg); font-size: var(--text-small); cursor: pointer; border: 0; background: none; text-align: left; width: 100%; }
+.pop .note:hover { background: var(--color-surface-subtle); }
+.pop .note span { display: block; font-size: var(--text-micro); color: var(--color-text-muted); }
+.rel { position: relative; }
+
+/* Tabs */
+.tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--color-border); margin-bottom: 20px; overflow-x: auto; }
+.tabs a, .tabs button { padding: 10px 0; border: 0; background: none; border-bottom: 2px solid transparent; color: var(--color-text-muted); font-weight: 500; font-size: var(--text-caption); cursor: pointer; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; margin-bottom: -1px; }
+.tabs a:hover, .tabs button:hover { color: var(--color-heading); text-decoration: none; }
+.tabs .on { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+.seg { display: inline-flex; background: var(--color-surface-subtle); border-radius: var(--radius-xl); padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg button { border: 0; background: none; border-radius: var(--radius-lg); padding: 5px 12px; font-size: var(--text-small); cursor: pointer; color: var(--color-text-muted); font-weight: 500; }
+.seg button.on { background: var(--color-surface); color: var(--color-primary); box-shadow: var(--shadow-ring, 0 0 0 1px rgba(0,0,0,0.03)); }
+.kpis6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.kp { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 14px 16px; }
+.kp .l { font-size: var(--text-micro); color: var(--color-text-muted); display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+.kp .v { font-family: var(--font-mono); font-size: 22px; color: var(--color-heading); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+/* Tables */
+.tblwrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-card); }
+.tbl { width: 100%; border-collapse: collapse; font-size: var(--text-small); min-width: 860px; }
+.tbl th { text-align: left; font-weight: 500; color: var(--color-text-muted); font-size: var(--text-micro); padding: 10px 14px; border-bottom: 1px solid var(--color-border); background: var(--color-surface-subtle); white-space: nowrap; }
+.tbl th button { border: 0; background: none; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+.tbl td { padding: 11px 14px; border-bottom: 1px solid var(--color-border); vertical-align: middle; }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl tbody tr { cursor: pointer; }
+.tbl tbody tr:hover td { background: var(--color-surface-subtle); }
+.tbl .r { text-align: right; }
+.tbl .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--color-heading); }
+.tbl .who { display: flex; gap: 10px; align-items: center; min-width: 180px; }
+.tbl .who b { display: block; color: var(--color-heading); font-weight: 500; }
+.tbl .who span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.contact { display: grid; gap: 2px; font-size: var(--text-micro); min-width: 200px; }
+.contact div { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.contact .ico { width: 13px; height: 13px; color: var(--color-text-subtle); }
+.src { font-size: 10px; padding: 0 6px; border-radius: var(--radius-full); background: var(--color-surface-subtle); color: var(--color-text-muted); }
+.src.dm { background: var(--color-success-tint); color: var(--color-success); }
+.filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.filters .input { height: 36px; max-width: 260px; }
+.chip { height: 32px; padding: 0 12px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: var(--color-surface); font-size: var(--text-small); cursor: pointer; color: var(--color-text-muted); display: inline-flex; align-items: center; gap: 6px; }
+.chip:hover { border-color: var(--color-border-strong); }
+.chip.on { background: var(--color-primary-tint); border-color: transparent; color: var(--color-primary); font-weight: 500; }
+.chip small { font-family: var(--font-mono); font-size: 10px; }
+
+/* Drawer */
+.drawer-bg { position: fixed; inset: 0; z-index: 55; background: var(--color-overlay); }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 56; width: min(460px, 100vw); background: var(--color-surface); box-shadow: var(--shadow-dialog); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.drawer header { display: flex; gap: 12px; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--color-border); }
+.drawer header h3 { font-size: var(--text-h5); }
+.drawer header .x { margin-left: auto; }
+.drawer .db { padding: 18px 20px; overflow-y: auto; display: grid; gap: 18px; align-content: start; flex: 1; }
+.drawer footer { padding: 14px 20px; border-top: 1px solid var(--color-border); display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+.dl { display: grid; gap: 0; border: 1px solid var(--color-border); border-radius: var(--radius-2xl); }
+.dl > div { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.dl > div:first-child { border-top: 0; }
+.dl dt, .dl .k { color: var(--color-text-muted); font-size: var(--text-micro); }
+.dl .v { color: var(--color-heading); overflow-wrap: anywhere; }
+.sec-t { font-size: var(--text-overline); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-subtle); font-weight: 600; margin-bottom: 8px; }
+.tl { display: grid; gap: 10px; font-size: var(--text-small); }
+.tl div { display: grid; grid-template-columns: 10px 1fr auto; gap: 10px; align-items: baseline; }
+.tl i { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); display: block; }
+.tl span { font-size: var(--text-micro); color: var(--color-text-subtle); }
+
+/* Approvals */
+.appr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; margin-bottom: 14px; }
+.appr h3 { font-size: var(--text-h5); margin: 6px 0 4px; }
+.appr .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.appr .acts { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.appr textarea, textarea.input { width: 100%; min-height: 110px; padding: 10px 12px; height: auto; resize: vertical; line-height: 1.5; font-family: var(--font-sans); }
+
+/* Automations */
+.autos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.auto { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.auto.off { background: var(--color-surface-subtle); }
+.auto .t { display: flex; gap: 12px; align-items: flex-start; }
+.auto .t h3 { font-size: var(--text-body-sm); font-family: var(--font-sans); font-weight: 600; letter-spacing: 0; }
+.auto .t .sw { margin-left: auto; }
+.auto p { font-size: var(--text-small); color: var(--color-text-muted); }
+.auto .m { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+.auto .b { display: flex; gap: 6px; border-top: 1px solid var(--color-border); padding-top: 12px; }
+.auto.new { border-style: dashed; align-items: flex-start; justify-content: center; cursor: pointer; background: none; text-align: left; font: inherit; color: inherit; }
+.auto.new:hover { border-color: var(--color-primary); }
+
+/* Custom automation builder + DMs */
+.cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; height: calc(100vh - 190px); min-height: 520px; }
+.chatbox { border: 1px solid var(--color-border); border-radius: var(--radius-card); display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.chatbox .ch-h { padding: 14px 16px; border-bottom: 1px solid var(--color-border); display: flex; gap: 10px; align-items: center; }
+.chatbox .ch-h b { font-size: var(--text-caption); color: var(--color-heading); }
+.msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.bub { max-width: 86%; padding: 10px 13px; border-radius: 14px; font-size: var(--text-small); line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+.bub.ai { background: var(--color-surface-subtle); color: var(--color-text); border-top-left-radius: 4px; align-self: flex-start; }
+.bub.me { background: var(--color-primary); color: var(--color-primary-foreground); border-top-right-radius: 4px; align-self: flex-end; }
+.bub.me mark { background: rgba(255,255,255,0.25); color: inherit; }
+.bub mark { background: var(--color-success-tint); color: var(--color-success); border-radius: 3px; padding: 0 2px; }
+.bub .when { display: block; font-size: 10px; opacity: 0.7; margin-top: 4px; }
+.bubrow { display: flex; flex-direction: column; gap: 4px; }
+.bubrow.me { align-items: flex-end; }
+.bubrow .det { font-size: 10px; color: var(--color-success); display: inline-flex; gap: 4px; align-items: center; }
+.sugg { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 16px 10px; }
+.compose { border-top: 1px solid var(--color-border); padding: 12px; display: flex; gap: 8px; align-items: flex-end; }
+.compose textarea { flex: 1; min-height: 42px; max-height: 140px; resize: none; height: 42px; padding: 10px 12px; }
+.typing { display: inline-flex; gap: 4px; }
+.typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-text-subtle); animation: blink 1s infinite; }
+.typing i:nth-child(2) { animation-delay: 0.15s; } .typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+.prevbox { border: 1px solid var(--color-border); border-radius: var(--radius-card); display: flex; flex-direction: column; min-height: 0; min-width: 0; overflow-y: auto; }
+.prevbox .pb { padding: 16px; display: grid; gap: 14px; }
+.specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.specs div { border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 10px 12px; font-size: var(--text-small); min-width: 0; }
+.specs span { display: block; font-size: var(--text-micro); color: var(--color-text-muted); }
+.specs b { color: var(--color-heading); font-weight: 500; overflow-wrap: anywhere; }
+.specs .flash { animation: flash 1.2s var(--ease); }
+@keyframes flash { 0% { background: var(--color-primary-tint); } 100% { background: transparent; } }
+
+.inbox { display: grid; grid-template-columns: 290px minmax(0, 1fr) 300px; border: 1px solid var(--color-border); border-radius: var(--radius-card); height: calc(100vh - 230px); min-height: 520px; overflow: hidden; }
+.ib-list { border-right: 1px solid var(--color-border); display: flex; flex-direction: column; min-height: 0; }
+.ib-list .ib-f { padding: 12px; border-bottom: 1px solid var(--color-border); display: grid; gap: 8px; }
+.ib-list .ib-f .input { height: 36px; }
+.convs { overflow-y: auto; flex: 1; }
+.conv { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 10px; padding: 12px; border: 0; border-bottom: 1px solid var(--color-border); background: none; width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.conv:hover { background: var(--color-surface-subtle); }
+.conv.on { background: var(--color-primary-tint); }
+.conv b { display: block; font-size: var(--text-small); color: var(--color-heading); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.conv .pv { font-size: var(--text-micro); color: var(--color-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.conv .tm { font-size: 10px; color: var(--color-text-subtle); text-align: right; display: grid; gap: 4px; justify-items: end; }
+.conv .unread { width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); }
+.thread { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.thread .th-h { padding: 12px 16px; border-bottom: 1px solid var(--color-border); display: flex; gap: 10px; align-items: center; }
+.thread .th-h b { display: block; color: var(--color-heading); font-size: var(--text-caption); }
+.thread .th-h span { font-size: var(--text-micro); color: var(--color-text-muted); }
+.ib-side .dl > div { grid-template-columns: 70px minmax(0, 1fr) auto; padding: 10px 12px; }
+.ib-side .dl .v { font-size: var(--text-small); overflow-wrap: break-word; word-break: break-word; }
+.ib-side { border-left: 1px solid var(--color-border); padding: 16px; overflow-y: auto; display: grid; gap: 16px; align-content: start; }
+.ob-steps { display: grid; gap: 8px; font-size: var(--text-small); }
+.ob-steps div { display: flex; gap: 8px; align-items: flex-start; }
+.ob-steps .s { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--color-border-strong); display: grid; place-items: center; flex: none; margin-top: 2px; }
+.ob-steps .s.ok { background: var(--color-success); border-color: var(--color-success); color: var(--color-primary-foreground); }
+.ob-steps .s .ico { width: 11px; height: 11px; }
+
+/* Settings */
+.set { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 28px; align-items: start; }
+.setnav { display: grid; gap: 2px; position: sticky; top: 84px; }
+.setnav button { text-align: left; border: 0; background: none; padding: 9px 12px; border-radius: var(--radius-xl); font-size: var(--text-caption); color: var(--color-text-muted); cursor: pointer; display: flex; gap: 10px; align-items: center; font-weight: 500; }
+.setnav button:hover { background: var(--color-surface-subtle); color: var(--color-heading); }
+.setnav button.on { background: var(--color-primary-tint); color: var(--color-primary); }
+.setbody { display: grid; gap: 16px; min-width: 0; max-width: 820px; }
+.card2 { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 20px; display: grid; gap: 14px; min-width: 0; }
+.card2 > .h { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.card2 > .h h3 { font-size: var(--text-h5); }
+.card2 > .h p { flex-basis: 100%; font-size: var(--text-small); color: var(--color-text-muted); }
+.card2 > .h .r { margin-left: auto; display: flex; gap: 8px; }
+.frow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.trow { display: flex; gap: 14px; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--color-border); font-size: var(--text-small); }
+.trow:first-of-type { border-top: 0; padding-top: 0; }
+.trow b { display: block; color: var(--color-heading); font-weight: 500; }
+.trow span { color: var(--color-text-muted); font-size: var(--text-micro); }
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.plan { border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.plan.on { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-tint); }
+.plan b { font-family: var(--font-display); font-size: var(--text-h5); color: var(--color-heading); font-weight: 600; }
+.plan .price { font-family: var(--font-mono); font-size: 22px; color: var(--color-heading); }
+.plan .price small { font-family: var(--font-sans); font-size: var(--text-micro); color: var(--color-text-muted); }
+.plan ul { margin: 0; padding-left: 18px; font-size: var(--text-small); color: var(--color-text-muted); display: grid; gap: 4px; }
+
+/* Step 1 waiting */
+.waitbox { border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: 16px; margin-top: 22px; display: grid; gap: 12px; }
+.waitbox .wt { display: flex; gap: 12px; align-items: center; }
+.waitbox .wt .spinner { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--color-primary); border-top-color: transparent; animation: spin 800ms linear infinite; flex: none; }
+.waitbox b { color: var(--color-heading); font-weight: 600; font-size: var(--text-caption); display: block; }
+.waitbox span { font-size: var(--text-small); color: var(--color-text-muted); }
+.srvpick { display: grid; gap: 8px; }
+.srvopt { display: grid; grid-template-columns: 18px 36px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 10px 12px; cursor: pointer; font-size: var(--text-small); }
+.srvopt:has(input:checked) { border-color: var(--color-primary); background: var(--color-primary-tint); }
+.srvopt input { accent-color: var(--color-primary); width: 16px; height: 16px; }
+.srvopt .si { width: 36px; height: 36px; border-radius: 12px; background: var(--color-discord-side); color: var(--color-discord-head); display: grid; place-items: center; font-weight: 600; font-size: var(--text-micro); }
+.srvopt b { display: block; color: var(--color-heading); font-weight: 500; }
+.srvopt span { font-size: var(--text-micro); color: var(--color-text-muted); }
+
+.modal { width: 100%; max-width: 480px; background: var(--color-surface); border-radius: var(--radius-3xl); box-shadow: var(--shadow-dialog); padding: 24px; margin: auto; display: grid; gap: 14px; }
+.modal h3 { font-size: var(--text-h5); }
+.modal .acts { display: flex; gap: 8px; justify-content: flex-end; }
+
+@media (max-width: 1180px) {
+  .s3, .s4, .s5 { grid-column: span 6; } .s7, .s8 { grid-column: span 12; }
+  .inbox { grid-template-columns: 260px minmax(0, 1fr); }
+  .ib-side { display: none; }
+  .appr { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .side { position: fixed; left: 0; top: 0; bottom: 0; z-index: 57; width: 270px; transform: translateX(-100%); transition: transform var(--duration-base) var(--ease); box-shadow: var(--shadow-dialog); padding-top: max(16px, env(safe-area-inset-top, 0px)); padding-left: max(12px, env(safe-area-inset-left, 0px)); }
+  .side.open { transform: none; }
+  .menu-toggle { display: grid; }
+  .topbar { padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
+  .topbar .search kbd { display: none; }
+  .page { padding: 20px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px)); }
+  .cab { grid-template-columns: 1fr; height: auto; }
+  .chatbox { height: 560px; }
+  .set { grid-template-columns: 1fr; }
+  .setnav { position: static; grid-auto-flow: column; overflow-x: auto; }
+  .setnav button { white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  .s3, .s4, .s5, .s6 { grid-column: span 12; }
+  .minis { grid-template-columns: 1fr 1fr; }
+  .inbox { grid-template-columns: 1fr; height: auto; }
+  .ib-list { max-height: 300px; border-right: 0; border-bottom: 1px solid var(--color-border); }
+  .thread { height: 520px; }
+  .frow, .plans, .specs { grid-template-columns: 1fr; }
+  .dr-pop { position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); top: auto; bottom: max(16px, env(safe-area-inset-bottom, 0px)); grid-template-columns: 1fr; width: auto; max-height: 80vh; overflow-y: auto; }
+  .dr-pre { border-right: 0; border-bottom: 1px solid var(--color-border); grid-template-columns: repeat(2, 1fr); }
+  .dr-months { grid-template-columns: 224px; justify-content: center; }
+  .dr-months .mon:first-child { display: none; }
+  .topbar .search { display: none; }
+  .dl > div { grid-template-columns: 90px minmax(0, 1fr); }
+  .dl > div > :nth-child(3) { grid-column: 2; justify-self: start; }
+}
 
 /* Setup overlay */
 .overlay { position: fixed; inset: 0; z-index: 40; background: var(--color-overlay); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
@@ -411,11 +721,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
   .grid3, .steps3, .crms, .found { grid-template-columns: 1fr; }
   .auth { grid-template-columns: 1fr; }
   .auth .art { display: none; }
-  .app { grid-template-columns: 1fr; }
-  .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--color-border); }
-  .side nav, .side .me { display: none; }
-  .main { padding: 20px 16px 40px; }
-  .cols, .botgrid { grid-template-columns: 1fr; }
+  .botgrid { grid-template-columns: 1fr; }
   .maprow { grid-template-columns: 1fr; gap: 8px; }
   .chrow { grid-template-columns: 22px minmax(0, 1fr); }
   .chrow select { grid-column: 2; }
@@ -458,6 +764,23 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2.3 4.3 5 5l1-1.2-1.6-.8-.7.7a4 4 0 0 1-2.4-2.4l.7-.7-.8-1.6z"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10"/></symbol>
 </svg>
 
 <!-- ============ LANDING ============ -->
@@ -468,7 +791,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
       <nav aria-label="Main">
         <a href="#features">Automations</a>
         <a href="#how">How it works</a>
-        <a href="#approvals">Approvals</a>
+        <a href="#approvals-info">Approvals</a>
         <a href="#integrations">Integrations</a>
       </nav>
       <div class="right">
@@ -563,7 +886,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
     </div>
   </section>
 
-  <section class="band" id="approvals">
+  <section class="band" id="approvals-info">
     <div class="wrap">
       <div>
         <div class="eyebrow" style="color:var(--color-surface-inverse-muted)">Two-way approvals</div>
@@ -637,48 +960,33 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 <!-- ============ APP ============ -->
 <div id="v-app" hidden>
   <div class="app locked" id="app" aria-hidden="true">
-    <aside class="side">
-      <a class="logo" href="#home"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
-      <div class="ws"><div class="bav" id="sideAv">K</div><div style="min-width:0"><b id="sideBot">Your bot</b><span id="sideSrv">No server yet</span></div></div>
-      <nav>
-        <a class="on" href="#app"><svg class="ico"><use href="#i-home"/></svg>Overview</a>
-        <a href="#app"><svg class="ico"><use href="#i-bolt"/></svg>Automations<small>6</small></a>
-        <a href="#app"><svg class="ico"><use href="#i-check"/></svg>Approvals<small id="nAppr">0</small></a>
-        <a href="#app"><svg class="ico"><use href="#i-users"/></svg>Community</a>
-        <a href="#app"><svg class="ico"><use href="#i-play"/></svg>Content</a>
-        <a href="#app"><svg class="ico"><use href="#i-wave"/></svg>Onboarding</a>
-        <a href="#app"><svg class="ico"><use href="#i-server"/></svg>Server &amp; bot</a>
+    <aside class="side" id="side">
+      <a class="logo" href="#dashboard"><svg><use href="#kreo-mark"/></svg><b>Kreo</b></a>
+      <button class="ws" type="button" data-go="workspace" data-tab="bot"><div class="bav" id="sideAv">K</div><div style="min-width:0"><b id="sideBot">Your bot</b><span><i class="dot-ok"></i><span id="sideSrv">No server yet</span></span></div></button>
+      <nav aria-label="App">
+        <a href="#dashboard" data-nav="dashboard"><svg class="ico"><use href="#i-home"/></svg>Dashboard</a>
+        <a href="#analytics" data-nav="analytics"><svg class="ico"><use href="#i-chart"/></svg>Analytics</a>
+        <a href="#approvals" data-nav="approvals"><svg class="ico"><use href="#i-check"/></svg>Approvals<small id="nAppr" class="hot">0</small></a>
+        <a href="#automations" data-nav="automations"><svg class="ico"><use href="#i-bolt"/></svg>Automations<small id="nAuto">6</small></a>
+        <a href="#onboarding" data-nav="onboarding"><svg class="ico"><use href="#i-chat"/></svg>Onboarding &amp; DMs<small id="nDm">0</small></a>
+        <a href="#content" data-nav="content"><svg class="ico"><use href="#i-play"/></svg>Content</a>
+        <div class="navlabel">Workspace</div>
+        <a href="#workspace" data-nav="workspace"><svg class="ico"><use href="#i-gear"/></svg>Settings</a>
       </nav>
-      <div class="me"><i id="meInit">J</i><div style="min-width:0"><b style="display:block;color:var(--color-heading);font-weight:500" id="meName">Jordan Lee</b><span class="muted" style="font-size:var(--text-micro)" id="meBrand">Glow Lab</span></div></div>
+      <div class="trial"><b>Free trial · 12 days left</b><div class="prog"><i style="width:14%"></i></div><span>You're on the Growth plan trial.</span><button class="btn sm subtle" type="button" data-go="workspace" data-tab="billing">Choose a plan</button></div>
     </aside>
-    <main class="main">
-      <div class="top">
-        <div><div class="eyebrow" id="hello">Overview</div><h1 id="appTitle">Good morning</h1></div>
-        <div class="right"><span class="pill line" id="sampleTag">Sample data</span><button class="btn sm ghost" type="button" id="restart"><svg class="ico"><use href="#i-redo"/></svg>Restart demo</button></div>
-      </div>
-      <div class="kpis">
-        <div class="kpi"><div class="l">GMV, last 7 days <span class="pill good">▲ 18%</span></div><div class="v">$24,310</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 30 L25 26 L50 28 L75 20 L100 22 L125 14 L150 16 L175 8 L200 6 L200 36 L0 36Z" fill="var(--color-primary-tint)"/><path d="M0 30 L25 26 L50 28 L75 20 L100 22 L125 14 L150 16 L175 8 L200 6" fill="none" stroke="var(--color-primary)" stroke-width="2"/></svg></div>
-        <div class="kpi"><div class="l">Creators in Discord <span class="pill good">▲ 31</span></div><div class="v">642</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 28 L40 25 L80 22 L120 18 L160 13 L200 9" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
-        <div class="kpi"><div class="l">Linked to your CRM</div><div class="v">71%</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 22 L40 21 L80 19 L120 18 L160 16 L200 14" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
-        <div class="kpi"><div class="l">Posts this week</div><div class="v">9</div><svg viewBox="0 0 200 36" preserveAspectRatio="none"><path d="M0 30 L40 24 L80 26 L120 16 L160 18 L200 10" fill="none" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
-      </div>
-      <div class="cols">
-        <section class="box"><div class="h"><h2>Coming up</h2><span class="muted" style="font-size:var(--text-micro)">This week</span></div>
-          <div class="arow"><span class="d">Mon</span><div><b>Weekly leaderboard</b><span id="up-lb">#leaderboard</span></div><span class="pill">Drafts Sun 6pm</span></div>
-          <div class="arow"><span class="d">Mon</span><div><b>Winning angle #1</b><span id="up-wa">#winning-angles</span></div><span class="pill">Drafts Sun 6pm</span></div>
-          <div class="arow"><span class="d">Tue</span><div><b>Viral hook #1</b><span id="up-vh">#viral-hooks</span></div><span class="pill">Drafts Mon 6pm</span></div>
-          <div class="arow"><span class="d">Daily</span><div><b>Creator wins check</b><span id="up-cw">#creator-wins</span></div><span class="pill">9:00 AM</span></div>
-        </section>
-        <section class="box"><div class="h"><h2>Automations</h2><span class="pill good" id="autoState">6 on</span></div>
-          <div class="arow"><span class="d">01</span><div><b>General chat manager</b><span>Replies in your voice</span></div><span class="pill good">On</span></div>
-          <div class="arow"><span class="d">02</span><div><b>Viral hooks</b><span>Mon–Wed</span></div><span class="pill good">On</span></div>
-          <div class="arow"><span class="d">03</span><div><b>Winning angle</b><span>Mon–Wed</span></div><span class="pill good">On</span></div>
-          <div class="arow"><span class="d">04</span><div><b>Creator wins</b><span>Daily</span></div><span class="pill good">On</span></div>
-          <div class="arow"><span class="d">05</span><div><b>Weekly leaderboard</b><span>Mondays</span></div><span class="pill good">On</span></div>
-          <div class="arow"><span class="d">06</span><div><b>Creator onboarding</b><span>On join</span></div><span class="pill good">On</span></div>
-        </section>
-      </div>
-    </main>
+    <div class="main">
+      <header class="topbar">
+        <button class="iconbtn menu-toggle" type="button" id="menuBtn" aria-label="Open navigation"><svg class="ico"><use href="#i-menu"/></svg></button>
+        <div class="search"><svg class="ico"><use href="#i-search"/></svg><input class="input" id="gSearch" placeholder="Search creators, @handles, channels" aria-label="Search"><kbd>/</kbd></div>
+        <div class="r">
+          <button class="btn sm ghost" type="button" id="restart" title="Start the demo over"><svg class="ico"><use href="#i-redo"/></svg><span>Restart demo</span></button>
+          <div class="rel"><button class="iconbtn" type="button" id="bellBtn" aria-label="Notifications" aria-haspopup="true"><svg class="ico"><use href="#i-bell"/></svg><i class="badge-dot"></i></button><div class="pop" id="bellPop" hidden></div></div>
+          <div class="rel"><button class="avatar-btn" type="button" id="meBtn" aria-label="Account menu" aria-haspopup="true">J</button><div class="pop" id="mePop" hidden></div></div>
+        </div>
+      </header>
+      <main class="page" id="page"></main>
+    </div>
   </div>
 
   <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
@@ -690,7 +998,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
         </div>
         <div><div class="prog"><i id="progBar" style="width:0%"></i></div><p class="muted" style="font-size:var(--text-micro);margin-top:8px" id="progText">0 of 3 done</p></div>
         <ol class="stepper" id="stepper"></ol>
-        <p class="help">Stuck? Every step can be changed later in Server &amp; bot.</p>
+        <p class="help">Stuck? Every step can be changed later in Settings.</p>
       </div>
       <div class="body" id="setupBody"></div>
     </div>
@@ -707,384 +1015,554 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ico = (id, cls = "ico") => `<svg class="${cls}"><use href="#i-${id}"/></svg>`;
-const KEY = "kreo-demo-v1";
+const KEY = "kreo-demo-v2";
+
+/* ---------- Discord invite (real link, opens in a new tab) ---------- */
+const BOT_CLIENT_ID = "1565126862714175620";
+const BOT_PERMISSIONS = "335793232"; // view, send, embed, attach, react, mention all, manage channels, manage roles, history, change nickname
+const INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${BOT_CLIENT_ID}&permissions=${BOT_PERMISSIONS}&scope=bot%20applications.commands`;
 
 /* ---------- Demo data ---------- */
 const SERVERS = [
-  { id: "glow", name: "Glow Lab Creators", note: "New server, 3 channels", channels: [
+  { id: "glow", name: "Glow Lab Creators", short: "GL", note: "3 channels · added just now", channels: [
     { name: "general", cat: "Text channels" }, { name: "announcements", cat: "Text channels" }, { name: "memes", cat: "Text channels" } ] },
-  { id: "north", name: "Northside Skin Creator Club", note: "Set up, 11 channels", channels: [
-    { name: "welcome", cat: "Start here" }, { name: "rules", cat: "Start here" }, { name: "introductions", cat: "Start here" },
-    { name: "general-chat", cat: "Community" }, { name: "questions", cat: "Community" },
-    { name: "winning-angles", cat: "Learn" }, { name: "viral-hooks", cat: "Learn" },
-    { name: "share-wins", cat: "Wins" }, { name: "leaderboard", cat: "Wins" },
-    { name: "mod-approvals", cat: "Team" }, { name: "team-chat", cat: "Team" } ] },
+  { id: "north", name: "Northside Skin Creator Club", short: "NS", note: "11 channels · added 2 days ago", channels: [
+    { name: "moderator-only", cat: "No category" },
+    { name: "📢・announcements", cat: "👋 GET STARTED" }, { name: "📌・rules", cat: "👋 GET STARTED" }, { name: "👋・welcome", cat: "👋 GET STARTED" }, { name: "💬・general-chat", cat: "👋 GET STARTED" }, { name: "📊・leaderboard", cat: "👋 GET STARTED" },
+    { name: "🏆・share-wins", cat: "🌟 CREATOR HUB" }, { name: "🔥・winning-angles", cat: "🌟 CREATOR HUB" }, { name: "📷・viral-hooks-and-ideas", cat: "🌟 CREATOR HUB" }, { name: "🎥・video-feedback", cat: "🌟 CREATOR HUB" },
+    { name: "🎫・open-a-ticket", cat: "❓ SUPPORT" } ] },
 ];
+const base = (n) => String(n).replace(/^.*・/, "").replace(/^[^a-z0-9]+/i, "").toLowerCase();
 const AUTOS = [
-  { key: "mod", name: "Approvals", what: "Private. Every draft lands here for your mods first.", req: true, hint: ["mod-approvals", "approvals", "moderators", "mods"] },
-  { key: "general_chat", name: "General chat manager", what: "Replies to creators in your voice.", hint: ["general-chat", "general"] },
-  { key: "viral_hooks", name: "Viral hooks", what: "Mon–Wed, the niche's most-viewed videos.", hint: ["viral-hooks", "viral"] },
-  { key: "winning_content", name: "Winning angle of the week", what: "Mon–Wed, last week's top videos by GMV.", hint: ["winning-angles", "winning"] },
-  { key: "wins", name: "Creator wins", what: "Milestone cards: 1st, 3rd, 10th, 30th, 50th sale.", hint: ["creator-wins", "share-wins", "wins"] },
-  { key: "leaderboard", name: "Weekly leaderboard", what: "Mondays, top 5 creators by GMV.", hint: ["leaderboard"] },
-  { key: "onboarding", name: "Creator onboarding", what: "Welcomes new members and asks your questions.", hint: ["welcome", "introductions"] },
+  { key: "mod", name: "Approvals", what: "Private. Every draft lands here for your mods first.", req: true, hint: ["moderator-only", "mod-approvals", "approvals", "moderators", "mods"] },
+  { key: "general_chat", name: "General chat manager", what: "Replies to creators in your voice. Risky topics go to mods.", hint: ["general-chat", "general"], sched: "Always on", n: "01" },
+  { key: "viral_hooks", name: "Viral hooks", what: "The niche's most-viewed videos from last week, one a day, with how to remake the hook.", hint: ["viral-hooks-and-ideas", "viral-hooks", "viral"], sched: "Mon–Wed · 2:00 PM", n: "02", mention: "@here" },
+  { key: "winning_content", name: "Winning angle of the week", what: "Last week's top 3 videos by GMV, one a day: numbers, script and how to replicate it.", hint: ["winning-angles", "winning"], sched: "Mon–Wed · 12:00 PM", n: "03", mention: "@here" },
+  { key: "wins", name: "Creator wins", what: "A milestone card the first time a creator hits their 1st, 3rd, 10th, 30th or 50th sale.", hint: ["share-wins", "creator-wins", "wins"], sched: "Daily · 4:00 PM", n: "04", mention: "Creator only" },
+  { key: "leaderboard", name: "Weekly leaderboard", what: "Monday podium card: top 5 creators by GMV for last Sun–Sat.", hint: ["leaderboard"], sched: "Mondays · 5:00 PM", n: "05", mention: "@here" },
+  { key: "onboarding", name: "Creator onboarding", what: "DMs each new member your questions, links their TikTok and saves the answers.", hint: ["welcome", "introductions"], sched: "When someone joins", n: "06" },
 ];
+const BUILTIN = AUTOS.filter((a) => a.key !== "mod");
 const PERMS = { everyone: "Everyone can chat", read: "Read-only (bot posts)", mods: "Mods only" };
-/* Draft template. The final community template replaces this list. */
+/* Community template: the Pharmlitalia Creator Community's structure (emoji・name channels, same categories and order). */
 const TEMPLATE = [
-  { cat: "Start here", about: "First stop for every new creator.", ch: [
-    { name: "welcome", perm: "read", desc: "Bot welcome + how the community works", auto: "onboarding" },
-    { name: "rules", perm: "read", desc: "Community guidelines and posting rules" },
-    { name: "announcements", perm: "read", desc: "Launches, promos and commission changes" },
-    { name: "introductions", perm: "everyone", desc: "New creators say hi and drop their TikTok" } ] },
-  { cat: "Creator hub", about: "Where creators talk to each other and to your team.", ch: [
-    { name: "general-chat", perm: "everyone", desc: "Day-to-day chat, answered by your bot", auto: "general_chat" },
-    { name: "questions", perm: "everyone", desc: "Samples, briefs and product questions" },
-    { name: "brief-and-samples", perm: "read", desc: "Your creator brief, product links and sample request steps" } ] },
-  { cat: "Learn", about: "The content that teaches creators what sells.", ch: [
-    { name: "winning-angles", perm: "read", desc: "Top videos by GMV, broken down", auto: "winning_content" },
-    { name: "viral-hooks", perm: "read", desc: "The niche's most-viewed hooks", auto: "viral_hooks" },
-    { name: "content-feedback", perm: "everyone", desc: "Creators share drafts for feedback" } ] },
-  { cat: "Wins", about: "Celebrate progress so everyone sees it's possible.", ch: [
-    { name: "creator-wins", perm: "read", desc: "Milestone cards for sales milestones", auto: "wins" },
-    { name: "leaderboard", perm: "read", desc: "Monday top 5 creators by GMV", auto: "leaderboard" } ] },
-  { cat: "Team", about: "Hidden from creators. Only your mods and the bot see these.", priv: true, ch: [
-    { name: "mod-approvals", perm: "mods", desc: "Every draft waits here for approval", auto: "mod" },
-    { name: "bot-log", perm: "mods", desc: "What the bot did and when" } ] },
+  { cat: "👋 GET STARTED", about: "First stop for every new creator: what this is, the rules, and where to say hi.", ch: [
+    { e: "📢", name: "announcements", perm: "read", desc: "Launches, promos and commission changes" },
+    { e: "📌", name: "rules", perm: "read", desc: "Community guidelines and posting rules" },
+    { e: "👋", name: "welcome", perm: "read", desc: "Bot welcome and how the community works", auto: "onboarding" },
+    { e: "🙋", name: "introductions", perm: "everyone", desc: "New creators say hi and drop their TikTok" },
+    { e: "💬", name: "general-chat", perm: "everyone", desc: "Day-to-day chat, answered by your bot", auto: "general_chat" },
+    { e: "📊", name: "leaderboard", perm: "read", desc: "Monday top 5 creators by GMV", auto: "leaderboard" } ] },
+  { cat: "🌟 CREATOR HUB", about: "Everything that helps creators sell: wins, winning angles, hooks, briefs and links.", ch: [
+    { e: "🏆", name: "share-wins", perm: "everyone", desc: "Milestone cards from the bot, and creators share their own wins", auto: "wins" },
+    { e: "🔥", name: "winning-angles", perm: "read", desc: "Last week's top videos by GMV, broken down", auto: "winning_content" },
+    { e: "🎥", name: "video-feedback", perm: "everyone", desc: "Creators post drafts and get feedback" },
+    { e: "📷", name: "viral-hooks-and-ideas", perm: "read", desc: "The niche's most-viewed hooks and how to use them", auto: "viral_hooks" },
+    { e: "📝", name: "content-briefs", perm: "read", desc: "Your creator brief and talking points" },
+    { e: "🔗", name: "affiliate-links", perm: "read", desc: "Product links and sample request steps" } ] },
+  { cat: "❓ SUPPORT", about: "Private help for samples, payouts and problems.", ch: [
+    { e: "🎫", name: "open-a-ticket", perm: "everyone", desc: "Opens a private ticket with your team" } ] },
+  { cat: "📹 MULTI PLATFORM", about: "For creators who also post on Instagram and Facebook.", ch: [
+    { e: "📱", name: "meta-creators", perm: "everyone", desc: "Meta programs, Reels tips and cross-posting" } ] },
+  { cat: "🔒 MODERATORS", about: "Hidden from creators. Only your mods and the bot can see it.", priv: true, ch: [
+    { e: "", name: "moderator-only", perm: "mods", desc: "Every draft waits here for approval", auto: "mod" } ] },
 ];
+const chName = (x) => (x.e ? x.e + "・" : "") + x.name;
 const CRMS = [
   { id: "cruva", name: "Cruva", mono: "C", reads: "Creators, videos, orders, samples, Discord links", how: "Create an API key in your Cruva account settings and paste it here." },
   { id: "euka", name: "Euka", mono: "E", reads: "Creators, videos, programs, samples", how: "Create an API key in your Euka workspace settings and paste it here." },
   { id: "reacher", name: "Reacher", mono: "R", reads: "Creators, outreach, samples, orders", how: "Create an API key in your Reacher account settings and paste it here." },
 ];
 
+/* Example creators (fictional; 555 numbers, example.com emails) */
+const CR = [
+  ["mariah.makes", "mariahm", "Mariah Lopez", 1, 1, "+1 (305) 555-0142", null, 690, 40, "selling"],
+  ["thejesscloset", "jesscloset", "Jess Carter", 1, 1, "+1 (213) 555-0119", "+1 213 555 0119", 560, 34, "selling"],
+  ["dailywithdani", "dani.d", "Dani Okafor", 1, 1, null, "+44 7700 900461", 410, 51, "selling"],
+  ["kofi.reviews", "kofi", "Kofi Mensah", 1, 1, "+1 (646) 555-0177", null, 300, 22, "selling"],
+  ["lena.tries", "lenatries", "Lena Novak", 1, 1, null, "+1 512 555 0187", 205, 12, "selling"],
+  ["glowwithana", "ana.glow", "Ana Ruiz", 1, 1, "+1 (786) 555-0103", null, 180, 30, "selling"],
+  ["brooke.finds", "brookef", "Brooke Hall", 1, 0, "+1 (470) 555-0150", null, 150, 9, "selling"],
+  ["mikeshelf", "mike.s", "Mike Shelby", 1, 1, null, null, 122, 18, "selling"],
+  ["thatskincarekid", "tskk", "Rae Kim", 1, 1, "+1 (917) 555-0128", "+1 917 555 0128", 96, 15, "selling"],
+  ["sam.unboxes", "samu", "Sam Patel", 1, 0, null, null, 0, 3, "silent"],
+  ["nora.daily", "norad", "Nora Byrne", 1, 1, "+1 (312) 555-0164", null, 64, 27, "selling"],
+  ["coco.reviews", "coco", "Coco Diaz", 0, 1, null, null, 0, 0, "not-posted"],
+  ["jayden.tok", "jaydent", "Jayden Wu", 1, 1, "+1 (206) 555-0191", null, 41, 8, "selling"],
+  ["haleyhaul", "haley", "Haley Moss", 1, 0, null, null, 0, 1, "not-posted"],
+  ["vivi.vlogs", "vivi", "Vivian Lee", 1, 1, null, "+1 415 555 0136", 35, 20, "selling"],
+  ["deshawn.daily", "dshawn", "DeShawn Ellis", 0, 0, null, null, 0, 0, "silent"],
+  ["priya.picks", "priyap", "Priya Shah", 1, 1, "+1 (732) 555-0107", null, 22, 11, "selling"],
+  ["tomtests", "tomt", "Tom Fischer", 1, 0, null, null, 0, 2, "not-posted"],
+];
+const CREATORS = CR.map(([h, d, name, linked, engaged, phone, wa, weekly, msgs, status], i) => ({
+  id: "c" + i, h, d, name, linked: !!linked, engaged: !!engaged, email: h.replace(/[^a-z]/g, "") + "@example.com",
+  phone, wa, waSrc: wa ? (phone && phone.replace(/\D/g, "") === wa.replace(/\D/g, "") ? "crm" : "dm") : null,
+  weekly, msgs, status, joined: 4 + ((i * 7) % 60), videos: Math.max(0, Math.round(weekly / 45) + (i % 3)),
+}));
+const PRODUCTS = [["Keto Bundle (shampoo + spray + conditioner)", 0.46], ["Ketoconazole Shampoo 8oz", 0.31], ["Scalp Relief Spray", 0.14], ["Tea Tree Conditioner", 0.09]];
+
 /* ---------- State ---------- */
-const fresh = () => ({ user: null, step: 1, bot: { name: "", avatar: "" }, server: null, channels: [], newChannels: [], map: {}, crm: { id: null, key: "", ok: false }, launched: false });
+const DRAFTS0 = () => [
+  { id: "d1", auto: "leaderboard", title: "Weekly leaderboard · Nov 2–8", text: "@here Weekly Top Creators for Nov 2–8 🏆 Huge week, team. Here's who led the way:", card: "lb", when: "Mon 5:00 PM", status: "pending" },
+  { id: "d2", auto: "wins", title: "@kofi.reviews hit 10 sales", text: "@kofi.reviews just hit 10 sales! 🔥 Double digits, and every one of them earned. Keep stacking.", card: "win", when: "Today 4:00 PM", status: "pending" },
+  { id: "d3", auto: "winning_content", title: "Winning angle #1 · Nov 2–8", text: "@here Winning Angle of the Week #1 🔥 @mariah.makes did $2,140 GMV with a 'before and after the first wash' hook. Script, numbers and how to remake it below.", card: "angle", when: "Mon 12:00 PM", status: "pending" },
+  { id: "d4", auto: "viral_hooks", title: "Viral hook #3 · Oct 26–Nov 1", text: "@here Viral hook #3: 'POV: your scalp after 2 weeks'. 1.8M views. Here's why it worked.", card: null, when: "Wed 2:00 PM", status: "posted", by: "You" },
+];
+const DMS0 = () => [
+  { id: "m1", c: "lena.tries", status: "done", unread: false, time: "9:14 AM", msgs: [
+    ["bot", "Hey Lena, welcome to Glow Lab Creators! 👋 A few quick questions so we can set you up. What's your TikTok handle?", "Nov 6 · 9:02 AM"],
+    ["c", "hiii it's @lena.tries", "Nov 6 · 9:05 AM"],
+    ["bot", "Love it. What kind of content do you usually make?", "Nov 6 · 9:05 AM"],
+    ["c", "mostly hair care + GRWM", "Nov 6 · 9:08 AM"],
+    ["bot", "Perfect fit. How many videos can you post a week?", "Nov 6 · 9:08 AM"],
+    ["c", "3-4 probably", "Nov 6 · 9:10 AM"],
+    ["bot", "Last one: what's the best way for our team to reach you?", "Nov 6 · 9:10 AM"],
+    ["c", "my whatsapp is +1 512 555 0187 if easier!", "Nov 6 · 9:14 AM"],
+    ["bot", "Got it, saved. You're all set. Your sample request link is in 🔗・affiliate-links. 🚀", "Nov 6 · 9:14 AM"] ] },
+  { id: "m2", c: "kofi.reviews", status: "needs", unread: true, time: "11:42 AM", msgs: [
+    ["bot", "Hey Kofi, welcome! 👋 What's your TikTok handle?", "Nov 4 · 2:10 PM"],
+    ["c", "@kofi.reviews", "Nov 4 · 2:31 PM"],
+    ["bot", "Thanks! You're all set. Your sample link is in 🔗・affiliate-links.", "Nov 4 · 2:31 PM"],
+    ["c", "requested the bundle sample 5 days ago, any idea when it ships?", "Today · 11:42 AM"] ] },
+  { id: "m3", c: "thejesscloset", status: "progress", unread: true, time: "Yesterday", msgs: [
+    ["bot", "Hey Jess, welcome to Glow Lab Creators! 👋 What's your TikTok handle?", "Nov 9 · 6:01 PM"],
+    ["c", "@thejesscloset 💕", "Nov 9 · 6:20 PM"],
+    ["bot", "What kind of content do you usually make?", "Nov 9 · 6:20 PM"],
+    ["c", "fashion mostly but i do beauty hauls too. text me on whatsapp +1 213 555 0119", "Nov 10 · 8:12 AM"] ] },
+  { id: "m4", c: "dailywithdani", status: "done", unread: false, time: "Nov 8", msgs: [
+    ["bot", "Hey Dani, welcome! 👋 What's your TikTok handle?", "Nov 8 · 10:00 AM"],
+    ["c", "@dailywithdani", "Nov 8 · 10:04 AM"],
+    ["bot", "What's the best way for our team to reach you?", "Nov 8 · 10:06 AM"],
+    ["c", "WhatsApp please, +44 7700 900461", "Nov 8 · 10:09 AM"],
+    ["bot", "Saved. Welcome aboard! 🚀", "Nov 8 · 10:09 AM"] ] },
+  { id: "m5", c: "sam.unboxes", status: "nodm", unread: false, time: "Nov 10", msgs: [
+    ["bot", "Hey Sam, welcome to Glow Lab Creators! 👋 A few quick questions so we can set you up. What's your TikTok handle?", "Nov 10 · 3:30 PM"],
+    ["bot", "Just checking in, Sam. Reply whenever you're ready. 🙂", "Nov 11 · 3:30 PM"] ] },
+  { id: "m6", c: "vivi.vlogs", status: "done", unread: false, time: "Nov 5", msgs: [
+    ["bot", "Hey Vivian, welcome! 👋 What's your TikTok handle?", "Nov 5 · 1:00 PM"],
+    ["c", "@vivi.vlogs", "Nov 5 · 1:12 PM"],
+    ["bot", "Best way for the team to reach you?", "Nov 5 · 1:12 PM"],
+    ["c", "+1 415 555 0136 whatsapp", "Nov 5 · 1:15 PM"],
+    ["bot", "Saved. You're all set! 🚀", "Nov 5 · 1:15 PM"] ] },
+];
+const QUESTIONS0 = ["What's your TikTok handle?", "What kind of content do you usually make?", "How many videos can you post a week?", "What's the best way for our team to reach you? (WhatsApp or email)"];
+const fresh = () => ({ user: null, step: 1, bot: { name: "", avatar: "" }, invite: "idle", server: null, channels: [], newChannels: [], map: {}, crm: { id: null, key: "", ok: false }, launched: false,
+  on: Object.fromEntries(BUILTIN.map((a) => [a.key, true])), cfg: {}, custom: [], drafts: DRAFTS0(), dms: DMS0(), questions: QUESTIONS0.slice(), welcome: "Hey {first_name}, welcome to {server}! 👋 A few quick questions so we can set you up.", prefs: { waDetect: true, dmNew: true, reminders: true, notifyDraft: true, notifyDm: true, digest: false } });
 let S;
 try { S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "null") || {}); } catch (e) { S = fresh(); }
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { try { const c = { ...S, bot: { ...S.bot, avatar: "" } }; localStorage.setItem(KEY, JSON.stringify(c)); } catch (e2) {} } };
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { try { localStorage.setItem(KEY, JSON.stringify({ ...S, bot: { ...S.bot, avatar: "" } })); } catch (e2) {} } };
 const done = { 1: () => !!S.server, 2: () => !!S.map.mod, 3: () => S.crm.ok };
 const nDone = () => [1, 2, 3].filter((n) => done[n]()).length;
 const botName = () => S.bot.name.trim() || "Kreo Bot";
-const botInitial = () => (botName()[0] || "K").toUpperCase();
-const avHTML = () => S.bot.avatar ? `<img src="${S.bot.avatar}" alt="">` : esc(botInitial());
+const avHTML = () => S.bot.avatar ? `<img src="${S.bot.avatar}" alt="">` : esc((botName()[0] || "K").toUpperCase());
+const serverObj = () => SERVERS.find((s) => s.id === S.server) || null;
+const srvName = () => (serverObj() || { name: "your server" }).name;
+const chOf = (k) => S.map[k] ? "#" + S.map[k] : null;
+const crmName = () => (CRMS.find((c) => c.id === S.crm.id) || { name: "your CRM" }).name;
 
-function toast(msg) { const t = $("#toast"); $("#toastText").textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), 3200); }
+function toast(msg) { const t = $("#toast"); $("#toastText").textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), 3400); }
+const money = (n) => "$" + (n >= 10000 ? (n / 1000).toFixed(1) + "k" : Math.round(n).toLocaleString("en-US"));
+const int = (n) => Math.round(n).toLocaleString("en-US");
+const initials = (s) => s.replace(/[^a-z ]/gi, " ").trim().split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+/* ---------- Date range ---------- */
+const DAY = 864e5;
+const today0 = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+const addD = (d, n) => new Date(d.getTime() + n * DAY);
+const fmtD = (d, y) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", ...(y ? { year: "numeric" } : {}) });
+const ymd = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const PRESETS = [
+  ["today", "Today", () => [today0(), today0()]],
+  ["yesterday", "Yesterday", () => [addD(today0(), -1), addD(today0(), -1)]],
+  ["7", "Last 7 days", () => [addD(today0(), -7), addD(today0(), -1)]],
+  ["14", "Last 14 days", () => [addD(today0(), -14), addD(today0(), -1)]],
+  ["30", "Last 30 days", () => [addD(today0(), -30), addD(today0(), -1)]],
+  ["week", "Last week (Sun–Sat)", () => { const t = today0(); const s = addD(t, -t.getDay() - 7); return [s, addD(s, 6)]; }],
+  ["month", "This month", () => { const t = today0(); return [new Date(t.getFullYear(), t.getMonth(), 1), t]; }],
+  ["lmonth", "Last month", () => { const t = today0(); return [new Date(t.getFullYear(), t.getMonth() - 1, 1), new Date(t.getFullYear(), t.getMonth(), 0)]; }],
+  ["90", "Last 90 days", () => [addD(today0(), -90), addD(today0(), -1)]],
+];
+let R = { key: "7", s: PRESETS[2][2]()[0], e: PRESETS[2][2]()[1] };
+const rDays = () => Math.round((R.e - R.s) / DAY) + 1;
+const rLabel = () => { const p = PRESETS.find((x) => x[0] === R.key); const same = R.s.getFullYear() === R.e.getFullYear(); return (p ? p[1] + " · " : "") + (+R.s === +R.e ? fmtD(R.s, true) : fmtD(R.s, !same) + " – " + fmtD(R.e, true)); };
+function drHTML() { return `<div class="dr"><button class="btn dr-btn" type="button" data-dr aria-haspopup="dialog">${ico("calendar")}<span>${esc(rLabel())}</span>${ico("chev")}</button></div>`; }
+function openDR(btn) {
+  closePops();
+  const T = { key: R.key, s: R.s, e: R.e, pick: 0, view: new Date(R.e.getFullYear(), R.e.getMonth(), 1) };
+  const wrap = btn.parentElement;
+  const pop = document.createElement("div"); pop.className = "dr-pop"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", "Choose a date range");
+  wrap.appendChild(pop);
+  const month = (m0, nav) => {
+    const first = new Date(m0.getFullYear(), m0.getMonth(), 1), last = new Date(m0.getFullYear(), m0.getMonth() + 1, 0), t = today0();
+    let cells = "SMTWTFS".split("").map((d) => `<span class="dw">${d}</span>`).join("") + "<span></span>".repeat(first.getDay());
+    for (let d = 1; d <= last.getDate(); d++) {
+      const day = new Date(m0.getFullYear(), m0.getMonth(), d), e = T.e || T.s;
+      const isEdge = +day === +T.s || (T.e && +day === +T.e), inR = T.e && day > T.s && day < T.e;
+      cells += `<button type="button" data-day="${ymd(day)}" class="${isEdge ? "edge" : inR ? "in" : ""} ${+day === +t ? "today" : ""}" ${day > t ? "disabled" : ""}>${d}</button>`;
+    }
+    return `<div class="mon"><h5>${nav === "l" ? `<button type="button" data-mv="-1" aria-label="Previous month">${ico("back")}</button>` : '<span class="ph-sp"></span>'}<span>${m0.toLocaleDateString("en-US", { month: "long", year: "numeric" })}</span>${nav === "r" ? `<button type="button" data-mv="1" aria-label="Next month">${ico("arrow")}</button>` : '<span class="ph-sp"></span>'}</h5><div class="days">${cells}</div></div>`;
+  };
+  const draw = () => {
+    const prev = new Date(T.view.getFullYear(), T.view.getMonth() - 1, 1);
+    pop.innerHTML = `<div class="dr-pre">${PRESETS.map(([k, l]) => `<button type="button" data-pre="${k}" class="${T.key === k ? "on" : ""}">${l}</button>`).join("")}<button type="button" data-pre="custom" class="${T.key === "custom" ? "on" : ""}">Custom range</button></div>
+      <div class="dr-cal"><div class="dr-head"><input class="input" id="dr-s" value="${ymd(T.s)}" aria-label="Start date"><span class="muted">→</span><input class="input" id="dr-e" value="${T.e ? ymd(T.e) : ""}" placeholder="End date" aria-label="End date"></div>
+      <div class="dr-months">${month(prev, "l")}${month(T.view, "r")}</div>
+      <div class="dr-foot"><span>${T.e ? (Math.round((T.e - T.s) / DAY) + 1) + " days" : "Pick an end date"} · America/New_York</span><button class="btn sm" type="button" data-dr-cancel>Cancel</button><button class="btn sm primary" type="button" data-dr-apply ${T.e ? "" : "disabled"}>Apply</button></div></div>`;
+  };
+  draw();
+  pop.addEventListener("click", (ev) => {
+    ev.stopPropagation();
+    const pre = ev.target.closest("[data-pre]"), day = ev.target.closest("[data-day]"), mv = ev.target.closest("[data-mv]");
+    if (pre) { const k = pre.dataset.pre; T.key = k; if (k !== "custom") { const [s, e] = PRESETS.find((p) => p[0] === k)[2](); T.s = s; T.e = e; T.view = new Date(e.getFullYear(), e.getMonth(), 1); } else { T.e = null; T.pick = 0; } draw(); }
+    else if (day) { const d = new Date(day.dataset.day + "T00:00:00"); T.key = "custom"; if (!T.e && T.pick) { if (d < T.s) { T.e = T.s; T.s = d; } else T.e = d; T.pick = 0; } else { T.s = d; T.e = null; T.pick = 1; } draw(); }
+    else if (mv) { T.view = new Date(T.view.getFullYear(), T.view.getMonth() + +mv.dataset.mv, 1); draw(); }
+    else if (ev.target.closest("[data-dr-cancel]")) pop.remove();
+    else if (ev.target.closest("[data-dr-apply]")) { R = { key: T.key, s: T.s, e: T.e }; pop.remove(); renderPage(); toast("Showing " + rLabel()); }
+  });
+  pop.addEventListener("change", (ev) => {
+    const v = new Date(ev.target.value + "T00:00:00"); if (isNaN(v)) return;
+    if (ev.target.id === "dr-s") T.s = v; else T.e = v;
+    if (T.e && T.e < T.s) [T.s, T.e] = [T.e, T.s];
+    T.key = "custom"; T.view = new Date((T.e || T.s).getFullYear(), (T.e || T.s).getMonth(), 1); draw();
+  });
+}
+
+/* ---------- Sample numbers (deterministic per day) ---------- */
+const hash = (s) => { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return ((h >>> 0) % 10000) / 10000; };
+function series(s = R.s, e = R.e) {
+  const out = [];
+  for (let d = s; d <= e; d = addD(d, 1)) {
+    const k = ymd(d), w = d.getDay(), trend = 1 + (d - new Date("2026-08-01")) / DAY * 0.004;
+    const gmv = (2600 + 700 * Math.sin(+d / DAY / 3.1) + (w === 0 || w === 6 ? 500 : 0) + 900 * hash(k)) * trend;
+    const comm = gmv * (0.36 + 0.08 * hash(k + "c"));
+    out.push({ d, gmv, comm, ads: gmv * (0.28 + 0.06 * hash(k + "a")), orders: gmv / (31 + 6 * hash(k + "o")), msgs: 60 + 70 * hash(k + "m") + (w === 1 ? 40 : 0), active: 38 + 26 * hash(k + "u"), joins: Math.round(1 + 6 * hash(k + "j")), videos: 30 + 25 * hash(k + "v") });
+  }
+  return out;
+}
+const sum = (a, f) => a.reduce((n, x) => n + f(x), 0);
+function prevChange(f) { const n = rDays(); const cur = sum(series(), f), prev = sum(series(addD(R.s, -n), addD(R.s, -1)), f); return prev ? (cur - prev) / prev * 100 : 0; }
+const chg = (p) => `<span class="chg ${p >= 0 ? "up" : "dn"}">${p >= 0 ? "▲" : "▼"} ${Math.abs(p).toFixed(0)}%</span>`;
+const scale = () => rDays() / 7;
+const crGmv = (c) => c.weekly * scale() * (0.85 + 0.3 * hash(c.h + ymd(R.s)));
+
+function lineChart(data, keys, { h = 180, money: isMoney = true } = {}) {
+  const W = 640, H = h, padL = 44, padB = 22, padT = 8;
+  const max = Math.max(1, ...data.flatMap((p) => keys.map((k) => p[k.k]))) * 1.1;
+  const x = (i) => padL + (data.length === 1 ? (W - padL) / 2 : i * (W - padL - 6) / (data.length - 1));
+  const y = (v) => padT + (H - padT - padB) * (1 - v / max);
+  const ticks = [0, 0.5, 1].map((t) => max * t);
+  const fmt = (v) => isMoney ? (v >= 1000 ? "$" + (v / 1000).toFixed(1) + "k" : "$" + Math.round(v)) : Math.round(v);
+  const step = Math.max(1, Math.ceil(data.length / 6));
+  let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px" role="img" aria-label="Chart">`;
+  ticks.forEach((t) => { svg += `<line x1="${padL}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="var(--color-border)"/><text x="${padL - 8}" y="${y(t) + 3}" text-anchor="end">${fmt(t)}</text>`; });
+  data.forEach((p, i) => { if (i % step === 0 || i === data.length - 1) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtD(p.d)}</text>`; });
+  keys.forEach((k, ki) => {
+    const pts = data.map((p, i) => `${x(i).toFixed(1)},${y(p[k.k]).toFixed(1)}`);
+    if (ki === 0) svg += `<path d="M${pts[0].split(",")[0]},${H - padB} L${pts.join(" L")} L${pts[pts.length - 1].split(",")[0]},${H - padB}Z" fill="${k.c}" opacity="0.08"/>`;
+    svg += `<polyline points="${pts.join(" ")}" fill="none" stroke="${k.c}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>`;
+    const lp = pts[pts.length - 1].split(","); svg += `<circle cx="${lp[0]}" cy="${lp[1]}" r="3.5" fill="${k.c}"/>`;
+  });
+  return svg + "</svg>";
+}
 
 /* ---------- Routing ---------- */
+const APP_PAGES = ["dashboard", "analytics", "approvals", "automations", "automation-builder", "onboarding", "content", "workspace"];
+let page = "dashboard", sub = {};
 function route() {
   let h = (location.hash || "#home").slice(1);
   if (h === "signin") { signIn(true); return; }
-  const marketingAnchors = ["features", "how", "approvals", "integrations"];
-  if (marketingAnchors.includes(h)) { show("home"); const el = document.getElementById(h); if (el) el.scrollIntoView({ block: "start" }); return; }
-  if (h === "app" && !S.user) h = "signup";
-  if (!["home", "signup", "app"].includes(h)) h = "home";
+  if (["features", "how", "approvals-info", "integrations"].includes(h)) { show("home"); const el = document.getElementById(h); if (el) el.scrollIntoView({ block: "start" }); return; }
+  if ((h === "app" || APP_PAGES.includes(h)) && !S.user) h = "signup";
+  if (h === "app") h = "dashboard";
+  if (APP_PAGES.includes(h)) { page = h; show("app"); return; }
+  if (!["home", "signup"].includes(h)) h = "home";
   show(h);
 }
 function show(v) {
   $("#v-home").hidden = v !== "home"; $("#v-signup").hidden = v !== "signup"; $("#v-app").hidden = v !== "app";
   if (v === "app") renderApp();
-  if (v !== "home") window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
+const go = (p, extra) => { if (extra) Object.assign(sub, extra); if (location.hash === "#" + p) renderPage(); else location.hash = "#" + p; };
 
 function signIn(existing) {
   if (!S.user) {
-    const name = $("#su-name").value.trim() || "Jordan Lee";
-    const brand = $("#su-brand").value.trim() || "Glow Lab";
+    const name = ($("#su-name").value || "").trim() || "Jordan Lee";
+    const brand = ($("#su-brand").value || "").trim() || "Glow Lab";
     S.user = { name, brand };
     if (!S.bot.name) S.bot.name = brand + " Bot";
   }
   save();
-  if (location.hash !== "#app") location.hash = "#app"; else route();
+  if (location.hash !== "#dashboard") location.hash = "#dashboard"; else route();
   if (existing) toast("Signed in");
 }
 $("#signupForm").addEventListener("submit", (e) => { e.preventDefault(); signIn(false); });
-document.addEventListener("click", (e) => {
-  const g = e.target.closest("[data-google]"); if (g) { e.preventDefault(); signIn(false); }
-});
 
 /* ---------- App shell ---------- */
 function renderApp() {
   const u = S.user || { name: "Jordan Lee", brand: "Glow Lab" };
-  $("#meName").textContent = u.name; $("#meBrand").textContent = u.brand; $("#meInit").textContent = (u.name[0] || "J").toUpperCase();
-  const hr = new Date().getHours();
-  $("#appTitle").textContent = (hr < 12 ? "Good morning, " : hr < 18 ? "Good afternoon, " : "Good evening, ") + u.name.split(" ")[0];
-  $("#hello").textContent = u.brand + " · Overview";
+  $("#meBtn").textContent = (u.name[0] || "J").toUpperCase();
   $("#sideBot").textContent = botName();
   $("#sideAv").innerHTML = avHTML();
-  $("#sideSrv").textContent = S.server ? serverObj().name : "No server yet";
-  const chName = (k) => S.map[k] ? "#" + S.map[k] : "No channel";
-  $("#up-lb").textContent = chName("leaderboard"); $("#up-wa").textContent = chName("winning_content"); $("#up-vh").textContent = chName("viral_hooks"); $("#up-cw").textContent = chName("wins");
-  const on = AUTOS.filter((a) => a.key !== "mod" && S.map[a.key]).length;
-  $("#autoState").textContent = S.launched ? on + " on" : "Not live";
+  $("#sideSrv").textContent = S.server ? srvName() : "No server yet";
   $("#app").classList.toggle("locked", !S.launched);
   $("#app").setAttribute("aria-hidden", S.launched ? "false" : "true");
   $("#overlay").hidden = S.launched;
+  renderPage();
   if (!S.launched) renderSetup();
 }
-$("#restart").addEventListener("click", () => { S = fresh(); save(); location.hash = "#home"; toast("Demo reset"); });
+function counts() {
+  const p = S.drafts.filter((d) => d.status === "pending").length;
+  $("#nAppr").textContent = p; $("#nAppr").hidden = !p;
+  $("#nAuto").textContent = BUILTIN.filter((a) => S.on[a.key]).length + S.custom.filter((c) => c.on).length;
+  const un = S.dms.filter((d) => d.unread).length; $("#nDm").textContent = un; $("#nDm").hidden = !un;
+}
+function renderPage() {
+  counts();
+  $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === page || (page === "automation-builder" && a.dataset.nav === "automations")));
+  const P = { dashboard: pDashboard, analytics: pAnalytics, approvals: pApprovals, automations: pAutomations, "automation-builder": pBuilder, onboarding: pOnboarding, content: pContent, workspace: pSettings }[page] || pDashboard;
+  P($("#page"));
+  $("#side").classList.remove("open");
+}
+document.addEventListener("click", (e) => {
+  const dr = e.target.closest("[data-dr]"); if (dr) { e.stopPropagation(); const open = dr.parentElement.querySelector(".dr-pop"); if (open) open.remove(); else openDR(dr); return; }
+  const g = e.target.closest("[data-go]"); if (g) { e.preventDefault(); go(g.dataset.go, g.dataset.tab ? { set: g.dataset.tab } : g.dataset.sub ? { an: g.dataset.sub } : null); return; }
+  const gg = e.target.closest("[data-google]"); if (gg) { e.preventDefault(); signIn(false); return; }
+  if (!e.target.closest(".pop, .dr-pop")) closePops();
+});
+function closePops() { $$(".dr-pop").forEach((p) => p.remove()); $$(".pop").forEach((p) => (p.hidden = true)); }
+$("#menuBtn").addEventListener("click", (e) => { e.stopPropagation(); $("#side").classList.toggle("open"); });
+$("#restart").addEventListener("click", () => { S = fresh(); save(); R = { key: "7", s: PRESETS[2][2]()[0], e: PRESETS[2][2]()[1] }; location.hash = "#home"; toast("Demo reset"); });
+$("#bellBtn").addEventListener("click", (e) => {
+  e.stopPropagation(); const p = $("#bellPop"), was = !p.hidden; closePops(); if (was) return;
+  const pend = S.drafts.filter((d) => d.status === "pending").length, un = S.dms.filter((d) => d.unread).length;
+  p.innerHTML = `<div class="ph2"><b>Notifications</b></div>
+    ${pend ? `<button class="note" type="button" data-go="approvals"><span class="todo-i">${ico("check")}</span><div>${pend} drafts waiting for approval<span>Also posted in #${esc(S.map.mod || "moderator-only")}</span></div></button>` : ""}
+    ${un ? `<button class="note" type="button" data-go="onboarding"><span class="todo-i b">${ico("chat")}</span><div>${un} creator DMs need a reply<span>Kofi asked about sample shipping</span></div></button>` : ""}
+    <button class="note" type="button" data-go="analytics"><span class="todo-i b">${ico("party")}</span><div>3 new WhatsApp numbers found in DMs<span>Saved to creator profiles</span></div></button>`;
+  p.hidden = false;
+});
+$("#meBtn").addEventListener("click", (e) => {
+  e.stopPropagation(); const p = $("#mePop"), was = !p.hidden; closePops(); if (was) return;
+  const u = S.user || { name: "", brand: "" };
+  p.innerHTML = `<div class="ph2"><b>${esc(u.name)}</b><span class="muted">${esc(u.brand)} · Owner</span></div>
+    <button class="pi" type="button" data-go="workspace" data-tab="workspace">${ico("gear")}Workspace settings</button>
+    <button class="pi" type="button" data-go="workspace" data-tab="team">${ico("users")}Team</button>
+    <button class="pi" type="button" data-go="workspace" data-tab="billing">${ico("card")}Plan &amp; billing</button>
+    <button class="pi" type="button" id="helpBtn">${ico("help")}Help center</button>
+    <button class="pi" type="button" id="signOut">${ico("logout")}Sign out</button>`;
+  p.hidden = false;
+  $("#helpBtn").addEventListener("click", () => { closePops(); toast("Help center opens here in the live product"); });
+  $("#signOut").addEventListener("click", () => { S.user = null; save(); closePops(); location.hash = "#home"; toast("Signed out"); });
+});
+$("#gSearch").addEventListener("keydown", (e) => { if (e.key === "Enter") { sub.q = e.target.value; sub.an = "community"; go("analytics"); } });
+document.addEventListener("keydown", (e) => { if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName) && S.launched) { e.preventDefault(); $("#gSearch").focus(); } if (e.key === "Escape") { closePops(); closeDrawer(); } });
 
 /* ---------- Setup overlay ---------- */
-const STEPS = [
-  { n: 1, t: "Add your bot", s: "Name, picture, server" },
-  { n: 2, t: "Pick channels", s: "One per automation" },
-  { n: 3, t: "Connect your CRM", s: "Cruva, Euka or Reacher" },
-];
-function canOpen(n) { return n === 1 || [...Array(n - 1)].every((_, i) => done[i + 1]()); }
+const STEPS = [{ n: 1, t: "Add your bot", s: "Name, picture, server" }, { n: 2, t: "Pick channels", s: "One per automation" }, { n: 3, t: "Connect your CRM", s: "Cruva, Euka or Reacher" }];
+const canOpen = (n) => n === 1 || [...Array(n - 1)].every((_, i) => done[i + 1]());
 function renderSetup() {
   const k = nDone();
   $("#progBar").style.width = (k / 3 * 100) + "%";
   $("#progText").textContent = k + " of 3 done";
-  $("#stepper").innerHTML = STEPS.map((st) => {
-    const d = done[st.n](), cur = S.step === st.n, open = canOpen(st.n);
-    return `<li><button type="button" data-step="${st.n}" class="${cur ? "cur" : ""} ${d ? "done" : ""}" ${open ? "" : "disabled"} aria-current="${cur ? "step" : "false"}"><span class="sn">${d ? ico("check", "ico") : st.n}</span><div><b>${st.t}</b><span>${st.s}</span></div></button></li>`;
-  }).join("");
+  $("#stepper").innerHTML = STEPS.map((st) => { const d = done[st.n](), cur = S.step === st.n, open = canOpen(st.n);
+    return `<li><button type="button" data-step="${st.n}" class="${cur ? "cur" : ""} ${d ? "done" : ""}" ${open ? "" : "disabled"} aria-current="${cur ? "step" : "false"}"><span class="sn">${d ? ico("check") : st.n}</span><div><b>${st.t}</b><span>${st.s}</span></div></button></li>`; }).join("");
   $$("#stepper [data-step]").forEach((b) => b.addEventListener("click", () => { S.step = +b.dataset.step; save(); renderSetup(); }));
   ({ 1: step1, 2: step2, 3: step3 }[S.step] || step1)();
 }
-function footer(back, nextLabel, nextOk, nextId = "next") {
-  return `<div class="foot2">
-    <span class="lockmsg">${ico("lock")} Dashboard unlocks after step 3</span>
-    <div class="r">${back ? `<button class="btn" type="button" id="back">${ico("back")}Back</button>` : ""}
-    <button class="btn primary" type="button" id="${nextId}" ${nextOk ? "" : "disabled"}>${nextLabel} ${ico("arrow")}</button></div></div>`;
-}
+const footer = (back, label, ok) => `<div class="foot2"><span class="lockmsg">${ico("lock")} Dashboard unlocks after step 3</span><div class="r">${back ? `<button class="btn" type="button" id="back">${ico("back")}Back</button>` : ""}<button class="btn primary" type="button" id="next" ${ok ? "" : "disabled"}>${label} ${ico("arrow")}</button></div></div>`;
 
-/* Step 1: bot identity + add to Discord */
+/* Step 1 */
+let waitTimer = null;
 function step1() {
   const srv = serverObj();
+  let inviteBlock;
+  if (srv) inviteBlock = `<div class="connected">${ico("check")}<div style="min-width:0"><b>${esc(botName())}</b> is in <b>${esc(srv.name)}</b> and synced. Kreo can see ${S.channels.length} channels.<div class="perms-mini"><span class="pill good">Send messages</span><span class="pill good">Manage channels</span><span class="pill good">Add reactions</span><span class="pill good">Mention @here</span></div></div><button class="btn sm" type="button" id="b-resync" style="margin-left:auto">${ico("redo")}Refresh</button></div>
+    <p class="muted" style="font-size:var(--text-micro);margin-top:8px">Added it to a different server? <a href="${INVITE_URL}" target="_blank" rel="noopener" id="b-again">Add to another server</a>, then press Refresh.</p>`;
+  else if (S.invite === "found") inviteBlock = `<div class="waitbox"><div class="wt"><span class="todo-i" style="background:var(--color-success-tint);color:var(--color-success)">${ico("check")}</span><div><b>${esc(botName())} joined your server</b><span>We found it in these servers. Pick the one for this workspace.</span></div></div>
+    <div class="srvpick">${SERVERS.map((s, i) => `<label class="srvopt"><input type="radio" name="srv" value="${s.id}" ${i === 0 ? "checked" : ""}><span class="si">${s.short}</span><div><b>${esc(s.name)}</b><span>${esc(s.note)}</span></div>${i === 0 ? '<span class="pill good">Newest</span>' : ""}</label>`).join("")}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" type="button" id="b-use">Use this server ${ico("arrow")}</button><button class="btn ghost" type="button" id="b-recheck">${ico("redo")}Refresh</button></div></div>`;
+  else if (S.invite === "waiting" || S.invite === "checking") inviteBlock = `<div class="waitbox"><div class="wt"><span class="spinner" aria-hidden="true"></span><div><b>${S.invite === "checking" ? "Checking Discord…" : "Waiting for you to finish in Discord"}</b><span>We opened Discord in a new tab. Pick your server there and press Authorize. This page checks every few seconds and updates by itself.</span></div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn subtle" type="button" id="b-recheck">${ico("redo")}I've added it, refresh</button><a class="btn ghost" href="${INVITE_URL}" target="_blank" rel="noopener" id="b-again">Open Discord again</a></div></div>`;
+  else inviteBlock = `<div class="ai-cta" style="margin-top:22px"><div class="ai">${ico("server")}</div><div><b>Add it to your server</b><span>Opens Discord in a new tab. You pick a server and approve the permissions, then come back here.</span></div><a class="btn subtle" href="${INVITE_URL}" target="_blank" rel="noopener" id="b-add">Add to Discord ${ico("external")}</a></div>`;
   $("#setupBody").innerHTML = `
     <div class="eyebrow">Step 1 of 3</div>
     <h3 style="margin-top:6px">Add your bot to Discord</h3>
     <p class="intro">This is how the bot shows up to your creators. Use your brand's name so posts feel like they come from you.</p>
     <div class="botgrid">
       <div style="display:grid;gap:16px;align-content:start">
-        <label class="field">Bot name<input class="input" id="b-name" maxlength="32" value="${esc(S.bot.name)}" placeholder="Glow Lab Bot"><small>Shown on every post. You can change it any time.</small></label>
+        <label class="field">Bot name<input class="input" id="b-name" maxlength="32" value="${esc(S.bot.name)}" placeholder="Glow Lab Bot"><small>Set as the bot's nickname in your server. Change it any time.</small></label>
         <div class="field">Profile picture
           <div class="upload">
-            <div class="pic ${S.bot.avatar ? "has" : ""}" id="b-pic">${S.bot.avatar ? `<img src="${S.bot.avatar}" alt="Bot picture">` : ico("upload")}</div>
-            <div class="btns">
-              <div style="display:flex;gap:6px;flex-wrap:wrap"><label class="btn sm" for="b-file">${S.bot.avatar ? "Change picture" : "Upload picture"}</label>${S.bot.avatar ? `<button class="btn sm ghost" type="button" id="b-rm">Remove</button>` : ""}</div>
-              <small>Square PNG or JPG. No picture yet? Skip it and add one later.</small>
-            </div>
+            <div class="pic ${S.bot.avatar ? "has" : ""}">${S.bot.avatar ? `<img src="${S.bot.avatar}" alt="Bot picture">` : ico("upload")}</div>
+            <div class="btns"><div style="display:flex;gap:6px;flex-wrap:wrap"><label class="btn sm" for="b-file">${S.bot.avatar ? "Change picture" : "Upload picture"}</label>${S.bot.avatar ? `<button class="btn sm ghost" type="button" id="b-rm">Remove</button>` : ""}</div><small>Square PNG or JPG. No picture yet? Skip it and add one later.</small></div>
             <input type="file" id="b-file" accept="image/png,image/jpeg,image/webp">
           </div>
         </div>
       </div>
-      <div style="min-width:0">
-        <div class="field" style="margin-bottom:6px">Preview</div>
-        <div class="dc"><div class="chan">${ico("hash")}creator-wins</div>
-          <div class="msg"><div class="av" id="pv-av">${avHTML()}</div><div style="min-width:0"><div class="who"><span id="pv-name">${esc(botName())}</span> <small>APP</small> <time>Today at 9:00 AM</time></div><div><span class="mention">@lena.tries</span> just made her <b style="color:var(--color-discord-head)">first sale</b>. Welcome to the club 🎉</div><div class="reacts"><span>🔥 6</span><span>🤍 4</span><span>🚀 3</span><span>📈 2</span></div></div></div>
-        </div>
+      <div style="min-width:0"><div class="field" style="margin-bottom:6px">Preview</div>
+        <div class="dc"><div class="chan">${ico("hash")}🏆・share-wins</div><div class="msg"><div class="av" id="pv-av">${avHTML()}</div><div style="min-width:0"><div class="who"><span id="pv-name">${esc(botName())}</span> <small>APP</small> <time>Today at 9:00 AM</time></div><div><span class="mention">@lena.tries</span> just made her <b style="color:var(--color-discord-head)">first sale</b>. Welcome to the club 🎉</div><div class="reacts"><span>🔥 6</span><span>🤍 4</span><span>🚀 3</span><span>📈 2</span></div></div></div></div>
       </div>
     </div>
-    ${srv ? `<div class="connected">${ico("check")}<div style="min-width:0"><b>${esc(botName())}</b> is in <b>${esc(srv.name)}</b>. Kreo can see ${S.channels.length} channels.<div class="perms-mini"><span class="pill good">Send messages</span><span class="pill good">Manage channels</span><span class="pill good">Add reactions</span><span class="pill good">Mention @here</span></div></div><button class="btn sm" type="button" id="b-add" style="margin-left:auto">Change server</button></div>`
-      : `<div class="ai-cta" style="margin-top:22px"><div class="ai">${ico("server")}</div><div><b>Add it to your server</b><span>You'll pick a server and approve the permissions Kreo needs.</span></div><button class="btn subtle" type="button" id="b-add">Add to Discord ${ico("arrow")}</button></div>`}
+    ${inviteBlock}
     ${footer(false, "Continue", !!srv)}`;
   $("#b-name").addEventListener("input", (e) => { S.bot.name = e.target.value; save(); $("#pv-name").textContent = botName(); $("#pv-av").innerHTML = avHTML(); $("#sideBot").textContent = botName(); });
   $("#b-file").addEventListener("change", (e) => readAvatar(e.target.files[0]));
-  const rm = $("#b-rm"); if (rm) rm.addEventListener("click", () => { S.bot.avatar = ""; save(); step1(); renderApp(); });
-  $("#b-add").addEventListener("click", openAuthorize);
-  $("#next").addEventListener("click", () => { S.step = 2; save(); renderSetup(); });
+  const on = (id, f) => { const el = $(id); if (el) el.addEventListener("click", f); };
+  on("#b-rm", () => { S.bot.avatar = ""; save(); renderApp(); });
+  on("#b-add", () => { S.invite = "waiting"; save(); setTimeout(() => { step1(); armWait(); }, 60); });
+  on("#b-again", () => { S.invite = "waiting"; save(); armWait(); });
+  on("#b-recheck", () => checkInvite());
+  on("#b-resync", () => { toast("Synced. " + botName() + " is in " + srvName()); });
+  on("#b-use", () => {
+    const id = ($("input[name=srv]:checked") || {}).value; if (!id) return;
+    S.server = id; S.channels = SERVERS.find((s) => s.id === id).channels.map((c) => ({ ...c })); S.newChannels = []; S.map = {}; S.invite = "done";
+    autoMatch(); save(); renderApp(); toast(botName() + " is set up in " + srvName());
+  });
+  on("#next", () => { S.step = 2; save(); renderSetup(); });
+  if (S.invite === "waiting" && !srv) armWait();
+}
+/* Mock detection: the live product polls its backend for the bot's guild-join event. Here we "find" it when you come back to the tab, press Refresh, or after a few seconds. */
+function armWait() {
+  clearTimeout(waitTimer);
+  waitTimer = setTimeout(() => { if (S.invite === "waiting") checkInvite(); }, 9000);
+}
+window.addEventListener("focus", () => { if (S.invite === "waiting" && !S.launched) setTimeout(checkInvite, 600); });
+function checkInvite() {
+  if (S.invite === "found" || S.server) { toast("Synced"); return; }
+  clearTimeout(waitTimer); S.invite = "checking"; step1();
+  setTimeout(() => { S.invite = "found"; save(); if (!S.launched && S.step === 1) step1(); }, 1300);
 }
 function readAvatar(file) {
   if (!file) return;
   const r = new FileReader();
-  r.onload = () => {
-    const img = new Image();
-    img.onload = () => {
-      const c = document.createElement("canvas"); c.width = c.height = 160;
-      const s = Math.min(img.width, img.height), ctx = c.getContext("2d");
-      ctx.drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, 160, 160);
-      S.bot.avatar = c.toDataURL("image/jpeg", 0.85); save(); renderApp(); toast("Picture added");
-    };
-    img.onerror = () => toast("That file isn't an image we can read. Try a PNG or JPG.");
-    img.src = r.result;
-  };
+  r.onload = () => { const img = new Image();
+    img.onload = () => { const c = document.createElement("canvas"); c.width = c.height = 160; const s = Math.min(img.width, img.height); c.getContext("2d").drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, 160, 160); S.bot.avatar = c.toDataURL("image/jpeg", 0.85); save(); renderApp(); toast("Picture added"); };
+    img.onerror = () => toast("That file isn't an image we can read. Try a PNG or JPG."); img.src = r.result; };
   r.readAsDataURL(file);
 }
-function serverObj() { return SERVERS.find((s) => s.id === S.server) || null; }
 
-function openAuthorize() {
-  const list = [
-    ["View channels", "See your channels so you can pick where posts go"],
-    ["Send messages and embed links", "Post drafts, cards and links"],
-    ["Attach files", "Upload leaderboard and milestone cards"],
-    ["Add reactions", "React 🔥 🤍 🚀 📈 to every post"],
-    ["Mention @everyone, @here and all roles", "Only on posts you approve"],
-    ["Manage channels", "Create channels with the AI Community Builder"],
-    ["Manage roles", "Keep the Team category private to mods"],
-    ["Read message history", "Answer questions in context"],
-    ["Change nickname", "Show your bot name in this server"],
-  ];
-  $("#dlgRoot").innerHTML = `<div class="dlg" id="authDlg" role="dialog" aria-modal="true" aria-labelledby="authH">
-    <div class="authz">
-      <div class="sim">${ico("eye")}Mock of Discord's authorize screen. In the live product, Discord shows this.</div>
-      <div class="who"><div class="bav">${avHTML()}</div><div><h4 id="authH">${esc(botName())}</h4><p class="muted" style="font-size:var(--text-small)">wants to join a server you manage</p></div></div>
-      <label class="field" style="margin-top:20px">Add to server
-        <select class="input" id="az-srv"><option value="">Select a server</option>${SERVERS.map((s) => `<option value="${s.id}" ${S.server === s.id ? "selected" : ""}>${esc(s.name)} · ${esc(s.note)}</option>`).join("")}</select>
-      </label>
-      <p class="muted" style="font-size:var(--text-micro);margin-top:6px">You need Manage Server permission on the server.</p>
-      <p style="font-size:var(--text-small);font-weight:600;color:var(--color-heading);margin-top:18px">This will allow ${esc(botName())} to:</p>
-      <ul>${list.map(([a, b]) => `<li>${ico("check")}<div>${esc(a)}<span>${esc(b)}</span></div></li>`).join("")}</ul>
-      <div class="acts"><button class="btn" type="button" id="az-cancel">Cancel</button><button class="btn primary" type="button" id="az-ok" ${S.server ? "" : "disabled"}>Authorize</button></div>
-    </div></div>`;
-  const close = () => ($("#dlgRoot").innerHTML = "");
-  $("#az-srv").addEventListener("change", (e) => ($("#az-ok").disabled = !e.target.value));
-  $("#az-cancel").addEventListener("click", close);
-  $("#authDlg").addEventListener("click", (e) => { if (e.target.id === "authDlg") close(); });
-  $("#az-ok").addEventListener("click", () => {
-    const id = $("#az-srv").value; if (!id) return;
-    if (S.server !== id) { S.server = id; S.channels = SERVERS.find((s) => s.id === id).channels.map((c) => ({ ...c })); S.newChannels = []; S.map = {}; }
-    autoMatch(); save(); close(); renderApp(); toast(botName() + " joined " + serverObj().name);
-  });
-  $("#az-srv").focus();
-}
-
-/* Step 2: channels */
+/* Step 2 */
 function autoMatch(force) {
-  const names = S.channels.map((c) => c.name);
-  AUTOS.forEach((a) => { if (S.map[a.key] && !force) return; const hit = a.hint.find((h) => names.includes(h)); if (hit) S.map[a.key] = hit; });
+  AUTOS.forEach((a) => { if (S.map[a.key] && !force) return; const hit = a.hint.map((h) => S.channels.find((c) => base(c.name) === h)).find(Boolean); if (hit) S.map[a.key] = hit.name; });
 }
+const groupBy = (chs) => { const m = new Map(); chs.forEach((c) => { if (!m.has(c.cat)) m.set(c.cat, []); m.get(c.cat).push(c); }); return [...m]; };
+const chanOpts = (sel, offLabel = "Off for now") => `<option value="">${offLabel}</option>` + groupBy(S.channels).map(([cat, chs]) => `<optgroup label="${esc(cat)}">${chs.map((c) => `<option value="${esc(c.name)}" ${sel === c.name ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</optgroup>`).join("");
 function step2() {
-  const srv = serverObj();
-  const suggested = (a) => S.map[a.key] && a.hint.includes(S.map[a.key]);
-  const opts = (sel) => `<option value="">Off for now</option>` + groupBy(S.channels).map(([cat, chs]) => `<optgroup label="${esc(cat)}">${chs.map((c) => `<option value="${esc(c.name)}" ${sel === c.name ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</optgroup>`).join("");
   const sparse = S.channels.length < 6;
   $("#setupBody").innerHTML = `
     <div class="eyebrow">Step 2 of 3</div>
     <h3 style="margin-top:6px">Choose where each automation posts</h3>
-    <p class="intro">Kreo found ${S.channels.length} channels in ${esc(srv ? srv.name : "your server")}. ${sparse ? "That's not enough for every automation yet." : "We matched the ones that fit."}</p>
-    <div class="ai-cta"><div class="ai">${ico("spark")}</div><div><b>AI Community Builder</b><span>${sparse ? "Your server is new. Preview a full creator community and create every channel, with permissions, in one click." : "Want a cleaner layout? Preview the full creator community template and add what's missing."}</span></div><button class="btn ${sparse ? "primary" : "subtle"}" type="button" id="ai-open">${ico("spark")}Build my community</button></div>
+    <p class="intro">Kreo found ${S.channels.length} channels in ${esc(srvName())}. ${sparse ? "That's not enough for every automation yet." : "We matched the ones that fit."}</p>
+    <div class="ai-cta"><div class="ai">${ico("spark")}</div><div><b>AI Community Builder</b><span>${sparse ? "Your server is new. Preview a full creator community and create every channel, with permissions, in one click." : "Want the full layout? Preview the creator community template and add what's missing."}</span></div><button class="btn ${sparse ? "primary" : "subtle"}" type="button" id="ai-open">${ico("spark")}Build my community</button></div>
     <div class="maphead"><b>Channels per automation</b><button class="btn sm ghost" type="button" id="rematch">${ico("redo")}Auto-match again</button></div>
-    <div class="maptable">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}${suggested(a) ? ' <span class="pill good">Matched</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-auto="${a.key}" aria-label="Channel for ${esc(a.name)}">${opts(S.map[a.key])}</select></div>`).join("")}</div>
+    <div class="maptable">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}${S.map[a.key] && a.hint.includes(base(S.map[a.key])) ? ' <span class="pill good">Matched</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-auto="${a.key}" aria-label="Channel for ${esc(a.name)}">${chanOpts(S.map[a.key])}</select></div>`).join("")}</div>
     ${footer(true, "Continue", !!S.map.mod)}`;
-  $$("[data-auto]").forEach((s) => s.addEventListener("change", () => { if (s.value) S.map[s.dataset.auto] = s.value; else delete S.map[s.dataset.auto]; save(); step2(); renderStepperOnly(); }));
-  $("#rematch").addEventListener("click", () => { S.map = {}; autoMatch(true); save(); step2(); renderStepperOnly(); toast("Channels matched"); });
+  $$("[data-auto]").forEach((s) => s.addEventListener("change", () => { if (s.value) S.map[s.dataset.auto] = s.value; else delete S.map[s.dataset.auto]; save(); renderSetup(); }));
+  $("#rematch").addEventListener("click", () => { S.map = {}; autoMatch(true); save(); renderSetup(); toast("Channels matched"); });
   $("#ai-open").addEventListener("click", openBuilder);
   $("#back").addEventListener("click", () => { S.step = 1; save(); renderSetup(); });
   $("#next").addEventListener("click", () => { S.step = 3; save(); renderSetup(); });
 }
-function renderStepperOnly() { const keep = S.step; renderSetup(); S.step = keep; }
-function groupBy(chs) { const m = new Map(); chs.forEach((c) => { if (!m.has(c.cat)) m.set(c.cat, []); m.get(c.cat).push(c); }); return [...m]; }
 
 /* AI Community Builder */
 let B = null;
 function openBuilder() {
-  const existing = new Set(S.channels.map((c) => c.name));
+  const existing = new Set(S.channels.map((c) => base(c.name)));
   B = { slide: 0, prompt: `Creator community for ${(S.user && S.user.brand) || "our brand"}, a TikTok Shop brand. Creators post videos and earn commission.`,
     cats: TEMPLATE.map((c) => ({ ...c, ch: c.ch.map((x) => ({ ...x, on: true, exists: existing.has(x.name) })) })) };
   renderBuilder();
 }
-function builderCount() { return B.cats.reduce((n, c) => n + c.ch.filter((x) => x.on && !x.exists).length, 0); }
+const builderCount = () => B.cats.reduce((n, c) => n + c.ch.filter((x) => x.on && !x.exists).length, 0);
 function renderBuilder() {
   const srv = serverObj();
   const keep = new Set(B.cats.flatMap((c) => c.ch.map((x) => x.name)));
-  const extra = S.channels.filter((c) => !keep.has(c.name));
-  $("#dlgRoot").innerHTML = `<div class="dlg" id="bDlg" role="dialog" aria-modal="true" aria-labelledby="bH">
-  <div class="builder">
-    <header><div class="ai-cta" style="all:unset;display:flex;gap:12px;align-items:center"><span style="width:36px;height:36px;border-radius:var(--radius-xl);background:var(--color-primary-tint);color:var(--color-primary);display:grid;place-items:center">${ico("spark")}</span><div><h3 id="bH">AI Community Builder</h3><span class="muted" style="font-size:var(--text-micro)">Preview for ${esc(srv.name)} · swipe through each category, rename or switch off anything</span></div></div><button class="btn sm ghost x" type="button" id="b-x" aria-label="Close">${ico("x")}</button></header>
+  const extra = S.channels.filter((c) => !keep.has(base(c.name)));
+  $("#dlgRoot").innerHTML = `<div class="dlg" id="bDlg" role="dialog" aria-modal="true" aria-labelledby="bH"><div class="builder">
+    <header><span style="width:36px;height:36px;border-radius:var(--radius-xl);background:var(--color-primary-tint);color:var(--color-primary);display:grid;place-items:center">${ico("spark")}</span><div><h3 id="bH">AI Community Builder</h3><span class="muted" style="font-size:var(--text-micro)">Preview for ${esc(srv.name)} · swipe through each category, rename or switch off anything</span></div><button class="btn sm ghost x" type="button" id="b-x" aria-label="Close">${ico("x")}</button></header>
     <div class="prompt"><input class="input" id="b-prompt" value="${esc(B.prompt)}" aria-label="Describe your community"><button class="btn subtle" type="button" id="b-regen">${ico("redo")}Regenerate</button></div>
     <div class="bbody" id="bBody">
-      <div class="dside" aria-label="Server preview">
-        <div class="srv">${esc(srv.name)}</div>
-        ${B.cats.map((c, i) => `<div class="cat ${B.slide === i ? "cur" : ""}" data-goto="${i}"><span>${c.priv ? "🔒 " : ""}${esc(c.cat)}</span><span>${c.ch.filter((x) => x.on).length}</span></div>${c.ch.map((x, j) => `<div class="ch ${x.on ? "" : "off"} ${x.exists ? "" : "new"}" id="pv-${i}-${j}">${ico("hash")}<span>${esc(x.name)}</span></div>`).join("")}`).join("")}
-        ${extra.length ? `<div class="cat"><span>Kept as is</span><span>${extra.length}</span></div>${extra.map((c) => `<div class="ch">${ico("hash")}<span>${esc(c.name)}</span></div>`).join("")}` : ""}
+      <div class="dside" aria-label="Server preview"><div class="srv">${esc(srv.name)}</div>
+        ${B.cats.map((c, i) => `<div class="cat ${B.slide === i ? "cur" : ""}" data-goto="${i}"><span>${esc(c.cat)}</span><span>${c.ch.filter((x) => x.on).length}</span></div>${c.ch.map((x, j) => `<div class="ch ${x.on ? "" : "off"} ${x.exists ? "" : "new"}" id="pv-${i}-${j}">${ico("hash")}<span>${esc(chName(x))}</span></div>`).join("")}`).join("")}
+        ${extra.length ? `<div class="cat"><span>KEPT AS IS</span><span>${extra.length}</span></div>${extra.map((c) => `<div class="ch">${ico("hash")}<span>${esc(c.name)}</span></div>`).join("")}` : ""}
       </div>
       <div class="bright">
         <div class="bnav"><div class="dots">${B.cats.map((c, i) => `<button type="button" data-goto="${i}" class="${B.slide === i ? "on" : ""}">${esc(c.cat)}</button>`).join("")}</div>
           <div class="arrows"><button class="btn sm" type="button" id="b-prev" aria-label="Previous category">${ico("back")}</button><button class="btn sm" type="button" id="b-next" aria-label="Next category">${ico("arrow")}</button></div></div>
         <div class="track" id="track">${B.cats.map((c, i) => `<section class="slide" aria-label="${esc(c.cat)}">
           <div class="sh"><h4>${esc(c.cat)}</h4>${c.priv ? '<span class="pill rose">Private to mods</span>' : ""}<p>${esc(c.about)}</p></div>
-          ${c.ch.map((x, j) => `<div class="chrow ${x.on ? "" : "off"}" data-row="${i}-${j}">
+          ${c.ch.map((x, j) => `<div class="chrow ${x.on ? "" : "off"}">
             <input type="checkbox" ${x.on ? "checked" : ""} data-tog="${i}-${j}" aria-label="Include #${esc(x.name)}" ${x.exists ? "disabled" : ""}>
-            <div style="min-width:0"><div class="nm"><span class="hash">#</span><input value="${esc(x.name)}" data-ren="${i}-${j}" aria-label="Channel name" ${x.exists ? "disabled" : ""}>${x.exists ? '<span class="pill line">Already exists</span>' : ""}${x.auto ? `<span class="pill">${esc(AUTOS.find((a) => a.key === x.auto).name)}</span>` : ""}</div><div class="desc">${esc(x.desc)}</div></div>
+            <div style="min-width:0"><div class="nm"><span class="hash">#${x.e ? esc(x.e) + "・" : ""}</span><input value="${esc(x.name)}" data-ren="${i}-${j}" aria-label="Channel name" ${x.exists ? "disabled" : ""}>${x.exists ? '<span class="pill line">Already exists</span>' : ""}${x.auto ? `<span class="pill">${esc(AUTOS.find((a) => a.key === x.auto).name)}</span>` : ""}</div><div class="desc">${esc(x.desc)}</div></div>
             <select class="input" data-perm="${i}-${j}" aria-label="Who can post in #${esc(x.name)}" ${x.exists ? "disabled" : ""}>${Object.entries(PERMS).map(([k, l]) => `<option value="${k}" ${x.perm === k ? "selected" : ""}>${l}</option>`).join("")}</select>
-          </div>`).join("")}
-        </section>`).join("")}</div>
+          </div>`).join("")}</section>`).join("")}</div>
       </div>
     </div>
-    <footer><span class="muted" style="font-size:var(--text-micro)">Draft template. Your final community template will replace it.</span><div class="r"><button class="btn" type="button" id="b-cancel">Cancel</button><button class="btn primary" type="button" id="b-create" ${builderCount() ? "" : "disabled"}>${ico("spark")}<span id="b-count">Create ${builderCount()} channels</span></button></div></footer>
+    <footer><span class="muted" style="font-size:var(--text-micro)">Template: the Pharmlitalia Creator Community layout.</span><div class="r"><button class="btn" type="button" id="b-cancel">Cancel</button><button class="btn primary" type="button" id="b-create" ${builderCount() ? "" : "disabled"}>${ico("spark")}<span id="b-count">Create ${builderCount()} channels</span></button></div></footer>
   </div></div>`;
   const track = $("#track");
-  const go = (i) => { B.slide = Math.max(0, Math.min(B.cats.length - 1, i)); track.scrollTo({ left: track.clientWidth * B.slide }); markSlide(); };
-  const markSlide = () => {
-    $$(".bnav .dots button").forEach((b, i) => b.classList.toggle("on", i === B.slide));
-    $$(".dside .cat[data-goto]").forEach((b, i) => b.classList.toggle("cur", i === B.slide));
-  };
+  const mark = () => { $$(".bnav .dots button").forEach((b, i) => b.classList.toggle("on", i === B.slide)); $$(".dside .cat[data-goto]").forEach((b, i) => b.classList.toggle("cur", i === B.slide)); };
+  const goS = (i) => { B.slide = Math.max(0, Math.min(B.cats.length - 1, i)); track.scrollTo({ left: track.clientWidth * B.slide }); mark(); };
   requestAnimationFrame(() => { track.style.scrollBehavior = "auto"; track.scrollLeft = track.clientWidth * B.slide; track.style.scrollBehavior = ""; });
-  let t; track.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => { B.slide = Math.round(track.scrollLeft / track.clientWidth); markSlide(); }, 80); });
-  $$("[data-goto]").forEach((b) => b.addEventListener("click", () => go(+b.dataset.goto)));
-  $("#b-prev").addEventListener("click", () => go(B.slide - 1));
-  $("#b-next").addEventListener("click", () => go(B.slide + 1));
+  let t; track.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => { B.slide = Math.round(track.scrollLeft / track.clientWidth); mark(); }, 80); });
+  $$("[data-goto]").forEach((b) => b.addEventListener("click", () => goS(+b.dataset.goto)));
+  $("#b-prev").addEventListener("click", () => goS(B.slide - 1));
+  $("#b-next").addEventListener("click", () => goS(B.slide + 1));
   const at = (s) => { const [i, j] = s.split("-").map(Number); return [B.cats[i].ch[j], i, j]; };
-  const refreshCount = () => { const n = builderCount(); $("#b-count").textContent = n ? `Create ${n} channel${n === 1 ? "" : "s"}` : "Nothing new to create"; $("#b-create").disabled = !n; };
-  $$("[data-tog]").forEach((c) => c.addEventListener("change", () => { const [x, i, j] = at(c.dataset.tog); x.on = c.checked; c.closest(".chrow").classList.toggle("off", !x.on); $("#pv-" + i + "-" + j).classList.toggle("off", !x.on); refreshCount(); }));
-  $$("[data-ren]").forEach((inp) => inp.addEventListener("input", () => { const [x, i, j] = at(inp.dataset.ren); x.name = inp.value.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-_]/g, "").slice(0, 40) || "channel"; $("#pv-" + i + "-" + j + " span").textContent = x.name; }));
-  $$("[data-ren]").forEach((inp) => inp.addEventListener("blur", () => { const [x] = at(inp.dataset.ren); inp.value = x.name; }));
-  $$("[data-perm]").forEach((s) => s.addEventListener("change", () => { const [x] = at(s.dataset.perm); x.perm = s.value; }));
+  const refresh = () => { const n = builderCount(); $("#b-count").textContent = n ? `Create ${n} channel${n === 1 ? "" : "s"}` : "Nothing new to create"; $("#b-create").disabled = !n; };
+  $$("[data-tog]").forEach((c) => c.addEventListener("change", () => { const [x, i, j] = at(c.dataset.tog); x.on = c.checked; c.closest(".chrow").classList.toggle("off", !x.on); $("#pv-" + i + "-" + j).classList.toggle("off", !x.on); refresh(); }));
+  $$("[data-ren]").forEach((inp) => { inp.addEventListener("input", () => { const [x, i, j] = at(inp.dataset.ren); x.name = inp.value.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-_]/g, "").slice(0, 40) || "channel"; $("#pv-" + i + "-" + j + " span").textContent = chName(x); }); inp.addEventListener("blur", () => { inp.value = at(inp.dataset.ren)[0].name; }); });
+  $$("[data-perm]").forEach((s) => s.addEventListener("change", () => { at(s.dataset.perm)[0].perm = s.value; }));
   $("#b-prompt").addEventListener("input", (e) => (B.prompt = e.target.value));
-  $("#b-regen").addEventListener("click", () => {
-    const btn = $("#b-regen"); btn.disabled = true; btn.innerHTML = `<span class="checks" style="margin:0"><span class="s spin" style="width:14px;height:14px"></span></span>Thinking`;
-    setTimeout(() => { B.slide = 0; renderBuilder(); toast("Layout refreshed for your description"); }, 1100);
-  });
-  const close = () => { $("#dlgRoot").innerHTML = ""; };
+  $("#b-regen").addEventListener("click", () => { const b = $("#b-regen"); b.disabled = true; b.innerHTML = `<span class="typing"><i></i><i></i><i></i></span>Thinking`; setTimeout(() => { B.slide = 0; renderBuilder(); toast("Layout refreshed for your description"); }, 1100); });
+  const close = () => ($("#dlgRoot").innerHTML = "");
   $("#b-x").addEventListener("click", close); $("#b-cancel").addEventListener("click", close);
   $("#b-create").addEventListener("click", runCreate);
 }
 function runCreate() {
   const srv = serverObj();
-  const todo = B.cats.flatMap((c) => c.ch.filter((x) => x.on && !x.exists).map((x) => ({ ...x, cat: c.cat, priv: c.priv })));
+  const todo = B.cats.flatMap((c) => c.ch.filter((x) => x.on && !x.exists).map((x) => ({ ...x, full: chName(x), cat: c.cat === "🔒 MODERATORS" ? "No category" : c.cat })));
   const body = $("#bBody"); $(".builder .prompt").hidden = true; $(".builder footer").hidden = true;
   body.style.display = "block"; body.style.overflowY = "auto";
-  body.innerHTML = `<div class="creating"><h4>Building ${esc(srv.name)}</h4><p class="p">Creating ${todo.length} channels and setting permissions</p>${todo.map((x, i) => `<div class="line" id="cl-${i}"><span class="checks" style="margin:0"><span class="s"></span></span><span>#${esc(x.name)}</span><span class="muted" style="margin-left:auto;font-size:var(--text-micro)">${esc(x.cat)} · ${esc(PERMS[x.perm])}</span></div>`).join("")}</div>`;
+  body.innerHTML = `<div class="creating"><h4>Building ${esc(srv.name)}</h4><p class="p">Creating ${todo.length} channels and setting permissions</p>${todo.map((x, i) => `<div class="line" id="cl-${i}"><span class="checks" style="margin:0"><span class="s"></span></span><span>#${esc(x.full)}</span><span class="muted" style="margin-left:auto;font-size:var(--text-micro)">${esc(PERMS[x.perm])}</span></div>`).join("")}</div>`;
   let i = 0;
   const tick = () => {
     if (i > 0) { const p = $(`#cl-${i - 1} .s`); if (p) { p.className = "s ok"; p.innerHTML = ico("check"); p.querySelector("svg").style.cssText = "width:12px;height:12px"; } }
-    if (i < todo.length) { const c = $(`#cl-${i} .s`); if (c) c.className = "s spin"; i++; setTimeout(tick, 170); return; }
-    // Merge into server
-    todo.forEach((x) => { if (!S.channels.find((c) => c.name === x.name)) S.channels.push({ name: x.name, cat: x.cat }); });
-    S.newChannels = todo.map((x) => x.name);
-    // Map automations to the builder's channels
-    B.cats.forEach((c) => c.ch.forEach((x) => { if (x.on && x.auto) S.map[x.auto] = x.name; }));
+    if (i < todo.length) { const c = $(`#cl-${i} .s`); if (c) c.className = "s spin"; i++; setTimeout(tick, 150); return; }
+    todo.forEach((x) => { if (!S.channels.find((c) => base(c.name) === x.name)) S.channels.push({ name: x.full, cat: x.cat }); });
+    S.newChannels = todo.map((x) => x.full);
+    B.cats.forEach((c) => c.ch.forEach((x) => { if (x.on && x.auto) { const hit = S.channels.find((ch) => base(ch.name) === x.name); if (hit) S.map[x.auto] = hit.name; } }));
     save();
     setTimeout(() => { $("#dlgRoot").innerHTML = ""; renderApp(); toast(`${todo.length} channels created in ${srv.name}`); }, 450);
   };
   tick();
 }
 
-/* Step 3: CRM */
+/* Step 3 */
 function step3() {
   const c = CRMS.find((x) => x.id === S.crm.id);
-  const srv = serverObj();
   let inner = "";
-  if (c && !S.crm.ok) {
-    inner = `<div style="margin-top:20px;display:grid;gap:8px">
+  if (c && !S.crm.ok) inner = `<div style="margin-top:20px;display:grid;gap:8px">
       <label class="field" for="k-in">${esc(c.name)} API key<small>${esc(c.how)}</small></label>
       <div class="keyrow"><input class="input" id="k-in" type="password" value="${esc(S.crm.key)}" placeholder="${c.id}_live_••••••••••••••••" autocomplete="off" spellcheck="false"><button class="btn" type="button" id="k-show" aria-label="Show key">${ico("eye")}</button><button class="btn primary" type="button" id="k-go">${ico("plug")}Connect</button></div>
       <p class="muted" style="font-size:var(--text-micro)">Kreo only reads data. It never changes anything in ${esc(c.name)}. Mock-up: any text works.</p>
-      <div class="checks" id="k-checks" hidden></div>
-    </div>`;
-  }
-  if (c && S.crm.ok) {
-    inner = `<div class="connected">${ico("check")}<div><b>${esc(c.name)} connected.</b> Kreo found your TikTok Shop and can read your creators and sales.</div><button class="btn sm" type="button" id="k-change" style="margin-left:auto">Change</button></div>
+      <div class="checks" id="k-checks" hidden></div></div>`;
+  if (c && S.crm.ok) inner = `<div class="connected">${ico("check")}<div><b>${esc(c.name)} connected.</b> Kreo found your TikTok Shop and can read your creators and sales.</div><button class="btn sm" type="button" id="k-change" style="margin-left:auto">Change</button></div>
       <div class="found"><div><b>1,284</b><span>Creators in your CRM</span></div><div><b>458</b><span>Linked to Discord</span></div><div><b>$96.4k</b><span>GMV, last 30 days</span></div></div>
       <p class="muted" style="font-size:var(--text-micro);margin-top:8px">Example data. Creators linked to Discord get tagged in posts. Everyone else shows as their @handle.</p>
       <div class="summary">
         <div>${ico("check")}<div><b>Bot</b><span class="muted">${esc(botName())}${S.bot.avatar ? "" : " · no picture yet"}</span></div><button class="btn sm ghost" type="button" data-jump="1">Edit</button></div>
-        <div>${ico("check")}<div><b>Server</b><span class="muted">${esc(srv ? srv.name : "")} · ${S.channels.length} channels${S.newChannels.length ? `, ${S.newChannels.length} created by Kreo` : ""}</span></div><button class="btn sm ghost" type="button" data-jump="1">Edit</button></div>
-        <div>${ico("check")}<div><b>Automations</b><span class="muted">${AUTOS.filter((a) => a.key !== "mod" && S.map[a.key]).length} of 6 have a channel · approvals in #${esc(S.map.mod || "")}</span></div><button class="btn sm ghost" type="button" data-jump="2">Edit</button></div>
+        <div>${ico("check")}<div><b>Server</b><span class="muted">${esc(srvName())} · ${S.channels.length} channels${S.newChannels.length ? `, ${S.newChannels.length} created by Kreo` : ""}</span></div><button class="btn sm ghost" type="button" data-jump="1">Edit</button></div>
+        <div>${ico("check")}<div><b>Automations</b><span class="muted">${BUILTIN.filter((a) => S.map[a.key]).length} of 6 have a channel · approvals in #${esc(S.map.mod || "")}</span></div><button class="btn sm ghost" type="button" data-jump="2">Edit</button></div>
         <div>${ico("check")}<div><b>CRM</b><span class="muted">${esc(c.name)} · read-only</span></div><button class="btn sm ghost" type="button" id="k-change2">Edit</button></div>
       </div>`;
-  }
-  $("#setupBody").innerHTML = `
-    <div class="eyebrow">Step 3 of 3</div>
-    <h3 style="margin-top:6px">Connect your CRM</h3>
+  $("#setupBody").innerHTML = `<div class="eyebrow">Step 3 of 3</div><h3 style="margin-top:6px">Connect your CRM</h3>
     <p class="intro">Kreo reads your creators, videos and sales from the CRM you already use. Pick yours and paste an API key.</p>
     ${S.crm.ok ? "" : `<div class="crms">${CRMS.map((x) => `<button type="button" class="crm ${S.crm.id === x.id ? "on" : ""}" data-crm="${x.id}" aria-pressed="${S.crm.id === x.id}"><span class="mk">${x.mono}</span><b>${esc(x.name)}</b><span>${esc(x.reads)}</span></button>`).join("")}</div>`}
     ${inner}
-    <div class="foot2"><span class="lockmsg">${ico("lock")} ${S.crm.ok ? "All set. Launch to unlock your dashboard." : "Dashboard unlocks after this step"}</span>
-      <div class="r"><button class="btn" type="button" id="back">${ico("back")}Back</button><button class="btn primary" type="button" id="launch" ${S.crm.ok ? "" : "disabled"}>${ico("bolt")}Launch Kreo</button></div></div>`;
+    <div class="foot2"><span class="lockmsg">${ico("lock")} ${S.crm.ok ? "All set. Launch to unlock your dashboard." : "Dashboard unlocks after this step"}</span><div class="r"><button class="btn" type="button" id="back">${ico("back")}Back</button><button class="btn primary" type="button" id="launch" ${S.crm.ok ? "" : "disabled"}>${ico("bolt")}Launch Kreo</button></div></div>`;
   $$("[data-crm]").forEach((b) => b.addEventListener("click", () => { S.crm = { id: b.dataset.crm, key: "", ok: false }; save(); step3(); const k = $("#k-in"); if (k) k.focus(); }));
   const kin = $("#k-in");
   if (kin) {
@@ -1094,23 +1572,513 @@ function step3() {
     $("#k-go").addEventListener("click", () => {
       if (!kin.value.trim()) { kin.focus(); kin.placeholder = "Paste your API key first"; return; }
       const box = $("#k-checks"); box.hidden = false; $("#k-go").disabled = true;
-      const steps = ["Checking your key", "Finding your TikTok Shop", "Reading creators and Discord links", "Reading videos and sales"];
+      const steps = ["Checking your key", "Finding your TikTok Shop", "Reading creators, emails and phone numbers", "Reading videos and sales"];
       box.innerHTML = steps.map((s, i) => `<div id="kc-${i}"><span class="s"></span>${s}</div>`).join("");
       let i = 0;
       const tick = () => {
         if (i > 0) { const p = $(`#kc-${i - 1} .s`); p.className = "s ok"; p.innerHTML = ico("check"); p.querySelector("svg").style.cssText = "width:12px;height:12px"; }
         if (i < steps.length) { $(`#kc-${i} .s`).className = "s spin"; i++; setTimeout(tick, 550); return; }
-        S.crm.ok = true; save(); setTimeout(() => { renderSetup(); toast(CRMS.find((x) => x.id === S.crm.id).name + " connected"); }, 300);
+        S.crm.ok = true; save(); setTimeout(() => { renderSetup(); toast(crmName() + " connected"); }, 300);
       };
       tick();
     });
   }
-  const ch = () => { S.crm.ok = false; save(); step3(); renderStepperOnly(); };
-  if ($("#k-change")) $("#k-change").addEventListener("click", ch);
-  if ($("#k-change2")) $("#k-change2").addEventListener("click", ch);
+  const ch = () => { S.crm.ok = false; save(); renderSetup(); };
+  ["#k-change", "#k-change2"].forEach((id) => { const el = $(id); if (el) el.addEventListener("click", ch); });
   $$("[data-jump]").forEach((b) => b.addEventListener("click", () => { S.step = +b.dataset.jump; save(); renderSetup(); }));
   $("#back").addEventListener("click", () => { S.step = 2; save(); renderSetup(); });
-  $("#launch").addEventListener("click", () => { S.launched = true; save(); renderApp(); toast(`Kreo is live in ${serverObj().name}. First drafts land in #${S.map.mod}.`); });
+  $("#launch").addEventListener("click", () => { S.launched = true; save(); page = "dashboard"; if (location.hash !== "#dashboard") location.hash = "#dashboard"; renderApp(); toast(`Kreo is live in ${srvName()}. Drafts land in #${S.map.mod}.`); });
+}
+
+/* ---------- Shared bits ---------- */
+const ph = (title, desc, right = "") => `<div class="ph"><div><h1>${title}</h1>${desc ? `<p>${desc}</p>` : ""}</div><div class="r">${right}</div></div>`;
+const sw = (id, on, label) => `<label class="sw" title="${esc(label)}"><input type="checkbox" ${on ? "checked" : ""} data-sw="${esc(id)}" aria-label="${esc(label)}"><span></span></label>`;
+const autoName = (k) => (AUTOS.find((a) => a.key === k) || S.custom.find((c) => c.id === k) || { name: k }).name;
+function dcPreview(text, card, channel) {
+  const hl = esc(text).replace(/(@here|@everyone|@[a-z0-9._]+)/gi, '<span class="mention">$1</span>');
+  let c = "";
+  if (card === "lb") c = `<div class="card"><h6>Top 5 by GMV</h6>${CREATORS.slice(0, 5).map((x, i) => `<div class="rank"><span class="n">${i + 1}</span><b>@${esc(x.h)}</b><span class="g">${money(x.weekly * 6.9)}</span></div>`).join("")}</div>`;
+  if (card === "win") c = `<div class="card" style="text-align:center"><h6 style="margin:0">10 SALES</h6><div style="font-family:var(--font-display);font-size:28px;color:var(--color-discord-head);font-weight:700">@kofi.reviews</div><div style="color:var(--color-discord-muted);font-size:var(--text-micro)">Milestone card</div></div>`;
+  if (card === "angle") c = `<div class="card"><h6>#1 · $2,140 GMV · 182k views</h6><div style="font-size:var(--text-micro);color:var(--color-discord-muted)">Hook: "Before and after my first wash with this"<br>Script card + translations attached</div></div>`;
+  return `<div class="dc"><div class="chan">${ico("hash")}${esc(channel || "channel")}</div><div class="msg"><div class="av">${avHTML()}</div><div style="min-width:0"><div class="who">${esc(botName())} <small>APP</small> <time>Scheduled</time></div><div>${hl}</div>${c}</div></div></div>`;
+}
+let drawerOpen = false;
+function drawer(title, body, foot = "") {
+  closeDrawer();
+  const w = document.createElement("div"); w.id = "drawerRoot";
+  w.innerHTML = `<div class="drawer-bg" data-close></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="${esc(title)}"><header><h3>${title}</h3><button class="btn sm ghost x" type="button" data-close aria-label="Close">${ico("x")}</button></header><div class="db">${body}</div>${foot ? `<footer>${foot}</footer>` : ""}</aside>`;
+  document.body.appendChild(w); drawerOpen = true;
+  $$("[data-close]", w).forEach((b) => b.addEventListener("click", closeDrawer));
+  return w;
+}
+function closeDrawer() { const d = $("#drawerRoot"); if (d) d.remove(); drawerOpen = false; }
+function bindSwitches(root, onChange) { $$("[data-sw]", root).forEach((i) => i.addEventListener("change", () => onChange(i.dataset.sw, i.checked))); }
+function toggleAuto(id, val) {
+  const c = S.custom.find((x) => x.id === id);
+  if (c) c.on = val; else S.on[id] = val;
+  save(); counts(); toast(`${autoName(id)} ${val ? "turned on" : "paused"}`);
+}
+const waOf = (c) => { if (!S.prefs.waDetect && c.waSrc === "dm") return null; return c.wa; };
+
+/* ---------- Dashboard ---------- */
+function pDashboard(el) {
+  const d = series(), gmv = sum(d, (x) => x.gmv), comm = sum(d, (x) => x.comm);
+  const pend = S.drafts.filter((x) => x.status === "pending"), needs = S.dms.filter((x) => x.status === "needs" || x.unread);
+  const top = CREATORS.map((c) => ({ c, g: crGmv(c) })).filter((x) => x.g > 0).sort((a, b) => b.g - a.g).slice(0, 5);
+  const todos = [
+    ...pend.map((p) => ({ i: "check", t: p.title, s: `${autoName(p.auto)} · ${chOf(p.auto) || "no channel"}`, go: "approvals", tag: "Approve" })),
+    ...needs.slice(0, 2).map((m) => ({ i: "chat", b: 1, t: `Reply to @${m.c}`, s: m.msgs[m.msgs.length - 1][1].slice(0, 60), go: "onboarding", tag: "DM" })),
+    ...(S.bot.avatar ? [] : [{ i: "upload", b: 1, t: "Add a picture for your bot", s: "Posts show a letter until you do", go: "workspace", tag: "Setup" }]),
+  ];
+  const u = S.user || { name: "there" }, hr = new Date().getHours();
+  el.innerHTML = ph(`${hr < 12 ? "Good morning" : hr < 18 ? "Good afternoon" : "Good evening"}, ${esc(u.name.split(" ")[0])}`, `${esc(srvName())} · data from ${esc(crmName())} · example data`, drHTML()) + `
+  <div class="bento">
+    <section class="tile s8 link" data-go="analytics" data-sub="overall" tabindex="0" aria-label="Open analytics">
+      <div class="th"><h2>Analytics</h2><span class="muted" style="font-size:var(--text-micro)">${esc(rLabel())}</span><div class="r"><a class="more" href="#analytics">Open analytics ${ico("arrow")}</a></div></div>
+      <div class="minis">
+        <div class="mini"><div class="l">GMV ${chg(prevChange((x) => x.gmv))}</div><div class="v">${money(gmv)}</div></div>
+        <div class="mini"><div class="l">From community creators ${chg(prevChange((x) => x.comm))}</div><div class="v">${money(comm)}</div></div>
+        <div class="mini"><div class="l">Orders ${chg(prevChange((x) => x.orders))}</div><div class="v">${int(sum(d, (x) => x.orders))}</div></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--color-primary)"></i>Total GMV</span><span><i style="background:var(--color-accent)"></i>Community creators</span></div>
+      ${lineChart(d, [{ k: "gmv", c: "var(--color-primary)" }, { k: "comm", c: "var(--color-accent)" }], { h: 230 })}
+    </section>
+    <section class="tile s4">
+      <div class="th"><h2>To-do</h2><span class="pill rose">${todos.length}</span><div class="r"><a class="more" href="#approvals">All ${ico("arrow")}</a></div></div>
+      ${todos.length ? todos.slice(0, 5).map((t) => `<div class="lrow" style="cursor:pointer" data-go="${t.go}"><span class="todo-i ${t.b ? "b" : ""}">${ico(t.i)}</span><div style="min-width:0"><b>${esc(t.t)}</b><span class="sub">${esc(t.s)}</span></div><span class="pill ${t.tag === "Approve" ? "rose" : ""}">${t.tag}</span></div>`).join("") : `<div class="empty"><b>All caught up</b>New drafts and DMs show up here.</div>`}
+    </section>
+    <section class="tile s4">
+      <div class="th"><h2>Top creators</h2><span class="muted" style="font-size:var(--text-micro)">by GMV</span><div class="r"><a class="more" href="#analytics">See all ${ico("arrow")}</a></div></div>
+      ${top.map((x, i) => `<div class="lrow" style="cursor:pointer" data-creator="${x.c.id}"><span style="display:flex;gap:8px;align-items:center"><span class="rk">${i + 1}</span><span class="cav ${i === 0 ? "r" : ""}">${initials(x.c.name)}</span></span><div style="min-width:0"><b>@${esc(x.c.h)}</b><span class="sub">${int(x.g / 32)} sales${x.c.linked ? " · in Discord" : ""}</span></div><span class="num">${money(x.g)}</span></div>`).join("")}
+    </section>
+    <section class="tile s4">
+      <div class="th"><h2>Automations</h2><span class="pill good">${BUILTIN.filter((a) => S.on[a.key]).length + S.custom.filter((c) => c.on).length} on</span><div class="r"><a class="more" href="#automations">Manage ${ico("arrow")}</a></div></div>
+      ${BUILTIN.map((a) => `<div class="lrow"><span class="disc">${a.n}</span><div style="min-width:0"><b>${esc(a.name)}</b><span class="sub">${esc(chOf(a.key) || "No channel")} · ${esc(a.sched)}</span></div>${sw(a.key, S.on[a.key], "Turn " + a.name + " on or off")}</div>`).join("")}
+      ${S.custom.map((c) => `<div class="lrow"><span class="disc">${ico("spark")}</span><div style="min-width:0"><b>${esc(c.name)}</b><span class="sub">${esc(c.channel)} · ${esc(c.schedule)}</span></div>${sw(c.id, c.on, "Turn " + c.name + " on or off")}</div>`).join("")}
+    </section>
+    <section class="tile s4">
+      <div class="th"><h2>Coming up</h2><span class="muted" style="font-size:var(--text-micro)">Next 7 days</span></div>
+      ${[["Mon", "Weekly leaderboard", "leaderboard", "5:00 PM"], ["Mon", "Winning angle #1", "winning_content", "12:00 PM"], ["Mon", "Viral hook #1", "viral_hooks", "2:00 PM"], ["Tue", "Winning angle #2", "winning_content", "12:00 PM"], ["Daily", "Creator wins check", "wins", "4:00 PM"]].filter((r) => S.on[r[2]]).map(([d, t, k, tm]) => `<div class="lrow"><span class="disc">${d}</span><div style="min-width:0"><b>${t}</b><span class="sub">${esc(chOf(k) || "No channel")}</span></div><span class="muted" style="font-size:var(--text-micro)">${tm}</span></div>`).join("") || `<div class="empty"><b>Nothing scheduled</b>Turn on an automation to see it here.</div>`}
+      ${S.custom.filter((c) => c.on).map((c) => `<div class="lrow"><span class="disc">${ico("spark")}</span><div style="min-width:0"><b>${esc(c.name)}</b><span class="sub">${esc(c.channel)}</span></div><span class="muted" style="font-size:var(--text-micro)">${esc(c.schedule)}</span></div>`).join("")}
+    </section>
+    <section class="tile s7 link" data-go="analytics" data-sub="community" tabindex="0">
+      <div class="th"><h2>Community pulse</h2><div class="r"><a class="more" href="#analytics">Community analytics ${ico("arrow")}</a></div></div>
+      <div class="minis">
+        <div class="mini"><div class="l">New members</div><div class="v">${int(sum(d, (x) => x.joins))}</div></div>
+        <div class="mini"><div class="l">Messages</div><div class="v">${int(sum(d, (x) => x.msgs))}</div></div>
+        <div class="mini"><div class="l">Onboarding done</div><div class="v">${Math.round(S.dms.filter((m) => m.status === "done").length / S.dms.length * 100)}%</div></div>
+      </div>
+      ${lineChart(d, [{ k: "active", c: "var(--color-accent)" }], { h: 110, money: false })}
+    </section>
+    <section class="tile s5">
+      <div class="th"><h2>Latest DMs</h2><div class="r"><a class="more" href="#onboarding">Inbox ${ico("arrow")}</a></div></div>
+      ${S.dms.slice(0, 4).map((m) => { const last = m.msgs[m.msgs.length - 1]; return `<div class="lrow" style="cursor:pointer" data-dm="${m.id}"><span class="cav">${initials(m.c)}</span><div style="min-width:0"><b>@${esc(m.c)}</b><span class="sub">${last[0] === "bot" ? "Bot: " : ""}${esc(last[1])}</span></div>${m.unread ? '<span class="pill rose">New</span>' : `<span class="muted" style="font-size:var(--text-micro)">${esc(m.time)}</span>`}</div>`; }).join("")}
+    </section>
+  </div>`;
+  bindSwitches(el, (id, v) => { toggleAuto(id, v); renderPage(); });
+  $$("[data-sw]", el).forEach((i) => i.closest(".sw").addEventListener("click", (e) => e.stopPropagation()));
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", (e) => { e.stopPropagation(); openCreator(r.dataset.creator); }));
+  $$("[data-dm]", el).forEach((r) => r.addEventListener("click", () => { sub.dm = r.dataset.dm; sub.ob = "inbox"; go("onboarding"); }));
+}
+
+/* ---------- Analytics ---------- */
+function pAnalytics(el) {
+  const tab = sub.an || "community";
+  el.innerHTML = ph("Analytics", tab === "community" ? "Creators in your Discord community and what they're doing there." : `Everything in ${esc(crmName())}: your whole TikTok Shop creator program.`, drHTML() + `<button class="btn" type="button" id="exp">${ico("download")}Export</button>`) +
+    `<div class="tabs" role="tablist"><button type="button" role="tab" class="${tab === "community" ? "on" : ""}" data-an="community">${ico("users")}Community analytics</button><button type="button" role="tab" class="${tab === "overall" ? "on" : ""}" data-an="overall">${ico("chart")}Overall (CRM)</button></div><div id="anBody"></div>`;
+  $$("[data-an]", el).forEach((b) => b.addEventListener("click", () => { sub.an = b.dataset.an; renderPage(); }));
+  $("#exp").addEventListener("click", () => toast("Export started. We'll email you the CSV."));
+  (tab === "community" ? anCommunity : anOverall)($("#anBody"));
+}
+function anCommunity(el) {
+  const d = series(), inDiscord = CREATORS.filter((c) => c.status !== "x");
+  const linked = CREATORS.filter((c) => c.linked).length, withWa = CREATORS.filter((c) => waOf(c)).length;
+  const seg = sub.seg || "all", q = (sub.q || "").toLowerCase(), sort = sub.sort || "gmv";
+  const segs = { all: () => true, selling: (c) => crGmv(c) > 0, "not-posted": (c) => c.status === "not-posted", silent: (c) => c.status === "silent" || !c.engaged, wa: (c) => !!waOf(c), unlinked: (c) => !c.linked };
+  const segLabel = { all: "All", selling: "Selling", "not-posted": "Not posted yet", silent: "Quiet in Discord", wa: "Has WhatsApp", unlinked: "Not linked" };
+  let rows = inDiscord.filter(segs[seg]).filter((c) => !q || (c.h + " " + c.d + " " + c.name + " " + c.email).toLowerCase().includes(q));
+  const key = { gmv: (c) => -crGmv(c), msgs: (c) => -c.msgs, joined: (c) => c.joined, name: (c) => c.h };
+  rows.sort((a, b) => { const ka = key[sort](a), kb = key[sort](b); return ka < kb ? -1 : ka > kb ? 1 : 0; });
+  el.innerHTML = `<div class="kpis6">
+    <div class="kp"><div class="l">Members</div><div class="v">642</div></div>
+    <div class="kp"><div class="l">Linked to ${esc(crmName())}</div><div class="v">${Math.round(linked / CREATORS.length * 100)}%</div></div>
+    <div class="kp"><div class="l">Active creators ${chg(prevChange((x) => x.active))}</div><div class="v">${int(sum(d, (x) => x.active) / d.length)}</div></div>
+    <div class="kp"><div class="l">Community GMV ${chg(prevChange((x) => x.comm))}</div><div class="v">${money(sum(d, (x) => x.comm))}</div></div>
+    <div class="kp"><div class="l">Messages</div><div class="v">${int(sum(d, (x) => x.msgs))}</div></div>
+    <div class="kp"><div class="l">With WhatsApp</div><div class="v">${withWa}</div></div>
+  </div>
+  <div class="bento" style="margin-bottom:14px">
+    <section class="tile s8"><div class="th"><h2>Community creators: GMV and activity</h2></div><div class="legend" style="margin-bottom:6px"><span><i style="background:var(--color-accent)"></i>GMV from community creators</span></div>${lineChart(d, [{ k: "comm", c: "var(--color-accent)" }], { h: 180 })}</section>
+    <section class="tile s4"><div class="th"><h2>Creator funnel</h2></div><div class="bars">
+      ${[["Joined Discord", 642, 1], ["Finished onboarding", 498, 0.776], ["Linked to CRM", 456, 0.71], ["Posted a video", 301, 0.469], ["Made a sale", 188, 0.293]].map(([l, n, p]) => `<div class="bar-r"><div class="t"><span>${l}</span><span>${int(n)}</span></div><div class="track2"><i style="width:${p * 100}%"></i></div></div>`).join("")}
+    </div></section>
+  </div>
+  <section class="tile" style="padding:0;border:0">
+    <div class="filters">
+      <input class="input" id="cq" placeholder="Search name, @handle or email" value="${esc(sub.q || "")}" aria-label="Search creators">
+      ${Object.keys(segs).map((k) => `<button class="chip ${seg === k ? "on" : ""}" type="button" data-seg="${k}">${segLabel[k]} <small>${inDiscord.filter(segs[k]).length}</small></button>`).join("")}
+      <span class="muted" style="margin-left:auto;font-size:var(--text-micro)">Email and phone from ${esc(crmName())}. WhatsApp from ${esc(crmName())} or found in DMs.</span>
+    </div>
+    <div class="tblwrap"><table class="tbl"><thead><tr>
+      <th><button type="button" data-sort="name">Creator${sort === "name" ? " ↓" : ""}</button></th><th>Contact</th><th>Discord</th>
+      <th class="r"><button type="button" data-sort="gmv">GMV${sort === "gmv" ? " ↓" : ""}</button></th><th class="r">Sales</th><th class="r">Videos</th>
+      <th class="r"><button type="button" data-sort="msgs">Messages${sort === "msgs" ? " ↓" : ""}</button></th><th><button type="button" data-sort="joined">Joined${sort === "joined" ? " ↓" : ""}</button></th></tr></thead>
+      <tbody>${rows.map((c) => { const g = crGmv(c), wa = waOf(c); return `<tr data-creator="${c.id}">
+        <td><div class="who"><span class="cav">${initials(c.name)}</span><div><b>@${esc(c.h)}</b><span>${esc(c.name)}</span></div></div></td>
+        <td><div class="contact"><div>${ico("mail")}${esc(c.email)} <span class="src">CRM</span></div>${c.phone ? `<div>${ico("phone")}${esc(c.phone)} <span class="src">CRM</span></div>` : ""}${wa ? `<div>${ico("wa")}${esc(wa)} <span class="src ${c.waSrc === "dm" ? "dm" : ""}">${c.waSrc === "dm" ? "From DM" : "CRM"}</span></div>` : ""}</div></td>
+        <td>${c.linked ? `<span class="pill good">@${esc(c.d)}</span>` : '<span class="pill line">Not linked</span>'}<div class="muted" style="font-size:var(--text-micro);margin-top:3px">${c.status === "silent" || !c.engaged ? "Quiet" : "Engaged"}</div></td>
+        <td class="r num">${g ? money(g) : "—"}</td><td class="r num">${g ? int(g / 32) : 0}</td><td class="r num">${c.videos}</td><td class="r num">${int(c.msgs * scale())}</td>
+        <td class="muted">${fmtD(addD(today0(), -c.joined))}</td></tr>`; }).join("") || `<tr><td colspan="8"><div class="empty"><b>No creators match</b>Try another filter or search.</div></td></tr>`}</tbody></table></div>
+  </section>`;
+  const cq = $("#cq", el); cq.addEventListener("input", () => { sub.q = cq.value; clearTimeout(cq._t); cq._t = setTimeout(() => { anCommunity(el); const n = $("#cq", el); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 250); });
+  $$("[data-seg]", el).forEach((b) => b.addEventListener("click", () => { sub.seg = b.dataset.seg; anCommunity(el); }));
+  $$("[data-sort]", el).forEach((b) => b.addEventListener("click", () => { sub.sort = b.dataset.sort; anCommunity(el); }));
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
+}
+function anOverall(el) {
+  const d = series(), gmv = sum(d, (x) => x.gmv), ads = sum(d, (x) => x.ads), comm = sum(d, (x) => x.comm);
+  const all = CREATORS.map((c) => ({ c, g: crGmv(c) * (1 + (c.linked ? 0 : 0.4)) })).sort((a, b) => b.g - a.g).slice(0, 8);
+  el.innerHTML = `<div class="kpis6">
+    <div class="kp"><div class="l">GMV ${chg(prevChange((x) => x.gmv))}</div><div class="v">${money(gmv)}</div></div>
+    <div class="kp"><div class="l">Orders ${chg(prevChange((x) => x.orders))}</div><div class="v">${int(sum(d, (x) => x.orders))}</div></div>
+    <div class="kp"><div class="l">Affiliate GMV</div><div class="v">${money(gmv * 0.82)}</div></div>
+    <div class="kp"><div class="l">Videos posted ${chg(prevChange((x) => x.videos))}</div><div class="v">${int(sum(d, (x) => x.videos))}</div></div>
+    <div class="kp"><div class="l">Creators in CRM</div><div class="v">1,284</div></div>
+    <div class="kp"><div class="l">Samples shipped</div><div class="v">${int(rDays() * 4.3)}</div></div>
+  </div>
+  <div class="bento">
+    <section class="tile s8"><div class="th"><h2>GMV by day</h2><div class="r legend"><span><i style="background:var(--color-primary)"></i>Total</span><span><i style="background:var(--color-accent)"></i>Paid ads</span></div></div>${lineChart(d, [{ k: "gmv", c: "var(--color-primary)" }, { k: "ads", c: "var(--color-accent)" }], { h: 210 })}</section>
+    <section class="tile s4"><div class="th"><h2>Where GMV came from</h2></div><div class="bars">
+      <div class="bar-r"><div class="t"><span>Community creators</span><span>${money(comm)}</span></div><div class="track2"><i style="width:${comm / gmv * 100}%"></i></div></div>
+      <div class="bar-r"><div class="t"><span>Creators not in Discord</span><span>${money(gmv * 0.82 - comm)}</span></div><div class="track2"><i class="b" style="width:${(gmv * 0.82 - comm) / gmv * 100}%"></i></div></div>
+      <div class="bar-r"><div class="t"><span>Shop's own page</span><span>${money(gmv * 0.18)}</span></div><div class="track2"><i class="c" style="width:18%"></i></div></div>
+      <p class="muted" style="font-size:var(--text-micro)">Community creators drove ${Math.round(comm / gmv * 100)}% of GMV in this range.</p>
+    </div></section>
+    <section class="tile s6"><div class="th"><h2>Top creators (all of ${esc(crmName())})</h2></div>${all.map((x, i) => `<div class="lrow" style="cursor:pointer" data-creator="${x.c.id}"><span style="display:flex;gap:8px;align-items:center"><span class="rk">${i + 1}</span><span class="cav">${initials(x.c.name)}</span></span><div style="min-width:0"><b>@${esc(x.c.h)}</b><span class="sub">${x.c.linked ? "In your Discord" : "Not in Discord yet"}</span></div><span class="num">${money(x.g)}</span></div>`).join("")}</section>
+    <section class="tile s6"><div class="th"><h2>Top products</h2></div>${PRODUCTS.map(([n, p], i) => `<div class="lrow"><span class="rk">${i + 1}</span><div style="min-width:0"><b>${esc(n)}</b><span class="sub">${int(gmv * p / 34)} orders</span></div><span class="num">${money(gmv * p)}</span></div>`).join("")}</section>
+  </div>`;
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", () => openCreator(r.dataset.creator)));
+}
+function openCreator(id) {
+  const c = CREATORS.find((x) => x.id === id); if (!c) return;
+  const g = crGmv(c), wa = waOf(c), dm = S.dms.find((m) => m.c === c.h);
+  const w = drawer(`<span style="display:flex;gap:10px;align-items:center"><span class="cav r">${initials(c.name)}</span>@${esc(c.h)}</span>`, `
+    <div class="kpis6" style="grid-template-columns:repeat(3,1fr);margin:0"><div class="kp"><div class="l">GMV</div><div class="v">${money(g)}</div></div><div class="kp"><div class="l">Sales</div><div class="v">${int(g / 32)}</div></div><div class="kp"><div class="l">Videos</div><div class="v">${c.videos}</div></div></div>
+    <div><div class="sec-t">Contact</div><div class="dl">
+      <div><span class="k">Name</span><span class="v">${esc(c.name)}</span><span class="src">CRM</span></div>
+      <div><span class="k">Email</span><span class="v">${esc(c.email)}</span><button class="btn sm ghost" type="button" data-copy="${esc(c.email)}">Copy</button></div>
+      <div><span class="k">Phone</span><span class="v">${esc(c.phone || "Not in CRM")}</span>${c.phone ? `<button class="btn sm ghost" type="button" data-copy="${esc(c.phone)}">Copy</button>` : "<span></span>"}</div>
+      <div><span class="k">WhatsApp</span><span class="v">${wa ? esc(wa) + ` <span class="src ${c.waSrc === "dm" ? "dm" : ""}">${c.waSrc === "dm" ? "Found in DM" : "CRM"}</span>` : "Not shared yet"}</span>${wa ? `<button class="btn sm ghost" type="button" data-copy="${esc(wa)}">Copy</button>` : "<span></span>"}</div>
+      <div><span class="k">Discord</span><span class="v">${c.linked ? "@" + esc(c.d) : "Not linked"}</span><span></span></div>
+      <div><span class="k">TikTok</span><span class="v">@${esc(c.h)}</span><span></span></div>
+    </div></div>
+    <div><div class="sec-t">Activity</div><div class="tl">
+      ${g ? `<div><i></i><b style="font-weight:500">Made ${int(g / 32)} sales in this range</b><span>${esc(rLabel().split(" · ").pop())}</span></div>` : ""}
+      <div><i></i><span style="color:var(--color-text)">${int(c.msgs * scale())} messages in Discord</span><span>this range</span></div>
+      ${dm ? `<div><i></i><span style="color:var(--color-text)">Onboarding: ${dm.status === "done" ? "finished" : dm.status === "nodm" ? "no reply yet" : "in progress"}</span><span>${esc(dm.time)}</span></div>` : ""}
+      <div><i></i><span style="color:var(--color-text)">Joined the server</span><span>${fmtD(addD(today0(), -c.joined))}</span></div>
+    </div></div>`,
+    `${dm ? `<button class="btn" type="button" id="cr-dm">${ico("chat")}Open DM</button>` : ""}<button class="btn" type="button" id="cr-crm">${ico("external")}View in ${esc(crmName())}</button>`);
+  $$("[data-copy]", w).forEach((b) => b.addEventListener("click", () => { const v = b.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(() => toast("Copied " + v), () => toast(v)); }));
+  const dmb = $("#cr-dm", w); if (dmb) dmb.addEventListener("click", () => { closeDrawer(); sub.dm = dm.id; sub.ob = "inbox"; go("onboarding"); });
+  $("#cr-crm", w).addEventListener("click", () => toast(`Opens @${c.h} in ${crmName()} in the live product`));
+}
+
+/* ---------- Approvals ---------- */
+function pApprovals(el) {
+  const tab = sub.ap || "pending";
+  const list = S.drafts.filter((d) => d.status === tab);
+  const n = (s) => S.drafts.filter((d) => d.status === s).length;
+  el.innerHTML = ph("Approvals", `Every draft also waits in #${esc(S.map.mod || "moderator-only")}. Whoever approves first posts it, once.`) +
+    `<div class="tabs">${[["pending", "Waiting on you"], ["posted", "Posted"], ["rejected", "Rejected"]].map(([k, l]) => `<button type="button" class="${tab === k ? "on" : ""}" data-ap="${k}">${l} <span class="pill ${k === "pending" && n(k) ? "rose" : "line"}">${n(k)}</span></button>`).join("")}</div>` +
+    (list.length ? list.map((d) => `<article class="appr" data-id="${d.id}">
+      <div style="min-width:0"><span class="pill">${esc(autoName(d.auto))}</span><h3>${esc(d.title)}</h3><p class="muted" style="font-size:var(--text-small)">Posts to <b style="color:var(--color-heading);font-weight:500">${esc(chOf(d.auto) || "no channel")}</b> · ${esc(d.when)}</p>
+        ${tab === "pending" ? `<label class="field" style="margin-top:14px">Message<textarea class="input" data-edit="${d.id}">${esc(d.text)}</textarea></label>
+        <div class="acts"><button class="btn primary" type="button" data-approve="${d.id}">${ico("check")}Approve &amp; post</button><button class="btn" type="button" data-test="${d.id}">Send test to mods</button><button class="btn ghost" type="button" data-reject="${d.id}">Reject</button></div>`
+        : `<div class="meta"><span class="pill ${tab === "posted" ? "good" : "line"}">${tab === "posted" ? "Posted" : "Rejected"} by ${esc(d.by || "You")}</span>${tab === "posted" ? '<span class="pill line">🔥 🤍 🚀 📈 added</span>' : ""}</div>`}
+      </div>
+      <div style="min-width:0"><div class="sec-t">Preview</div><div id="pv-${d.id}">${dcPreview(d.text, d.card, (chOf(d.auto) || "#channel").slice(1))}</div></div>
+    </article>`).join("") : `<div class="tile"><div class="empty"><b>${tab === "pending" ? "Nothing waiting" : "Nothing here yet"}</b>${tab === "pending" ? "New drafts show up here and in your mod channel." : ""}</div></div>`);
+  $$("[data-ap]", el).forEach((b) => b.addEventListener("click", () => { sub.ap = b.dataset.ap; renderPage(); }));
+  $$("[data-edit]", el).forEach((t) => t.addEventListener("input", () => { const d = S.drafts.find((x) => x.id === t.dataset.edit); d.text = t.value; save(); $("#pv-" + d.id).innerHTML = dcPreview(d.text, d.card, (chOf(d.auto) || "#channel").slice(1)); }));
+  $$("[data-approve]", el).forEach((b) => b.addEventListener("click", () => { const d = S.drafts.find((x) => x.id === b.dataset.approve); d.status = "posted"; d.by = "You"; save(); renderPage(); toast(`Posted to ${chOf(d.auto)} and reacted 🔥 🤍 🚀 📈`); }));
+  $$("[data-reject]", el).forEach((b) => b.addEventListener("click", () => { const d = S.drafts.find((x) => x.id === b.dataset.reject); d.status = "rejected"; d.by = "You"; save(); renderPage(); toast("Rejected. We noted it under the draft in your mod channel."); }));
+  $$("[data-test]", el).forEach((b) => b.addEventListener("click", () => toast(`Test sent to #${S.map.mod || "moderator-only"}`)));
+}
+
+/* ---------- Automations ---------- */
+function pAutomations(el) {
+  el.innerHTML = ph("Automations", "Turn automations on or off, change where they post, or build your own.", `<button class="btn primary" type="button" data-go="automation-builder">${ico("spark")}New custom automation</button>`) +
+    `<div class="autos">${BUILTIN.map((a) => { const on = S.on[a.key], cfg = S.cfg[a.key] || {}; return `<article class="auto ${on ? "" : "off"}">
+      <div class="t"><span class="disc">${a.n}</span><div><h3>${esc(a.name)}</h3><span class="pill ${on ? "good" : "line"}" style="margin-top:4px">${on ? "On" : "Paused"}</span></div>${sw(a.key, on, "Turn " + a.name + " on or off")}</div>
+      <p>${esc(a.what)}</p>
+      <div class="m"><span class="pill line">${ico("hash", "ico")}${esc((chOf(a.key) || "No channel").slice(1) || "No channel")}</span><span class="pill line">${esc(cfg.sched || a.sched)}</span>${a.mention ? `<span class="pill line">${esc(cfg.mention || a.mention)}</span>` : ""}</div>
+      <div class="b"><button class="btn sm" type="button" data-edit-auto="${a.key}">${ico("edit")}Edit</button><button class="btn sm ghost" type="button" data-run="${a.key}">Run now</button></div></article>`; }).join("")}
+    ${S.custom.map((c) => `<article class="auto ${c.on ? "" : "off"}">
+      <div class="t"><span class="disc">${ico("spark")}</span><div><h3>${esc(c.name)}</h3><span class="pill rose" style="margin-top:4px">Custom</span></div>${sw(c.id, c.on, "Turn " + c.name + " on or off")}</div>
+      <p>${esc(c.what)}</p>
+      <div class="m"><span class="pill line">${esc(c.channel)}</span><span class="pill line">${esc(c.schedule)}</span>${c.approval ? '<span class="pill line">Needs approval</span>' : ""}</div>
+      <div class="b"><button class="btn sm" type="button" data-open-custom="${c.id}">${ico("edit")}Open in builder</button><button class="btn sm ghost" type="button" data-del="${c.id}">Delete</button></div></article>`).join("")}
+    <button class="auto new" type="button" data-go="automation-builder"><span class="disc" style="background:var(--color-primary-tint);color:var(--color-primary)">${ico("plus")}</span><h3 style="font-family:var(--font-sans);font-size:var(--text-body-sm);font-weight:600;color:var(--color-heading)">Build a custom automation</h3><p>Describe what you want in plain words. Kreo drafts it, shows you a live preview, and you deploy it to any channel.</p></button></div>`;
+  bindSwitches(el, (id, v) => { toggleAuto(id, v); renderPage(); });
+  $$("[data-run]", el).forEach((b) => b.addEventListener("click", () => toast(`${autoName(b.dataset.run)}: draft sent to #${S.map.mod || "moderator-only"}`)));
+  $$("[data-del]", el).forEach((b) => b.addEventListener("click", () => { S.custom = S.custom.filter((c) => c.id !== b.dataset.del); save(); renderPage(); toast("Custom automation deleted"); }));
+  $$("[data-open-custom]", el).forEach((b) => b.addEventListener("click", () => { const c = S.custom.find((x) => x.id === b.dataset.openCustom); CB = { spec: { ...c.spec }, msgs: c.msgs ? c.msgs.slice() : [], editing: c.id }; go("automation-builder"); }));
+  $$("[data-edit-auto]", el).forEach((b) => b.addEventListener("click", () => editAuto(b.dataset.editAuto)));
+}
+function editAuto(k) {
+  const a = AUTOS.find((x) => x.key === k), cfg = S.cfg[k] || {};
+  const w = drawer(esc(a.name), `
+    <p class="muted" style="font-size:var(--text-small)">${esc(a.what)}</p>
+    <label class="field">Posts to<select class="input" id="ea-ch">${chanOpts(S.map[k], "No channel (paused)")}</select></label>
+    <label class="field">Schedule<input class="input" id="ea-sched" value="${esc(cfg.sched || a.sched)}"></label>
+    ${a.mention ? `<label class="field">Notify<select class="input" id="ea-men">${["@here", "@everyone", "Creator only", "No mention"].map((m) => `<option ${(cfg.mention || a.mention) === m ? "selected" : ""}>${m}</option>`).join("")}</select></label>` : ""}
+    <div class="trow" style="border:0;padding:0"><div><b>Needs approval</b><span>Drafts go to #${esc(S.map.mod || "moderator-only")} first</span></div>${sw("ea-appr", cfg.approval !== false, "Needs approval")}</div>
+    <label class="field">Voice notes for the bot<textarea class="input" id="ea-voice" placeholder="Hype but not cringe. Short sentences. Max 2 emojis.">${esc(cfg.voice || "")}</textarea></label>`,
+    `<button class="btn" type="button" id="ea-test">Send test to mods</button><button class="btn primary" type="button" id="ea-save">Save</button>`);
+  $("#ea-test", w).addEventListener("click", () => toast(`Test sent to #${S.map.mod || "moderator-only"}`));
+  $("#ea-save", w).addEventListener("click", () => {
+    const ch = $("#ea-ch", w).value; if (ch) S.map[k] = ch; else delete S.map[k];
+    S.cfg[k] = { sched: $("#ea-sched", w).value, mention: $("#ea-men", w) ? $("#ea-men", w).value : undefined, approval: $("[data-sw=ea-appr]", w).checked, voice: $("#ea-voice", w).value };
+    save(); closeDrawer(); renderPage(); toast(a.name + " saved");
+  });
+}
+
+/* Custom automation builder (chat + live preview) */
+let CB = null;
+const DAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
+function cbFresh() { return { spec: { name: "Untitled automation", what: "", schedule: "Not set", channel: chOf("general_chat") || "#general", mention: "@here", approval: true, data: "—", text: "Describe what you want and I'll draft it here." }, msgs: [["ai", "Hi! Tell me what you want this automation to do, in plain words. For example: \"Every Friday, remind creators who haven't requested a sample yet.\" I'll draft it and show you exactly how it will look in Discord."]], editing: null }; }
+function aiReply(text) {
+  const t = text.toLowerCase(), s = CB.spec, changed = [];
+  const first = s.name === "Untitled automation";
+  if (first) {
+    let tpl;
+    if (/sample/.test(t)) tpl = { name: "Sample request reminder", what: "Reminds creators without a sample request to grab one.", schedule: "Every Friday at 11:00 AM", data: "Creators with no sample request (from " + crmName() + ")", text: "@here Friday reminder 📦 Haven't requested your free sample yet? Grab it in 🔗・affiliate-links and post your first video this week." };
+    else if (/streak|3 videos|three videos|post(ed)? (\d|three)|consisten/.test(t)) tpl = { name: "Video streak shoutout", what: "Shouts out creators who posted 3+ videos this week.", schedule: "Every Sunday at 6:00 PM", data: "Videos posted per creator, last 7 days (" + crmName() + ")", text: "@here 🎬 Streak squad this week: @mariah.makes, @kofi.reviews and @lena.tries each posted 3+ videos. That's how winners are made. Who's next?" };
+    else if (/inactive|haven.?t posted|win.?back|quiet|silent/.test(t)) tpl = { name: "Win-back nudge", what: "DMs creators who haven't posted in 14 days.", schedule: "Every Monday at 3:00 PM", channel: "Direct message", mention: "No mention", data: "Creators with no video in 14 days (" + crmName() + ")", text: "Hey {first_name}! Haven't seen a video from you in a bit. Here's last week's winning angle to get you going: 🔥・winning-angles. Need a new sample? Just reply here." };
+    else if (/tip|product|brief|talking point/.test(t)) tpl = { name: "Weekly product tip", what: "Posts one product tip from your brief every week.", schedule: "Every Wednesday at 1:00 PM", data: "Your creator brief", text: "@here 💡 Tip of the week: show the before and after in the first 3 seconds. Videos that open on the result sold 2× more last week." };
+    else if (/live|livestream/.test(t)) tpl = { name: "Live stream hype", what: "Announces creators going live with your product.", schedule: "When a creator starts a live", data: "Live streams with your products (" + crmName() + ")", text: "@here 🔴 @thejesscloset is LIVE right now with the Keto Bundle. Go show some love!" };
+    else tpl = { name: "Custom post", what: text.slice(0, 120), schedule: "Every Monday at 12:00 PM", data: "Your " + crmName() + " data", text: "@here " + text.replace(/^(every|each)\s+\w+,?\s*/i, "").replace(/^\w/, (m) => m.toUpperCase()) };
+    Object.assign(s, tpl); changed.push("name", "what", "schedule", "data", "text", "channel", "mention");
+  }
+  const day = DAYS.find((d) => t.includes(d)); const tm = t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/);
+  if (/every ?day|daily/.test(t) && !first) { s.schedule = "Every day at " + (s.schedule.split(" at ")[1] || "10:00 AM"); changed.push("schedule"); }
+  if (day && !first) { s.schedule = "Every " + cap(day) + " at " + (s.schedule.split(" at ")[1] || "10:00 AM"); changed.push("schedule"); }
+  if (tm) { s.schedule = (s.schedule.includes(" at ") ? s.schedule.split(" at ")[0] : s.schedule === "Not set" ? "Every Monday" : s.schedule) + " at " + (+tm[1]) + ":" + (tm[2] || "00") + " " + tm[3].toUpperCase(); changed.push("schedule"); }
+  const ch = (t.match(/#([a-z0-9-]+)/) || [])[1];
+  if (ch) { const hit = S.channels.find((c) => base(c.name).includes(ch)); if (hit) { s.channel = "#" + hit.name; changed.push("channel"); } }
+  if (/\bdm\b|direct message|privately/.test(t) && !first) { s.channel = "Direct message"; s.mention = "No mention"; changed.push("channel", "mention"); }
+  if (/no (mention|tag|@here)|don.?t (tag|ping)|without @here/.test(t)) { s.mention = "No mention"; s.text = s.text.replace(/@here\s*/g, ""); changed.push("mention", "text"); }
+  else if (/@everyone/.test(t)) { s.mention = "@everyone"; s.text = s.text.replace(/@here/g, "@everyone"); changed.push("mention", "text"); }
+  if (/shorter|too long|concise/.test(t)) { s.text = s.text.split(/(?<=[.!?])\s/).slice(0, 2).join(" "); changed.push("text"); }
+  if (/more hype|hype|excit|energy/.test(t) && !first) { s.text = s.text.replace(/\.$/, "") + " 🚀🔥"; changed.push("text"); }
+  if (/no emoji|calmer|professional/.test(t)) { s.text = s.text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]️?/gu, "").replace(/\s{2,}/g, " ").trim(); changed.push("text"); }
+  if (/skip approval|post automatically|no approval|auto.?post/.test(t)) { s.approval = false; changed.push("approval"); }
+  if (/needs? approval|approve first/.test(t)) { s.approval = true; changed.push("approval"); }
+  const nm = text.match(/(?:call it|name it)\s+["“]?([^"”]+)["”]?/i); if (nm) { s.name = nm[1].trim().slice(0, 48); changed.push("name"); }
+  const say = text.match(/(?:say|message should be|text:)\s+["“](.+)["”]/i); if (say) { s.text = say[1]; changed.push("text"); }
+  let reply;
+  if (first) reply = `Here's a first draft: **${s.name}**.\n\n• Runs: ${s.schedule}\n• Posts to: ${s.channel}\n• Uses: ${s.data}\n• ${s.approval ? "Waits for approval in #" + (S.map.mod || "moderator-only") : "Posts automatically"}\n\nCheck the preview on the right. Want a different day or time, another channel, or a different tone?`;
+  else if (changed.length) reply = "Done. I changed the " + [...new Set(changed)].map((c) => ({ text: "message", what: "description" }[c] || c)).join(", ") + ". Anything else?";
+  else reply = "Got it. I'll take that into account when it runs. You can also ask me to change the day and time, the channel (like #share-wins), the mention, the tone, or say \"call it …\" to rename it.";
+  return { reply, changed: [...new Set(changed)] };
+}
+function pBuilder(el) {
+  if (!CB) CB = cbFresh();
+  const s = CB.spec;
+  el.innerHTML = ph(`<a href="#automations" style="color:var(--color-text-muted);font-size:var(--text-body-sm);font-family:var(--font-sans);font-weight:500;display:inline-flex;gap:4px;align-items:center">${ico("back")}Automations</a><br>Custom automation`, "Describe it, refine it in chat, watch the preview, then deploy.",
+    `<button class="btn" type="button" id="cb-new">${ico("plus")}Start over</button><button class="btn" type="button" id="cb-save" ${s.name === "Untitled automation" ? "disabled" : ""}>Save draft</button><button class="btn primary" type="button" id="cb-deploy" ${s.name === "Untitled automation" ? "disabled" : ""}>${ico("bolt")}Save &amp; deploy</button>`) + `
+  <div class="cab">
+    <section class="chatbox" aria-label="Chat with Kreo AI">
+      <div class="ch-h"><span class="todo-i">${ico("spark")}</span><div><b>Kreo AI</b><div class="muted" style="font-size:var(--text-micro)">Knows your channels, automations and ${esc(crmName())} data</div></div></div>
+      <div class="msgs" id="cb-msgs">${CB.msgs.map(([who, t]) => `<div class="bub ${who === "ai" ? "ai" : "me"}">${esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")}</div>`).join("")}</div>
+      ${CB.msgs.length < 2 ? `<div class="sugg">${["Every Friday, remind creators who haven't requested a sample", "Shout out creators who posted 3 videos this week", "DM creators who haven't posted in 14 days", "Post a product tip from our brief every Wednesday"].map((x) => `<button class="chip" type="button" data-sugg="${esc(x)}">${esc(x)}</button>`).join("")}</div>` : ""}
+      <form class="compose" id="cb-form"><textarea class="input" id="cb-in" placeholder="${CB.msgs.length < 2 ? "Describe your automation…" : "Ask for changes: day, time, channel, tone…"}" aria-label="Message"></textarea><button class="btn primary" type="submit" aria-label="Send">${ico("send")}</button></form>
+    </section>
+    <section class="prevbox" aria-label="Preview">
+      <div class="ch-h" style="padding:14px 16px;border-bottom:1px solid var(--color-border);display:flex;gap:8px;align-items:center"><b style="font-size:var(--text-caption);color:var(--color-heading)">Live preview</b><span class="pill line" style="margin-left:auto">${CB.editing ? "Editing saved automation" : "Not saved"}</span></div>
+      <div class="pb">
+        <div><div class="sec-t">${esc(s.name)}</div>${s.channel === "Direct message" ? `<div class="dc"><div class="chan">${ico("chat")}Direct message to each creator</div><div class="msg"><div class="av">${avHTML()}</div><div style="min-width:0"><div class="who">${esc(botName())} <small>APP</small></div><div>${esc(s.text.replace("{first_name}", "Lena"))}</div></div></div></div>` : dcPreview(s.text, null, s.channel.replace(/^#/, ""))}</div>
+        <div class="specs">
+          <div data-spec="schedule"><span>Runs</span><b>${esc(s.schedule)}</b></div>
+          <div data-spec="channel"><span>Posts to</span><b>${esc(s.channel)}</b></div>
+          <div data-spec="data"><span>Uses</span><b>${esc(s.data)}</b></div>
+          <div data-spec="mention"><span>Notify</span><b>${esc(s.mention)}</b></div>
+          <div data-spec="approval"><span>Approval</span><b>${s.approval ? "Mods approve first" : "Posts automatically"}</b></div>
+          <div data-spec="what"><span>What it does</span><b>${esc(s.what || "—")}</b></div>
+        </div>
+      </div>
+    </section>
+  </div>`;
+  const msgs = $("#cb-msgs"); msgs.scrollTop = msgs.scrollHeight;
+  const send = (text) => {
+    text = text.trim(); if (!text) return;
+    CB.msgs.push(["me", text]); pBuilder(el);
+    const m = $("#cb-msgs"); const ty = document.createElement("div"); ty.className = "bub ai"; ty.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>'; m.appendChild(ty); m.scrollTop = m.scrollHeight;
+    $("#cb-in").disabled = true;
+    setTimeout(() => { const { reply, changed } = aiReply(text); CB.msgs.push(["ai", reply]); pBuilder(el); changed.forEach((k) => { const sp = $(`[data-spec="${k}"]`); if (sp) sp.classList.add("flash"); }); $("#cb-in").focus(); }, 900);
+  };
+  $("#cb-form").addEventListener("submit", (e) => { e.preventDefault(); send($("#cb-in").value); });
+  $("#cb-in").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(e.target.value); } });
+  $$("[data-sugg]").forEach((b) => b.addEventListener("click", () => send(b.dataset.sugg)));
+  $("#cb-new").addEventListener("click", () => { CB = cbFresh(); pBuilder(el); });
+  const store = (on, extra = {}) => {
+    const id = CB.editing || "cu" + Date.now().toString(36);
+    const rec = { id, name: s.name, what: s.what, channel: s.channel, schedule: s.schedule, approval: s.approval, on, spec: { ...s }, msgs: CB.msgs.slice(), ...extra };
+    const i = S.custom.findIndex((c) => c.id === id); if (i >= 0) S.custom[i] = rec; else S.custom.push(rec);
+    CB.editing = id; save(); return rec;
+  };
+  $("#cb-save").addEventListener("click", () => { store(false); toast("Saved as a draft. It's paused until you deploy it."); pBuilder(el); counts(); });
+  $("#cb-deploy").addEventListener("click", () => {
+    $("#dlgRoot").innerHTML = `<div class="dlg" id="depDlg" role="dialog" aria-modal="true" aria-labelledby="depH"><div class="modal"><h3 id="depH">Deploy "${esc(s.name)}"</h3>
+      <label class="field">Posts to<select class="input" id="dp-ch"><option value="Direct message" ${s.channel === "Direct message" ? "selected" : ""}>Direct message to each creator</option>${groupBy(S.channels).map(([cat, chs]) => `<optgroup label="${esc(cat)}">${chs.map((c) => `<option value="#${esc(c.name)}" ${s.channel === "#" + c.name ? "selected" : ""}>#${esc(c.name)}</option>`).join("")}</optgroup>`).join("")}</select></label>
+      <label class="field">Runs<input class="input" id="dp-sch" value="${esc(s.schedule)}"></label>
+      <div class="trow" style="border:0;padding:0"><div><b>Mods approve first</b><span>Drafts go to #${esc(S.map.mod || "moderator-only")}</span></div>${sw("dp-appr", s.approval, "Mods approve first")}</div>
+      <div class="acts"><button class="btn" type="button" id="dp-x">Cancel</button><button class="btn primary" type="button" id="dp-go">${ico("bolt")}Deploy</button></div></div></div>`;
+    const close = () => ($("#dlgRoot").innerHTML = "");
+    $("#dp-x").addEventListener("click", close);
+    $("#dp-go").addEventListener("click", () => { s.channel = $("#dp-ch").value; s.schedule = $("#dp-sch").value; s.approval = $("[data-sw=dp-appr]").checked; const r = store(true); close(); CB = null; go("automations"); toast(`"${r.name}" is live: ${r.schedule}, ${r.channel}`); });
+  });
+}
+
+/* ---------- Onboarding & DMs ---------- */
+const WA_RE = /(\+?\d[\d\s().-]{7,}\d)/g;
+function pOnboarding(el) {
+  const tab = sub.ob || "inbox";
+  el.innerHTML = ph("Onboarding &amp; DMs", "Every new member gets your welcome DM. All conversations live here, and you can reply as the bot.", `<span class="pill line">${S.prefs.dmNew ? "DMs on" : "DMs paused"}</span>${sw("dmNew", S.prefs.dmNew, "DM new members")}`) +
+    `<div class="tabs">${[["inbox", "Inbox"], ["questions", "Questions"], ["responses", "Responses"]].map(([k, l]) => `<button type="button" class="${tab === k ? "on" : ""}" data-ob="${k}">${l}${k === "inbox" && S.dms.some((d) => d.unread) ? ` <span class="pill rose">${S.dms.filter((d) => d.unread).length}</span>` : ""}</button>`).join("")}</div><div id="obBody"></div>`;
+  $$("[data-ob]", el).forEach((b) => b.addEventListener("click", () => { sub.ob = b.dataset.ob; renderPage(); }));
+  bindSwitches(el, (id, v) => { S.prefs.dmNew = v; save(); renderPage(); toast(v ? "New members get the welcome DM" : "Welcome DMs paused"); });
+  ({ inbox: obInbox, questions: obQuestions, responses: obResponses }[tab])($("#obBody"));
+}
+function obInbox(el) {
+  const f = sub.dmf || "all", q = (sub.dmq || "").toLowerCase();
+  const fl = { all: () => true, unread: (m) => m.unread, needs: (m) => m.status === "needs", done: (m) => m.status === "done", nodm: (m) => m.status === "nodm" };
+  const list = S.dms.filter(fl[f]).filter((m) => !q || m.c.includes(q) || m.msgs.some((x) => x[1].toLowerCase().includes(q)));
+  const cur = S.dms.find((m) => m.id === sub.dm) || list[0] || S.dms[0];
+  if (cur && cur.unread) { cur.unread = false; save(); counts(); }
+  const cr = CREATORS.find((c) => c.h === cur.c) || {};
+  const answered = cur.msgs.filter((x) => x[0] === "c").length;
+  const statusPill = { done: '<span class="pill good">Onboarded</span>', needs: '<span class="pill rose">Needs reply</span>', progress: '<span class="pill">In progress</span>', nodm: '<span class="pill line">No reply yet</span>' };
+  el.innerHTML = `<div class="inbox">
+    <div class="ib-list"><div class="ib-f"><input class="input" id="dmq" placeholder="Search DMs" value="${esc(sub.dmq || "")}" aria-label="Search DMs"><select class="input" id="dmf" aria-label="Filter">${[["all", "All conversations"], ["unread", "Unread"], ["needs", "Needs a reply"], ["done", "Onboarded"], ["nodm", "No reply yet"]].map(([k, l]) => `<option value="${k}" ${f === k ? "selected" : ""}>${l}</option>`).join("")}</select></div>
+      <div class="convs">${list.map((m) => { const last = m.msgs[m.msgs.length - 1]; return `<button type="button" class="conv ${m.id === cur.id ? "on" : ""}" data-conv="${m.id}"><span class="cav">${initials(m.c)}</span><div style="min-width:0"><b>@${esc(m.c)}</b><span class="pv">${last[0] === "bot" ? "You: " : ""}${esc(last[1])}</span></div><span class="tm">${esc(m.time)}${m.unread ? '<i class="unread"></i>' : ""}</span></button>`; }).join("") || `<div class="empty"><b>No conversations</b></div>`}</div></div>
+    <div class="thread">
+      <div class="th-h"><span class="cav r">${initials(cur.c)}</span><div style="min-width:0"><b>@${esc(cur.c)}</b><span>${esc(cr.name || "")} · DM with ${esc(botName())}</span></div><div style="margin-left:auto">${statusPill[cur.status] || ""}</div></div>
+      <div class="msgs" id="dmMsgs">${cur.msgs.map(([who, t, when]) => { const has = who === "c" && S.prefs.waDetect && t.match(WA_RE);
+        return `<div class="bubrow ${who === "bot" ? "" : "me"}" style="align-items:${who === "bot" ? "flex-end" : "flex-start"}"><div class="bub ${who === "bot" ? "me" : "ai"}">${esc(t).replace(S.prefs.waDetect && who === "c" ? WA_RE : /$^/, "<mark>$1</mark>")}<span class="when">${esc(when)}</span></div>${has ? `<span class="det">${ico("wa")}WhatsApp number found and saved to profile</span>` : ""}</div>`; }).join("")}</div>
+      <form class="compose" id="dmForm"><textarea class="input" id="dmIn" placeholder="Reply as ${esc(botName())}…" aria-label="Reply"></textarea><button class="btn primary" type="submit">${ico("send")}Send</button></form>
+    </div>
+    <aside class="ib-side">
+      <div><div class="sec-t">Creator</div><div class="dl">
+        <div><span class="k">TikTok</span><span class="v">@${esc(cur.c)}</span><span></span></div>
+        <div><span class="k">Email</span><span class="v">${esc(cr.email || "—")}</span><span class="src">CRM</span></div>
+        <div><span class="k">Phone</span><span class="v">${esc(cr.phone || "—")}</span>${cr.phone ? '<span class="src">CRM</span>' : "<span></span>"}</div>
+        <div><span class="k">WhatsApp</span><span class="v">${esc(waOf(cr) || "—")}</span>${waOf(cr) ? `<span class="src ${cr.waSrc === "dm" ? "dm" : ""}">${cr.waSrc === "dm" ? "DM" : "CRM"}</span>` : "<span></span>"}</div>
+        <div><span class="k">GMV</span><span class="v">${money(crGmv(cr) || 0)}</span><span></span></div>
+      </div></div>
+      <div><div class="sec-t">Onboarding</div><div class="ob-steps">${S.questions.map((q2, i) => `<div><span class="s ${i < answered || cur.status === "done" ? "ok" : ""}">${i < answered || cur.status === "done" ? ico("check") : ""}</span><span>${esc(q2)}</span></div>`).join("")}</div></div>
+      <button class="btn" type="button" id="dm-profile">${ico("users")}Open creator profile</button>
+    </aside></div>`;
+  const m = $("#dmMsgs"); m.scrollTop = m.scrollHeight;
+  $$("[data-conv]", el).forEach((b) => b.addEventListener("click", () => { sub.dm = b.dataset.conv; obInbox(el); counts(); }));
+  $("#dmf").addEventListener("change", (e) => { sub.dmf = e.target.value; obInbox(el); });
+  const dq = $("#dmq"); dq.addEventListener("input", () => { sub.dmq = dq.value; clearTimeout(dq._t); dq._t = setTimeout(() => { obInbox(el); const n = $("#dmq"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 250); });
+  const sendDm = () => { const v = $("#dmIn").value.trim(); if (!v) return; cur.msgs.push(["bot", v, "Just now"]); cur.time = "Just now"; if (cur.status === "needs") cur.status = "done"; save(); obInbox(el); toast("Sent as " + botName()); };
+  $("#dmForm").addEventListener("submit", (e) => { e.preventDefault(); sendDm(); });
+  $("#dmIn").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendDm(); } });
+  $("#dm-profile").addEventListener("click", () => { if (cr.id) openCreator(cr.id); });
+}
+function obQuestions(el) {
+  el.innerHTML = `<div class="bento"><section class="tile s7"><div class="th"><h2>Welcome DM</h2></div>
+      <label class="field">Opening message<textarea class="input" id="ob-w">${esc(S.welcome)}</textarea><small>Use {first_name} and {server}.</small></label>
+      <div class="th" style="margin-top:18px"><h2>Questions</h2><span class="muted" style="font-size:var(--text-micro)">${S.questions.length} of 6</span></div>
+      <div style="display:grid;gap:8px" id="qList">${S.questions.map((q, i) => `<div style="display:flex;gap:8px;align-items:center"><span class="disc">${i + 1}</span><input class="input" data-q="${i}" value="${esc(q)}" aria-label="Question ${i + 1}"><button class="iconbtn" type="button" data-qdel="${i}" aria-label="Remove question">${ico("x")}</button></div>`).join("")}</div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn sm" type="button" id="qAdd" ${S.questions.length >= 6 ? "disabled" : ""}>${ico("plus")}Add question</button></div>
+      <div class="trow" style="margin-top:16px"><div><b>Find WhatsApp numbers in replies</b><span>Saves any phone number a creator shares in DMs to their profile</span></div>${sw("waDetect", S.prefs.waDetect, "Find WhatsApp numbers")}</div>
+      <div class="trow"><div><b>Remind after 24 hours of silence</b><span>One friendly nudge, then we stop</span></div>${sw("reminders", S.prefs.reminders, "Reminders")}</div>
+    </section>
+    <section class="tile s5"><div class="th"><h2>Preview</h2><span class="muted" style="font-size:var(--text-micro)">How the DM reads</span></div>
+      <div class="dc"><div class="chan">${ico("chat")}Direct message</div><div class="msg"><div class="av">${avHTML()}</div><div style="min-width:0;display:grid;gap:8px"><div class="who">${esc(botName())} <small>APP</small></div><div>${esc(S.welcome.replace("{first_name}", "Lena").replace("{server}", srvName()))}</div>${S.questions.map((q, i) => `<div><b style="color:var(--color-discord-head)">${i + 1}.</b> ${esc(q)}</div>`).join("")}</div></div></div>
+    </section></div>`;
+  $("#ob-w").addEventListener("change", (e) => { S.welcome = e.target.value; save(); obQuestions(el); toast("Welcome message saved"); });
+  $$("[data-q]", el).forEach((i) => i.addEventListener("change", () => { S.questions[+i.dataset.q] = i.value; save(); obQuestions(el); toast("Question saved"); }));
+  $$("[data-qdel]", el).forEach((b) => b.addEventListener("click", () => { S.questions.splice(+b.dataset.qdel, 1); save(); obQuestions(el); }));
+  $("#qAdd").addEventListener("click", () => { S.questions.push("New question"); save(); obQuestions(el); const l = $$("[data-q]"); l[l.length - 1].select(); });
+  bindSwitches(el, (id, v) => { S.prefs[id] = v; save(); toast("Saved"); });
+}
+function obResponses(el) {
+  el.innerHTML = `<div class="tblwrap"><table class="tbl"><thead><tr><th>Creator</th><th>Status</th>${S.questions.map((q) => `<th>${esc(q.length > 28 ? q.slice(0, 28) + "…" : q)}</th>`).join("")}</tr></thead><tbody>
+    ${S.dms.map((m) => { const ans = m.msgs.filter((x) => x[0] === "c").map((x) => x[1]); return `<tr data-dmrow="${m.id}"><td><div class="who"><span class="cav">${initials(m.c)}</span><div><b>@${esc(m.c)}</b><span>${esc(m.time)}</span></div></div></td><td>${m.status === "done" ? '<span class="pill good">Done</span>' : m.status === "nodm" ? '<span class="pill line">No reply</span>' : '<span class="pill">In progress</span>'}</td>${S.questions.map((_, i) => `<td>${ans[i] ? esc(ans[i]).replace(WA_RE, "<mark>$1</mark>") : '<span class="muted">—</span>'}</td>`).join("")}</tr>`; }).join("")}
+  </tbody></table></div>`;
+  $$("[data-dmrow]", el).forEach((r) => r.addEventListener("click", () => { sub.dm = r.dataset.dmrow; sub.ob = "inbox"; renderPage(); }));
+}
+
+/* ---------- Content ---------- */
+function pContent(el) {
+  const vids = CREATORS.filter((c) => c.weekly > 0).flatMap((c, i) => [0, 1].map((k) => ({ c, title: ["Before and after my first wash", "POV: your scalp after 2 weeks", "I tried the viral dandruff fix", "Honest review, no gatekeeping", "GRWM: scalp care edition"][(i + k) % 5], gmv: crGmv(c) * (k ? 0.35 : 0.6), views: Math.round(crGmv(c) * (k ? 40 : 75)), d: addD(R.e, -((i * 2 + k) % rDays())) }))).sort((a, b) => b.gmv - a.gmv).slice(0, 14);
+  el.innerHTML = ph("Content", "Top videos with your products in this range.", drHTML()) + `<div class="tblwrap"><table class="tbl"><thead><tr><th>#</th><th>Video</th><th>Creator</th><th>Posted</th><th class="r">Views</th><th class="r">GMV</th><th></th></tr></thead><tbody>
+    ${vids.map((v, i) => `<tr data-creator="${v.c.id}"><td class="muted mono">${i + 1}</td><td><b style="color:var(--color-heading);font-weight:500">"${esc(v.title)}"</b></td><td>@${esc(v.c.h)} ${v.c.linked ? '<span class="pill good">In Discord</span>' : ""}</td><td class="muted">${fmtD(v.d)}</td><td class="r num">${int(v.views)}</td><td class="r num">${money(v.gmv)}</td><td><button class="btn sm ghost" type="button" data-use="${i}">Use as winning angle</button></td></tr>`).join("")}
+  </tbody></table></div>`;
+  $$("[data-creator]", el).forEach((r) => r.addEventListener("click", (e) => { if (e.target.closest("[data-use]")) return; openCreator(r.dataset.creator); }));
+  $$("[data-use]", el).forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); toast("Draft created. It's waiting in Approvals."); S.drafts.unshift({ id: "d" + Date.now(), auto: "winning_content", title: "Winning angle · from Content", text: "@here Winning angle 🔥 " + vids[+b.dataset.use].title + " by @" + vids[+b.dataset.use].c.h + ". Here's how to remake it.", card: "angle", when: "Next Mon 12:00 PM", status: "pending" }); save(); counts(); }));
+}
+
+/* ---------- Settings ---------- */
+function pSettings(el) {
+  const t = sub.set || "workspace";
+  const tabs = [["workspace", "Workspace", "home"], ["bot", "Bot & server", "server"], ["channels", "Channels", "hash"], ["crm", "CRM & data", "plug"], ["team", "Team", "users"], ["notifications", "Notifications", "bell"], ["billing", "Plan & billing", "card"]];
+  el.innerHTML = ph("Settings", "Your workspace, bot, channels, data and team.") + `<div class="set"><nav class="setnav" aria-label="Settings sections">${tabs.map(([k, l, i]) => `<button type="button" class="${t === k ? "on" : ""}" data-set="${k}">${ico(i)}${l}</button>`).join("")}</nav><div class="setbody" id="setBody"></div></div>`;
+  $$("[data-set]", el).forEach((b) => b.addEventListener("click", () => { sub.set = b.dataset.set; renderPage(); }));
+  const B2 = $("#setBody"), u = S.user || { name: "", brand: "" };
+  const saved = () => toast("Saved");
+  if (t === "workspace") B2.innerHTML = `<section class="card2"><div class="h"><h3>Workspace</h3></div>
+      <div class="frow"><label class="field">Brand name<input class="input" id="ws-brand" value="${esc(u.brand)}"></label><label class="field">Your name<input class="input" id="ws-name" value="${esc(u.name)}"></label></div>
+      <div class="frow"><label class="field">Time zone<select class="input"><option>America/New_York (ET)</option><option>America/Chicago (CT)</option><option>America/Los_Angeles (PT)</option><option>Europe/London (GMT)</option></select></label><label class="field">Week starts on<select class="input"><option>Sunday</option><option>Monday</option></select></label></div>
+      <div><button class="btn primary" type="button" id="ws-save">Save changes</button></div></section>
+    <section class="card2"><div class="h"><h3>Danger zone</h3><p>Disconnects the bot, CRM and all automations.</p></div><div><button class="btn" type="button" id="ws-del" style="color:var(--color-danger)">Delete workspace</button></div></section>`;
+  if (t === "bot") B2.innerHTML = `<section class="card2"><div class="h"><h3>Bot identity</h3><p>What creators see on every post.</p></div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="bav" style="width:64px;height:64px;font-size:24px">${avHTML()}</div><label class="btn sm" for="st-file">${ico("upload")}${S.bot.avatar ? "Change picture" : "Upload picture"}</label><input type="file" id="st-file" accept="image/*" hidden>${S.bot.avatar ? `<button class="btn sm ghost" type="button" id="st-rm">Remove</button>` : ""}</div>
+      <label class="field">Bot name<input class="input" id="st-name" value="${esc(S.bot.name)}" maxlength="32"></label><div><button class="btn primary" type="button" id="st-save">Save</button></div></section>
+    <section class="card2"><div class="h"><h3>Discord server</h3><div class="r"><button class="btn sm" type="button" id="st-sync">${ico("redo")}Refresh</button></div></div>
+      <div class="dl"><div><span class="k">Server</span><span class="v">${esc(srvName())}</span><span class="pill good">Connected</span></div><div><span class="k">Channels</span><span class="v">${S.channels.length} visible to the bot</span><span></span></div><div><span class="k">Last synced</span><span class="v">Just now</span><span></span></div></div>
+      <div class="perms-mini">${["View channels", "Send messages", "Embed links", "Attach files", "Add reactions", "Mention @here", "Manage channels", "Manage roles", "Read history", "Change nickname"].map((p) => `<span class="pill good">${ico("check")}${p}</span>`).join("")}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="${INVITE_URL}" target="_blank" rel="noopener">${ico("external")}Re-invite or update permissions</a><button class="btn" type="button" id="st-builder">${ico("spark")}Open AI Community Builder</button></div></section>`;
+  if (t === "channels") B2.innerHTML = `<section class="card2"><div class="h"><h3>Channels per automation</h3><p>Where each automation posts in ${esc(srvName())}.</p></div>
+      <div class="maptable" style="margin:0">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-map="${a.key}">${chanOpts(S.map[a.key])}</select></div>`).join("")}</div></section>
+    <section class="card2"><div class="h"><h3>All channels</h3><p>${S.channels.length} text channels the bot can see.</p></div>
+      <div class="tblwrap"><table class="tbl" style="min-width:520px"><thead><tr><th>Channel</th><th>Category</th><th>Used by</th></tr></thead><tbody>${S.channels.map((c) => { const by = AUTOS.filter((a) => S.map[a.key] === c.name).map((a) => a.name); return `<tr style="cursor:default"><td><b style="color:var(--color-heading);font-weight:500">#${esc(c.name)}</b>${S.newChannels.includes(c.name) ? ' <span class="pill">Created by Kreo</span>' : ""}</td><td class="muted">${esc(c.cat)}</td><td>${by.map((x) => `<span class="pill line">${esc(x)}</span>`).join(" ") || '<span class="muted">—</span>'}</td></tr>`; }).join("")}</tbody></table></div></section>`;
+  if (t === "crm") B2.innerHTML = `<section class="card2"><div class="h"><h3>Connected CRM</h3></div>
+      <div class="dl"><div><span class="k">Provider</span><span class="v">${esc(crmName())}</span><span class="pill good">Connected</span></div><div><span class="k">Access</span><span class="v">Read-only</span><span></span></div><div><span class="k">Last sync</span><span class="v">4 minutes ago</span><button class="btn sm ghost" type="button" id="crm-sync">Sync now</button></div></div>
+      <div class="sec-t" style="margin:0">Add another source</div>
+      <div class="crms" style="margin:0">${CRMS.filter((c) => c.id !== S.crm.id).map((x) => `<button type="button" class="crm" data-addcrm="${x.name}"><span class="mk">${x.mono}</span><b>${esc(x.name)}</b><span>${esc(x.reads)}</span></button>`).join("")}</div></section>
+    <section class="card2"><div class="h"><h3>Contact details</h3><p>How Kreo fills in creator contact info.</p></div>
+      <div class="trow"><div><b>Email and phone from ${esc(crmName())}</b><span>Pulled with each sync</span></div>${sw("crmContact", true, "Email and phone from CRM")}</div>
+      <div class="trow"><div><b>Find WhatsApp numbers in DMs</b><span>Any number a creator shares in a DM is saved to their profile, marked "From DM"</span></div>${sw("waDetect", S.prefs.waDetect, "Find WhatsApp numbers")}</div>
+      <div class="trow"><div><b>Link Discord members to ${esc(crmName())} creators</b><span>Matches by TikTok handle from onboarding</span></div>${sw("autoLink", true, "Auto-link")}</div></section>`;
+  if (t === "team") B2.innerHTML = `<section class="card2"><div class="h"><h3>Team</h3><div class="r"><button class="btn sm primary" type="button" id="tm-inv">${ico("plus")}Invite</button></div><p>People who can approve drafts and change settings.</p></div>
+      ${[[u.name, "you@" + (u.brand || "brand").toLowerCase().replace(/\W/g, "") + ".co", "Owner"], ["Priya Nair", "priya@example.com", "Admin"], ["Marcus Bell", "marcus@example.com", "Moderator"]].map(([n, e, r]) => `<div class="trow"><div style="display:flex;gap:10px;align-items:center"><span class="cav">${initials(n)}</span><div><b>${esc(n)}</b><span>${esc(e)}</span></div></div><select class="input" style="width:150px;height:36px" ${r === "Owner" ? "disabled" : ""}>${["Owner", "Admin", "Moderator", "Viewer"].map((x) => `<option ${x === r ? "selected" : ""}>${x}</option>`).join("")}</select></div>`).join("")}
+      <p class="muted" style="font-size:var(--text-micro)">Moderators can approve drafts here and in #${esc(S.map.mod || "moderator-only")}. Viewers can only see analytics.</p></section>`;
+  if (t === "notifications") B2.innerHTML = `<section class="card2"><div class="h"><h3>Notifications</h3><p>What Kreo emails you about.</p></div>
+      ${[["notifyDraft", "New drafts to approve", "When an automation drafts a post"], ["notifyDm", "DMs that need a reply", "When a creator asks something the bot can't answer"], ["digest", "Weekly summary", "Monday email with last week's numbers"]].map(([k, l, d]) => `<div class="trow"><div><b>${l}</b><span>${d}</span></div>${sw(k, S.prefs[k], l)}</div>`).join("")}</section>`;
+  if (t === "billing") B2.innerHTML = `<section class="card2"><div class="h"><h3>Plan</h3><p>Free trial: 12 days left. Pick a plan any time; your setup carries over.</p></div>
+      <div class="plans">${[["Starter", 99, ["1 Discord server", "4 built-in automations", "Approvals in Discord + Kreo"]], ["Growth", 249, ["Everything in Starter", "All 6 automations + custom", "DM inbox and WhatsApp capture"], 1], ["Agency", 599, ["Up to 10 brands", "Custom bots per brand", "Priority support"]]].map(([n, p, f, on]) => `<div class="plan ${on ? "on" : ""}"><b>${n}</b><div class="price">$${p}<small> /month</small></div><ul>${f.map((x) => `<li>${x}</li>`).join("")}</ul><button class="btn ${on ? "primary" : ""} sm" type="button" data-plan="${n}">${on ? "Current trial" : "Choose " + n}</button></div>`).join("")}</div>
+      <p class="muted" style="font-size:var(--text-micro)">Placeholder prices for the mock-up.</p></section>`;
+  const on = (id, f, ev = "click") => { const x = $(id, B2); if (x) x.addEventListener(ev, f); };
+  on("#ws-save", () => { S.user.brand = $("#ws-brand").value; S.user.name = $("#ws-name").value; save(); renderApp(); saved(); });
+  on("#ws-del", () => toast("In the live product this asks you to confirm first"));
+  on("#st-file", (e) => readAvatar(e.target.files[0]), "change");
+  on("#st-rm", () => { S.bot.avatar = ""; save(); renderApp(); });
+  on("#st-save", () => { S.bot.name = $("#st-name").value; save(); renderApp(); toast("Saved. The bot's nickname updates in " + srvName()); });
+  on("#st-sync", () => toast("Synced " + S.channels.length + " channels from " + srvName()));
+  on("#st-builder", openBuilder);
+  on("#crm-sync", () => toast("Syncing with " + crmName()));
+  on("#tm-inv", () => toast("Invite sent"));
+  $$("[data-map]", B2).forEach((s) => s.addEventListener("change", () => { if (s.value) S.map[s.dataset.map] = s.value; else if (s.dataset.map !== "mod") delete S.map[s.dataset.map]; save(); renderPage(); saved(); }));
+  $$("[data-addcrm]", B2).forEach((b) => b.addEventListener("click", () => toast(b.dataset.addcrm + ": paste an API key to add it as a second source")));
+  $$("[data-plan]", B2).forEach((b) => b.addEventListener("click", () => toast(b.dataset.plan + " plan: checkout opens here in the live product")));
+  bindSwitches(B2, (id, v) => { if (id in S.prefs) S.prefs[id] = v; save(); saved(); });
 }
 
 route();

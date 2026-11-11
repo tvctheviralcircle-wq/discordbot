@@ -4,10 +4,13 @@ Kreo is the customer-facing SaaS version of the TVC Creator OS. The Creator OS (
 
 **Live mock-up:** https://claude.ai/artifact/1zWJQgQnGiRwUh5Gup95QV (source: `kreo.html`)
 
-Function 1, built: landing page → sign up (signs you in automatically, no real auth) → dashboard locked behind a blur until the 3-step setup guide is done:
+What's in the mock-up:
 
-1. **Add your bot:** custom bot name and picture (picture optional), then add it to a Discord server (simulated authorize screen with permissions).
-2. **Pick channels:** one channel per automation, auto-matched by name. **AI Community Builder** previews a full server layout (swipe through categories, rename, toggle, set permissions) and creates the channels in one click. The channel template is a draft until the final one is supplied.
-3. **Connect your CRM:** Cruva, Euka or Reacher, by API key (simulated check), then review and launch.
+1. **Landing page and sign up:** sign up signs you in automatically (no real auth).
+2. **Setup guide** (dashboard blurred until done):
+   - **Add your bot:** custom name and picture, then "Add to Discord" opens the real Discord invite in a new tab (TVC bot `1565126862714175620`, permissions `335793232`). Back in Kreo the page waits, re-checks when you return to the tab, and has a Refresh button; then you confirm the server the bot was found in. Detection is simulated in the mock-up.
+   - **Pick channels:** auto-matched per automation. The **AI Community Builder** uses the Pharmlitalia Creator Community's layout (emoji・name channels; GET STARTED, CREATOR HUB, SUPPORT, MULTI PLATFORM, plus `moderator-only`).
+   - **Connect your CRM:** Cruva, Euka or Reacher by API key (simulated), then launch.
+3. **App:** Dashboard (bento tiles: analytics peek, to-do, top creators, automations with on/off, coming up, community pulse, latest DMs), a custom date range picker (presets + two-month calendar), Analytics (Community and Overall/CRM tabs; creators table with CRM email and phone plus WhatsApp numbers found in DMs; creator drawer), Approvals, Automations (toggle, edit, run now) with a chat-based custom automation builder and live preview, Onboarding & DMs (inbox, questions, responses), Content, and Settings (workspace, bot & server, channels, CRM & data, team, notifications, billing).
 
-All data in the mock-up is example data. State is kept in the browser; "Restart demo" in the app resets it.
+All data is example data (fictional creators, 555 numbers, example.com emails). State is kept in the browser; "Restart demo" resets it.
