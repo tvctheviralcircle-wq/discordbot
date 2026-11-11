@@ -1,5 +1,30 @@
 {
- "pending": [],
+ "pending": [
+  {
+   "automation": "creator_wins",
+   "creator": "lizzydaily3",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1569870084292223128",
+   "destination": "1533831170108952596",
+   "final_text": "first sale lessgoooo 🎉 massive congrats to @lizzydaily3, so happy for you. the first one is always the hardest, but it's only going upwards from here!!",
+   "card": "/home/user/discordbot/drafts/2026-11-11/win-lizzydaily3-1.png",
+   "os_draft_id": "wins-lizzydaily3-1",
+   "drafted": "2026-11-11T00:25Z"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "nenaramos_07",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1569870087538741370",
+   "destination": "1533831170108952596",
+   "final_text": "@nenaramos_07 just made their first sale with us!! first one's in the bag, so proud of you 🤍",
+   "card": "/home/user/discordbot/drafts/2026-11-11/win-nenaramos_07-1.png",
+   "os_draft_id": "wins-nenaramos_07-1",
+   "drafted": "2026-11-11T00:25Z"
+  }
+ ],
  "posted": [
   {
    "automation": "winning_angle_of_the_week",
