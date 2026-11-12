@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 332,
+   "units_sold": 333,
    "handled": [
     1,
     3,
@@ -19,7 +19,7 @@
    ]
   },
   "anyer_soy_yo": {
-   "units_sold": 302,
+   "units_sold": 304,
    "handled": [
     1,
     3,
@@ -39,7 +39,7 @@
    ]
   },
   "salonby_yunisbel": {
-   "units_sold": 122,
+   "units_sold": 123,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 54,
+   "units_sold": 55,
    "handled": [
     1,
     3,
@@ -119,7 +119,7 @@
    ]
   },
   "lazarita_98": {
-   "units_sold": 20,
+   "units_sold": 21,
    "handled": [
     1,
     3,
@@ -1016,7 +1016,13 @@
    "handled": [
     1
    ]
+  },
+  "reyesbarriosmargarita": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ]
   }
  },
- "last_check": "2026-11-11T20:44Z"
+ "last_check": "2026-11-12T20:44Z"
 }
