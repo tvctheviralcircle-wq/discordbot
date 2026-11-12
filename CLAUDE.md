@@ -25,3 +25,5 @@ Every scheduled draft can be approved in either place; whichever comes first pos
 
 ## Design system
 Before any UI work, read DESIGN.md. Build only from its tokens (design-system/tokens.css, or the Tailwind theme in design-system/theme.css). Never hard-code a colour, font size, radius or shadow; if a value is missing, add a token. Check new screens against design-system/preview.html. (Inspired by cruva.com's measured design, not affiliated; existing Pharmlitalia cards and the Creator OS page keep their own looks unless asked.)
+
+Kreo (`kreo/`) has its own look built on the Stageshow skill (`.claude/skills/stageshow`): read `kreo/DESIGN.md` before changing Kreo, and use its tokens.

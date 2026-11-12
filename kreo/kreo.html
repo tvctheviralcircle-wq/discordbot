@@ -2,37 +2,57 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: marketing site (sticky nav, hero with product window, banded sections) → sign up (split) → app (sidebar + content, locked behind a blurred setup overlay).
    Tokens: TVC Creator OS design system (design-system/tokens.css). Kreo commits to the light look, like the Creator OS. */
 :root {
   color-scheme: light;
-  --color-background: #ffffff;
+  /* Kreo look: Stageshow's neutral structure (warm canvas, white surfaces, hairline rings, soft layered shadows)
+     with one Kreo accent. Everything below is a token; components never use literals. */
+  --color-background: #f6f5f4;          /* canvas, Stageshow --ss-canvas */
+  --color-page: #ffffff;                /* marketing pages */
   --color-surface: #ffffff;
-  --color-surface-subtle: #f8f6fa;
-  --color-text: #2e2836;
-  --color-heading: #1f1a24;
-  --color-text-muted: #6e6678;
-  --color-text-subtle: #8c8496;
-  --color-border: #ece7f0;
-  --color-border-strong: #ddd5e4;
-  --color-primary: #b8336a;
-  --color-primary-hover: #a32c5d;
+  --color-surface-subtle: #f4f3f2;      /* hover rows, wells */
+  --color-well: #efeeec;                /* segmented tracks, quiet pills */
+  --color-fill: #ebeae8;
+  --color-text: #3d3d41;
+  --color-heading: #1d1d1f;
+  --color-text-muted: #77767c;
+  --color-text-subtle: #a3a2a7;
+  --color-border: rgba(0, 0, 0, 0.07);
+  --color-border-strong: rgba(0, 0, 0, 0.12);
+  --color-primary: #c8336d;
+  --color-primary-hover: #b52b61;
   --color-primary-foreground: #ffffff;
-  --color-primary-tint: #fbeff4;
-  --color-accent: #4c3481;
-  --color-accent-tint: #f4eefa;
-  --color-accent-tint-hover: #ebe2f6;
-  --color-success: #2f7a4f;
-  --color-success-tint: #e3f2e8;
-  --color-danger: #b3364f;
-  --color-danger-tint: #fbe4e8;
-  --color-surface-inverse: #1f1a24;
+  --color-primary-tint: rgba(200, 51, 109, 0.09);
+  --color-primary-text: #a62458;
+  --color-accent: #4a4a50;              /* neutral emphasis: one accent only */
+  --color-accent-tint: #f1f0ee;
+  --color-accent-tint-hover: #e9e8e6;
+  --color-success: #22a855;
+  --color-success-text: #15803d;
+  --color-success-tint: rgba(34, 197, 94, 0.13);
+  --color-danger: #ef4444;
+  --color-danger-text: #b91c1c;
+  --color-danger-tint: rgba(239, 68, 68, 0.1);
+  --color-surface-inverse: #1d1d1f;
   --color-surface-inverse-foreground: #ffffff;
-  --color-surface-inverse-muted: #b9b0c4;
-  --color-overlay: rgba(31, 26, 36, 0.32);
-  /* Discord previews keep Discord's dark look so they match what will post (DESIGN.md) */
+  --color-surface-inverse-muted: #a9a8ad;
+  --color-overlay: rgba(24, 24, 27, 0.26);
+  --color-chart-1: #c8336d;
+  --color-chart-2: #b4b3b8;
+  --color-chart-3: #d9d8dc;
+  --color-cursor-fill: #000000;
+  --color-cursor-edge: #ffffff;
+  /* named avatars take their own color (Stageshow craft rule) */
+  --av-1-bg: #fde7ef; --av-1-fg: #a62458;
+  --av-2-bg: #e3f0ff; --av-2-fg: #1f5fbf;
+  --av-3-bg: #e2f6ea; --av-3-fg: #1d7a44;
+  --av-4-bg: #fff1dc; --av-4-fg: #a15c07;
+  --av-5-bg: #efe9fe; --av-5-fg: #5b3fb8;
+  --av-6-bg: #e0f5f5; --av-6-fg: #11706f;
+  /* Discord previews keep Discord's dark look so they match what will post */
   --color-discord-bg: #313338;
   --color-discord-side: #2b2d31;
   --color-discord-rail: #1e1f22;
@@ -44,19 +64,29 @@
   --color-discord-mention-bg: rgba(88, 101, 242, 0.3);
   --color-discord-tag: #5865f2;
 
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display: "Montserrat", "Arial Black", ui-sans-serif, system-ui, sans-serif;
-  --text-display: 64px; --text-h2: 40px; --text-h3: 30px; --text-h4: 24px; --text-h5: 19px;
-  --text-body-lg: 18px; --text-body: 15.5px; --text-body-sm: 15px; --text-caption: 14px; --text-small: 13px; --text-micro: 12px; --text-overline: 11px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+  --text-display: 62px; --text-h2: 40px; --text-h3: 30px; --text-h4: 24px; --text-h5: 17px;
+  --text-body-lg: 18px; --text-body: 15px; --text-body-sm: 14.5px; --text-caption: 14px; --text-small: 13px; --text-micro: 12px; --text-overline: 11px;
 
-  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 10px; --radius-2xl: 12px; --radius-card: 14px; --radius-3xl: 20px; --radius-full: 9999px;
-  --shadow-2xl: rgba(76, 52, 129, 0.07) 0px 6px 20px 0px, rgba(76, 52, 129, 0.05) 0px 2px 6px 0px;
-  --shadow-dialog: rgba(76, 52, 129, 0.14) 0px 18px 50px -8px, rgba(76, 52, 129, 0.06) 0px 2px 8px 0px;
-  --blur-locked: 7px;
-  --container-page: 1180px;
-  --duration-fast: 150ms; --duration-base: 200ms;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 6px; --radius-md: 8px; --radius-lg: 8px; --radius-xl: 10px; --radius-2xl: 12px; --radius-card: 14px; --radius-3xl: 18px; --radius-full: 9999px;
+  --shadow-ring: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-window: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.05);
+  --shadow-lift: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 12px 28px -6px rgba(50, 50, 93, 0.22), 0 6px 12px -6px rgba(0, 0, 0, 0.12);
+  --shadow-float: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1), 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-hero: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3);
+  --shadow-satellite: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 14px 32px -8px rgba(50, 50, 93, 0.3), 0 4px 10px -4px rgba(0, 0, 0, 0.14);
+  --shadow-button: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(166, 36, 88, 0.6), 0 2px 3px rgba(200, 51, 109, 0.14), 0 6px 14px -5px rgba(200, 51, 109, 0.5);
+  --shadow-thumb: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: var(--shadow-float);
+  --shadow-dialog: var(--shadow-float);
+  --blur-locked: 8px;
+  --container-page: 1160px;
+  --duration-fast: 150ms; --duration-base: 220ms; --duration-slow: 600ms;
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -703,7 +733,290 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .creating .line { display: flex; gap: 10px; align-items: center; font-size: var(--text-small); }
 
 .toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 80; background: var(--color-surface-inverse); color: var(--color-surface-inverse-foreground); padding: 12px 18px; border-radius: var(--radius-2xl); font-size: var(--text-small); box-shadow: var(--shadow-dialog); display: flex; gap: 10px; align-items: center; max-width: calc(100vw - 32px); }
-.toast .ico { color: var(--color-success-tint); }
+.toast .ico { color: var(--color-success); }
+
+/* ================= Kreo look (Stageshow craft rules) =================
+   Structure: warm canvas, white surfaces lifted by a hairline ring and a soft shadow instead of borders,
+   one accent, sans figures, iOS-style controls, inset rounded fills. Visual properties only; layout stays above. */
+body { font-feature-settings: "cv11", "ss01"; letter-spacing: -0.006em; }
+h1, h2, h3, h4, h5 { font-weight: 600; letter-spacing: -0.025em; }
+#v-home, #v-signup { background: var(--color-page); }
+.eyebrow { color: var(--color-primary-text); letter-spacing: 0.06em; }
+a { color: var(--color-primary-text); }
+
+/* Logo: wordmark first, the mark in the accent */
+.logo b { font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.045em; font-size: 22px; }
+.logo svg { width: 26px; height: 26px; }
+
+/* Buttons: surfaces visible at rest; the filled one keeps its color under the pointer */
+.btn { border: 0; height: 36px; padding: 0 14px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); background: var(--color-surface); color: var(--color-heading); font-weight: 500; transition: background var(--duration-fast), box-shadow var(--duration-fast), transform var(--duration-fast) var(--ease); }
+.btn:hover { background: var(--color-surface-subtle); }
+.btn:active { transform: scale(0.98); }
+.btn.primary { background: var(--color-primary); color: var(--color-primary-foreground); box-shadow: var(--shadow-button); }
+.btn.primary:hover { background: var(--color-primary-hover); }
+.btn.subtle { background: var(--color-accent-tint); color: var(--color-heading); box-shadow: none; }
+.btn.subtle:hover { background: var(--color-accent-tint-hover); }
+.btn.ghost { background: transparent; box-shadow: none; color: var(--color-text-muted); }
+.btn.ghost:hover { background: var(--color-accent-tint); color: var(--color-heading); }
+.btn.lg { height: 46px; padding: 0 20px; border-radius: var(--radius-2xl); font-size: var(--text-body-sm); }
+.btn.sm { height: 30px; padding: 0 10px; border-radius: var(--radius-md); }
+.btn[disabled] { opacity: 0.4; box-shadow: var(--shadow-ring); }
+.btn.primary[disabled] { box-shadow: none; }
+
+/* Pills and chips */
+.pill { background: var(--color-well); color: var(--color-text-muted); font-weight: 500; padding: 2px 9px; }
+.pill.good { background: var(--color-success-tint); color: var(--color-success-text); }
+.pill.rose { background: var(--color-primary-tint); color: var(--color-primary-text); }
+.pill.line { background: transparent; border: 0; box-shadow: var(--shadow-ring); }
+.chip { border: 0; box-shadow: var(--shadow-card); background: var(--color-surface); color: var(--color-text); }
+.chip:hover { background: var(--color-surface-subtle); }
+.chip.on { background: var(--color-surface-inverse); color: var(--color-surface-inverse-foreground); box-shadow: none; }
+.chg { font-weight: 600; padding: 1px 7px; }
+.chg.up { background: var(--color-success-tint); color: var(--color-success-text); }
+.chg.dn { background: var(--color-danger-tint); color: var(--color-danger-text); }
+.src { background: var(--color-well); }
+.src.dm { background: var(--color-success-tint); color: var(--color-success-text); }
+
+/* Surfaces: rings, not borders */
+.panel, .feature, .tile, .kp, .kpi, .box, .auto, .card2, .appr, .tblwrap, .maptable, .summary, .crm, .waitbox, .srvopt,
+.chatbox, .prevbox, .inbox, .plan, .specs div, .found div, .ai-cta, .dl, .upload .pic.has { border: 0; box-shadow: var(--shadow-window); background: var(--color-surface); }
+.tile, .kp, .auto, .card2, .appr, .tblwrap, .chatbox, .prevbox, .inbox { border-radius: var(--radius-card); }
+.tile.link:hover { box-shadow: var(--shadow-lift); }
+.auto.off { background: var(--color-surface); opacity: 0.72; }
+.auto.new { box-shadow: none; outline: 1.5px dashed var(--color-border-strong); outline-offset: -1.5px; background: transparent; }
+.auto.new:hover { outline-color: var(--color-primary); }
+.ai-cta { background: var(--color-surface); }
+.ai-cta .ai, .todo-i { background: var(--color-primary-tint); color: var(--color-primary-text); }
+.todo-i.b { background: var(--color-well); color: var(--color-accent); }
+.crm.on { box-shadow: 0 0 0 1.5px var(--color-primary), 0 0 0 5px var(--color-primary-tint); }
+.srvopt:has(input:checked) { box-shadow: 0 0 0 1.5px var(--color-primary), var(--shadow-card); background: var(--color-surface); }
+.connected { background: var(--color-success-tint); color: var(--color-success-text); }
+.dl > div, .lrow, .arow, .trow, .maprow, .summary > div, .chrow { border-top-color: var(--color-border); }
+.drawer .dl, .ib-side .dl, .summary { box-shadow: var(--shadow-ring); }
+.disc { background: var(--color-well); color: var(--color-text-muted); font-family: var(--font-sans); font-weight: 600; font-size: 11px; }
+.cav { font-weight: 600; letter-spacing: 0; }
+.rk { font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+
+/* Figures: one big number, sans with tabular digits; mono only for code */
+.mini .v, .kp .v, .kpi .v, .found b, .plan .price, .lrow .num, .tbl .num, .dc .rank .g { font-family: var(--font-sans); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; font-weight: 600; }
+.mini .v { font-size: 26px; }
+.kp .v { font-size: 22px; }
+.lrow .num, .tbl .num { font-weight: 500; }
+
+/* Inputs */
+.input { border: 0; box-shadow: var(--shadow-card); border-radius: var(--radius-xl); height: 38px; background: var(--color-surface); }
+.input:focus { box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-tint); }
+textarea.input { height: auto; }
+.topbar .search .input { background: var(--color-surface); box-shadow: var(--shadow-card); }
+.topbar .search kbd { border: 0; box-shadow: var(--shadow-ring); }
+
+/* Segmented: a well with a white thumb */
+.seg { background: var(--color-fill); border-radius: var(--radius-xl); padding: 3px; }
+.seg button { border-radius: var(--radius-md); color: var(--color-text-muted); }
+.seg button.on { background: var(--color-surface); color: var(--color-heading); box-shadow: var(--shadow-thumb); }
+.bnav .dots button { border: 0; box-shadow: var(--shadow-card); }
+.bnav .dots button.on { box-shadow: none; }
+.dr-pre button.on, .setnav button.on { background: var(--color-surface); color: var(--color-heading); box-shadow: var(--shadow-thumb); }
+.setnav button.on .ico { color: var(--color-primary); }
+
+/* iOS toggle: on is green, the knob is white */
+.sw { width: 40px; height: 24px; }
+.sw span { background: var(--color-fill); }
+.sw span::after { top: 2px; left: 2px; width: 20px; height: 20px; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.18); transition: transform 260ms var(--ease); }
+.sw input:checked + span { background: var(--color-success); }
+
+/* Tabs */
+.tabs { border-bottom-color: var(--color-border); }
+.tabs .on { color: var(--color-heading); border-bottom-color: var(--color-heading); }
+
+/* Tables */
+.tbl th { background: transparent; color: var(--color-text-subtle); font-weight: 500; border-bottom-color: var(--color-border); }
+.tbl td { border-bottom-color: var(--color-border); }
+.tbl tbody tr:hover td { background: var(--color-surface-subtle); }
+.tbl td.heat { background: color-mix(in srgb, var(--color-primary) var(--p), var(--color-surface)); font-family: var(--font-sans); font-weight: 600; }
+
+/* App shell: the sidebar sits on the canvas, the selected item is a white pill */
+.app { background: var(--color-background); }
+.side { border-right: 0; background: var(--color-background); }
+.side .ws { border: 0; box-shadow: var(--shadow-card); background: var(--color-surface); }
+.side nav a { height: 34px; color: var(--color-text-muted); }
+.side nav a .ico { color: var(--color-text-subtle); }
+.side nav a:hover { background: var(--color-fill); color: var(--color-heading); }
+.side nav a.on { background: var(--color-surface); color: var(--color-heading); box-shadow: var(--shadow-thumb); }
+.side nav a.on .ico { color: var(--color-primary); }
+.side nav a small { background: var(--color-fill); }
+.side nav a small.hot { background: var(--color-primary); color: var(--color-primary-foreground); }
+.side .trial { border: 0; box-shadow: var(--shadow-card); background: var(--color-surface); }
+.topbar { background: color-mix(in srgb, var(--color-background) 86%, transparent); border-bottom-color: transparent; }
+.iconbtn:hover { background: var(--color-fill); }
+.avatar-btn { background: var(--av-1-bg); color: var(--av-1-fg); }
+.ph h1 { font-size: 26px; }
+
+/* Floating things: one float shadow, one radius */
+.pop, .dr-pop { border: 0; box-shadow: var(--shadow-float); border-radius: var(--radius-2xl); }
+.setup, .builder, .authz, .modal { box-shadow: var(--shadow-float); border-radius: var(--radius-3xl); }
+.setup .rail { background: var(--color-background); border-right: 0; }
+.stepper button.cur { border: 0; box-shadow: var(--shadow-thumb); }
+.overlay, .dlg, .drawer-bg { background: var(--color-overlay); backdrop-filter: blur(3px); }
+.drawer { box-shadow: var(--shadow-float); }
+.toast { border-radius: var(--radius-2xl); box-shadow: var(--shadow-float); }
+.days button.edge { border-radius: 50%; }
+.days button.in { background: var(--color-primary-tint); color: var(--color-primary-text); }
+
+/* Chat */
+.bub.ai { background: var(--color-well); }
+.bub.me { background: var(--color-primary); }
+.bub mark { background: var(--color-success-tint); color: var(--color-success-text); }
+
+/* Discord previews: kept dark, with the window radius */
+.dc { border-radius: var(--radius-2xl); }
+
+/* Marketing */
+.nav { background: color-mix(in srgb, var(--color-page) 88%, transparent); border-bottom-color: var(--color-border); }
+.nav .wrap { height: 64px; }
+body::before { background: var(--color-page); }
+.hero { padding-block: 76px 24px; }
+.hero h1 { font-size: var(--text-display); letter-spacing: -0.045em; line-height: 1.02; font-weight: 650; max-width: 14ch; }
+.hero h1 em { color: var(--color-primary); }
+.hero .lede { color: var(--color-text-muted); font-size: 19px; max-width: 56ch; }
+.hero .badge { border: 0; box-shadow: var(--shadow-card); background: var(--color-surface); }
+.hero .badge span { background: var(--color-primary-tint); color: var(--color-primary-text); }
+.works { border-block-color: var(--color-border); }
+.works .marks span { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; color: var(--color-text-subtle); }
+.section.alt { background: var(--color-background); }
+.sec-head h2, .cta h2, .band h2 { letter-spacing: -0.035em; }
+.step3 { border-top: 0; padding-top: 0; }
+.step3 .num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--color-surface); box-shadow: var(--shadow-card); font-family: var(--font-sans); font-weight: 600; color: var(--color-heading); font-size: var(--text-small); }
+.step3:first-child .num { background: var(--color-primary); color: var(--color-primary-foreground); box-shadow: var(--shadow-button); }
+.band { background: var(--color-surface-inverse); }
+.flow .f { border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
+.auth .art { background: var(--color-background); border-left: 0; }
+.foot { border-top-color: var(--color-border); }
+
+/* ---------- Stage: hero demo (Stageshow-style, one story, a cursor with a cause) ---------- */
+.stage { position: relative; max-width: 1040px; margin: 56px auto 0; aspect-ratio: 1040 / 500; text-align: left; }
+.stage .win { position: absolute; inset: 0 70px 0 0; background: var(--color-surface); border-radius: var(--radius-2xl); box-shadow: var(--shadow-hero); overflow: hidden; display: grid; grid-template-rows: 38px 1fr; }
+.win .bar { display: flex; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid var(--color-border); }
+.win .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--color-fill); }
+.win .bar .url { margin: 0 auto; transform: translateX(-24px); width: 40%; height: 22px; border-radius: var(--radius-sm); background: var(--color-surface-subtle); display: grid; place-items: center; font-size: 11px; color: var(--color-text-muted); }
+.win .body { display: grid; grid-template-columns: 196px 1fr; min-height: 0; }
+.win .sb { background: var(--color-background); padding: 14px 10px; display: grid; gap: 4px; align-content: start; }
+.win .sb .it { height: 30px; border-radius: var(--radius-md); display: flex; align-items: center; gap: 9px; padding: 0 10px; font-size: 12.5px; color: var(--color-text-muted); }
+.win .sb .it .ico { width: 15px; height: 15px; color: var(--color-text-subtle); }
+.win .sb .it.on { background: var(--color-surface); box-shadow: var(--shadow-thumb); color: var(--color-heading); font-weight: 500; }
+.win .sb .it.on .ico { color: var(--color-primary); }
+.win .sb .it .n { margin-left: auto; min-width: 20px; height: 18px; border-radius: 9px; background: var(--color-primary); color: var(--color-primary-foreground); font-size: 10.5px; font-weight: 600; display: grid; place-items: center; overflow: hidden; }
+.win .sb .fill { height: 6px; border-radius: 3px; background: var(--color-fill); margin: 12px 10px 0; }
+.win .main2 { padding: 22px 26px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.win .h { display: flex; align-items: baseline; gap: 10px; }
+.win .h b { font-size: 18px; color: var(--color-heading); letter-spacing: -0.02em; }
+.win .h span { font-size: 12px; color: var(--color-text-muted); }
+.draft { border-radius: var(--radius-card); box-shadow: var(--shadow-window); padding: 16px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 18px; align-items: start; transition: transform var(--duration-slow) var(--ease-out), opacity var(--duration-slow) var(--ease-out); }
+.draft .meta { display: grid; gap: 8px; }
+.draft .t { font-size: 15px; font-weight: 600; color: var(--color-heading); letter-spacing: -0.015em; }
+.draft .s { font-size: 12px; color: var(--color-text-muted); }
+.draft .msg { font-size: 12.5px; line-height: 1.5; color: var(--color-text); background: var(--color-surface-subtle); border-radius: var(--radius-md); padding: 10px 12px; }
+.draft .acts { display: flex; gap: 8px; margin-top: 4px; }
+.draft .acts .btn { height: 32px; font-size: 12.5px; }
+.post-btn { position: relative; min-width: 128px; overflow: hidden; }
+.post-btn .lab { display: inline-flex; gap: 6px; align-items: center; transition: transform 320ms var(--ease), opacity 220ms; }
+.post-btn .lab + .lab { position: absolute; inset: 0; justify-content: center; transform: translateY(100%); opacity: 0; }
+.post-btn[data-state="done"] { background: var(--color-success); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 0 0 1px rgba(21,128,61,0.5), 0 6px 14px -5px rgba(34,168,85,0.5); }
+.post-btn[data-state="done"] .lab:first-child { transform: translateY(-100%); opacity: 0; }
+.post-btn[data-state="done"] .lab + .lab { transform: none; opacity: 1; }
+.post-btn.press { transform: scale(0.96); }
+.draft .mini-dc { background: var(--color-discord-bg); border-radius: var(--radius-lg); padding: 12px; display: grid; gap: 8px; }
+.mini-dc .row { display: grid; grid-template-columns: 16px 1fr auto; gap: 8px; font-size: 11.5px; color: var(--color-discord-text); align-items: center; }
+.mini-dc .row span:first-child { color: var(--color-discord-muted); font-variant-numeric: tabular-nums; }
+.mini-dc .row b { font-weight: 500; color: var(--color-discord-head); }
+.mini-dc .row span:last-child { font-variant-numeric: tabular-nums; color: var(--color-discord-head); }
+.mini-dc .hd { font-size: 11px; color: var(--color-discord-muted); font-weight: 600; }
+.queue { display: grid; gap: 0; border-radius: var(--radius-card); box-shadow: var(--shadow-window); }
+.queue .q { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--color-border); font-size: 12.5px; }
+.queue .q:first-child { border-top: 0; }
+.queue .q b { font-weight: 500; color: var(--color-heading); display: block; }
+.queue .q span.s { color: var(--color-text-subtle); font-size: 11.5px; }
+.queue .ph { height: 6px; border-radius: 3px; background: var(--color-fill); }
+.sat { position: absolute; right: 0; bottom: 34px; width: 330px; background: var(--color-discord-bg); border-radius: var(--radius-2xl); box-shadow: var(--shadow-satellite); padding: 14px; color: var(--color-discord-text); font-size: 12.5px; transform: translateY(24px) scale(0.98); opacity: 0; transition: transform 700ms var(--ease-out), opacity 400ms; }
+.sat.in { transform: none; opacity: 1; }
+.sat .ch { color: var(--color-discord-muted); font-weight: 600; font-size: 11.5px; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.sat .m { display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
+.sat .av { width: 34px; height: 34px; border-radius: 50%; background: var(--color-primary); display: grid; place-items: center; color: var(--color-primary-foreground); font-weight: 700; font-size: 13px; }
+.sat .who { color: var(--color-discord-head); font-weight: 600; display: flex; gap: 6px; align-items: center; }
+.sat .who small { background: var(--color-discord-tag); color: var(--color-primary-foreground); font-size: 9px; padding: 0 4px; border-radius: 3px; }
+.sat .who time { color: var(--color-discord-muted); font-weight: 400; font-size: 10.5px; }
+.sat .mention { background: var(--color-discord-mention-bg); color: var(--color-discord-mention); border-radius: 3px; padding: 0 2px; }
+.sat .reacts { display: flex; gap: 6px; margin-top: 10px; }
+.sat .reacts span { background: var(--color-discord-side); border-radius: var(--radius-md); padding: 2px 8px; font-size: 11.5px; color: var(--color-discord-muted); font-variant-numeric: tabular-nums; display: inline-flex; gap: 5px; }
+.sat .reacts span.hot { box-shadow: inset 0 0 0 1px var(--color-discord-tag); color: var(--color-discord-head); }
+.cursor { position: absolute; left: 0; top: 0; width: 24px; height: 24px; pointer-events: none; z-index: 5; transition: transform 900ms var(--ease); filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.25)); }
+.cursor.press svg { transform: scale(0.88); transform-origin: 2px 2px; }
+.cursor svg { transition: transform 120ms; }
+.roll { display: inline-block; transition: transform 300ms var(--ease), opacity 200ms; }
+
+/* ---------- Bento (feature grid) ---------- */
+.bento2 { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.bt { position: relative; overflow: hidden; border-radius: var(--radius-3xl); background: var(--color-background); min-height: 340px; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; isolation: isolate; }
+.bt.w3 { grid-column: span 3; } .bt.w2 { grid-column: span 2; } .bt.w4 { grid-column: span 4; }
+.bt .cp { position: relative; z-index: 2; max-width: 34ch; }
+.bt .cp b { display: block; font-size: 16px; color: var(--color-heading); font-weight: 600; letter-spacing: -0.02em; }
+.bt .cp p { font-size: var(--text-small); color: var(--color-text-muted); margin-top: 4px; line-height: 1.5; }
+.bt .art { position: absolute; z-index: 1; }
+.bt .art.ar { top: 24px; right: -1px; left: 24px; }
+.bt .art.al { top: 24px; left: 24px; right: 24px; }
+.bt::after { content: ""; position: absolute; inset: auto 0 0 0; height: 46%; background: linear-gradient(to top, var(--color-background) 38%, color-mix(in srgb, var(--color-background) 0%, transparent)); z-index: 1; pointer-events: none; }
+.bcard { background: var(--color-surface); border-radius: var(--radius-card); box-shadow: var(--shadow-window); }
+.big-num { display: flex; align-items: center; gap: 10px; }
+.big-num b { font-size: 34px; letter-spacing: -0.035em; color: var(--color-heading); font-weight: 650; font-variant-numeric: tabular-nums; }
+.podium { padding: 14px; display: grid; gap: 2px; }
+.podium .r { display: grid; grid-template-columns: 22px 30px 1fr auto; gap: 10px; align-items: center; padding: 8px 6px; border-radius: var(--radius-md); font-size: 13px; }
+.podium .r.top { background: var(--color-primary-tint); }
+.podium .r b { font-weight: 500; color: var(--color-heading); }
+.podium .r .g { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--color-heading); }
+.podium .r .rk2 { color: var(--color-text-subtle); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 12px; text-align: center; }
+.podium .bar2 { height: 6px; border-radius: 3px; background: var(--color-fill); }
+.milestone { width: 220px; margin: 0 auto; padding: 22px 18px; text-align: center; display: grid; gap: 6px; justify-items: center; }
+.milestone .ring { width: 96px; height: 96px; }
+.milestone .big { font-size: 13px; color: var(--color-text-muted); }
+.milestone b { font-size: 15px; color: var(--color-heading); }
+.tree { background: var(--color-discord-side); border-radius: var(--radius-card); padding: 12px 10px; color: var(--color-discord-muted); font-size: 12.5px; box-shadow: var(--shadow-window); }
+.tree .c { font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; padding: 10px 6px 4px; }
+.tree .l { display: flex; gap: 6px; align-items: center; padding: 4px 6px; border-radius: var(--radius-sm); }
+.tree .l.n { color: var(--color-discord-text); }
+.tree .l.n::after { content: "new"; margin-left: auto; background: var(--color-discord-tag); color: var(--color-primary-foreground); font-size: 9.5px; padding: 0 5px; border-radius: 3px; }
+.dmart { padding: 14px; display: grid; gap: 8px; }
+.dmart .b { max-width: 82%; padding: 8px 11px; border-radius: 14px; font-size: 12.5px; line-height: 1.45; }
+.dmart .b.bot { justify-self: end; background: var(--color-primary); color: var(--color-primary-foreground); border-top-right-radius: 4px; }
+.dmart .b.cr { background: var(--color-well); color: var(--color-text); border-top-left-radius: 4px; }
+.dmart mark { background: var(--color-success-tint); color: var(--color-success-text); border-radius: 3px; padding: 0 2px; }
+.dmart .saved { font-size: 11px; color: var(--color-success-text); display: inline-flex; gap: 5px; align-items: center; font-weight: 500; }
+.dmart .saved .ico { width: 13px; height: 13px; }
+.spec-art { padding: 14px; display: grid; gap: 10px; }
+.spec-art .ask { justify-self: end; background: var(--color-primary); color: var(--color-primary-foreground); padding: 8px 11px; border-radius: 14px; border-top-right-radius: 4px; font-size: 12.5px; max-width: 86%; }
+.spec-art .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.spec-art .grid2 div { box-shadow: var(--shadow-ring); border-radius: var(--radius-lg); padding: 8px 10px; font-size: 12px; }
+.spec-art .grid2 span { display: block; font-size: 10.5px; color: var(--color-text-subtle); }
+.spec-art .grid2 b { color: var(--color-heading); font-weight: 500; }
+
+@media (max-width: 1000px) {
+  .stage { aspect-ratio: auto; height: 560px; }
+  .stage .win { right: 0; }
+  .win .body { grid-template-columns: 1fr; }
+  .win .sb { display: none; }
+  .bento2 { grid-template-columns: 1fr 1fr; }
+  .bt.w3, .bt.w2, .bt.w4 { grid-column: span 1; }
+}
+@media (max-width: 760px) {
+  .stage { height: 600px; margin-top: 36px; }
+  .draft { grid-template-columns: 1fr; }
+  .sat { width: auto; left: 12px; right: 12px; bottom: 12px; }
+  .win .main2 { padding: 16px; }
+  .queue { display: none; }
+  .bento2 { grid-template-columns: 1fr; }
+  .bt { min-height: 320px; }
+  .hero h1 { letter-spacing: -0.04em; }
+}
+@media (prefers-reduced-motion: reduce) { .cursor { display: none; } }
 
 @media (max-width: 1000px) {
   .window .inner, .band .wrap { grid-template-columns: 1fr; }
@@ -739,51 +1052,54 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="kreo-mark" viewBox="0 0 32 32">
-    <rect width="32" height="32" rx="9" fill="#b8336a"/>
+    <rect width="32" height="32" rx="9" style="fill:var(--color-primary)"/>
     <path d="M11 8.5v15" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
     <path d="M21.5 8.5 14.6 16l6.9 7.5" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <circle cx="23.6" cy="16" r="2.1" fill="#f4eefa"/>
+    <circle cx="23.6" cy="16" r="2.1" fill="#ffffff" opacity="0.85"/>
   </symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
-  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
-  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
-  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
-  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
-  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4z"/></symbol>
-  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-5 1-8.5z"/></symbol>
-  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></symbol>
-  <symbol id="i-party" viewBox="0 0 24 24"><path d="M4 20l5-14 9 9z"/><path d="M14 4v2M19 9h2M17 6l1.5-1.5"/></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></symbol>
-  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V6a1.5 1.5 0 0 1 3 0v6c0 4-2.5 8-6.5 8S5 17 4 14l-1-3a1.5 1.5 0 0 1 2.7-1.2L7 12"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/></symbol>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></symbol>
-  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2 .7 3 2.8 3 6"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
-  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
-  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
-  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></symbol>
-  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
-  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
-  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
-  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
-  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
-  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
-  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2.3 4.3 5 5l1-1.2-1.6-.8-.7.7a4 4 0 0 1-2.4-2.4l.7-.7-.8-1.6z"/></symbol>
-  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/></symbol>
-  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
-  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10"/></symbol>
+  <!-- Icons: Lucide 0.468.0 (ISC licence, lucide.dev) -->
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></symbol>
+  <symbol id="i-blocks" viewBox="0 0 24 24"><rect width="7" height="7" x="14" y="3" rx="1" /> <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3" /></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><line x1="4" x2="20" y1="9" y2="9" /> <line x1="4" x2="20" y1="15" y2="15" /> <line x1="10" x2="8" y1="3" y2="21" /> <line x1="16" x2="14" y1="3" y2="21" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <polyline points="17 8 12 3 7 8" /> <line x1="12" x2="12" y1="3" y2="15" /></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5" /> <path d="M9 8V2" /> <path d="M15 8V2" /> <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /> <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /> <path d="M4 22h16" /> <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /> <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /> <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></symbol>
+  <symbol id="i-party" viewBox="0 0 24 24"><path d="M5.8 11.3 2 22l10.7-3.79" /> <path d="M4 3h.01" /> <path d="M22 8h.01" /> <path d="M15 2h.01" /> <path d="M22 20h.01" /> <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10" /> <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17" /> <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7" /> <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z" /></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /> <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /> <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /> <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" /> <path d="m6.2 5.3 3.1 3.9" /> <path d="m12.4 3.4 3.1 4" /> <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" /></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /> <circle cx="12" cy="12" r="3" /></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /> <line x1="4" x2="20" y1="18" y2="18" /></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /> <path d="M16 2v4" /> <rect width="18" height="18" x="3" y="4" rx="2" /> <path d="M3 10h18" /></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6" /> <path d="M10 14 21 3" /> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <polyline points="7 10 12 15 17 10" /> <line x1="12" x2="12" y1="15" y2="3" /></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2" /> <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /> <path d="m15 5 4 4" /></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="M12 5v14" /></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /> <path d="m21.854 2.147-10.94 10.939" /></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2" /> <line x1="2" x2="22" y1="10" y2="10" /></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /> <polyline points="16 17 21 12 16 7" /> <line x1="21" x2="9" y1="12" y2="12" /></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12" /> <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></symbol>
 </svg>
 
 <!-- ============ LANDING ============ -->
@@ -814,39 +1130,48 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
     </div>
     <p class="fine">Set up in about five minutes. No card needed.</p>
 
-    <div class="window" aria-label="Kreo product preview">
-      <div class="bar"><i></i><i></i><i></i><span>app.kreo.so / approvals</span></div>
-      <div class="inner">
-        <div class="dc">
-          <div class="chan"><svg class="ico" style="width:16px;height:16px"><use href="#i-hash"/></svg>leaderboard</div>
-          <div class="msg">
-            <div class="av">G</div>
-            <div style="min-width:0">
-              <div class="who">Glow Bot <small>APP</small> <time>Today at 10:00 AM</time></div>
-              <div><span class="mention">@here</span> Weekly Top Creators, Nov 2–8. Huge week, team.</div>
-              <div class="card">
-                <h6>Top 5 by GMV</h6>
-                <div class="rank"><span class="n">1</span><b>@mariah.makes</b><span class="g">$4,812</span></div>
-                <div class="rank"><span class="n">2</span><b>@thejesscloset</b><span class="g">$3,960</span></div>
-                <div class="rank"><span class="n">3</span><b>@dailywithdani</b><span class="g">$2,705</span></div>
-                <div class="rank"><span class="n">4</span><b>@kofi.reviews</b><span class="g">$1,988</span></div>
-                <div class="rank"><span class="n">5</span><b>@lena.tries</b><span class="g">$1,412</span></div>
+    <div class="stage" id="stage" role="img" aria-label="Kreo demo: a moderator approves a draft and it posts to Discord with reactions">
+      <div class="win" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><div class="url">app.kreo.so/approvals</div></div>
+        <div class="body">
+          <div class="sb">
+            <div class="it"><svg class="ico"><use href="#i-home"/></svg>Dashboard</div>
+            <div class="it"><svg class="ico"><use href="#i-chart"/></svg>Analytics</div>
+            <div class="it on"><svg class="ico"><use href="#i-check"/></svg>Approvals<span class="n"><span class="roll" id="stNav">3</span></span></div>
+            <div class="it"><svg class="ico"><use href="#i-bolt"/></svg>Automations</div>
+            <div class="it"><svg class="ico"><use href="#i-chat"/></svg>Onboarding &amp; DMs</div>
+            <div class="fill" style="width:62%"></div><div class="fill" style="width:44%"></div><div class="fill" style="width:54%"></div>
+          </div>
+          <div class="main2">
+            <div class="h"><b>Approvals</b><span><span class="roll" id="stCount">3</span> waiting</span></div>
+            <div class="draft" id="stDraft">
+              <div class="meta">
+                <span><span class="pill" id="stKind">Weekly leaderboard</span></span>
+                <div class="t" id="stTitle">Top creators · Nov 2–8</div>
+                <div class="s" id="stWhere">Posts to #📊・leaderboard · Mon 5:00 PM</div>
+                <div class="msg" id="stMsg">@here Weekly Top Creators for Nov 2–8 🏆 Huge week, team.</div>
+                <div class="acts">
+                  <span class="btn primary post-btn" id="stBtn" data-state="idle"><span class="lab"><svg class="ico"><use href="#i-check"/></svg>Approve &amp; post</span><span class="lab"><svg class="ico"><use href="#i-check"/></svg>Posted</span></span>
+                  <span class="btn">Edit</span>
+                </div>
               </div>
-              <div class="reacts"><span>🔥 24</span><span>🤍 18</span><span>🚀 15</span><span>📈 11</span></div>
+              <div class="mini-dc" id="stCard"></div>
+            </div>
+            <div class="queue">
+              <div class="q"><span class="cav">KM</span><div><b>@kofi.reviews hit 10 sales</b><span class="s">Creator wins · share-wins</span></div><span class="pill">Ready</span></div>
+              <div class="q"><span class="cav">ML</span><div><div class="ph" style="width:58%"></div><div class="ph" style="width:34%;margin-top:7px"></div></div><span class="pill">Ready</span></div>
             </div>
           </div>
         </div>
-        <div class="panel approve">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px"><h4>Waiting on you</h4><span class="pill rose">3 drafts</span></div>
-          <div class="row"><div><b>Weekly leaderboard</b>#leaderboard · Mon 10:00</div><span class="pill">Ready</span></div>
-          <div class="row"><div><b>@kofi.reviews hit 10 sales</b>#creator-wins · milestone card</div><span class="pill">Ready</span></div>
-          <div class="row"><div><b>Winning angle #1</b>#winning-angles · $2.1k GMV video</div><span class="pill line">Editing</span></div>
-          <div class="actions"><button class="btn primary sm" type="button" tabindex="-1">Approve &amp; post</button><button class="btn sm" type="button" tabindex="-1">Edit</button></div>
-          <p class="muted" style="font-size:var(--text-micro);margin-top:12px">Your moderators can also approve right inside Discord.</p>
-        </div>
       </div>
+      <div class="sat" id="stSat" aria-hidden="true">
+        <div class="ch" id="stSatCh"># 📊・leaderboard</div>
+        <div class="m"><div class="av">G</div><div style="min-width:0"><div class="who">Glow Lab Bot <small>APP</small> <time>Today at 5:00 PM</time></div><div id="stSatMsg"></div>
+          <div class="reacts"><span>🔥 <b class="r" data-to="24">0</b></span><span>🤍 <b class="r" data-to="18">0</b></span><span>🚀 <b class="r" data-to="15">0</b></span><span>📈 <b class="r" data-to="11">0</b></span></div></div></div>
+      </div>
+      <div class="cursor" id="stCur" aria-hidden="true"><svg height="24" width="24" viewBox="0 0 32 32" fill="none"><path d="m6.148 18.473 1.863-1.003 1.615-.839-2.568-4.816h4.332l-11.379-11.408v16.015l3.316-3.221z" style="fill:var(--color-cursor-edge)"/><path d="m6.431 17 1.765-.941-2.775-5.202h3.604l-8.025-8.043v11.188l2.53-2.442z" style="fill:var(--color-cursor-fill)"/></svg></div>
     </div>
-    <p class="fine">Example data</p>
+    <p class="fine">Example data · cursor shape from Stageshow (MIT)</p>
   </section>
 
   <section class="works" id="integrations">
@@ -860,16 +1185,61 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">Automations</div>
-        <h2>Six automations that keep creators posting</h2>
+        <h2>Everything a creator Discord needs, running itself</h2>
         <p>Each one pulls live numbers from your CRM and drafts a post in your brand's voice. Nothing goes live until someone on your team approves it.</p>
       </div>
-      <div class="grid3">
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-trophy"/></svg></div><h3>Weekly leaderboard</h3><p>Top 5 creators by GMV for the week, on a podium card your creators will want to screenshot.</p><div class="when">Mondays · @here</div></div>
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-party"/></svg></div><h3>Creator wins</h3><p>A milestone card the moment a creator hits their 1st, 3rd, 10th, 30th or 50th sale. Tags only the creator.</p><div class="when">Daily check</div></div>
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-bolt"/></svg></div><h3>Winning angle of the week</h3><p>Last week's top 3 videos by GMV, with the script, the numbers and how to remake each one.</p><div class="when">Mon–Wed · one a day</div></div>
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-flame"/></svg></div><h3>Viral hooks</h3><p>The most-viewed videos in your niche, any brand, with why the hook worked and how to use it for your product.</p><div class="when">Mon–Wed · one a day</div></div>
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-chat"/></svg></div><h3>General chat manager</h3><p>Answers creator questions in your voice. Anything about payouts, refunds or problems goes to your mods.</p><div class="when">Always on</div></div>
-        <div class="feature"><div class="fi"><svg class="ico"><use href="#i-wave"/></svg></div><h3>Creator onboarding</h3><p>DMs every new member your questions, links their TikTok handle to your CRM and saves the answers.</p><div class="when">On join</div></div>
+      <div class="bento2">
+        <article class="bt w4">
+          <div class="art ar"><div class="bcard podium" style="max-width:520px;margin-left:auto">
+            <div class="r top"><span class="rk2">1</span><span class="cav">ML</span><b>@mariah.makes</b><span class="g">$4,812</span></div>
+            <div class="r"><span class="rk2">2</span><span class="cav">JC</span><b>@thejesscloset</b><span class="g">$3,960</span></div>
+            <div class="r"><span class="rk2">3</span><span class="cav">DO</span><b>@dailywithdani</b><span class="g">$2,705</span></div>
+            <div class="r"><span class="rk2">4</span><span class="cav">KM</span><div class="bar2" style="width:46%"></div><span class="g" style="color:var(--color-text-subtle)">$1,988</span></div>
+            <div class="r"><span class="rk2">5</span><span class="cav">LN</span><div class="bar2" style="width:38%"></div><span class="g" style="color:var(--color-text-subtle)">$1,412</span></div>
+          </div></div>
+          <div class="cp"><b>Weekly leaderboard</b><p>Top 5 creators by GMV every Monday, on a podium card your creators screenshot and share.</p></div>
+        </article>
+        <article class="bt w2">
+          <div class="art al"><div class="bcard milestone">
+            <svg class="ring" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="40" fill="none" style="stroke:var(--color-fill)" stroke-width="8"/><circle cx="48" cy="48" r="40" fill="none" style="stroke:var(--color-primary)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="75" transform="rotate(-90 48 48)"/><text x="48" y="56" text-anchor="middle" style="font:650 26px var(--font-sans);fill:var(--color-heading);letter-spacing:-0.03em">10</text></svg>
+            <b>@kofi.reviews</b><span class="big">10th sale · next: 30</span>
+          </div></div>
+          <div class="cp"><b>Creator wins</b><p>A milestone card the moment a creator hits their 1st, 3rd, 10th, 30th or 50th sale.</p></div>
+        </article>
+        <article class="bt w2">
+          <div class="art al"><div class="bcard" style="padding:16px 16px 6px">
+            <div style="font-size:12px;color:var(--color-text-muted)">GMV, last 7 days</div>
+            <div class="big-num"><b>$32,640</b><span class="chg up">+18%</span></div>
+            <svg viewBox="0 0 300 110" style="width:100%;height:110px;display:block" aria-hidden="true"><defs><linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--color-primary);stop-opacity:0.18"/><stop offset="1" style="stop-color:var(--color-primary);stop-opacity:0"/></linearGradient></defs><path d="M0 84 C 30 84, 40 52, 70 50 S 110 70, 135 62 S 175 30, 200 28 S 250 60, 270 64 S 290 58, 300 54 L300 110 L0 110Z" fill="url(#bgGrad)"/><path d="M0 84 C 30 84, 40 52, 70 50 S 110 70, 135 62 S 175 30, 200 28 S 250 60, 270 64 S 290 58, 300 54" fill="none" style="stroke:var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/><circle cx="297" cy="54.5" r="4" style="fill:var(--color-primary);stroke:var(--color-surface)" stroke-width="2"/></svg>
+          </div></div>
+          <div class="cp"><b>Community analytics</b><p>Active members, stickiness, retention, and whether engaged creators sell more.</p></div>
+        </article>
+        <article class="bt w2">
+          <div class="art ar"><div class="tree" style="max-width:260px;margin-left:auto">
+            <div class="c">👋 GET STARTED</div><div class="l"># 👋・welcome</div><div class="l n"># 💬・general-chat</div><div class="l n"># 📊・leaderboard</div>
+            <div class="c">🌟 CREATOR HUB</div><div class="l n"># 🏆・share-wins</div><div class="l n"># 🔥・winning-angles</div><div class="l n"># 📷・viral-hooks-and-ideas</div>
+          </div></div>
+          <div class="cp"><b>AI Community Builder</b><p>A new server gets every channel it needs, with the right permissions, in one click.</p></div>
+        </article>
+        <article class="bt w2">
+          <div class="art al"><div class="bcard dmart">
+            <div class="b bot">Last one: what's the best way for our team to reach you?</div>
+            <div class="b cr">my whatsapp is <mark>+1 512 555 0187</mark> if easier!</div>
+            <span class="saved"><svg class="ico"><use href="#i-check"/></svg>WhatsApp saved to @lena.tries</span>
+          </div></div>
+          <div class="cp"><b>Onboarding DMs</b><p>Every new member gets your questions. Answers, handles and numbers land on their profile.</p></div>
+        </article>
+        <article class="bt w3">
+          <div class="art al"><div class="bcard spec-art">
+            <div class="ask">Every Friday, remind creators who haven't requested a sample</div>
+            <div class="grid2"><div><span>Runs</span><b>Fridays, 11:00 AM</b></div><div><span>Posts to</span><b>#💬・general-chat</b></div><div><span>Uses</span><b>No sample request</b></div><div><span>Approval</span><b>Mods first</b></div></div>
+          </div></div>
+          <div class="cp"><b>Custom automations</b><p>Describe it in plain words, watch the preview, then deploy it to any channel.</p></div>
+        </article>
+        <article class="bt w3">
+          <div class="art al"><div class="dc" style="box-shadow:var(--shadow-window)"><div class="chan"># 🔥・winning-angles</div><div class="msg"><div class="av">G</div><div style="min-width:0"><div class="who">Glow Lab Bot <small>APP</small></div><div><span class="mention">@here</span> Winning Angle #1: "Before and after my first wash"</div><div class="card"><h6>$2,140 GMV · 182k views · @mariah.makes</h6><div style="font-size:12px;color:var(--color-discord-muted)">Script, numbers and how to remake it for your product</div></div></div></div></div></div>
+          <div class="cp"><b>Winning angles and viral hooks</b><p>Last week's best-selling videos and the niche's most-viewed hooks, broken down Monday to Wednesday.</p></div>
+        </article>
       </div>
     </div>
   </section>
@@ -1249,22 +1619,23 @@ const chg = (p) => `<span class="chg ${p >= 0 ? "up" : "dn"}">${p >= 0 ? "▲" :
 const scale = () => rDays() / 7;
 const crGmv = (c) => c.weekly * scale() * (0.85 + 0.3 * hash(c.h + ymd(R.s)));
 
+let chartId = 0;
 function lineChart(data, keys, { h = 180, money: isMoney = true } = {}) {
-  const W = 640, H = h, padL = 44, padB = 22, padT = 8;
-  const max = Math.max(1, ...data.flatMap((p) => keys.map((k) => p[k.k]))) * 1.1;
-  const x = (i) => padL + (data.length === 1 ? (W - padL) / 2 : i * (W - padL - 6) / (data.length - 1));
+  const W = 640, H = h, padL = 44, padB = 22, padT = 10, id = "lg" + (++chartId);
+  const max = Math.max(1, ...data.flatMap((p) => keys.map((k) => p[k.k]))) * 1.12;
+  const x = (i) => padL + (data.length === 1 ? (W - padL) / 2 : i * (W - padL - 8) / (data.length - 1));
   const y = (v) => padT + (H - padT - padB) * (1 - v / max);
-  const ticks = [0, 0.5, 1].map((t) => max * t);
-  const fmt = (v) => isMoney ? (v >= 1000 ? "$" + (v / 1000).toFixed(1) + "k" : "$" + Math.round(v)) : Math.round(v);
+  const fmt = (v) => isMoney ? (v >= 1000 ? "$" + (v / 1000).toFixed(1) + "k" : "$" + Math.round(v)) : Math.round(v).toLocaleString("en-US");
   const step = Math.max(1, Math.ceil(data.length / 6));
-  let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px" role="img" aria-label="Chart">`;
-  ticks.forEach((t) => { svg += `<line x1="${padL}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="var(--color-border)"/><text x="${padL - 8}" y="${y(t) + 3}" text-anchor="end">${fmt(t)}</text>`; });
+  const smooth = (pts) => { if (pts.length < 3) return "M" + pts.map((p) => p.join(",")).join(" L"); let d = `M${pts[0][0]},${pts[0][1]}`; for (let i = 0; i < pts.length - 1; i++) { const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2; const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6]; d += ` C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`; } return d; };
+  let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px" role="img" aria-label="Chart"><defs>${keys.map((k, ki) => `<linearGradient id="${id}-${ki}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:${k.c};stop-opacity:${ki ? 0.08 : 0.2}"/><stop offset="1" style="stop-color:${k.c};stop-opacity:0"/></linearGradient>`).join("")}</defs>`;
+  [0, 0.5, 1].forEach((t) => { const v = max / 1.12 * t; svg += `<line x1="${padL}" x2="${W}" y1="${y(v)}" y2="${y(v)}" style="stroke:var(--color-border)" stroke-dasharray="${t ? "3 4" : "0"}"/><text x="${padL - 8}" y="${y(v) + 3}" text-anchor="end">${fmt(v)}</text>`; });
   data.forEach((p, i) => { if (i % step === 0 || i === data.length - 1) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtD(p.d)}</text>`; });
   keys.forEach((k, ki) => {
-    const pts = data.map((p, i) => `${x(i).toFixed(1)},${y(p[k.k]).toFixed(1)}`);
-    if (ki === 0) svg += `<path d="M${pts[0].split(",")[0]},${H - padB} L${pts.join(" L")} L${pts[pts.length - 1].split(",")[0]},${H - padB}Z" fill="${k.c}" opacity="0.08"/>`;
-    svg += `<polyline points="${pts.join(" ")}" fill="none" stroke="${k.c}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>`;
-    const lp = pts[pts.length - 1].split(","); svg += `<circle cx="${lp[0]}" cy="${lp[1]}" r="3.5" fill="${k.c}"/>`;
+    const pts = data.map((p, i) => [+x(i).toFixed(1), +y(p[k.k]).toFixed(1)]), d = smooth(pts);
+    svg += `<path d="${d} L${pts[pts.length - 1][0]},${H - padB} L${pts[0][0]},${H - padB}Z" fill="url(#${id}-${ki})"/>`;
+    svg += `<path d="${d}" fill="none" style="stroke:${k.c}" stroke-width="2.2" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const lp = pts[pts.length - 1]; svg += `<circle cx="${lp[0]}" cy="${lp[1]}" r="4" style="fill:${k.c};stroke:var(--color-surface)" stroke-width="2"/>`;
   });
   return svg + "</svg>";
 }
@@ -1459,7 +1830,7 @@ function step2() {
     <div class="eyebrow">Step 2 of 3</div>
     <h3 style="margin-top:6px">Choose where each automation posts</h3>
     <p class="intro">Kreo found ${S.channels.length} channels in ${esc(srvName())}. ${sparse ? "That's not enough for every automation yet." : "We matched the ones that fit."}</p>
-    <div class="ai-cta"><div class="ai">${ico("spark")}</div><div><b>AI Community Builder</b><span>${sparse ? "Your server is new. Preview a full creator community and create every channel, with permissions, in one click." : "Want the full layout? Preview the creator community template and add what's missing."}</span></div><button class="btn ${sparse ? "primary" : "subtle"}" type="button" id="ai-open">${ico("spark")}Build my community</button></div>
+    <div class="ai-cta"><div class="ai">${ico("blocks")}</div><div><b>AI Community Builder</b><span>${sparse ? "Your server is new. Preview a full creator community and create every channel, with permissions, in one click." : "Want the full layout? Preview the creator community template and add what's missing."}</span></div><button class="btn ${sparse ? "primary" : "subtle"}" type="button" id="ai-open">${ico("blocks")}Build my community</button></div>
     <div class="maphead"><b>Channels per automation</b><button class="btn sm ghost" type="button" id="rematch">${ico("redo")}Auto-match again</button></div>
     <div class="maptable">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}${S.map[a.key] && a.hint.includes(base(S.map[a.key])) ? ' <span class="pill good">Matched</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-auto="${a.key}" aria-label="Channel for ${esc(a.name)}">${chanOpts(S.map[a.key])}</select></div>`).join("")}</div>
     ${footer(true, "Continue", !!S.map.mod)}`;
@@ -1484,7 +1855,7 @@ function renderBuilder() {
   const keep = new Set(B.cats.flatMap((c) => c.ch.map((x) => x.name)));
   const extra = S.channels.filter((c) => !keep.has(base(c.name)));
   $("#dlgRoot").innerHTML = `<div class="dlg" id="bDlg" role="dialog" aria-modal="true" aria-labelledby="bH"><div class="builder">
-    <header><span style="width:36px;height:36px;border-radius:var(--radius-xl);background:var(--color-primary-tint);color:var(--color-primary);display:grid;place-items:center">${ico("spark")}</span><div><h3 id="bH">AI Community Builder</h3><span class="muted" style="font-size:var(--text-micro)">Preview for ${esc(srv.name)} · swipe through each category, rename or switch off anything</span></div><button class="btn sm ghost x" type="button" id="b-x" aria-label="Close">${ico("x")}</button></header>
+    <header><span style="width:36px;height:36px;border-radius:var(--radius-xl);background:var(--color-primary-tint);color:var(--color-primary);display:grid;place-items:center">${ico("blocks")}</span><div><h3 id="bH">AI Community Builder</h3><span class="muted" style="font-size:var(--text-micro)">Preview for ${esc(srv.name)} · swipe through each category, rename or switch off anything</span></div><button class="btn sm ghost x" type="button" id="b-x" aria-label="Close">${ico("x")}</button></header>
     <div class="prompt"><input class="input" id="b-prompt" value="${esc(B.prompt)}" aria-label="Describe your community"><button class="btn subtle" type="button" id="b-regen">${ico("redo")}Regenerate</button></div>
     <div class="bbody" id="bBody">
       <div class="dside" aria-label="Server preview"><div class="srv">${esc(srv.name)}</div>
@@ -1503,7 +1874,7 @@ function renderBuilder() {
           </div>`).join("")}</section>`).join("")}</div>
       </div>
     </div>
-    <footer><span class="muted" style="font-size:var(--text-micro)">Template: the Pharmlitalia Creator Community layout.</span><div class="r"><button class="btn" type="button" id="b-cancel">Cancel</button><button class="btn primary" type="button" id="b-create" ${builderCount() ? "" : "disabled"}>${ico("spark")}<span id="b-count">Create ${builderCount()} channels</span></button></div></footer>
+    <footer><span class="muted" style="font-size:var(--text-micro)">Template: the Pharmlitalia Creator Community layout.</span><div class="r"><button class="btn" type="button" id="b-cancel">Cancel</button><button class="btn primary" type="button" id="b-create" ${builderCount() ? "" : "disabled"}>${ico("blocks")}<span id="b-count">Create ${builderCount()} channels</span></button></div></footer>
   </div></div>`;
   const track = $("#track");
   const mark = () => { $$(".bnav .dots button").forEach((b, i) => b.classList.toggle("on", i === B.slide)); $$(".dside .cat[data-goto]").forEach((b, i) => b.classList.toggle("cur", i === B.slide)); };
@@ -2177,7 +2548,7 @@ function pSettings(el) {
     <section class="card2"><div class="h"><h3>Discord server</h3><div class="r"><button class="btn sm" type="button" id="st-sync">${ico("redo")}Refresh</button></div></div>
       <div class="dl"><div><span class="k">Server</span><span class="v">${esc(srvName())}</span><span class="pill good">Connected</span></div><div><span class="k">Channels</span><span class="v">${S.channels.length} visible to the bot</span><span></span></div><div><span class="k">Last synced</span><span class="v">Just now</span><span></span></div></div>
       <div class="perms-mini">${["View channels", "Send messages", "Embed links", "Attach files", "Add reactions", "Mention @here", "Manage channels", "Manage roles", "Read history", "Change nickname"].map((p) => `<span class="pill good">${ico("check")}${p}</span>`).join("")}</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="${INVITE_URL}" target="_blank" rel="noopener">${ico("external")}Re-invite or update permissions</a><button class="btn" type="button" id="st-builder">${ico("spark")}Open AI Community Builder</button></div></section>`;
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="${INVITE_URL}" target="_blank" rel="noopener">${ico("external")}Re-invite or update permissions</a><button class="btn" type="button" id="st-builder">${ico("blocks")}Open AI Community Builder</button></div></section>`;
   if (t === "channels") B2.innerHTML = `<section class="card2"><div class="h"><h3>Channels per automation</h3><p>Where each automation posts in ${esc(srvName())}.</p></div>
       <div class="maptable" style="margin:0">${AUTOS.map((a) => `<div class="maprow"><div style="min-width:0"><b>${esc(a.name)}${a.req ? ' <span class="pill rose">Required</span>' : ""}</b><span>${esc(a.what)}</span></div><select class="input" data-map="${a.key}">${chanOpts(S.map[a.key])}</select></div>`).join("")}</div></section>
     <section class="card2"><div class="h"><h3>All channels</h3><p>${S.channels.length} text channels the bot can see.</p></div>
@@ -2213,6 +2584,65 @@ function pSettings(el) {
   $$("[data-plan]", B2).forEach((b) => b.addEventListener("click", () => toast(b.dataset.plan + " plan: checkout opens here in the live product")));
   bindSwitches(B2, (id, v) => { if (id in S.prefs) S.prefs[id] = v; save(); saved(); });
 }
+
+/* ---------- Hero demo (Stageshow method: one story, every move has a cause, the payoff holds) ---------- */
+(function heroDemo() {
+  const st = $("#stage"); if (!st) return;
+  const STORIES = [
+    { kind: "Weekly leaderboard", title: "Top creators · Nov 2–8", where: "Posts to #📊・leaderboard · Mon 5:00 PM", ch: "# 📊・leaderboard",
+      msg: "@here Weekly Top Creators for Nov 2–8 🏆 Huge week, team.",
+      card: `<div class="hd">Top 5 by GMV</div><div class="row"><span>1</span><b>@mariah.makes</b><span>$4,812</span></div><div class="row"><span>2</span><b>@thejesscloset</b><span>$3,960</span></div><div class="row"><span>3</span><b>@dailywithdani</b><span>$2,705</span></div>`,
+      reacts: [24, 18, 15, 11] },
+    { kind: "Creator wins", title: "@kofi.reviews hit 10 sales", where: "Posts to #🏆・share-wins · Today 4:00 PM", ch: "# 🏆・share-wins",
+      msg: "@kofi.reviews just hit 10 sales! Double digits, and every one earned 🔥",
+      card: `<div class="hd">Milestone card</div><div style="text-align:center;padding:6px 0 2px"><div style="font-size:10.5px;color:var(--color-discord-muted);letter-spacing:.08em">10 SALES</div><div style="font-size:20px;font-weight:700;color:var(--color-discord-head);letter-spacing:-.02em">@kofi.reviews</div></div>`,
+      reacts: [31, 22, 17, 9] },
+  ];
+  const hl = (t) => esc(t).replace(/(@here|@[a-z0-9._]+)/gi, '<span class="mention">$1</span>');
+  let i = 0, count = 3, timers = [], running = false;
+  const T = (ms, f) => timers.push(setTimeout(f, ms));
+  const roll = (el, v) => { el.style.transform = "translateY(-60%)"; el.style.opacity = "0"; setTimeout(() => { el.textContent = v; el.style.transition = "none"; el.style.transform = "translateY(60%)"; requestAnimationFrame(() => { el.style.transition = ""; el.style.transform = ""; el.style.opacity = ""; }); }, 180); };
+  const cur = $("#stCur"), btn = $("#stBtn"), sat = $("#stSat"), draft = $("#stDraft");
+  const pos = (x, y) => (cur.style.transform = `translate(${x}px, ${y}px)`);
+  const rest = () => { const r = st.getBoundingClientRect(); pos(r.width * 0.46, r.height * 0.86); };
+  function fill(s) {
+    $("#stKind").textContent = s.kind; $("#stTitle").textContent = s.title; $("#stWhere").textContent = s.where; $("#stMsg").textContent = s.msg; $("#stCard").innerHTML = s.card;
+    $("#stSatCh").textContent = s.ch; $("#stSatMsg").innerHTML = hl(s.msg);
+    $$("#stSat .r").forEach((r, k) => { r.dataset.to = s.reacts[k]; r.textContent = "0"; r.parentElement.classList.remove("hot"); });
+  }
+  function countUp() {
+    $$("#stSat .r").forEach((r, k) => T(150 * k, () => { const to = +r.dataset.to; let n = 0; const iv = setInterval(() => { n = Math.min(to, n + Math.ceil(to / 9)); r.textContent = n; if (n >= to) { clearInterval(iv); if (k === 0) r.parentElement.classList.add("hot"); } }, 70); timers.push(iv); }));
+  }
+  function poster() { fill(STORIES[0]); btn.dataset.state = "done"; sat.classList.add("in"); $$("#stSat .r").forEach((r) => (r.textContent = r.dataset.to)); $("#stCount").textContent = "2"; $("#stNav").textContent = "2"; }
+  function cycle() {
+    const s = STORIES[i % STORIES.length];
+    fill(s); btn.dataset.state = "idle"; rest();
+    T(700, () => { const b = btn.getBoundingClientRect(), r = st.getBoundingClientRect(); pos(b.left - r.left + b.width * 0.42, b.top - r.top + b.height * 0.55); });
+    T(1750, () => { cur.classList.add("press"); btn.classList.add("press"); });
+    T(1930, () => { cur.classList.remove("press"); btn.classList.remove("press"); btn.dataset.state = "done"; count--; roll($("#stCount"), count); roll($("#stNav"), count); });
+    T(2350, () => sat.classList.add("in"));
+    T(2900, countUp);
+    T(3300, () => { const r = st.getBoundingClientRect(); pos(r.width * 0.6, r.height * 0.9); });
+    T(8600, () => { sat.classList.remove("in"); draft.style.transform = "translateY(-10px)"; draft.style.opacity = "0"; });
+    T(9300, () => { i++; fill(STORIES[i % STORIES.length]); btn.dataset.state = "idle"; draft.style.transition = "none"; draft.style.transform = "translateY(14px)"; count++; roll($("#stCount"), count); roll($("#stNav"), count);
+      requestAnimationFrame(() => requestAnimationFrame(() => { draft.style.transition = ""; draft.style.transform = ""; draft.style.opacity = ""; })); });
+    T(10400, cycle);
+  }
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) { poster(); return; }
+  fill(STORIES[0]); rest();
+  const start = () => { if (running) return; running = true; cycle(); };
+  const stop = () => { running = false; timers.forEach((t) => { clearTimeout(t); clearInterval(t); }); timers = []; };
+  if ("IntersectionObserver" in window) new IntersectionObserver((es) => es.forEach((e) => (e.isIntersecting && !$("#v-home").hidden ? start() : stop()))).observe(st);
+  else start();
+})();
+
+/* Named avatars take their own color */
+(function tintAvatars() {
+  const paint = (root) => $$(".cav:not([data-t])", root).forEach((el) => { const n = 1 + Math.floor(hash(el.textContent.trim() || "x") * 6); el.style.background = `var(--av-${n}-bg)`; el.style.color = `var(--av-${n}-fg)`; el.dataset.t = "1"; });
+  paint(document);
+  new MutationObserver(() => paint(document)).observe(document.body, { childList: true, subtree: true });
+})();
 
 route();
 })();
