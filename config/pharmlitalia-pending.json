@@ -32,6 +32,16 @@
    "card": "/home/user/discordbot/drafts/2026-11-16/win-rick_roxy-3.png",
    "os_draft_id": "wins-rick_roxy-30",
    "drafted": "2026-11-16T20:47Z"
+  },
+  {
+   "automation": "weekly_leaderboard",
+   "week": "2026-11-08..2026-11-14",
+   "approval_message_id": "1572004571755192370",
+   "destination": "1550255413558116492",
+   "final_text": "@here\n# 🏆 WEEKLY TOP CREATORS\n**Sun Nov 8 – Sat Nov 14**\n🥇 @anyer_soy_yo <@1541833943613972512> · **$218.75**\n🥈 @ligia.aguilera · **$162.26**\n🥉 @salonby_yunisbel · **$156.13**\n4. @yale_everyday · **$122.89**\n5. @rick_roxy · **$90.09**\nmassive congrats to this week's top 5 :)) drop some love for them below 🎉",
+   "card": "/home/user/discordbot/drafts/2026-11-16/leaderboard.png",
+   "os_draft_id": "leaderboard-2026-11-08",
+   "drafted": "2026-11-16T21:50Z"
   }
  ],
  "posted": [
