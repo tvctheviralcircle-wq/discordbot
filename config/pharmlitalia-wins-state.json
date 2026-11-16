@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 334,
+   "units_sold": 335,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 58,
+   "units_sold": 59,
    "handled": [
     1,
     3,
@@ -95,11 +95,12 @@
    ]
   },
   "rick_roxy": {
-   "units_sold": 29,
+   "units_sold": 30,
    "handled": [
     1,
     3,
-    10
+    10,
+    30
    ]
   },
   "itsmeash.leyy": {
@@ -190,7 +191,7 @@
    ]
   },
   "wilma.villamil": {
-   "units_sold": 7,
+   "units_sold": 8,
    "handled": [
     1,
     3
@@ -1031,5 +1032,5 @@
    ]
   }
  },
- "last_check": "2026-11-15T20:44Z"
+ "last_check": "2026-11-16T20:44Z"
 }
