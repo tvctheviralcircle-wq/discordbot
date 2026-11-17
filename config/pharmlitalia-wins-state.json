@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 335,
+   "units_sold": 336,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 59,
+   "units_sold": 60,
    "handled": [
     1,
     3,
@@ -191,10 +191,11 @@
    ]
   },
   "wilma.villamil": {
-   "units_sold": 8,
+   "units_sold": 10,
    "handled": [
     1,
-    3
+    3,
+    10
    ]
   },
   "michelle_loto_": {
@@ -1032,5 +1033,5 @@
    ]
   }
  },
- "last_check": "2026-11-16T20:44Z"
+ "last_check": "2026-11-17T20:44Z"
 }
