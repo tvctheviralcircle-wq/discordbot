@@ -20,18 +20,6 @@
    "drafted": "2026-11-11T00:35Z",
    "note": "Cictiv @hawibofdu6o (3,012 views) skipped: hair-loss video, not dandruff. No transcript; quotes are on-screen text.",
    "status": "on_hold (moderator: wait)"
-  },
-  {
-   "automation": "creator_wins",
-   "creator": "wilma.villamil",
-   "milestone": 10,
-   "linked_discord": false,
-   "approval_message_id": "1572351844431306802",
-   "destination": "1533831170108952596",
-   "final_text": "YAYYY!! @wilma.villamil just hit 10 sales 🎉 that's 10 people who saw your content and trusted it enough to buy. so proud of you",
-   "card": "/home/user/discordbot/drafts/2026-11-17/win-wilma.villamil-3.png",
-   "os_draft_id": "wins-wilma.villamil-10",
-   "drafted": "2026-11-17T20:47Z"
   }
  ],
  "posted": [
@@ -416,6 +404,22 @@
     "1572324685394219069",
     "1572324694227423286"
    ]
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "wilma.villamil",
+   "milestone": 10,
+   "linked_discord": false,
+   "approval_message_id": "1572351844431306802",
+   "destination": "1533831170108952596",
+   "final_text": "YAYYY!! @wilma.villamil just hit 10 sales 🎉 that's 10 people who saw your content and trusted it enough to buy. so proud of you",
+   "card": "/home/user/discordbot/drafts/2026-11-17/win-wilma.villamil-3.png",
+   "os_draft_id": "wins-wilma.villamil-10",
+   "drafted": "2026-11-17T20:47Z",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat)",
+   "posted": "2026-11-17T20:48Z",
+   "posted_message_id": "1572352585937985576"
   }
  ],
  "notes": [
