@@ -20,32 +20,6 @@
    "drafted": "2026-11-11T00:35Z",
    "note": "Cictiv @hawibofdu6o (3,012 views) skipped: hair-loss video, not dandruff. No transcript; quotes are on-screen text.",
    "status": "on_hold (moderator: wait)"
-  },
-  {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-11-08..2026-11-14",
-   "rank": 2,
-   "video": "7675869402457263374",
-   "creator": "salonby_yunisbel",
-   "linked_discord": false,
-   "approval_message_ids": [
-    "1572291168396513321",
-    "1572291169969250436",
-    "1572291172142153889",
-    "1572291174126059661"
-   ],
-   "destination": "1533830710937256087",
-   "final_texts": [
-    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 8 – Sat Nov 14**\n**#2 video by GMV:** @salonby_yunisbel\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@salonby_yunisbel/video/7675869402457263374",
-    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Ask the question your viewer types into search:**\n\"¿Qué champú uso para la picazón y la caspa?\"\n-# (What shampoo do I use for itching and dandruff?)\n**2- Answer it in your first breath, bottle up:**\n\"Este. Y te digo por qué.\"\n-# (This one. And I'll tell you why.)\n**3- Talk like the expert in the room:**\nSay what you do (stylist, barber, mom of a kid with flakes) and one line on the 1% ketoconazole + tea tree oil.\n**4- Give the pro tip nobody else gives:**\n\"Si tienes el cabello teñido, aplícalo solo en el cuero cabelludo con la yema de los dedos.\"\n-# (If your hair is colored, apply it only to the scalp with your fingertips.)\n**5- Show the box, then the cart:**\nShampoo, conditioner, scalp spray in one shot. \"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nSearch-style question · Instant answer · Your expertise · Pro tip · Box + cart\n\n**75% swiped in the first 2 seconds. Get to the answer by second 2 and the brand can scale your video.**"
-   ],
-   "cards": [
-    "/home/user/discordbot/drafts/2026-11-17/winning-angle-2-card1.png",
-    "/home/user/discordbot/drafts/2026-11-17/winning-angle-2-card2.png"
-   ],
-   "os_draft_id": "winning_content-2026-11-08-2",
-   "drafted": "2026-11-17T16:55Z",
-   "note": "Same video as Nov 1-7 #2 (and Oct 25-31 #3); mods can say skip. GMV Max: 2 rows summed ($365.71 spend, $223.63 revenue)."
   }
  ],
  "posted": [
@@ -368,6 +342,41 @@
    "approved_by": "hayfaahmad. (mod chat)",
    "posted": "2026-11-17T15:33Z",
    "posted_message_id": "1572273260719116399"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-11-08..2026-11-14",
+   "rank": 2,
+   "video": "7675869402457263374",
+   "creator": "salonby_yunisbel",
+   "linked_discord": false,
+   "approval_message_ids": [
+    "1572291168396513321",
+    "1572291169969250436",
+    "1572291172142153889",
+    "1572291174126059661"
+   ],
+   "destination": "1533830710937256087",
+   "final_texts": [
+    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 8 – Sat Nov 14**\n**#2 video by GMV:** @salonby_yunisbel\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@salonby_yunisbel/video/7675869402457263374",
+    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Ask the question your viewer types into search:**\n\"¿Qué champú uso para la picazón y la caspa?\"\n-# (What shampoo do I use for itching and dandruff?)\n**2- Answer it in your first breath, bottle up:**\n\"Este. Y te digo por qué.\"\n-# (This one. And I'll tell you why.)\n**3- Talk like the expert in the room:**\nSay what you do (stylist, barber, mom of a kid with flakes) and one line on the 1% ketoconazole + tea tree oil.\n**4- Give the pro tip nobody else gives:**\n\"Si tienes el cabello teñido, aplícalo solo en el cuero cabelludo con la yema de los dedos.\"\n-# (If your hair is colored, apply it only to the scalp with your fingertips.)\n**5- Show the box, then the cart:**\nShampoo, conditioner, scalp spray in one shot. \"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nSearch-style question · Instant answer · Your expertise · Pro tip · Box + cart\n\n**75% swiped in the first 2 seconds. Get to the answer by second 2 and the brand can scale your video.**"
+   ],
+   "cards": [
+    "/home/user/discordbot/drafts/2026-11-17/winning-angle-2-card1.png",
+    "/home/user/discordbot/drafts/2026-11-17/winning-angle-2-card2.png"
+   ],
+   "os_draft_id": "winning_content-2026-11-08-2",
+   "drafted": "2026-11-17T16:55Z",
+   "note": "Same video as Nov 1-7 #2 (and Oct 25-31 #3); mods can say skip. GMV Max: 2 rows summed ($365.71 spend, $223.63 revenue).",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat)",
+   "posted": "2026-11-17T16:46Z",
+   "posted_message_ids": [
+    "1572291777178632377",
+    "1572291778923724874",
+    "1572291781549363284",
+    "1572291783222632581"
+   ]
   }
  ],
  "notes": [
