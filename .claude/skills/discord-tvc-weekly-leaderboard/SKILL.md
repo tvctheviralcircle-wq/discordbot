@@ -68,8 +68,10 @@ Look at the PNG before posting.
 4. @{handle} · **${gmv}**
 5. @{handle} · **${gmv}**
 
-massive congrats to this week's top 5 :)) drop some love for them below 🎉
+massive congrats to this week's top 5 :))
+drop some love for them below 🎉
 ```
+"drop some love…" goes on its own line (moderator request, Nov 2026).
 
 Style: the community manager's voice. Lowercase hype line, one emoji at the end, no trailing "x".
 
