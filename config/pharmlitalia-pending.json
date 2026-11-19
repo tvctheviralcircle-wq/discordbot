@@ -40,6 +40,18 @@
    "os_draft_id": "viral_hooks-2026-11-08-3",
    "drafted": "2026-11-18T18:55Z",
    "note": "No transcript; only the on-screen caption is quoted. Hands-only video."
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "lacasita_shop",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1573076711883542579",
+   "destination": "1533831170108952596",
+   "final_text": "@lacasita_shop just made their first sale with us!! first one's in the bag, so proud of you 🤍",
+   "card": "/home/user/discordbot/drafts/2026-11-19/win-lacasita_shop-1.png",
+   "os_draft_id": "wins-lacasita_shop-1",
+   "drafted": "2026-11-19T20:47Z"
   }
  ],
  "posted": [
@@ -355,7 +367,7 @@
    "approval_message_id": "1571989549742170132",
    "destination": "1533831170108952596",
    "final_text": "30 sales!! @rick_roxy has become one of our go-to creators and the content shows it 🔥 can't wait to see what's next",
-   "card": "/home/user/discordbot/drafts/2026-11-16/win-rick_roxy-3.png",
+   "card": "/home/user/discordbot/drafts/2026-11-16/win-rick_roxy-30.png",
    "os_draft_id": "wins-rick_roxy-30",
    "drafted": "2026-11-16T20:47Z",
    "status": "posted",
@@ -433,7 +445,7 @@
    "approval_message_id": "1572351844431306802",
    "destination": "1533831170108952596",
    "final_text": "YAYYY!! @wilma.villamil just hit 10 sales 🎉 that's 10 people who saw your content and trusted it enough to buy. so proud of you",
-   "card": "/home/user/discordbot/drafts/2026-11-17/win-wilma.villamil-3.png",
+   "card": "/home/user/discordbot/drafts/2026-11-17/win-wilma.villamil-10.png",
    "os_draft_id": "wins-wilma.villamil-10",
    "drafted": "2026-11-17T20:47Z",
    "status": "posted",
