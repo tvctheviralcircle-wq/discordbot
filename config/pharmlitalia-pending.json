@@ -122,6 +122,16 @@
    "card": "/home/user/discordbot/drafts/2026-11-23/win-voltrex_77-1.png",
    "os_draft_id": "wins-voltrex_77-1",
    "drafted": "2026-11-23T20:47Z"
+  },
+  {
+   "automation": "weekly_leaderboard",
+   "week": "2026-11-15..2026-11-21",
+   "approval_message_id": "1574541321404940379",
+   "destination": "1550255413558116492",
+   "final_text": "@here\n# 🏆 WEEKLY TOP CREATORS\n**Sun Nov 15 – Sat Nov 21**\n🥇 @yale_everyday · **$129.28**\n🥈 @ligia.aguilera · **$128.27**\n🥉 @wilma.villamil · **$99.38**\n4. @lacasita_shop · **$58.49**\n5. @rick_roxy · **$49.99**\nmassive congrats to this week's top 5 :))\ndrop some love for them below 🎉",
+   "card": "/home/user/discordbot/drafts/2026-11-23/leaderboard.png",
+   "os_draft_id": "leaderboard-2026-11-15",
+   "drafted": "2026-11-23T21:50Z"
   }
  ],
  "posted": [
