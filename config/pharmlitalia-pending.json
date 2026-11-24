@@ -22,18 +22,6 @@
    "status": "on_hold (moderator: wait)"
   },
   {
-   "automation": "creator_wins",
-   "creator": "voltrex_77",
-   "milestone": 1,
-   "linked_discord": false,
-   "approval_message_id": "1574526213463085207",
-   "destination": "1533831170108952596",
-   "final_text": "first sale lessgoooo 🎉 massive congrats to @voltrex_77, so happy for you. the first one is always the hardest, but it's only going upwards from here!!",
-   "card": "/home/user/discordbot/drafts/2026-11-23/win-voltrex_77-1.png",
-   "os_draft_id": "wins-voltrex_77-1",
-   "drafted": "2026-11-23T20:47Z"
-  },
-  {
    "automation": "weekly_leaderboard",
    "week": "2026-11-15..2026-11-21",
    "approval_message_id": "1574541321404940379",
@@ -644,6 +632,22 @@
     "1574892536269635664",
     "1574892539071307807"
    ]
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "voltrex_77",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1574526213463085207",
+   "destination": "1533831170108952596",
+   "final_text": "first sale lessgoooo 🎉 massive congrats to @voltrex_77, so happy for you. the first one is always the hardest, but it's only going upwards from here!!",
+   "card": "/home/user/discordbot/drafts/2026-11-23/win-voltrex_77-1.png",
+   "os_draft_id": "wins-voltrex_77-1",
+   "drafted": "2026-11-23T20:47Z",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
+   "posted": "2026-11-24T21:34Z",
+   "posted_message_id": "1574900933781884988"
   }
  ],
  "notes": [
