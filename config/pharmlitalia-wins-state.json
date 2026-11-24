@@ -9,7 +9,7 @@
  ],
  "creators": {
   "ligia.aguilera": {
-   "units_sold": 337,
+   "units_sold": 338,
    "handled": [
     1,
     3,
@@ -39,7 +39,7 @@
    ]
   },
   "salonby_yunisbel": {
-   "units_sold": 125,
+   "units_sold": 127,
    "handled": [
     1,
     3,
@@ -49,7 +49,7 @@
    ]
   },
   "yale_everyday": {
-   "units_sold": 62,
+   "units_sold": 63,
    "handled": [
     1,
     3,
@@ -120,7 +120,7 @@
    ]
   },
   "lazarita_98": {
-   "units_sold": 21,
+   "units_sold": 22,
    "handled": [
     1,
     3,
@@ -152,7 +152,7 @@
    ]
   },
   "misyanet16": {
-   "units_sold": 14,
+   "units_sold": 15,
    "handled": [
     1,
     3,
@@ -1051,5 +1051,5 @@
    ]
   }
  },
- "last_check": "2026-11-23T20:44Z"
+ "last_check": "2026-11-24T20:44Z"
 }
