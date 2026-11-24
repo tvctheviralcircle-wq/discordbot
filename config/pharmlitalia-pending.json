@@ -22,26 +22,6 @@
    "status": "on_hold (moderator: wait)"
   },
   {
-   "automation": "viral_hooks_and_angles",
-   "week": "2026-11-15..2026-11-21",
-   "rank": 1,
-   "video": "7710234888238107934",
-   "creator": "jhin1004",
-   "views": 15400,
-   "approval_message_ids": [
-    "1574496120439316493",
-    "1574496121693147168"
-   ],
-   "destination": "1534655536602026164",
-   "final_texts": [
-    "@here\n# 🔥 VIRAL ANGLE OF THE WEEK (#1)\n**Anti-dandruff · Sun Nov 15 – Sat Nov 21**\n**15.4K views** · @jhin1004 · Head & Shoulders Clinical Strength Shampoo\nhttps://www.tiktok.com/@jhin1004/video/7710234888238107934",
-    "# 🎣 THE HOOK: bottles pushed right into the lens\n-# frame one: three bottles almost touching the camera, her face just behind them, already talking\nThe product fills the screen before anything else. It's close, bright and loud, so it stops the scroll.\n**1- She moves the camera, not just her mouth:**\nShe steps back to show the full three-pack, then comes right up close again. The distance keeps changing, so the video never feels still.\n**2- One bottle at a time:**\nAround second 7 she holds a single bottle next to her face, label out, then brings the others back in.\n**3- A big reaction in the middle:**\nAround second 21 she leans into the lens with wide eyes, bottles in hand. That's the shareable moment.\n**4- Ends the way it starts:**\nThree bottles up, one pushed toward the camera. 28 seconds, no text on screen, all energy.\n# 🚀 MAKE IT WORK FOR OUR KETO BUNDLE\nCopy the energy and the closeness, put our three products in the frame.\n**1- Open with the bundle almost touching the lens:**\n\"¿Caspa y picazón? Mira esto.\"\n-# (Dandruff and itching? Look at this.)\n**2- Step back, show all three:**\nShampoo, conditioner, scalp spray in your hands, then come close again.\n**3- One product, one line:**\nHold the shampoo by your face: \"1% ketoconazol y árbol de té.\"\n-# (1% ketoconazole and tea tree.)\n**4- Give one real reaction:**\nLean in, say what changed for you, honestly: \"menos escamas, menos picazón.\"\n-# (fewer flakes, less itching.)\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ On-brief:** product visible early, bottle open and used · \"calms\"/\"reduces flakes\", never \"cures\"/\"treats\" · no \"100% gone\" · no prices · no other brand names"
-   ],
-   "os_draft_id": "viral_hooks-2026-11-15-1",
-   "drafted": "2026-11-23T18:55Z",
-   "note": "No transcript and no on-screen text; nothing quoted from the video. Caption is about oil control; product is H&S Clinical for stubborn dandruff."
-  },
-  {
    "automation": "creator_wins",
    "creator": "voltrex_77",
    "milestone": 1,
@@ -636,6 +616,33 @@
     "1574884237176340530",
     "1574884240082866287",
     "1574884243056763061"
+   ]
+  },
+  {
+   "automation": "viral_hooks_and_angles",
+   "week": "2026-11-15..2026-11-21",
+   "rank": 1,
+   "video": "7710234888238107934",
+   "creator": "jhin1004",
+   "views": 15400,
+   "approval_message_ids": [
+    "1574496120439316493",
+    "1574496121693147168"
+   ],
+   "destination": "1534655536602026164",
+   "final_texts": [
+    "@here\n# 🔥 VIRAL ANGLE OF THE WEEK (#1)\n**Anti-dandruff · Sun Nov 15 – Sat Nov 21**\n**15.4K views** · @jhin1004 · Head & Shoulders Clinical Strength Shampoo\nhttps://www.tiktok.com/@jhin1004/video/7710234888238107934",
+    "# 🎣 THE HOOK: bottles pushed right into the lens\n-# frame one: three bottles almost touching the camera, her face just behind them, already talking\nThe product fills the screen before anything else. It's close, bright and loud, so it stops the scroll.\n**1- She moves the camera, not just her mouth:**\nShe steps back to show the full three-pack, then comes right up close again. The distance keeps changing, so the video never feels still.\n**2- One bottle at a time:**\nAround second 7 she holds a single bottle next to her face, label out, then brings the others back in.\n**3- A big reaction in the middle:**\nAround second 21 she leans into the lens with wide eyes, bottles in hand. That's the shareable moment.\n**4- Ends the way it starts:**\nThree bottles up, one pushed toward the camera. 28 seconds, no text on screen, all energy.\n# 🚀 MAKE IT WORK FOR OUR KETO BUNDLE\nCopy the energy and the closeness, put our three products in the frame.\n**1- Open with the bundle almost touching the lens:**\n\"¿Caspa y picazón? Mira esto.\"\n-# (Dandruff and itching? Look at this.)\n**2- Step back, show all three:**\nShampoo, conditioner, scalp spray in your hands, then come close again.\n**3- One product, one line:**\nHold the shampoo by your face: \"1% ketoconazol y árbol de té.\"\n-# (1% ketoconazole and tea tree.)\n**4- Give one real reaction:**\nLean in, say what changed for you, honestly: \"menos escamas, menos picazón.\"\n-# (fewer flakes, less itching.)\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ On-brief:** product visible early, bottle open and used · \"calms\"/\"reduces flakes\", never \"cures\"/\"treats\" · no \"100% gone\" · no prices · no other brand names"
+   ],
+   "os_draft_id": "viral_hooks-2026-11-15-1",
+   "drafted": "2026-11-23T18:55Z",
+   "note": "No transcript and no on-screen text; nothing quoted from the video. Caption is about oil control; product is H&S Clinical for stubborn dandruff.",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
+   "posted": "2026-11-24T21:01Z",
+   "posted_message_ids": [
+    "1574892536269635664",
+    "1574892539071307807"
    ]
   }
  ],
