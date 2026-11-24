@@ -22,32 +22,6 @@
    "status": "on_hold (moderator: wait)"
   },
   {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-11-15..2026-11-21",
-   "rank": 1,
-   "video": "7690815216350694670",
-   "creator": "yale_everyday",
-   "linked_discord": false,
-   "approval_message_ids": [
-    "1574465514183458906",
-    "1574465517203492897",
-    "1574465520235974698",
-    "1574465522584784928"
-   ],
-   "destination": "1533830710937256087",
-   "final_texts": [
-    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 15 – Sat Nov 21**\n**#1 video by GMV:** @yale_everyday\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@yale_everyday/video/7690815216350694670",
-    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Start with \"I'm not an expert, but…\":**\n\"No soy experta, pero esto lo tienes que ver.\"\n-# (I'm not an expert, but you have to see this.)\n**2- Show someone you care about, with their OK:**\nPartner, mom, dad. A real scalp up close for a second or two says more than any claim.\n**3- One line on why this one:**\n\"Tiene ketoconazol al 1% y aceite de árbol de té.\"\n-# (It has 1% ketoconazole and tea tree oil.)\n**4- Tell them how you use it at home:**\n\"Lo usamos dos veces por semana y lo dejamos 3 a 5 minutos.\"\n-# (We use it twice a week and leave it on 3 to 5 minutes.)\n**5- Bundle in frame, then the cart:**\nShampoo, conditioner, scalp spray. \"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nNot-an-expert open · Real scalp · One reason · Home routine · Bundle + cart\n\n**68% swiped in the first 2 seconds. Show the scalp in second 1 and the brand can scale your video.**"
-   ],
-   "cards": [
-    "/home/user/discordbot/drafts/2026-11-23/winning-angle-1-card1.png",
-    "/home/user/discordbot/drafts/2026-11-23/winning-angle-1-card2.png"
-   ],
-   "os_draft_id": "winning_content-2026-11-15-1",
-   "drafted": "2026-11-23T16:55Z",
-   "note": "Same video as Nov 8-14 #3; mods can say skip. GMV Max: 2 rows summed ($293.79 spend, $154.04 revenue)."
-  },
-  {
    "automation": "viral_hooks_and_angles",
    "week": "2026-11-15..2026-11-21",
    "rank": 1,
@@ -628,6 +602,41 @@
    "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
    "posted": "2026-11-24T19:55Z",
    "posted_message_id": "1574875993347326143"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-11-15..2026-11-21",
+   "rank": 1,
+   "video": "7690815216350694670",
+   "creator": "yale_everyday",
+   "linked_discord": false,
+   "approval_message_ids": [
+    "1574465514183458906",
+    "1574465517203492897",
+    "1574465520235974698",
+    "1574465522584784928"
+   ],
+   "destination": "1533830710937256087",
+   "final_texts": [
+    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 15 – Sat Nov 21**\n**#1 video by GMV:** @yale_everyday\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@yale_everyday/video/7690815216350694670",
+    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Start with \"I'm not an expert, but…\":**\n\"No soy experta, pero esto lo tienes que ver.\"\n-# (I'm not an expert, but you have to see this.)\n**2- Show someone you care about, with their OK:**\nPartner, mom, dad. A real scalp up close for a second or two says more than any claim.\n**3- One line on why this one:**\n\"Tiene ketoconazol al 1% y aceite de árbol de té.\"\n-# (It has 1% ketoconazole and tea tree oil.)\n**4- Tell them how you use it at home:**\n\"Lo usamos dos veces por semana y lo dejamos 3 a 5 minutos.\"\n-# (We use it twice a week and leave it on 3 to 5 minutes.)\n**5- Bundle in frame, then the cart:**\nShampoo, conditioner, scalp spray. \"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nNot-an-expert open · Real scalp · One reason · Home routine · Bundle + cart\n\n**68% swiped in the first 2 seconds. Show the scalp in second 1 and the brand can scale your video.**"
+   ],
+   "cards": [
+    "/home/user/discordbot/drafts/2026-11-23/winning-angle-1-card1.png",
+    "/home/user/discordbot/drafts/2026-11-23/winning-angle-1-card2.png"
+   ],
+   "os_draft_id": "winning_content-2026-11-15-1",
+   "drafted": "2026-11-23T16:55Z",
+   "note": "Same video as Nov 8-14 #3; mods can say skip. GMV Max: 2 rows summed ($293.79 spend, $154.04 revenue).",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
+   "posted": "2026-11-24T20:28Z",
+   "posted_message_ids": [
+    "1574884233800065095",
+    "1574884237176340530",
+    "1574884240082866287",
+    "1574884243056763061"
+   ]
   }
  ],
  "notes": [
