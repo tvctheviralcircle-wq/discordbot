@@ -22,18 +22,6 @@
    "status": "on_hold (moderator: wait)"
   },
   {
-   "automation": "creator_wins",
-   "creator": "aylani_venom",
-   "milestone": 1,
-   "linked_discord": false,
-   "approval_message_id": "1573801517725655092",
-   "destination": "1533831170108952596",
-   "final_text": "we have a first sale!! congrats @aylani_venom, this is just the beginning",
-   "card": "/home/user/discordbot/drafts/2026-11-21/win-aylani_venom-1.png",
-   "os_draft_id": "wins-aylani_venom-1",
-   "drafted": "2026-11-21T20:47Z"
-  },
-  {
    "automation": "winning_angle_of_the_week",
    "week": "2026-11-15..2026-11-21",
    "rank": 1,
@@ -624,6 +612,22 @@
    "approved_by": "hayfaahmad. + moazzam.golra (mod chat)",
    "posted": "2026-11-24T19:23Z",
    "posted_message_id": "1574867838156411060"
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "aylani_venom",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1573801517725655092",
+   "destination": "1533831170108952596",
+   "final_text": "we have a first sale!! congrats @aylani_venom, this is just the beginning",
+   "card": "/home/user/discordbot/drafts/2026-11-21/win-aylani_venom-1.png",
+   "os_draft_id": "wins-aylani_venom-1",
+   "drafted": "2026-11-21T20:47Z",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
+   "posted": "2026-11-24T19:55Z",
+   "posted_message_id": "1574875993347326143"
   }
  ],
  "notes": [
