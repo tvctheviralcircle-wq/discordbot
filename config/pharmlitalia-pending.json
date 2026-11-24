@@ -22,32 +22,6 @@
    "status": "on_hold (moderator: wait)"
   },
   {
-   "automation": "winning_angle_of_the_week",
-   "week": "2026-11-15..2026-11-21",
-   "rank": 2,
-   "video": "7692888157963996447",
-   "creator": "wilma.villamil",
-   "linked_discord": false,
-   "approval_message_ids": [
-    "1574828080239878246",
-    "1574828082462720142",
-    "1574828084987957288",
-    "1574828086799634493"
-   ],
-   "destination": "1533830710937256087",
-   "final_texts": [
-    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 15 – Sat Nov 21**\n**#2 video by GMV:** @wilma.villamil\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@wilma.villamil/video/7692888157963996447",
-    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Problem and ingredient in your first sentence:**\n\"¿Caspa y picazón? Necesitas un champú con ketoconazol.\"\n-# (Dandruff and itching? You need a shampoo with ketoconazole.)\n**2- Send them to the label:**\n\"Miren todo lo que dice aquí.\" Hold the box so the benefits list is readable.\n-# (Look at everything it says here.)\n**3- One reason to trust it:**\n\"Hecho en Italia, con ketoconazol al 1% y árbol de té.\"\n-# (Made in Italy, with 1% ketoconazole and tea tree.)\n**4- Show everything they get:**\nShampoo, conditioner, scalp spray out of the box, one by one.\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nProblem + ingredient · Label close-up · One trust line · Full unbox · Cart close\n\n**This video made the brand about $9 for every $1 of ads. Hold viewers past second 2 and it's an easy video to scale.**"
-   ],
-   "cards": [
-    "/home/user/discordbot/drafts/2026-11-24/winning-angle-2-card1.png",
-    "/home/user/discordbot/drafts/2026-11-24/winning-angle-2-card2.png"
-   ],
-   "os_draft_id": "winning_content-2026-11-15-2",
-   "drafted": "2026-11-24T16:55Z",
-   "note": "First feature for this creator. GMV Max: 2 rows summed ($10.59 spend, $99.38 revenue, ~9.4x)."
-  },
-  {
    "automation": "viral_hooks_and_angles",
    "week": "2026-11-15..2026-11-21",
    "rank": 2,
@@ -652,6 +626,41 @@
    "approved_by": "moazzam.golra (mod chat, 'all approved but send in a gap')",
    "posted": "2026-11-24T22:07Z",
    "posted_message_id": "1574909216412405910"
+  },
+  {
+   "automation": "winning_angle_of_the_week",
+   "week": "2026-11-15..2026-11-21",
+   "rank": 2,
+   "video": "7692888157963996447",
+   "creator": "wilma.villamil",
+   "linked_discord": false,
+   "approval_message_ids": [
+    "1574828080239878246",
+    "1574828082462720142",
+    "1574828084987957288",
+    "1574828086799634493"
+   ],
+   "destination": "1533830710937256087",
+   "final_texts": [
+    "@here\n# 🏆 WINNING CONTENT ANGLE OF THE WEEK\n**Pharmlitalia · Sun Nov 15 – Sat Nov 21**\n**#2 video by GMV:** @wilma.villamil\nKetoconazole 1% Anti-Dandruff Shampoo\nhttps://www.tiktok.com/@wilma.villamil/video/7692888157963996447",
+    "# 🚀 HOW TO REPLICATE THIS ANGLE FOR MAX AD SPEND\n**1- Problem and ingredient in your first sentence:**\n\"¿Caspa y picazón? Necesitas un champú con ketoconazol.\"\n-# (Dandruff and itching? You need a shampoo with ketoconazole.)\n**2- Send them to the label:**\n\"Miren todo lo que dice aquí.\" Hold the box so the benefits list is readable.\n-# (Look at everything it says here.)\n**3- One reason to trust it:**\n\"Hecho en Italia, con ketoconazol al 1% y árbol de té.\"\n-# (Made in Italy, with 1% ketoconazole and tea tree.)\n**4- Show everything they get:**\nShampoo, conditioner, scalp spray out of the box, one by one.\n**5- Close with the cart:**\n\"Te lo dejo en el carrito naranja.\"\n-# (I'll leave it for you in the orange cart.)\n**✅ Remake checklist:**\nProblem + ingredient · Label close-up · One trust line · Full unbox · Cart close\n\n**This video made the brand about $9 for every $1 of ads. Hold viewers past second 2 and it's an easy video to scale.**"
+   ],
+   "cards": [
+    "/home/user/discordbot/drafts/2026-11-24/winning-angle-2-card1.png",
+    "/home/user/discordbot/drafts/2026-11-24/winning-angle-2-card2.png"
+   ],
+   "os_draft_id": "winning_content-2026-11-15-2",
+   "drafted": "2026-11-24T16:55Z",
+   "note": "First feature for this creator. GMV Max: 2 rows summed ($10.59 spend, $99.38 revenue, ~9.4x).",
+   "status": "posted",
+   "approved_by": "moazzam.golra (mod chat)",
+   "posted": "2026-11-24T22:28Z",
+   "posted_message_ids": [
+    "1574914543224750140",
+    "1574914546571808839",
+    "1574914549000175697",
+    "1574914550933880945"
+   ]
   }
  ],
  "notes": [
