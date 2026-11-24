@@ -23,18 +23,6 @@
   },
   {
    "automation": "creator_wins",
-   "creator": "lacasita_shop",
-   "milestone": 1,
-   "linked_discord": false,
-   "approval_message_id": "1573076711883542579",
-   "destination": "1533831170108952596",
-   "final_text": "@lacasita_shop just made their first sale with us!! first one's in the bag, so proud of you 🤍",
-   "card": "/home/user/discordbot/drafts/2026-11-19/win-lacasita_shop-1.png",
-   "os_draft_id": "wins-lacasita_shop-1",
-   "drafted": "2026-11-19T20:47Z"
-  },
-  {
-   "automation": "creator_wins",
    "creator": "aylani_venom",
    "milestone": 1,
    "linked_discord": false,
@@ -620,6 +608,22 @@
     "1574859505395830804",
     "1574859508881035429"
    ]
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "lacasita_shop",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1573076711883542579",
+   "destination": "1533831170108952596",
+   "final_text": "@lacasita_shop just made their first sale with us!! first one's in the bag, so proud of you 🤍",
+   "card": "/home/user/discordbot/drafts/2026-11-19/win-lacasita_shop-1.png",
+   "os_draft_id": "wins-lacasita_shop-1",
+   "drafted": "2026-11-19T20:47Z",
+   "status": "posted",
+   "approved_by": "hayfaahmad. + moazzam.golra (mod chat)",
+   "posted": "2026-11-24T19:23Z",
+   "posted_message_id": "1574867838156411060"
   }
  ],
  "notes": [
