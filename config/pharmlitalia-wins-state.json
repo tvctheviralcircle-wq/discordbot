@@ -16,7 +16,8 @@
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7494348448283658640"
   },
   "anyer_soy_yo": {
    "units_sold": 307,
@@ -26,7 +27,8 @@
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7494388494416841696"
   },
   "leahandherskin": {
    "units_sold": 176,
@@ -36,7 +38,8 @@
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7494011060472875432"
   },
   "salonby_yunisbel": {
    "units_sold": 127,
@@ -46,17 +49,19 @@
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7494536905232452126"
   },
   "yale_everyday": {
-   "units_sold": 63,
+   "units_sold": 65,
    "handled": [
     1,
     3,
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7494530902843165435"
   },
   "destersapproved": {
    "units_sold": 60,
@@ -66,7 +71,8 @@
     10,
     30,
     50
-   ]
+   ],
+   "oecuid": "7495977331484035727"
   },
   "number1roostermom": {
    "units_sold": 41,
@@ -75,7 +81,8 @@
     3,
     10,
     30
-   ]
+   ],
+   "oecuid": "7494005142478425047"
   },
   "beautywithbellam": {
    "units_sold": 27,
@@ -83,7 +90,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494936349349219132"
   },
   "yamihena": {
    "units_sold": 31,
@@ -92,7 +100,8 @@
     3,
     10,
     30
-   ]
+   ],
+   "oecuid": "7494899247586904641"
   },
   "rick_roxy": {
    "units_sold": 30,
@@ -101,7 +110,8 @@
     3,
     10,
     30
-   ]
+   ],
+   "oecuid": "7494609859004303579"
   },
   "itsmeash.leyy": {
    "units_sold": 28,
@@ -109,7 +119,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494050068056869296"
   },
   "anikaleclere": {
    "units_sold": 17,
@@ -117,7 +128,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494000239324399819"
   },
   "lazarita_98": {
    "units_sold": 22,
@@ -125,7 +137,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494061671788350258"
   },
   "lianet053r": {
    "units_sold": 14,
@@ -133,15 +146,17 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494851994858523337"
   },
   "bellezaconanamary": {
-   "units_sold": 14,
+   "units_sold": 15,
    "handled": [
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494377710807057507"
   },
   "marbelys9807": {
    "units_sold": 16,
@@ -149,7 +164,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494385507331901874"
   },
   "misyanet16": {
    "units_sold": 15,
@@ -157,7 +173,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494501574689655632"
   },
   "itsmekloon": {
    "units_sold": 10,
@@ -165,7 +182,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494989490808392087"
   },
   "somyta99": {
    "units_sold": 11,
@@ -173,7 +191,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7496203191800531329"
   },
   "skincarewithasya": {
    "units_sold": 11,
@@ -181,14 +200,16 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7494015793868540544"
   },
   "dani_finds_shop": {
    "units_sold": 9,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494830442857334948"
   },
   "wilma.villamil": {
    "units_sold": 10,
@@ -196,7 +217,8 @@
     1,
     3,
     10
-   ]
+   ],
+   "oecuid": "7495464664501029595"
   },
   "michelle_loto_": {
    "units_sold": 11,
@@ -204,181 +226,198 @@
     1,
     3,
     10
-   ]
-  },
-  "sandymmugs": {
-   "units_sold": 10,
-   "handled": [
-    1,
-    3,
-    10
-   ]
+   ],
+   "oecuid": "7494171893080689559"
   },
   "_danielarosas": {
    "units_sold": 9,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495049938649975199"
   },
   "jen.gran": {
-   "units_sold": 8,
+   "units_sold": 9,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495815697506011937"
   },
   "lindsayperera860": {
    "units_sold": 7,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494149453154978758"
   },
   "ileanat2016": {
    "units_sold": 8,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494009951762483674"
   },
   "datgurltish": {
    "units_sold": 6,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7493992560141503474"
   },
   "pr_williams": {
    "units_sold": 8,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494000045948242800"
   },
   "anairysab": {
    "units_sold": 6,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494009479985006659"
   },
   "gigid1231": {
    "units_sold": 8,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494392348244544212"
   },
   "alliana_rd": {
-   "units_sold": 8,
+   "units_sold": 9,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494174433883358674"
   },
   "leishka_19": {
    "units_sold": 6,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494022941746431090"
   },
   "krissybailey": {
    "units_sold": 6,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7493998797960022534"
   },
   "niliaysuarez": {
    "units_sold": 5,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495697631736859431"
   },
   "jazluvspizza2": {
    "units_sold": 5,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7493997394739694136"
   },
   "zorangie__": {
    "units_sold": 4,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494178282177726897"
   },
   "franngrely": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494010317178242675"
   },
   "itsbrittanyrenea89": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494338173571664063"
   },
   "marian_anett": {
    "units_sold": 5,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494615780188982168"
   },
   "beemehmel": {
    "units_sold": 6,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494004857993857560"
   },
   "laurandreadrianawendy": {
    "units_sold": 5,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494238549988181090"
   },
   "sandrareyes0429": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493997411945843039"
   },
   "dalienaurbina": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494692365077874906"
   },
   "eucari94_official": {
    "units_sold": 4,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495909071666777032"
   },
   "missxkenshin": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494014012356266918"
   },
   "stef.ramirezzz": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494707770911393252"
   },
   "goandglowfinds": {
    "units_sold": 3,
@@ -392,224 +431,253 @@
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494181018206309169"
   },
   "lindamulatica": {
    "units_sold": 4,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494484920656759720"
   },
   "skincaremiami.spa": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494010326182429778"
   },
   "sellingmama": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494017557448984610"
   },
   "elyspinkshoppinista": {
    "units_sold": 4,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494001860755884724"
   },
   "alexabeauty92": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7496311771301645103"
   },
   "lala__cubilla": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495761436831615155"
   },
   "brookashley1": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494017846396225844"
   },
   "cheriejohnson75": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494017404540585038"
   },
   "maameesy": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494017668405693187"
   },
   "thelifesyleedit": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494020368487058245"
   },
   "lissette_pra90": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493993962053405129"
   },
   "the_cuban_kitty": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494185858987755509"
   },
   "flamingointhejungle": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494475040664488169"
   },
   "so.lit.liz": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494163504904899544"
   },
   "dayris831": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494774894910802299"
   },
   "jenny_bev": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495908380926249423"
   },
   "syiyi801": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495835139604646227"
   },
   "mariaevg458": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494650310472993776"
   },
   "kenzieeboydd": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494146051761933198"
   },
   "dawndegrazugc": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004290296777139"
   },
   "linda_yesica90": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493997640489274337"
   },
   "infinitecharmbeauty": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495894637143034539"
   },
   "highr_vibez": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494949191572359414"
   },
   "chinaisabel.2": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494777076210370890"
   },
   "brandys_deals": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494001625118772029"
   },
   "netamelojuras37": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494877546910026111"
   },
   "patys.plata": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495288549139122839"
   },
   "littlehouseofsoap": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7495070873681627923"
   },
   "monica.escobar302": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495995071628740897"
   },
   "danas_life_style": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495157335892134842"
   },
   "aminoureen": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493993316646619539"
   },
   "saltydee123": {
    "units_sold": 1,
    "handled": [
     1
-   ]
-  },
-  "tiktokschool2026": {
-   "units_sold": 1,
-   "handled": [
-    1
-   ]
+   ],
+   "oecuid": "7494618241390381353"
   },
   "keileegulley": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495449457906780480"
   },
   "talias.shopfinds": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004742435735369"
   },
   "byyinyer": {
    "units_sold": 1,
@@ -621,169 +689,197 @@
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004137848703414"
   },
   "charm83x": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493999402843736094"
   },
   "ajr9040": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004553962719933"
   },
   "sonia_castillo22": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494781333898233882"
   },
   "yntk_ot7": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494014053092068210"
   },
   "michellekugc": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494168819886884366"
   },
   "moonstina": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004461758614329"
   },
   "dianabaez6": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493991195337329110"
   },
   "she_ssuchadoll": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494002020094019696"
   },
   "dancingladycyndi": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494017492371802182"
   },
   "kane.the.mutt": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494807989086686126"
   },
   "arletisolis": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494291551817402779"
   },
   "xo_zizi": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493996160474057242"
   },
   "beautywithmagaly": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494000040114096536"
   },
   "jenniferlaneyfree": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494383720851016172"
   },
   "nenaromero45ymas": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494970040878598479"
   },
   "hopibynum": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494015339022616920"
   },
   "danipalomequ": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493997659088849438"
   },
   "letyhernandez1997": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495028670781950024"
   },
   "marisolopez01": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494024498680923644"
   },
   "lovely2c": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493998025684912535"
   },
   "sinceromania": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494036836613851975"
   },
   "yanisreviews": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495766468004449058"
   },
   "solexxita": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494029677131893571"
   },
   "elyaa047": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494181698802125466"
   },
   "tink0478": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494546592020138467"
   },
   "themichaelanthony_": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004481325894245"
   },
   "becca.josh": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495076312666835959"
   },
   "coldheartd_777": {
    "units_sold": 1,
@@ -795,261 +891,326 @@
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495475657207352169"
   },
   "chezwie": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494016689922673332"
   },
   "milkamirandariver": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495952024382573412"
   },
   "danibermudzg": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494177084091435299"
   },
   "nvue87": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495396234939763115"
   },
   "sngbeautysoftglamplug": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494319776077023853"
   },
   "jacquelinemichellem": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493994231366388203"
   },
   "britandtheboys": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495942967716448865"
   },
   "colmenarezmariana": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496104992028068498"
   },
   "glowwithcassiem": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496004999290063567"
   },
   "mia_beauty_tips": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494438969384668044"
   },
   "maire8755": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496116741882218859"
   },
   "treatments.with.t": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496260818593090058"
   },
   "yoselinteixeira": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494503227796850900"
   },
   "megans_fave_finds": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496089699515665381"
   },
   "sosassystephy": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495386790073895412"
   },
   "laurynd_": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494041367933061014"
   },
   "spanglish.ruth": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495887357852551553"
   },
   "flaquitapalaguachi": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494025063576668142"
   },
   "amyelizabeth811": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494053841949985747"
   },
   "sisijvibes": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493996217586911663"
   },
   "isntitdarling13": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494019400790673712"
   },
   "yinetfundorarivera": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496045969442572329"
   },
   "llannelys": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494955320421812896"
   },
   "penarikai": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493995651387328701"
   },
   "toniern.beauty.wellness": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495604210551655006"
   },
   "glowflowexplorewithvera": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494011730212457335"
   },
   "hopesbeautyjunkiess": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494610962093804085"
   },
   "slowdownseason": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494122297215781325"
   },
   "brandiiiland": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494008698659834072"
   },
   "soydarlyyyy": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494020573540288101"
   },
   "midermisventura": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494172650145352124"
   },
   "olivayunia": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494005134031227125"
   },
   "jennifferae86": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494004685722782335"
   },
   "zeliev4": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496097512095452015"
   },
   "michelleleannefashion": {
    "units_sold": 3,
    "handled": [
     1,
     3
-   ]
+   ],
+   "oecuid": "7494349579518576069"
   },
   "lizzydaily3": {
    "units_sold": 2,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7495291431611959409"
   },
   "nenaramos_07": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493997720391420298"
   },
   "reyesbarriosmargarita": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494019030125218733"
   },
   "gyisneidy1": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7496134288875621320"
   },
   "lacasita_shop": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494705196207932933"
   },
   "aylani_venom": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7494029250400454203"
   },
   "voltrex_77": {
    "units_sold": 1,
    "handled": [
     1
-   ]
+   ],
+   "oecuid": "7493997623972432591"
+  },
+  "sandymtiktokshop": {
+   "units_sold": 10,
+   "handled": [
+    1,
+    3,
+    10
+   ],
+   "previous_handles": [
+    "sandymmugs"
+   ],
+   "oecuid": "7494016111267449181"
+  },
+  "cozmykaoficial": {
+   "units_sold": 1,
+   "handled": [
+    1
+   ],
+   "previous_handles": [
+    "tiktokschool2026"
+   ],
+   "oecuid": "7494390806075247279"
   }
  },
- "last_check": "2026-11-24T20:44Z"
+ "last_check": "2026-11-25T20:44Z"
 }
