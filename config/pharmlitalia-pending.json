@@ -66,6 +66,18 @@
    "os_draft_id": "viral_hooks-2026-11-15-3",
    "drafted": "2026-11-25T18:55Z",
    "note": "Skipped @emilyvibes957 (5,826): download is audio-only (photo slideshow), nothing to break down. No transcript or on-screen text; nothing quoted. Hands-only, similar format to Nov 8-14 #3."
+  },
+  {
+   "automation": "creator_wins",
+   "creator": "luckymichkey",
+   "milestone": 1,
+   "linked_discord": false,
+   "approval_message_id": "1575613498828923030",
+   "destination": "1533831170108952596",
+   "final_text": "@luckymichkey just made their first sale with us!! first one's in the bag, so proud of you 🤍",
+   "card": "/home/user/discordbot/drafts/2026-11-26/win-luckymichkey-1.png",
+   "os_draft_id": "wins-luckymichkey-1",
+   "drafted": "2026-11-26T20:47Z"
   }
  ],
  "posted": [
